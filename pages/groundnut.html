@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Groundnut (Peanut) Farming | FarmMitra 2.0</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    :root{
+      /* 🥜 Groundnut Theme */
+      --gn-deep:#4A3426;        /* deep brown */
+      --gn-main:#6F4F34;        /* main soil brown */
+      --gn-accent:#D4A15A;      /* pod golden */
+      --gn-soft:#FFF8E6;        /* soft light cream */
+      --gn-sky:#F2F8E7;         /* light green-cream */
+      --text-muted:#5f4a40;
+      --card:#ffffff;
+      --shadow-main:rgba(111,79,52,0.28);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0;}
+
+    body{
+      font-family:"Poppins",sans-serif;
+      background:linear-gradient(180deg,#FFF8E6,#F1F8E9);
+      color:#3E2723;
+      line-height:1.75;
+    }
+
+    /* ================= NAVBAR ================= */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(90deg,#4A3426,#6F4F34,#8D6B3F);
+      padding: 15px 8%;
+      color: #fff;
+      flex-wrap: wrap;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo-icon {
+      font-size: 32px;
+      color: var(--gn-accent);
+    }
+
+    .logo h1 {
+      font-size: 1.9rem;
+      color: #fff;
+      margin: 0;
+    }
+
+    .logo span {
+      color: var(--gn-accent);
+    }
+
+    .logo small {
+      font-size: 0.8rem;
+      color: #ffebd3;
+      margin-left: 3px;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #FFFDE7;
+    }
+
+    .translate-box {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.15);
+      padding: 6px 12px;
+      border-radius: 999px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    .translate-box ion-icon {
+      color: #fff;
+      font-size: 20px;
+    }
+
+    .translate-box select {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #2a1c19;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    .goog-te-banner-frame.skiptranslate {
+      display: none !important;
+    }
+
+    #google_translate_element {
+      display: none;
+    }
+
+    /* ================= HERO ================= */
+    .hero{
+      display:grid;
+      grid-template-columns: minmax(0,1.4fr) minmax(280px,0.9fr);
+      gap:32px;
+      padding:40px 6% 20px;
+      align-items:center;
+    }
+
+    .hero-left{
+      background:var(--card);
+      padding:26px 26px 22px;
+      border-radius:16px;
+      box-shadow:0 14px 30px rgba(0,0,0,0.08);
+      border:1px solid #e6d5c9;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero-left::before{
+      content:"";
+      position:absolute;
+      right:-60px;
+      top:-60px;
+      width:160px;
+      height:160px;
+      background:radial-gradient(circle at center,rgba(212,161,90,0.8),transparent 60%);
+      opacity:0.65;
+      pointer-events:none;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      background:#FFF3E0;
+      color:#8D6E63;
+      padding:5px 14px;
+      border-radius:999px;
+      font-size:0.9rem;
+      font-weight:600;
+      letter-spacing:0.02em;
+    }
+
+    .eyebrow ion-icon{
+      font-size:15px;
+    }
+
+    .hero-left h2{
+      margin-top:14px;
+      font-size:2.05rem;
+      color:var(--gn-deep);
+      line-height:1.3;
+    }
+
+    .hero-left h2 span{
+      color:var(--gn-accent);
+    }
+
+    .hero-sub{
+      color:var(--text-muted);
+      margin-top:12px;
+      font-size:1.02rem;
+    }
+
+    .hero-tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:16px;
+    }
+
+    .tag{
+      font-size:0.8rem;
+      background:#F2F8E7;
+      color:#4A3426;
+      border-radius:999px;
+      padding:5px 11px;
+      font-weight:500;
+    }
+
+    .hero-stats{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .stat{
+      flex:0 1 150px;
+      background:#ffffff;
+      border-radius:12px;
+      padding:11px 13px;
+      box-shadow:0 10px 22px rgba(0,0,0,0.08);
+      border:1px solid #e9d9cc;
+    }
+
+    .stat-label{
+      font-size:0.8rem;
+      color:#8a6f65;
+      text-transform:uppercase;
+      letter-spacing:0.05em;
+      margin-bottom:3px;
+    }
+
+    .stat-value{
+      font-weight:700;
+      color:var(--gn-deep);
+      font-size:1rem;
+    }
+
+    .stat-note{
+      font-size:0.8rem;
+      color:var(--text-muted);
+    }
+
+    .hero-right{
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow:0 18px 40px var(--shadow-main);
+      position:relative;
+      min-height:260px;
+      background:#ffe8c0;
+    }
+
+    .hero-img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transform:scale(1.02);
+      transition:transform 0.35s ease;
+    }
+
+    .hero-right:hover .hero-img{
+      transform:scale(1.06);
+    }
+
+    .hero-badge{
+      position:absolute;
+      left:14px;
+      bottom:14px;
+      background:rgba(0,0,0,0.55);
+      color:#fffde7;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:0.85rem;
+      display:flex;
+      align-items:center;
+      gap:6px;
+      -webkit-backdrop-filter: blur(4px);
+      backdrop-filter: blur(4px);
+    }
+
+    .hero-badge ion-icon{
+      font-size:16px;
+    }
+
+    /* ================= MAIN LAYOUT ================= */
+    .page-wrap{
+      max-width:1320px;
+      margin:0 auto 40px;
+      padding:0 6% 10px;
+    }
+
+    .main-grid{
+      display:grid;
+      grid-template-columns:minmax(0,1.5fr) minmax(280px,0.9fr);
+      gap:26px;
+      align-items:flex-start;
+    }
+
+    .card{
+      background:var(--card);
+      padding:18px 20px;
+      border-radius:14px;
+      box-shadow:0 12px 28px rgba(0,0,0,0.06);
+      border:1px solid #eadbcd;
+      margin-bottom:18px;
+    }
+
+    h3.section-title{
+      margin:0 0 8px;
+      color:var(--gn-deep);
+      font-size:1.3rem;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    h3.section-title ion-icon{
+      color:var(--gn-main);
+      font-size:18px;
+    }
+
+    .section-note{
+      font-size:0.9rem;
+      color:var(--text-muted);
+      margin-bottom:6px;
+    }
+
+    p, li{
+      font-size:1.01rem;
+      color:#4a332c;
+    }
+
+    ul{
+      padding-left:20px;
+      margin-top:8px;
+    }
+
+    .mt-8{
+      margin-top:8px;
+    }
+
+    /* Highlight box */
+    .highlight-box{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:10px;
+      background:#FFF8E1;
+      border-left:4px solid #FFC107;
+      font-size:0.9rem;
+      color:#7b6337;
+    }
+
+    /* IMAGE STRIP */
+    .img-strip{
+      display:flex;
+      gap:10px;
+      margin-top:12px;
+      flex-wrap:wrap;
+    }
+
+    .img-strip img{
+      flex:1 1 140px;
+      border-radius:12px;
+      height:140px;
+      object-fit:cover;
+      box-shadow:0 10px 20px rgba(0,0,0,0.08);
+    }
+
+    /* TABLES */
+    .table-wrap{
+      margin-top:10px;
+      overflow-x:auto;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      font-size:0.95rem;
+      min-width:280px;
+    }
+
+    th,td{
+      padding:9px 10px;
+      border:1px solid #e6d7cf;
+      text-align:left;
+    }
+
+    th{
+      background:#FFF3E0;
+      color:#4A3426;
+      font-weight:600;
+    }
+
+    /* GRID INSIDE CARD */
+    .two-col-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:14px;
+      margin-top:10px;
+    }
+
+    .pill-list{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:8px;
+    }
+
+    .pill{
+      background:#f5ebd9;
+      color:var(--gn-deep);
+      padding:4px 10px;
+      border-radius:999px;
+      font-size:0.82rem;
+      font-weight:500;
+    }
+
+    /* Pest/disease cards */
+    .d-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+      gap:14px;
+      margin-top:10px;
+    }
+
+    .d-card{
+      background:#fffbf8;
+      border-radius:12px;
+      padding:10px 12px;
+      border:1px solid #f0dfd5;
+      box-shadow:0 6px 18px rgba(0,0,0,0.04);
+    }
+
+    .d-card h4{
+      margin:0 0 4px;
+      color:var(--gn-deep);
+      font-size:1.02rem;
+    }
+
+    .d-card small{
+      font-size:0.8rem;
+      color:#8D6E63;
+    }
+
+    .bullet-tight{
+      padding-left:18px;
+      margin-top:6px;
+    }
+
+    .bullet-tight li{
+      font-size:0.9rem;
+      margin-bottom:3px;
+    }
+
+    /* ================= NUTRIENT CALCULATOR ================= */
+    .calc-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:16px;
+      margin-top:12px;
+      align-items:flex-start;
+    }
+
+    .calc-box{
+      background:#FFF8E1;
+      border-radius:12px;
+      padding:10px 12px;
+      border:1px solid #FFE082;
+    }
+
+    .calc-box label{
+      font-size:0.9rem;
+      display:block;
+      margin-bottom:4px;
+      color:#8D6E63;
+      font-weight:600;
+    }
+
+    .calc-box input,
+    .calc-box select{
+      width:100%;
+      padding:6px 8px;
+      border-radius:8px;
+      border:1px solid #e0cdbf;
+      outline:none;
+      font-size:0.9rem;
+      margin-bottom:8px;
+    }
+
+    .calc-result{
+      font-size:0.92rem;
+      margin-top:6px;
+      color:#5D4037;
+      font-weight:600;
+    }
+
+    /* ================= GROWTH STAGE TIMELINE ================= */
+    .timeline{
+      margin-top:12px;
+    }
+
+    .timeline-bar{
+      position:relative;
+      height:4px;
+      background:#ffe4b5;
+      border-radius:999px;
+      margin:20px 0 18px;
+    }
+
+    .timeline-fill{
+      position:absolute;
+      left:0;
+      top:0;
+      height:100%;
+      width:100%;
+      background:linear-gradient(90deg,#6F4F34,#D4A15A);
+      border-radius:999px;
+      opacity:0.8;
+    }
+
+    .stage-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+      gap:12px;
+    }
+
+    .stage{
+      background:#ffffff;
+      border-radius:12px;
+      padding:8px 10px;
+      box-shadow:0 8px 18px rgba(0,0,0,0.04);
+      border:1px solid #f0e0d6;
+    }
+
+    .stage-title{
+      font-size:0.95rem;
+      font-weight:600;
+      color:var(--gn-deep);
+    }
+
+    .stage-sub{
+      font-size:0.82rem;
+      color:#6d554c;
+    }
+
+    /* ================= FAQ ACCORDION ================= */
+    .faq-list{
+      margin-top:10px;
+    }
+
+    .faq-item{
+      border-radius:10px;
+      border:1px solid #e6d7cf;
+      margin-bottom:8px;
+      overflow:hidden;
+      background:#ffffff;
+    }
+
+    .faq-question{
+      padding:10px 12px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      cursor:pointer;
+      font-size:0.97rem;
+      font-weight:600;
+      color:var(--gn-deep);
+    }
+
+    .faq-question span.icon{
+      font-size:18px;
+      color:#6F4F34;
+      transition:transform 0.2s ease;
+    }
+
+    .faq-answer{
+      max-height:0;
+      overflow:hidden;
+      transition:max-height 0.3s ease;
+      padding:0 12px;
+    }
+
+    .faq-answer p{
+      font-size:0.96rem;
+      color:#5f4a40;
+      padding:6px 0 10px;
+    }
+
+    .faq-item.active .faq-answer{
+      max-height:220px;
+    }
+
+    .faq-item.active .faq-question span.icon{
+      transform:rotate(90deg);
+    }
+
+    /* ================= SIDEBAR ================= */
+    .side-card{
+      background:#ffffff;
+      padding:16px 16px 14px;
+      border-radius:14px;
+      box-shadow:0 10px 24px rgba(0,0,0,0.06);
+      border:1px solid #ecdcd3;
+      margin-bottom:16px;
+    }
+
+    .side-card h4{
+      margin:0 0 6px;
+      color:var(--gn-deep);
+      font-size:1.05rem;
+      display:flex;
+      align-items:center;
+      gap:6px;
+    }
+
+    .side-card h4 ion-icon{
+      color:var(--gn-main);
+      font-size:18px;
+    }
+
+    .side-card p{
+      font-size:0.95rem;
+      color:var(--text-muted);
+    }
+
+    .badge-mini{
+      display:inline-block;
+      padding:3px 8px;
+      border-radius:999px;
+      background:#FFE082;
+      color:#6f4f00;
+      font-size:0.8rem;
+      font-weight:600;
+      margin-top:4px;
+    }
+
+    /* VIDEO CARD + MODAL */
+    .video-thumb-card{
+      position:relative;
+      border-radius:14px;
+      overflow:hidden;
+      cursor:pointer;
+      margin-top:8px;
+      box-shadow:0 10px 26px rgba(0,0,0,0.25);
+    }
+
+    .video-thumb{
+      width:100%;
+      height:200px;
+      object-fit:cover;
+      display:block;
+      transition:transform .3s ease;
+    }
+
+    .video-thumb-card:hover .video-thumb{
+      transform:scale(1.03);
+    }
+
+    .play-overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top,rgba(0,0,0,0.55),rgba(0,0,0,0.15));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .play-circle{
+      width:64px;
+      height:64px;
+      border-radius:50%;
+      border:3px solid #fffde7;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      -webkit-backdrop-filter: blur(4px);
+      backdrop-filter: blur(4px);
+      box-shadow:0 0 18px rgba(0,0,0,0.5);
+    }
+
+    .play-circle ion-icon{
+      font-size:32px;
+      color:#fffde7;
+      margin-left:3px;
+    }
+
+    .video-caption{
+      position:absolute;
+      left:10px;
+      bottom:8px;
+      color:#fffde7;
+      font-size:0.8rem;
+      text-shadow:0 1px 4px rgba(0,0,0,0.7);
+    }
+
+    .video-actions{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-top:8px;
+      gap:6px;
+    }
+
+    .btn-yt{
+      flex:1;
+      text-align:center;
+      text-decoration:none;
+      font-size:0.85rem;
+      font-weight:600;
+      padding:7px 10px;
+      border-radius:999px;
+      background:#FFCA28;
+      color:#5d3b00;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:5px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .btn-yt ion-icon{
+      font-size:16px;
+    }
+
+    .btn-note{
+      font-size:0.8rem;
+      color:#7e6a63;
+      text-align:right;
+    }
+
+    /* MODAL */
+    .modal-backdrop{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.6);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:2000;
+    }
+
+    .modal-backdrop.active{
+      display:flex;
+    }
+
+    .modal-content{
+      width:90%;
+      max-width:780px;
+      background:#000;
+      border-radius:16px;
+      overflow:hidden;
+      box-shadow:0 20px 50px rgba(0,0,0,0.6);
+      position:relative;
+    }
+
+    .modal-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:8px 14px;
+      background:linear-gradient(90deg,#4A3426,#6F4F34);
+      color:#fff;
+      font-size:0.95rem;
+    }
+
+    .modal-header button{
+      border:none;
+      background:transparent;
+      color:#fff;
+      font-size:1.3rem;
+      cursor:pointer;
+    }
+
+    .modal-body iframe{
+      width:100%;
+      height:420px;
+      border:none;
+      display:block;
+    }
+
+    @media(max-width:768px){
+      .modal-body iframe{
+        height:240px;
+      }
+    }
+
+    /* FOOTER */
+    footer{
+      background:#FFF3E0;
+      border-top:1px solid #ecd4c4;
+      padding:14px 6% 18px;
+      text-align:center;
+      font-size:0.9rem;
+      color:#6b4e43;
+      margin-top:20px;
+    }
+
+    footer a{
+      color:var(--gn-deep);
+      font-weight:600;
+      text-decoration:none;
+      margin-right:8px;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:1024px){
+      .hero{
+        grid-template-columns:1fr;
+      }
+      .hero-right{
+        max-width:520px;
+        margin:0 auto;
+      }
+      .main-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media(max-width:720px){
+      .navbar{
+        flex-wrap:wrap;
+        gap:10px;
+        padding-inline:16px;
+      }
+      nav ul{
+        gap:14px;
+        font-size:0.9rem;
+      }
+      .hero{
+        padding-inline:16px;
+      }
+      .page-wrap{
+        padding-inline:16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============== NAVBAR ============== -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline" class="logo-icon"></ion-icon>
+      <h1>Farm<span>Mitra</span> <small>2.0</small></h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="field-crops.html">🌾 Field Crops</a></li>
+      </ul>
+    </nav>
+
+    <div class="translate-box">
+      <ion-icon name="language-outline"></ion-icon>
+      <select id="languageSelect" aria-label="Select Language">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+        <option value="mr">मराठी</option>
+      </select>
+    </div>
+  </header>
+
+  <!-- Hidden Google element -->
+  <div id="google_translate_element"></div>
+
+  <!-- ============== HERO ============== -->
+  <section class="hero">
+    <div class="hero-left">
+      <span class="eyebrow">
+        <ion-icon name="sunny-outline" aria-hidden="true"></ion-icon>
+        Groundnut (Peanut) – Oilseed Legume
+      </span>
+
+      <h2>Groundnut (<em>Arachis hypogaea</em>) – <span>Oil-rich</span> Soil-enriching Crop</h2>
+
+      <p class="hero-sub">
+        Groundnut is an important <strong>oilseed and legume crop</strong> grown mainly in warm, tropical and
+        subtropical regions. It gives <strong>edible oil, nuts and haulms for fodder</strong>, and improves soil
+        fertility by fixing atmospheric nitrogen through root nodules.
+      </p>
+
+      <div class="hero-tags">
+        <span class="tag">Kharif & Rabi (irrigated)</span>
+        <span class="tag">Oilseed + Nut + Fodder</span>
+        <span class="tag">Legume – fixes nitrogen</span>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-label">Crop Duration</div>
+          <div class="stat-value">100 – 120 days</div>
+          <div class="stat-note">Depends on variety & season</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Temperature Need</div>
+          <div class="stat-value">25 – 35 °C</div>
+          <div class="stat-note">Warm, frost-free climate</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Average Pod Yield</div>
+          <div class="stat-value">2 – 3 t/ha</div>
+          <div class="stat-note">Higher under good management</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <img
+        src="https://i.pinimg.com/1200x/96/64/d5/9664d5428dbb0ddec983ef97d37f1127.jpg"
+        alt="Groundnut crop with plants and pods"
+        class="hero-img"
+      />
+      <div class="hero-badge">
+        <ion-icon name="leaf-outline" aria-hidden="true"></ion-icon>
+        Oilseed legume that improves soil fertility
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== MAIN CONTENT ============== -->
+  <div class="page-wrap">
+    <div class="main-grid">
+      <!-- ========= LEFT MAIN COLUMN ========= -->
+      <div>
+
+        <!-- 1. Overview & Climate -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="information-circle-outline"></ion-icon>
+            1️⃣ Overview & Climate Requirement
+          </h3>
+          <p>
+            Groundnut (<strong>peanut</strong>) is a major <strong>oilseed, food and fodder crop</strong> in India.
+            It prefers a <strong>warm, moderately dry climate</strong> with well-distributed rainfall during the
+            growing period and dry weather at harvest. Major groundnut-growing states are
+            <strong>Gujarat, Andhra Pradesh, Telangana, Tamil Nadu, Karnataka and Maharashtra</strong>.
+          </p>
+          <p>
+            Being a legume, groundnut adds <strong>nitrogen to the soil</strong>, improving fertility. The crop is
+            mainly grown as a <strong>Kharif crop</strong> under rainfed/irrigated conditions, and as
+            <strong>Rabi/summer crop</strong> with irrigation in some regions.
+          </p>
+
+          <div class="two-col-grid mt-8">
+            <div>
+              <strong>Ideal Climate</strong>
+              <ul>
+                <li>Temperature: <strong>25–35°C</strong>.</li>
+                <li>Requires 500–700 mm rainfall, well distributed.</li>
+                <li>Dry, clear weather is ideal during maturity & harvest.</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Best Soil Type</strong>
+              <ul>
+                <li><strong>Sandy loam to loam soils</strong> with good drainage.</li>
+                <li>Soil pH: <strong>6.0–7.5</strong>.</li>
+                <li>Loose, friable soil helps easy pegging and pod development.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="highlight-box">
+            🌤️ <strong>Tip:</strong> Waterlogging is harmful to groundnut. Ensure <strong>good drainage</strong>,
+            especially in heavy soils and high rainfall areas.
+          </div>
+
+          <div class="img-strip">
+            <img src="https://i.pinimg.com/736x/11/ce/4b/11ce4b33dd1c20bada7d2a903100df0e.jpg"
+                 alt="Groundnut plants with green foliage">
+            <img src="https://i.pinimg.com/736x/7d/99/49/7d9949fb19896d7638750314097c7410.jpg"
+                 alt="Uprooted groundnut plants showing pods">
+          </div>
+        </section>
+
+        <!-- 2. Varieties & Seed Information -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="leaf-outline"></ion-icon>
+            2️⃣ Varieties & Seed Information (with Comparison)
+          </h3>
+          <p class="section-note">
+            Use recommended varieties for your state/zone with good yield, oil content and tolerance to major diseases.
+          </p>
+
+          <div class="table-wrap">
+            <table aria-label="Popular groundnut varieties and comparison">
+              <thead>
+                <tr>
+                  <th>Variety</th>
+                  <th>Type</th>
+                  <th>Duration (days)</th>
+                  <th>Special Features</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>JL-24</td>
+                  <td>Bunch type</td>
+                  <td>100–110</td>
+                  <td>Early, bold seeds, widely grown</td>
+                </tr>
+                <tr>
+                  <td>TG-37A</td>
+                  <td>Bunch type</td>
+                  <td>110–115</td>
+                  <td>High oil content, good shelling</td>
+                </tr>
+                <tr>
+                  <td>GG-2 / GG-7</td>
+                  <td>Gujarat varieties</td>
+                  <td>105–115</td>
+                  <td>Adapted to Saurashtra region, good yield</td>
+                </tr>
+                <tr>
+                  <td>Kadiri-9</td>
+                  <td>Bunch type</td>
+                  <td>110–115</td>
+                  <td>Popular in AP/Telangana</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <ul class="mt-8">
+            <li><strong>Seed rate:</strong> 100–120 kg/ha for bold-seeded bunch varieties.</li>
+            <li>Use <strong>mature, well-filled, disease-free pods</strong> for shelling and sowing.</li>
+            <li>Treat seed with <strong>Thiram/Carbendazim @ 2–3 g/kg</strong> +
+                <strong>Rhizobium + PSB culture</strong> for better nodulation and early vigour.</li>
+          </ul>
+        </section>
+
+        <!-- 3. Soil Preparation & Sowing -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="construct-outline"></ion-icon>
+            3️⃣ Soil Preparation & Sowing
+          </h3>
+          <p>
+            Groundnut is directly sown in the main field. A <strong>well-prepared, loose and weed-free seedbed</strong>
+            is essential for good germination and pegging.
+          </p>
+
+          <div class="two-col-grid mt-8">
+            <div>
+              <strong>Land Preparation</strong>
+              <ul>
+                <li>1 deep ploughing followed by 2–3 harrowings for fine tilth.</li>
+                <li>Remove plant residues and perennial weeds.</li>
+                <li>Apply <strong>8–10 tons/ha FYM or compost</strong> before last ploughing.</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Sowing Time & Spacing</strong>
+              <ul>
+                <li><strong>Kharif:</strong> June–July with onset of monsoon.</li>
+                <li><strong>Rabi (irrigated):</strong> Oct–Nov; summer: Jan–Feb.</li>
+                <li>Spacing: <strong>30–35 cm</strong> between rows and <strong>10–12 cm</strong> between plants.</li>
+                <li>Sowing depth: about <strong>4–5 cm</strong>.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="two-col-grid mt-8">
+            <div>
+              <strong>Seed Handling</strong>
+              <ul>
+                <li>Shell pods <strong>just 1–2 weeks before sowing</strong>.</li>
+                <li>Avoid mechanical damage to kernels while shelling.</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Intercropping Options</strong>
+              <ul>
+                <li>Can be intercropped with <strong>red gram, castor or millets</strong> in some regions.</li>
+                <li>Helps in risk reduction and better resource use.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. Nutrient Management + Calculator -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="beaker-outline"></ion-icon>
+            4️⃣ Nutrient Management + Simple NPK Calculator
+          </h3>
+          <p class="section-note">
+            Groundnut needs balanced fertilization; as a legume, it requires less nitrogen but more calcium and phosphorus.
+          </p>
+
+          <ul>
+            <li>Apply <strong>5–10 tons/ha</strong> well-decomposed FYM/compost during land preparation.</li>
+          </ul>
+
+          <div class="table-wrap">
+            <table aria-label="Groundnut fertilizer recommendation">
+              <thead>
+                <tr>
+                  <th>Condition</th>
+                  <th>N (kg/ha)</th>
+                  <th>P₂O₅ (kg/ha)</th>
+                  <th>K₂O (kg/ha)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Rainfed groundnut</td>
+                  <td>15–20</td>
+                  <td>40–50</td>
+                  <td>40–50</td>
+                </tr>
+                <tr>
+                  <td>Irrigated groundnut</td>
+                  <td>20</td>
+                  <td>50</td>
+                  <td>75</td>
+                </tr>
+                <tr>
+                  <td>High yielding / intensive</td>
+                  <td>25</td>
+                  <td>60</td>
+                  <td>75</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="calc-grid">
+            <div class="calc-box">
+              <label for="areaInput">Enter your field area</label>
+              <input type="number" id="areaInput" min="0" step="0.01" placeholder="e.g. 1.0" />
+              <label for="unitSelect">Select unit</label>
+              <select id="unitSelect">
+                <option value="ha">Hectare (ha)</option>
+                <option value="acre">Acre</option>
+              </select>
+              <label for="npkLevel">Fertilizer level</label>
+              <select id="npkLevel">
+                <option value="rainfed">Rainfed groundnut</option>
+                <option value="irrigated">Irrigated groundnut</option>
+                <option value="intensive">High yielding / intensive</option>
+              </select>
+
+              <div class="calc-result" id="calcResult">
+                Enter area and select level to see NPK recommendation.
+              </div>
+            </div>
+
+            <div>
+              <ul>
+                <li>Apply full P & K and <strong>all N as basal</strong> at sowing.</li>
+                <li>Apply <strong>gypsum @ 250 kg/ha</strong> at flowering/pegging stage for better pod filling
+                    (source of calcium & sulphur).</li>
+                <li>Apply <strong>ZnSO₄ @ 25 kg/ha</strong> once in 2–3 years if zinc deficiency is noticed.</li>
+                <li>Seed inoculation with <strong>Rhizobium + PSB</strong> improves N fixation and P uptake.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5. Water & Weed Management -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="water-outline"></ion-icon>
+            5️⃣ Water Management & Weed Control
+          </h3>
+
+          <div class="two-col-grid">
+            <div>
+              <strong>Water Management</strong>
+              <ul>
+                <li>Critical stages: <strong>flowering, pegging and pod development</strong>.</li>
+                <li>Provide 4–6 irrigations in irrigated crop, depending on soil and season.</li>
+                <li>Avoid heavy irrigation during pegging – keep soil moist but not waterlogged.</li>
+                <li>Drip/sprinkler systems improve water use efficiency.</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Weed Management</strong>
+              <ul>
+                <li>Critical period: first <strong>30–40 days</strong> after sowing.</li>
+                <li>2–3 hand weedings or intercultivations at 15–20 and 30–35 days.</li>
+                <li>Pre-emergence herbicide (as per local recommendation) may be used in heavily infested fields.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="highlight-box">
+            🌱 <strong>Tip:</strong> Light earthing-up after 30–40 days supports pegging and
+            <strong>improves pod development</strong> in groundnut.
+          </div>
+        </section>
+
+        <!-- 6. Pests & Diseases -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="bug-outline"></ion-icon>
+            6️⃣ Major Pests & Diseases – Field Identification
+          </h3>
+
+          <div class="d-grid">
+            <div class="d-card">
+              <h4>Leaf Miner</h4>
+              <small>Silvery tunnels on leaves, leaf curling</small>
+              <ul class="bullet-tight">
+                <li>Encourage natural enemies; install light traps.</li>
+                <li>Need-based spray as per local plant protection advisory.</li>
+              </ul>
+            </div>
+
+            <div class="d-card">
+              <h4>Aphids & Jassids</h4>
+              <small>Sticky leaves, curling, sooty mould</small>
+              <ul class="bullet-tight">
+                <li>Monitor crop regularly; use yellow sticky traps.</li>
+                <li>Use recommended bio/chemical control only if needed.</li>
+              </ul>
+            </div>
+
+            <div class="d-card">
+              <h4>Tikka (Leaf Spot) & Rust</h4>
+              <small>Brown/black leaf spots, rust pustules, defoliation</small>
+              <ul class="bullet-tight">
+                <li>Use tolerant varieties and proper crop rotation.</li>
+                <li>Need-based fungicide sprays (as advised) during high humidity.</li>
+              </ul>
+            </div>
+
+            <div class="d-card">
+              <h4>Collar Rot / Root Rot</h4>
+              <small>Seedling wilt and plant death in patches</small>
+              <ul class="bullet-tight">
+                <li>Seed treatment is very important.</li>
+                <li>Avoid waterlogging; follow proper soil health practices.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7. Growth Stages Timeline -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="hourglass-outline"></ion-icon>
+            7️⃣ Groundnut Growth Stages (Timeline)
+          </h3>
+          <p class="section-note">
+            Proper timing of irrigation, gypsum application and plant protection depends on understanding crop stages.
+          </p>
+
+          <div class="timeline">
+            <div class="timeline-bar">
+              <div class="timeline-fill"></div>
+            </div>
+            <div class="stage-grid">
+              <div class="stage">
+                <div class="stage-title">1. Germination & Seedling</div>
+                <div class="stage-sub">0–15 days</div>
+              </div>
+              <div class="stage">
+                <div class="stage-title">2. Vegetative Growth</div>
+                <div class="stage-sub">15–35 days</div>
+              </div>
+              <div class="stage">
+                <div class="stage-title">3. Flowering</div>
+                <div class="stage-sub">30–50 days</div>
+              </div>
+              <div class="stage">
+                <div class="stage-title">4. Pegging & Pod Formation</div>
+                <div class="stage-sub">40–70 days</div>
+              </div>
+              <div class="stage">
+                <div class="stage-title">5. Pod Filling & Maturity</div>
+                <div class="stage-sub">70–110+ days</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 8. FAQ Section -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="help-circle-outline"></ion-icon>
+            8️⃣ Farmer FAQ – Groundnut Cultivation
+          </h3>
+
+          <div class="faq-list" id="faqList">
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>Q1. What is the best time to sow groundnut?</span>
+                <span class="icon">›</span>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  For Kharif, sow in <strong>June–July</strong> with the onset of monsoon. For Rabi/summer
+                  groundnut, sow during <strong>Oct–Nov / Jan–Feb</strong> with assured irrigation.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>Q2. How do I know when groundnut is ready to harvest?</span>
+                <span class="icon">›</span>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  When most leaves turn <strong>yellowish</strong> and inner side of shells shows dark network
+                  pattern, pods are mature. Dig a few plants and check pods before harvesting whole field.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>Q3. Why is gypsum applied in groundnut?</span>
+                <span class="icon">›</span>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  Gypsum provides <strong>calcium and sulphur</strong>, which are essential for pod filling
+                  and kernel quality. It is usually applied at flowering/pegging stage.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>Q4. Can groundnut improve soil fertility?</span>
+                <span class="icon">›</span>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  Yes. As a <strong>legume crop</strong>, groundnut fixes atmospheric nitrogen through root nodules,
+                  which helps improve soil fertility for the succeeding crop.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- ========= RIGHT SIDEBAR ========= -->
+      <aside>
+
+        <div class="side-card">
+          <h4>
+            <ion-icon name="sunny-outline"></ion-icon>
+            Quick Climate Summary
+          </h4>
+          <ul class="bullet-tight">
+            <li>Temperature: <strong>25–35°C</strong></li>
+            <li>Needs well-distributed rainfall</li>
+            <li>Very sensitive to waterlogging</li>
+            <li>Prefers sandy loam to loam soils</li>
+          </ul>
+        </div>
+
+        <div class="side-card">
+          <h4>
+            <ion-icon name="leaf-outline"></ion-icon>
+            Groundnut Field Checklist
+          </h4>
+          <ul class="bullet-tight">
+            <li>Loose, well-drained, weed-free field</li>
+            <li>Certified, well-filled seed</li>
+            <li>Proper spacing & shallow sowing</li>
+            <li>Basal FYM + recommended NPK</li>
+            <li>Plan gypsum and irrigations</li>
+          </ul>
+          <span class="badge-mini">✔ Check before sowing</span>
+        </div>
+
+        <!-- Video: Modal + YouTube button -->
+        <div class="side-card">
+          <h4>
+            <ion-icon name="play-circle-outline"></ion-icon>
+            Groundnut Cultivation Video
+          </h4>
+          <p>
+            Watch a detailed groundnut farming video covering land preparation, sowing, gypsum application,
+            disease management and harvesting.
+          </p>
+
+          <!-- Clickable thumbnail opens modal -->
+          <div class="video-thumb-card" id="videoThumb">
+            <img
+              src="https://img.youtube.com/vi/2VExufCZdcs/hqdefault.jpg"
+              alt="Groundnut cultivation YouTube thumbnail"
+              class="video-thumb"
+            />
+            <div class="play-overlay">
+              <div class="play-circle">
+                <ion-icon name="play" aria-hidden="true"></ion-icon>
+              </div>
+            </div>
+            <div class="video-caption">Tap to play inside page</div>
+          </div>
+
+          <div class="video-actions">
+            <a
+              href="https://www.youtube.com/watch?v=2VExufCZdcs"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-yt"
+            >
+              <ion-icon name="logo-youtube" aria-hidden="true"></ion-icon>
+              Watch on YouTube
+            </a>
+            <span class="btn-note">Opens in new tab</span>
+          </div>
+        </div>
+
+        <div class="side-card">
+          <h4>
+            <ion-icon name="shield-checkmark-outline"></ion-icon>
+            Safety & Good Practices
+          </h4>
+          <ul class="bullet-tight">
+            <li>Use gloves and mask while handling chemicals.</li>
+            <li>Store agrochemicals away from food and children.</li>
+            <li>Follow label dose and pre-harvest intervals strictly.</li>
+            <li>Prefer IPM, bioagents and neem-based products where possible.</li>
+          </ul>
+        </div>
+
+      </aside>
+    </div>
+  </div>
+
+  <!-- ============== MODAL FOR VIDEO ============== -->
+  <div class="modal-backdrop" id="videoModal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-label="Groundnut farming video">
+      <div class="modal-header">
+        <span>🎥 Groundnut (Peanut) Farming – Video Guide</span>
+        <button type="button" id="closeModal" aria-label="Close video">&times;</button>
+      </div>
+      <div class="modal-body">
+        <iframe
+          id="videoFrame"
+          src=""
+          title="Groundnut Farming Video from YouTube"
+          allowfullscreen
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============== FOOTER ============== -->
+  <footer>
+    <a href="field-crops.html">← Back to Field Crops</a>
+    © 2025 FarmMitra 2.0 — Groundnut (Peanut) Smart Farming Guide
+  </footer>
+
+  <!-- ============== GOOGLE TRANSLATE + LANGUAGE SELECT ============== -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+        autoDisplay: false
+      }, "google_translate_element");
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const select = document.getElementById("languageSelect");
+
+      select.addEventListener("change", function () {
+        const lang = select.value;
+        const googleSelect = document.querySelector(".goog-te-combo");
+        if (googleSelect) {
+          googleSelect.value = lang;
+          googleSelect.dispatchEvent(new Event("change"));
+        }
+      });
+    });
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <!-- ============== VIDEO MODAL + NPK CALCULATOR + FAQ SCRIPT ============== -->
+  <script>
+    // ============================
+    // 🎥 Video modal
+    // ============================
+    const videoThumb = document.getElementById("videoThumb");
+    const videoModal = document.getElementById("videoModal");
+    const closeModal = document.getElementById("closeModal");
+    const videoFrame = document.getElementById("videoFrame");
+
+    // Modal video autoplay iframe URL (Groundnut farming video)
+    const ytEmbedUrl = "https://www.youtube.com/embed/2VExufCZdcs?autoplay=1";
+
+    function openVideoModal() {
+      if (!videoModal || !videoFrame) return;
+      videoModal.classList.add("active");
+      videoFrame.src = ytEmbedUrl;
+      videoModal.setAttribute("aria-hidden","false");
+    }
+
+    function hideModal() {
+      if (!videoModal || !videoFrame) return;
+      videoModal.classList.remove("active");
+      videoFrame.src = "";
+      videoModal.setAttribute("aria-hidden","true");
+    }
+
+    if (videoThumb) {
+      videoThumb.addEventListener("click", openVideoModal);
+    }
+    if (closeModal) {
+      closeModal.addEventListener("click", hideModal);
+    }
+    if (videoModal) {
+      videoModal.addEventListener("click", (e) => {
+        if (e.target === videoModal) hideModal();
+      });
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && videoModal && videoModal.classList.contains("active")) {
+        hideModal();
+      }
+    });
+
+    // Optional: thumbnail injection (kept consistent)
+    if (videoThumb) {
+      videoThumb.innerHTML = `
+        <img
+          src="https://img.youtube.com/vi/2VExufCZdcs/hqdefault.jpg"
+          alt="Groundnut farming YouTube thumbnail"
+          class="video-thumb"
+        />
+        <div class="play-overlay">
+          <div class="play-circle">
+            <ion-icon name="play"></ion-icon>
+          </div>
+        </div>
+        <div class="video-caption">Tap to play</div>
+      `;
+    }
+  </script>
+
+  <script>
+    // ============================
+    // 🌱 Simple NPK calculator for Groundnut
+    // ============================
+    const areaInput   = document.getElementById("areaInput");
+    const unitSelect  = document.getElementById("unitSelect");
+    const npkLevel    = document.getElementById("npkLevel");
+    const calcResult  = document.getElementById("calcResult");
+
+    function updateNpkCalc() {
+      const area = parseFloat(areaInput.value || "0");
+      if (!calcResult) return;
+
+      if (isNaN(area) || area <= 0) {
+        calcResult.textContent = "Enter a valid field area to get fertilizer recommendation.";
+        return;
+      }
+
+      let factor = 1;
+      if (unitSelect.value === "acre") {
+        factor = 0.4047; // 1 acre = 0.4047 ha
+      }
+
+      let N=0, P=0, K=0;
+      if (npkLevel.value === "rainfed") {
+        N = 18; P = 45; K = 45;
+      } else if (npkLevel.value === "irrigated") {
+        N = 20; P = 50; K = 75;
+      } else if (npkLevel.value === "intensive") {
+        N = 25; P = 60; K = 75;
+      }
+
+      const areaHa = area * factor;
+      const totalN = (N * areaHa).toFixed(1);
+      const totalP = (P * areaHa).toFixed(1);
+      const totalK = (K * areaHa).toFixed(1);
+
+      calcResult.textContent =
+        "Approx. requirement for your field: " +
+        totalN + " kg N, " +
+        totalP + " kg P₂O₅, " +
+        totalK + " kg K₂O.";
+    }
+
+    if (areaInput && unitSelect && npkLevel) {
+      areaInput.addEventListener("input", updateNpkCalc);
+      unitSelect.addEventListener("change", updateNpkCalc);
+      npkLevel.addEventListener("change", updateNpkCalc);
+    }
+
+    // ============================
+    // ❓ FAQ accordion
+    // ============================
+    const faqList = document.getElementById("faqList");
+    if (faqList) {
+      faqList.addEventListener("click", function (e) {
+        const item = e.target.closest(".faq-item");
+        if (!item) return;
+        item.classList.toggle("active");
+      });
+    }
+  </script>
+
+</body>
+</html>

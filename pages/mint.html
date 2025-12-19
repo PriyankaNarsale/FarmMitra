@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mint Crop Details | FarmMitra 2.0</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    /* 🌿 Mint Fresh Green Theme */
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(to bottom, #e3f9f2, #c1eee0); /* mint fresh green */
+      margin: 0;
+      color: #1d5c4a; /* deep mint green */
+      line-height: 1.8;
+    }
+
+    h1, h2 {
+      color: #207a60; /* mint leaf green */
+      line-height: 1.2;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.4rem;
+      margin: 30px 0;
+    }
+
+    /* Navigation Bar */
+    header.navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(90deg, #207a60, #145c45);
+      padding: 15px 8%;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo h1 {
+      margin: 0;
+      color: #fff;
+    }
+
+    .logo span {
+      color: #d7fff3; /* light mint highlight */
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #e0fff7;
+    }
+
+    /* Language Selector */
+    .lang-select {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.2);
+      padding: 5px 8px;
+      border-radius: 8px;
+    }
+
+    .goog-logo-link, .goog-te-gadget span {
+      display: none !important;
+    }
+
+    .goog-te-combo {
+      background-color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 4px 6px;
+      font-size: 14px;
+      color: #1d5c4a;
+      cursor: pointer;
+    }
+
+    /* Main Content */
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px 20px 60px;
+      background-color: #ffffffd2;
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      margin-top: 30px;
+    }
+
+    /* Images */
+    .crop-images {
+      display: flex;
+      justify-content: center;
+      margin: 25px auto;
+      width: 90%;
+    }
+
+    .crop-wrapper {
+      width: 100%;
+      max-width: 650px;
+      height: 320px;
+      overflow: hidden;
+      border-radius: 14px;
+      box-shadow: 0 4px 15px rgba(20, 80, 60, 0.35);
+    }
+
+    .crop-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.3s;
+    }
+
+    .crop-image:hover {
+      transform: scale(1.05);
+    }
+
+    h2 {
+      margin-top: 30px;
+      border-left: 6px solid #207a60;
+      padding-left: 10px;
+      font-size: 1.4rem;
+    }
+
+    ul {
+      margin-left: 25px;
+      list-style-type: "🌿 ";
+    }
+
+    .video-container {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .video-container iframe {
+      width: 80%;
+      height: 400px;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    }
+
+    .back-btn {
+      background: #207a60;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .back-btn:hover {
+      background: #145c45;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline"></ion-icon>
+      <h1>Farm<span>Mitra</span> 2.0</h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="medicinal-crops.html">⬅ Medicinal & Aromatic Crops</a></li>
+      </ul>
+    </nav>
+
+    <div class="lang-select">
+      <ion-icon name="language-outline"></ion-icon>
+      <div id="google_translate_element"></div>
+    </div>
+  </header>
+
+  <!-- 🌿 Mint Section -->
+  <main>
+    <h1>Mint (Pudina)</h1>
+
+    <!-- Main Image -->
+    <div class="crop-images">
+      <div class="crop-wrapper">
+        <img src="https://i.pinimg.com/736x/07/f5/7c/07f57ca6c81c8b8661987c91177fb7a0.jpg"
+             alt="Mint Leaves" class="crop-image" />
+      </div>
+    </div>
+
+    <section class="content">
+
+      <h2>1️⃣ Basic Crop Information</h2>
+      <p>Mint (Pudina) is a popular aromatic medicinal herb rich in menthol.  
+         Best grown in **cool–humid climates** with temperatures **15–30°C**.</p>
+
+      <h2>2️⃣ Propagation Material</h2>
+      <ul>
+        <li>Mint is propagated by **rooted suckers, stolons, or cuttings**.</li>
+        <li>Cuttings root in **10–12 days**.</li>
+        <li>Stolons establish quickly and give uniform plants.</li>
+      </ul>
+
+      <h2>3️⃣ Soil Requirements</h2>
+      <ul>
+        <li>Deep, fertile loamy soil preferred.</li>
+        <li>Soil pH: **6.0–7.5**.</li>
+        <li>High organic matter increases oil yield.</li>
+      </ul>
+
+      <h2>4️⃣ Planting Details</h2>
+      <p>Best season: **February–March** or **August–September**  
+         Spacing: **45 × 45 cm**</p>
+
+      <!-- Second Image -->
+      <div class="crop-images">
+        <div class="crop-wrapper">
+          <img src="https://i.pinimg.com/1200x/e3/f6/fc/e3f6fcb033bfb7b04c3dfca6009631db.jpg"
+               alt="Mint Farming" class="crop-image" />
+        </div>
+      </div>
+
+      <h2>5️⃣ Irrigation</h2>
+      <ul>
+        <li>Mint requires moist soil at all stages.</li>
+        <li>Irrigate every **7–10 days**.</li>
+        <li>Do not allow the field to dry completely.</li>
+      </ul>
+
+      <h2>6️⃣ Nutrient Management</h2>
+      <ul>
+        <li>FYM 10–12 tons/acre recommended.</li>
+        <li>Biofertilizers help improve essential oil content.</li>
+        <li>Avoid heavy nitrogen late in the season.</li>
+      </ul>
+
+      <h2>7️⃣ Pest & Diseases</h2>
+      <ul>
+        <li><b>Pests:</b> aphids, whiteflies, cutworms.</li>
+        <li><b>Diseases:</b> rust, leaf spot.</li>
+        <li>Neem oil spray helps control pests naturally.</li>
+      </ul>
+
+      <h2>8️⃣ Harvesting</h2>
+      <p>First harvest: **90–100 days after planting**.  
+         Multiple cuttings possible every 8–10 weeks.</p>
+
+      <h2>9️⃣ Yield</h2>
+      <p>Green herb yield: **10–12 tons/acre**.  
+         Essential oil yield: **40–50 kg/acre**.</p>
+
+      <h2>🔟 Uses & Market</h2>
+      <ul>
+        <li>Mint oil, menthol production</li>
+        <li>Toothpaste, mouth fresheners</li>
+        <li>Ayurvedic medicines</li>
+        <li>Mint tea & culinary uses</li>
+      </ul>
+
+    <div class="video-container">
+  <iframe 
+      src="https://www.youtube.com/embed/NaHvb3u7DLc?si=5GCJPASN5UIa7Pyn"
+      title="YouTube Video Player"
+      allowfullscreen>
+  </iframe>
+</div>
+
+
+    </section>
+  </main>
+
+  <footer>
+    <a href="medicinal-crops.html" class="back-btn">← Back to Medicinal & Aromatic Crops</a>
+  </footer>
+
+  <!-- Google Translator -->
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+      }, "google_translate_element");
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

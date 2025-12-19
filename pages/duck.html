@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Duck Farming | FarmMitra 2.0</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    :root {
+      --blue: #0277bd;
+      --light-blue: #4fc3f7;
+      --sky: #e1f5fe;
+      --white: #ffffff;
+      --muted: #546e7a;
+      --shadow: rgba(79,195,247,0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(180deg, var(--sky), #ffffff);
+      color: #222;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 6%;
+      background: linear-gradient(90deg, var(--blue), var(--light-blue));
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    }
+
+    nav ul {
+      display: flex;
+      gap: 18px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    .logo span {
+      color: #b3e5fc;
+    }
+
+    .lang-select {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.2);
+      padding: 6px 10px;
+      border-radius: 6px;
+    }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 460px;
+      gap: 40px;
+      padding: 50px 6%;
+      align-items: center;
+    }
+
+    .hero-left {
+      background: var(--white);
+      padding: 34px;
+      border-radius: 16px;
+      box-shadow: 0 14px 32px rgba(0,0,0,0.1);
+    }
+
+    .eyebrow {
+      background: #b3e5fc;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-weight: 600;
+      color: #01579b;
+    }
+
+    .hero-left h2 {
+      font-size: 2rem;
+      margin-top: 12px;
+      color: #01579b;
+    }
+
+    .sub {
+      color: var(--muted);
+      margin-top: 12px;
+      line-height: 1.6;
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .stat {
+      background: #ffffff;
+      padding: 14px;
+      border-radius: 12px;
+      min-width: 130px;
+      box-shadow: 0 8px 20px var(--shadow);
+    }
+
+    .stat strong {
+      color: #01579b;
+      display: block;
+      font-size: 14px;
+    }
+
+    .stat small {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .hero-right {
+      height: 380px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px var(--shadow);
+    }
+
+    .hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* MAIN */
+    .container {
+      max-width: 1400px;
+      margin: 40px auto;
+      padding: 0 6%;
+    }
+
+    .panel {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 30px;
+    }
+
+    .card {
+      background: white;
+      padding: 24px;
+      border-radius: 14px;
+      margin-bottom: 24px;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.06);
+    }
+
+    h3 {
+      color: #0277bd;
+      margin-bottom: 12px;
+    }
+
+    /* BREED GRID */
+    .breed-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 18px;
+    }
+
+    .breed {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #b3e5fc;
+      transition: .3s;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.06);
+    }
+
+    .breed:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 30px var(--shadow);
+    }
+
+    .breed img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .b-content {
+      padding: 12px;
+    }
+
+    .b-content h4 {
+      margin: 6px 0;
+      color: #0277bd;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+
+    th, td {
+      padding: 12px;
+      border: 1px solid #bce0fa;
+    }
+
+    th {
+      background: #b3e5fc;
+      color: #01579b;
+    }
+
+    /* DISEASE GRID */
+    .d-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 18px;
+    }
+
+    .d-card {
+      background: white;
+      padding: 14px;
+      border-radius: 12px;
+      box-shadow: 0 12px 26px rgba(0,0,0,0.05);
+    }
+
+    .d-card h5 {
+      margin: 6px 0;
+      color: #0277bd;
+    }
+
+    /* SIDEBAR */
+    .mini-card {
+      background: white;
+      padding: 18px;
+      border-radius: 12px;
+      margin-bottom: 18px;
+      box-shadow: 0 8px 26px rgba(0,0,0,0.07);
+    }
+
+    .video-wrap iframe {
+      width: 100%;
+      height: 260px;
+      border: 0;
+      border-radius: 12px;
+    }
+
+    footer {
+      background: linear-gradient(90deg, var(--blue), var(--light-blue));
+      padding: 18px;
+      text-align: center;
+      color: white;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 1100px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .hero-right {
+        height: 260px;
+      }
+      .panel {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="water-outline" style="font-size:28px;color:#b3e5fc"></ion-icon>
+      <h1>Farm<span>Mitra</span> 2.0</h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="animal-husbandry.html">Animal Hub</a></li>
+      </ul>
+    </nav>
+
+    <div class="lang-select">
+      <ion-icon name="language-outline"></ion-icon>
+      <div id="google_translate_element"></div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <span class="eyebrow">Duck Farming</span>
+      <h2>Complete Duck Farming Guide — Breeds, Feeding, Housing & Egg Production</h2>
+
+      <p class="sub">
+        Ducks are hardy, water-loving birds that grow fast, lay nutritious eggs, and require low care.
+        This guide covers breeds, feeding, housing, diseases, egg production tips, and water management.
+      </p>
+
+      <div class="hero-stats">
+        <div class="stat"><strong>Egg/day</strong><small>0.8–1 eggs (layers)</small></div>
+        <div class="stat"><strong>Meat Weight</strong><small>2–3 kg (Pekin)</small></div>
+        <div class="stat"><strong>Water Need</strong><small>Daily access essential</small></div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <img class="hero-img" src="https://i.pinimg.com/736x/4c/d8/47/4cd84793fb26d29cfdf36a590bb364cc.jpg" alt="Healthy ducks near water farm">
+    </div>
+  </section>
+
+  <main class="container">
+    <div class="panel">
+
+      <!-- LEFT CONTENT -->
+      <div>
+        <section class="card">
+          <h3>Overview</h3>
+          <p>
+            Duck farming is profitable and ideal for wetland & water-rich areas. Ducks produce high-nutrition eggs,
+            high-quality meat, and are more resistant to diseases compared to chickens.
+          </p>
+        </section>
+
+        <!-- BREEDS -->
+        <section class="card">
+          <h3>Popular Duck Breeds</h3>
+
+          <div class="breed-grid">
+
+            <div class="breed">
+              <img src="https://i.pinimg.com/1200x/c9/26/3a/c9263ac92fee1f03a397897b1d0aa6dc.jpg" alt="Pekin duck">
+              <div class="b-content">
+                <h4>Pekin</h4>
+                <p>Top meat breed — fast growing, 2–3 kg weight.</p>
+              </div>
+            </div>
+
+            <div class="breed">
+              <img src="https://i.pinimg.com/1200x/29/00/27/2900275d7cd3ef0472b9aec20b022d4f.jpg" alt="Khaki Campbell duck">
+              <div class="b-content">
+                <h4>Khaki Campbell</h4>
+                <p>Top layer — 250–300 eggs per year.</p>
+              </div>
+            </div>
+
+            <div class="breed">
+              <img src="https://i.pinimg.com/736x/5f/42/0b/5f420ba8851c20a4dc35ce2e0389afe4.jpg" alt="Indian Runner duck">
+              <div class="b-content">
+                <h4>Indian Runner</h4>
+                <p>Long body; 200+ eggs/year; very active.</p>
+              </div>
+            </div>
+
+            <div class="breed">
+              <img src="https://i.pinimg.com/1200x/d7/3d/ba/d73dbad9fb074c7aeb2b36b25de144c9.jpg" alt="Muscovy duck">
+              <div class="b-content">
+                <h4>Muscovy</h4>
+                <p>Lean meat, low fat, hardy breed.</p>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- FEEDING -->
+        <section class="card">
+          <h3>Feeding Schedule</h3>
+          <p>Ducks eat grains, insects, greens & formulated feed. Water must be available near feed.</p>
+
+          <table>
+            <tr><th>Duck Stage</th><th>Feed Type</th><th>Notes</th></tr>
+            <tr><td>Ducklings</td><td>Starter mash (20% protein)</td><td>Feed 5–6 times/day</td></tr>
+            <tr><td>Growers</td><td>Grower pellets (16%)</td><td>Provide greens + grains</td></tr>
+            <tr><td>Layers</td><td>Layer mash + calcium</td><td>Improves eggshell quality</td></tr>
+            <tr><td>Meat Ducks</td><td>Pekin finisher feed</td><td>Fast weight gain</td></tr>
+          </table>
+        </section>
+
+        <!-- HOUSING -->
+        <section class="card">
+          <h3>Housing & Pond Management</h3>
+
+          <ul style="margin-left:18px;color:var(--muted)">
+            <li>Provide a clean water pond or artificial pool</li>
+            <li>Dry sleeping area with ventilation</li>
+            <li>Floor space: 3–4 sq ft per duck</li>
+            <li>Safe fencing to avoid predators</li>
+          </ul>
+
+          <img src="https://i.pinimg.com/1200x/5e/26/55/5e265562d67d905af85d35f1e04f38ed.jpg"
+               alt="Duck housing structure"
+               style="width:100%;height:240px;object-fit:cover;border-radius:12px;margin-top:12px;">
+        </section>
+
+        <!-- DISEASES -->
+        <section class="card">
+          <h3>Common Duck Diseases</h3>
+
+          <div class="d-grid">
+
+            <div class="d-card">
+              <h5>Duck Viral Hepatitis</h5>
+              <p>Affects young ducklings; vaccination needed.</p>
+            </div>
+
+            <div class="d-card">
+              <h5>Botulism</h5>
+              <p>Caused by spoiled feed; maintain hygiene.</p>
+            </div>
+
+            <div class="d-card">
+              <h5>Colibacillosis</h5>
+              <p>Respiratory issues; clean water required.</p>
+            </div>
+
+            <div class="d-card">
+              <h5>Parasites</h5>
+              <p>Internal worms; deworming required.</p>
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+
+      <!-- SIDEBAR -->
+      <aside>
+
+        <div class="mini-card">
+          <h3>Vaccination Schedule</h3>
+          <table>
+            <tr><th>Age</th><th>Vaccine</th></tr>
+            <tr><td>5–7 days</td><td>Duck Hepatitis</td></tr>
+            <tr><td>3 weeks</td><td>Duck Plague</td></tr>
+            <tr><td>6 weeks</td><td>Cholera</td></tr>
+            <tr><td>Annually</td><td>Plague Booster</td></tr>
+          </table>
+        </div>
+
+        <div class="mini-card">
+          <h3>Duck Farming Tips</h3>
+          <ul style="margin-left:18px;color:var(--muted)">
+            <li>Always keep clean drinking water</li>
+            <li>Provide swimming area daily</li>
+            <li>Collect eggs twice daily</li>
+            <li>Keep bedding dry</li>
+          </ul>
+        </div>
+
+        <div class="mini-card video-wrap">
+          <h3>Video Guide</h3>
+          <iframe src="https://www.youtube.com/embed/30Ci7nDyGO4" allowfullscreen></iframe>
+        </div>
+
+      </aside>
+
+    </div>
+
+    <!-- BENEFITS -->
+    <section class="card">
+      <h3>Benefits of Duck Farming</h3>
+      <ul style="margin-left:20px;color:var(--muted)">
+        <li>Ducks grow faster and resist diseases</li>
+        <li>Duck eggs have higher nutrition</li>
+        <li>Low-cost feed (can eat insects, snails, greens)</li>
+        <li>Ideal for wetland farming</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2025 FarmMitra 2.0 — Duck Farming Guide
+  </footer>
+
+  <!-- Google Translate -->
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+      }, "google_translate_element");
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

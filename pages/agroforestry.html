@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agroforestry Crops | FarmMitra 2.0</title>
+
+  <!-- Correct CSS -->
+  <link rel="stylesheet" href="../css/style.css" />
+
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+
+  <!-- 🌿 NAVBAR (Unified with all pages) -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline" class="logo-icon"></ion-icon>
+      <h1>Farm<span>Mitra</span> <small>2.0</small></h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="agriculture.html">🌾 Agriculture</a></li>
+      </ul>
+    </nav>
+
+    <!-- 🌐 Language Selector -->
+    <div class="translate-box">
+      <ion-icon name="language-outline"></ion-icon>
+      <select id="languageSelect" aria-label="Select Language">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+        <option value="mr">मराठी</option>
+      </select>
+    </div>
+  </header>
+
+  <!-- Hidden Translate Element -->
+  <div id="google_translate_element"></div>
+
+  <!-- 🌳 Agroforestry Crops Section -->
+  <section id="agroforestry" class="section">
+    <h2>🌿 Agroforestry Crops</h2>
+    <p>Explore sustainable crops suitable for mixed farming and tree-based systems.</p>
+
+    <div class="cards">
+
+      <a href="neem.html" class="card">
+        <img src="https://i.pinimg.com/1200x/b6/3d/da/b63dda4032c59a54539a51ab8c1c0d36.jpg" alt="Neem Tree">
+        <h3>Neem (Azadirachta indica)</h3>
+        <p>Medicinal tree known for pest control and agroforestry value.</p>
+      </a>
+
+      <a href="aloe-vera.html" class="card">
+        <img src="https://i.pinimg.com/736x/a2/b1/44/a2b1441cfb08466332842567ebfe3fb7.jpg" alt="Aloe Vera">
+        <h3>Aloe Vera</h3>
+        <p>Drought-resistant plant used in cosmetics and medicine.</p>
+      </a>
+
+      <a href="mango.html" class="card">
+        <img src="https://i.pinimg.com/736x/91/99/00/91990089ccace91de830cad147125637.jpg" alt="Mango Tree">
+        <h3>Mango (Mangifera indica)</h3>
+        <p>Profitable fruit tree suitable for agroforestry systems.</p>
+      </a>
+
+      <a href="guava.html" class="card">
+        <img src="https://i.pinimg.com/736x/d6/3b/88/d63b88e63f7c7a72f9802fb44127c55c.jpg" alt="Guava Tree">
+        <h3>Guava (Psidium guajava)</h3>
+        <p>Fast-growing fruit tree for sustainable farming.</p>
+      </a>
+
+      <a href="citrus.html" class="card">
+        <img src="https://i.pinimg.com/736x/1b/6d/3d/1b6d3dd979b5d3193270d803634494e6.jpg" alt="Citrus">
+        <h3>Citrus (Lemon / Orange)</h3>
+        <p>Vitamin-rich fruit trees improving soil health.</p>
+      </a>
+
+      <a href="tulsi.html" class="card">
+        <img src="https://i.pinimg.com/1200x/a4/98/76/a49876338c36ca2665c251114e1e514c.jpg" alt="Tulsi">
+        <h3>Tulsi (Holy Basil)</h3>
+        <p>Medicinal herb thriving in shaded agroforestry zones.</p>
+      </a>
+
+      <a href="banana.html" class="card">
+        <img src="https://i.pinimg.com/1200x/97/84/3e/97843e2993c145f03d2d8fd7ff8c099f.jpg" alt="Banana">
+        <h3>Banana (Musa spp.)</h3>
+        <p>Popular intercrop offering quick yields and soil benefits.</p>
+      </a>
+
+      <a href="papaya.html" class="card">
+        <img src="https://i.pinimg.com/1200x/b7/af/ea/b7afea518049d9187317344ca2a00c3b.jpg" alt="Papaya">
+        <h3>Papaya (Carica papaya)</h3>
+        <p>Fast-growing crop suitable for mixed cropping systems.</p>
+      </a>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 FarmMitra 2.0 | Agroforestry Crops Information</p>
+  </footer>
+
+  <!-- JS Script for Language & Effects -->
+  <script src="../js/script.js"></script>
+
+  <!-- Google Translate Init -->
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+        autoDisplay: false
+      }, "google_translate_element");
+    }
+  </script>
+
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

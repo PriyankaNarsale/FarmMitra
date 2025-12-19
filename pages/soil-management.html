@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soil Management | FarmMitra 2.0</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    :root {
+      --primary: #2e7d32;
+      --primary-dark: #1b5e20;
+      --mint: #e8f5e9;
+      --white: #ffffff;
+      --gray: #666;
+      --soft: #f7fff7;
+      --card: #ffffff;
+      --shadow: rgba(0, 0, 0, 0.15);
+      --gradient: linear-gradient(135deg, #1b5e20, #43a047);
+    }
+
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: var(--mint);
+      color: #222;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 6%;
+      background: var(--gradient);
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    }
+    nav ul {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    nav a {
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo h1 {
+      margin: 0;
+      font-size: 1.6rem;
+      color: white;
+    }
+    .logo span {
+      color: #c8e6c9;
+    }
+
+    .lang-select {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.18);
+      padding: 6px 10px;
+      border-radius: 6px;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 60px 6%;
+      display: grid;
+      grid-template-columns: 1fr 450px;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .hero-left span {
+      background: #c8e6c9;
+      padding: 6px 14px;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+
+    .hero-left h2 {
+      font-size: 2rem;
+      margin-top: 14px;
+      color: var(--primary-dark);
+    }
+
+    .hero-left p {
+      color: var(--gray);
+      line-height: 1.7;
+      margin-top: 12px;
+    }
+
+    .hero-img {
+      width: 100%;
+      height: 350px;
+      border-radius: 18px;
+      object-fit: cover;
+      box-shadow: 0 0 35px rgba(46,125,50,0.35);
+    }
+
+    /* MAIN CONTAINER */
+    .container {
+      max-width: 1350px;
+      margin: 0 auto;
+      padding: 0 6%;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      color: var(--primary-dark);
+      margin-bottom: 16px;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 25px;
+      border-radius: 14px;
+      margin-bottom: 25px;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.1);
+    }
+
+    /* SOIL TYPE CARDS */
+    .soil-types {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .soil-card {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      transition: 0.3s ease-in-out;
+      border-left: 6px solid var(--primary);
+    }
+    .soil-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 32px rgba(46,125,50,0.25);
+    }
+    .soil-card img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+    .soil-card h4 {
+      margin: 8px 0;
+      color: var(--primary-dark);
+    }
+    .soil-card p {
+      font-size: 0.95rem;
+      color: var(--gray);
+    }
+
+    /* TABLE */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+    th, td {
+      border: 1px solid #d9e8d9;
+      padding: 12px;
+      text-align: left;
+    }
+    th {
+      background: #c8e6c9;
+      color: #1b5e20;
+    }
+
+    /* VIDEO */
+    iframe {
+       width: 100%;
+      height: 400px;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+      border: 0;
+       text-align: center;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1100px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .hero-img {
+        height: 250px;
+      }
+    }
+
+    footer {
+      background: var(--gradient);
+      padding: 20px;
+      color: white;
+      text-align: center;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline" style="font-size:28px;color:#c8e6c9"></ion-icon>
+      <h1>Farm<span>Mitra</span> 2.0</h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+       
+        <li><a href="farm-management.html">Farm Management</a></li>
+      </ul>
+    </nav>
+
+    <div class="lang-select">
+      <ion-icon name="language-outline"></ion-icon>
+      <div id="google_translate_element"></div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <span>Soil Management</span>
+      <h2>Healthy Soil = Higher Productivity. Learn Testing, Nutrients & Conservation.</h2>
+
+      <p>
+        Soil is the foundation of farming. By understanding soil properties, fertility, pH levels, and
+        sustainable practices, farmers can improve crop yield, reduce fertilizer waste, and maintain
+        long-term soil health.
+      </p>
+    </div>
+
+    <img class="hero-img"
+      src="https://i.pinimg.com/1200x/4a/4e/20/4a4e202ee431eaeb80b89a0f2127b97e.jpg"
+      alt="Soil Management">
+  </section>
+
+  <main class="container">
+
+    <!-- OVERVIEW -->
+    <section class="card">
+      <h3 class="section-title">Overview</h3>
+      <p>
+        Soil management refers to the use of practices that protect soil, enhance fertility,
+        maintain structure, and ensure sustainability. Farmers must understand soil texture, 
+        nutrients, water retention, and pH to select the right crop and fertilizer.
+      </p>
+    </section>
+
+    <!-- TYPES OF SOIL -->
+    <section class="card">
+      <h3 class="section-title">Types of Soil</h3>
+
+      <div class="soil-types">
+
+        <div class="soil-card">
+          <img src="https://i.pinimg.com/1200x/23/86/34/238634a32b47d30be5b5fda7a162bc72.jpg" alt="Black Soil">
+          <h4>Black Soil</h4>
+          <p>Rich in clay, holds moisture, best for cotton & oilseeds.</p>
+        </div>
+
+        <div class="soil-card">
+          <img src="https://i.pinimg.com/736x/75/ef/37/75ef379932ab71e79a3f72c618222f54.jpg" alt="Red Soil">
+          <h4>Red Soil</h4>
+          <p>Low nutrients, suitable for millets, pulses & groundnut.</p>
+        </div>
+
+        <div class="soil-card">
+          <img src="https://i.pinimg.com/1200x/8d/6e/6d/8d6e6dba140ad3051ddb66eabb2c76e1.jpg" alt="Alluvial Soil">
+          <h4>Alluvial Soil</h4>
+          <p>Very fertile — ideal for wheat, rice, sugarcane, vegetables.</p>
+        </div>
+
+        <div class="soil-card">
+          <img src="https://i.pinimg.com/1200x/76/99/be/7699be47fe2afb91f099b5aeae8e52ce.jpg" alt="Sandy Soil">
+          <h4>Sandy Soil</h4>
+          <p>Good drainage, suitable for groundnut, watermelon.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SOIL TESTING -->
+    <section class="card">
+      <h3 class="section-title">Soil Testing Guide</h3>
+
+      <p>Soil testing identifies nutrient levels and helps determine fertilizer needs.</p>
+
+      <table>
+        <tr>
+          <th>Parameter</th>
+          <th>Ideal Range</th>
+          <th>Importance</th>
+        </tr>
+        <tr>
+          <td>pH</td>
+          <td>6.5 – 7.5</td>
+          <td>Balances nutrient availability</td>
+        </tr>
+        <tr>
+          <td>Nitrogen</td>
+          <td>280–450 kg/ha</td>
+          <td>Leaf growth & color</td>
+        </tr>
+        <tr>
+          <td>Phosphorus</td>
+          <td>15–25 kg/ha</td>
+          <td>Root development</td>
+        </tr>
+        <tr>
+          <td>Potassium</td>
+          <td>120–180 kg/ha</td>
+          <td>Disease resistance</td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- FERTILITY MANAGEMENT -->
+    <section class="card">
+      <h3 class="section-title">Improving Soil Fertility</h3>
+      <ul style="color:var(--gray); line-height:1.7;">
+        <li>Use compost, vermicompost & green manure</li>
+        <li>Follow crop rotation to improve nutrient balance</li>
+        <li>Add biofertilizers like Rhizobium & Azotobacter</li>
+        <li>Maintain correct pH using lime or gypsum</li>
+        <li>Reduce chemical fertilizer overuse</li>
+      </ul>
+    </section>
+
+    <!-- SOIL CONSERVATION -->
+    <section class="card">
+      <h3 class="section-title">Soil Conservation Techniques</h3>
+      <ul style="color:var(--gray); line-height:1.7;">
+        <li>Mulching to prevent moisture loss</li>
+        <li>Contour ploughing in hilly areas</li>
+        <li>Planting cover crops to avoid erosion</li>
+        <li>Drip irrigation to prevent runoff</li>
+        <li>Maintaining organic matter in soil</li>
+      </ul>
+    </section>
+
+    <!-- VIDEO -->
+    <section class="card">
+      <h3 class="section-title">Video Guide</h3>
+      <iframe src="https://www.youtube.com/embed/DhVKx9ahtSA?si=YXalU3rlJ6Mwz-m4" allowfullscreen></iframe>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2025 FarmMitra 2.0 — Soil Management Guide
+  </footer>
+
+  <!-- GOOGLE TRANSLATE -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+      }, "google_translate_element");
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

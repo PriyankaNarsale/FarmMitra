@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Strawberry Crop Details | FarmMitra 2.0</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(to bottom, #fff3f6, #ffeef3);
+      margin: 0;
+      color: #4b1034;
+      line-height: 1.8;
+    }
+
+    h1, h2, h3 { color: #c2185b; line-height: 1.4; }
+    h1 { text-align:center; font-size:2.2rem; margin:30px 0; }
+
+    header.navbar {
+      display:flex; justify-content:space-between; align-items:center;
+      background: linear-gradient(90deg,#c2185b,#f06292,#ff9fb8);
+      padding:15px 8%; color:white; position:sticky; top:0; z-index:10;
+      box-shadow:0 2px 10px rgba(0,0,0,0.15);
+    }
+
+    .logo{ display:flex; align-items:center; gap:8px; }
+    .logo h1{ margin:0; font-size:1.6rem; color:#fff; }
+    .logo span{ color:#ffd1e8; }
+
+    nav ul{ list-style:none; display:flex; gap:25px; margin:0; padding:0; }
+    nav a{ color:white; text-decoration:none; font-weight:500; transition:0.3s; }
+    nav a:hover{ color:#fff0f6; }
+
+    .lang-select{ display:flex; align-items:center; gap:6px; background:rgba(255,255,255,0.2); padding:5px 8px; border-radius:8px; }
+    .lang-icon{ color:white; font-size:20px; }
+
+    .goog-logo-link, .goog-te-gadget span{ display:none !important; }
+    .goog-te-combo{ background:#fff; border:none; border-radius:6px; padding:4px 6px; font-size:14px; color:#c2185b; cursor:pointer; }
+
+    main{ max-width:1000px; margin:0 auto; padding:20px 20px 60px; background:#ffffffc2; border-radius:14px; box-shadow:0 4px 20px rgba(0,0,0,0.08); margin-top:30px; }
+
+    .crop-images{ display:flex; justify-content:center; margin:25px auto; width:90%; }
+    .crop-wrapper{ width:100%; max-width:650px; height:320px; overflow:hidden; border-radius:14px; box-shadow:0 4px 12px rgba(0,0,0,0.25); }
+    .crop-image{ width:100%; height:100%; object-fit:cover; object-position:center; transition:transform 0.3s ease; }
+    .crop-image:hover{ transform:scale(1.05); }
+
+    h2::after{ content:""; display:block; height:2px; width:60px; background:#ff9fb8; margin-top:8px; border-radius:3px; }
+
+    .content{ text-align:justify; font-size:1.05rem; padding:0 10px; }
+    ul{ margin-left:25px; list-style-type:"🍓 "; }
+    li{ margin-bottom:6px; }
+
+    .video-container{ text-align:center; margin:40px 0; }
+    .video-container iframe{ border-radius:14px; box-shadow:0 6px 18px rgba(0,0,0,0.25); width:80%; height:400px; }
+
+    footer{ text-align:center; margin:40px 0; }
+    .back-btn{ background:#c2185b; color:white; padding:12px 24px; border-radius:25px; text-decoration:none; font-weight:600; transition:background 0.3s; }
+    .back-btn:hover{ background:#8e0040; }
+
+    @media (max-width:768px){
+      .crop-wrapper{ height:240px; }
+      .video-container iframe{ height:220px; }
+      nav ul{ gap:12px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline" class="logo-icon"></ion-icon>
+      <h1>Farm<span>Mitra</span> <small>2.0</small></h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="fruit-crops.html">⬅ Fruit Crops</a></li>
+      </ul>
+    </nav>
+
+    <div class="lang-select">
+      <ion-icon name="language-outline" class="lang-icon"></ion-icon>
+      <div id="google_translate_element"></div>
+    </div>
+  </header>
+
+  <!-- Strawberry Section -->
+  <main>
+    <h1>Strawberry (स्ट्रॉबेरी)</h1>
+
+    <div class="crop-images">
+      <div class="crop-wrapper">
+        <img src="https://i.pinimg.com/736x/8a/55/4f/8a554f4089fa89a96275a0fb6bc1baf1.jpg"
+             alt="Strawberry Field" class="crop-image" />
+      </div>
+    </div>
+
+    <section class="content">
+      <h2>1️⃣ Basic Crop Information</h2>
+      <p>Strawberry is a high-value, short-duration berry crop grown in cooler areas and in protected structures (polyhouse). It provides excellent returns per unit area and is suitable for small-scale & commercial farming.</p>
+
+      <h2>2️⃣ Popular Varieties</h2>
+      <ul>
+        <li>Chandler</li>
+        <li>Sweet Charlie</li>
+        <li>Festival</li>
+        <li>Cambridge Favourite</li>
+        <li>Korona</li>
+      </ul>
+
+      <h2>3️⃣ Climate & Soil</h2>
+      <ul>
+        <li>Temperature: 10–25°C (cool climate)</li>
+        <li>Well-drained sandy loam with organic matter</li>
+        <li>Soil pH: 5.5–6.5</li>
+        <li>Protected cultivation increases yields and extends season</li>
+      </ul>
+
+      <div class="crop-images">
+        <div class="crop-wrapper">
+          <img src="https://i.pinimg.com/736x/b6/00/57/b60057dba9f8e1284d5a41148b49ff62.jpg"
+               alt="Strawberry Close-up" class="crop-image" />
+        </div>
+      </div>
+
+      <h2>4️⃣ Planting & Spacing</h2>
+      <p>Planting is done using runner plants or crowns. Spacing: 30–45 cm between plants and 60–90 cm between rows (depends on bed/row system). Plant in autumn for winter-spring harvest in many regions.</p>
+
+      <h2>5️⃣ Irrigation</h2>
+      <ul>
+        <li>Frequent light irrigation to keep soil moist (drip recommended)</li>
+        <li>Avoid waterlogging — causes root rot</li>
+        <li>Mulching helps conserve moisture and keeps fruit clean</li>
+      </ul>
+
+      <h2>6️⃣ Nutrient Management</h2>
+      <ul>
+        <li>Use well-decomposed FYM or compost at planting</li>
+        <li>NPK schedule should be balanced; apply in splits during active growth</li>
+        <li>Micronutrients (Zn, B) may be required for quality</li>
+      </ul>
+
+      <h2>7️⃣ Pests & Diseases</h2>
+      <ul>
+        <li><strong>Pests:</strong> Thrips, Aphids, Red Spider Mite</li>
+        <li><strong>Diseases:</strong> Powdery Mildew, Gray Mold (Botrytis)</li>
+        <li>Maintain good airflow, remove infected parts, and follow IPM</li>
+      </ul>
+
+      <h2>8️⃣ Harvesting & Yield</h2>
+      <p>Harvest begins 4–6 weeks after flowering when fruits are fully colored and firm. Multiple pickings (every 3–4 days) are common. Yields vary widely (5–20+ tonnes/ha) depending on variety and management.</p>
+
+     <div class="video-container">
+  <iframe 
+    src="https://www.youtube.com/embed/fiEhQi1Zd60"
+    title="Strawberry Farming - Complete Guide"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen>
+  </iframe>
+  <p><em>Video: Complete strawberry cultivation guide</em></p>
+</div>
+
+    </section>
+  </main>
+
+  <footer>
+    <a href="fruit-crops.html" class="back-btn">← Back to Fruit Crops</a>
+  </footer>
+
+  <!-- Translator -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+      }, "google_translate_element");
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>

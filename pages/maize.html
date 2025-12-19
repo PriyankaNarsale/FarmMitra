@@ -1,0 +1,1652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maize (Corn) Farming | FarmMitra 2.0</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    :root{
+      /* 🌽 Maize (Bright Golden Corn) Theme */
+      --maize-deep:#8E6F1E;        /* deep corn-brown */
+      --maize-main:#E5B73B;        /* main golden-yellow */
+      --maize-accent:#FFE082;      /* soft grain golden */
+      --maize-soft:#FFF3D6;        /* soft pale corn bg */
+      --maize-sky:#FFF0C2;         /* warm sky hint */
+      --text-muted:#6b5744;
+      --card:#ffffff;
+      --shadow-main:rgba(142,111,30,0.26);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0;}
+
+    body{
+      font-family:"Poppins",sans-serif;
+      background:linear-gradient(180deg,#FFF6DE,#ffffff);
+      color:#3E2723;
+      line-height:1.75;
+    }
+
+    /* ================= NAVBAR ================= */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(90deg,#8E6F1E,#E5B73B,#F7D774);
+      padding: 15px 8%;
+      color: #fff;
+      flex-wrap: wrap;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo-icon {
+      font-size: 32px;
+      color: var(--maize-accent);
+    }
+
+    .logo h1 {
+      font-size: 1.9rem;
+      color: #fff;
+      margin: 0;
+    }
+
+    .logo span {
+      color: var(--maize-accent);
+    }
+
+    .logo small {
+      font-size: 0.8rem;
+      color: #fff9e0;
+      margin-left: 3px;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #FFFDE7;
+    }
+
+    .translate-box {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.15);
+      padding: 6px 12px;
+      border-radius: 999px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    .translate-box ion-icon {
+      color: #fff;
+      font-size: 20px;
+    }
+
+    .translate-box select {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #4a3516;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    .goog-te-banner-frame.skiptranslate {
+      display: none !important;
+    }
+
+    #google_translate_element {
+      display: none;
+    }
+
+    /* ================= HERO ================= */
+    .hero{
+      display:grid;
+      grid-template-columns: minmax(0,1.4fr) minmax(280px,0.9fr);
+      gap:32px;
+      padding:40px 6% 20px;
+      align-items:center;
+    }
+
+    .hero-left{
+      background:var(--card);
+      padding:26px 26px 22px;
+      border-radius:16px;
+      box-shadow:0 14px 30px rgba(0,0,0,0.08);
+      border:1px solid #f0dfb8;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero-left::before{
+      content:"";
+      position:absolute;
+      right:-60px;
+      top:-60px;
+      width:160px;
+      height:160px;
+      background:radial-gradient(circle at center,rgba(247,215,116,0.9),transparent 60%);
+      opacity:0.7;
+      pointer-events:none;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      background:#FFF3CD;
+      color:#8D6E3A;
+      padding:5px 14px;
+      border-radius:999px;
+      font-size:0.9rem;
+      font-weight:600;
+      letter-spacing:0.02em;
+    }
+
+    .eyebrow ion-icon{
+      font-size:15px;
+    }
+
+    .hero-left h2{
+      margin-top:14px;
+      font-size:2.05rem;
+      color:var(--maize-deep);
+      line-height:1.3;
+    }
+
+    .hero-left h2 span{
+      color:var(--maize-main);
+    }
+
+    .hero-sub{
+      color:var(--text-muted);
+      margin-top:12px;
+      font-size:1.02rem;
+    }
+
+    .hero-tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:16px;
+    }
+
+    .tag{
+      font-size:0.8rem;
+      background:#FFF7D1;
+      color:#8E6F1E;
+      border-radius:999px;
+      padding:5px 11px;
+      font-weight:500;
+    }
+
+    .hero-stats{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .stat{
+      flex:0 1 150px;
+      background:#ffffff;
+      border-radius:12px;
+      padding:11px 13px;
+      box-shadow:0 10px 22px rgba(0,0,0,0.08);
+      border:1px solid #f2e0b9;
+    }
+
+    .stat-label{
+      font-size:0.8rem;
+      color:#8c745e;
+      text-transform:uppercase;
+      letter-spacing:0.05em;
+      margin-bottom:3px;
+    }
+
+    .stat-value{
+      font-weight:700;
+      color:var(--maize-deep);
+      font-size:1rem;
+    }
+
+    .stat-note{
+      font-size:0.8rem;
+      color:var(--text-muted);
+    }
+
+    .hero-right{
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow:0 18px 40px var(--shadow-main);
+      position:relative;
+      min-height:260px;
+      background:#ffe0b2;
+    }
+
+    .hero-img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transform:scale(1.02);
+      transition:transform 0.35s ease;
+    }
+
+    .hero-right:hover .hero-img{
+      transform:scale(1.06);
+    }
+
+    .hero-badge{
+      position:absolute;
+      left:14px;
+      bottom:14px;
+      background:rgba(0,0,0,0.55);
+      color:#fffde7;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:0.85rem;
+      display:flex;
+      align-items:center;
+      gap:6px;
+      -webkit-backdrop-filter: blur(4px);
+      backdrop-filter: blur(4px);
+    }
+
+    .hero-badge ion-icon{
+      font-size:16px;
+    }
+
+    /* ================= MAIN LAYOUT ================= */
+    .page-wrap{
+      max-width:1320px;
+      margin:0 auto 40px;
+      padding:0 6% 10px;
+    }
+
+    .main-grid{
+      display:grid;
+      grid-template-columns:minmax(0,1.5fr) minmax(280px,0.9fr);
+      gap:26px;
+      align-items:flex-start;
+    }
+
+    .card{
+      background:var(--card);
+      padding:18px 20px;
+      border-radius:14px;
+      box-shadow:0 12px 28px rgba(0,0,0,0.06);
+      border:1px solid #f4e1b9;
+      margin-bottom:18px;
+    }
+
+    h3.section-title{
+      margin:0 0 8px;
+      color:var(--maize-deep);
+      font-size:1.3rem;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    h3.section-title ion-icon{
+      color:var(--maize-main);
+      font-size:18px;
+    }
+
+    .section-note{
+      font-size:0.9rem;
+      color:var(--text-muted);
+      margin-bottom:6px;
+    }
+
+    p, li{
+      font-size:1.01rem;
+      color:#4b3627;
+    }
+
+    ul{
+      padding-left:20px;
+      margin-top:8px;
+    }
+
+    .mt-8{
+      margin-top:8px;
+    }
+
+    /* Highlight box */
+    .highlight-box{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:10px;
+      background:#FFF8E1;
+      border-left:4px solid #FFCA28;
+      font-size:0.9rem;
+      color:#7b6337;
+    }
+
+    /* IMAGE STRIP */
+    .img-strip{
+      display:flex;
+      gap:10px;
+      margin-top:12px;
+      flex-wrap:wrap;
+    }
+
+    .img-strip img{
+      flex:1 1 140px;
+      border-radius:12px;
+      height:140px;
+      object-fit:cover;
+      box-shadow:0 10px 20px rgba(0,0,0,0.08);
+    }
+
+    /* TABLES */
+    .table-wrap{
+      margin-top:10px;
+      overflow-x:auto;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      font-size:0.95rem;
+      min-width:280px;
+    }
+
+    th,td{
+      padding:9px 10px;
+      border:1px solid #f1dfbf;
+      text-align:left;
+    }
+
+    th{
+      background:#FFF3CD;
+      color:#8E6F1E;
+      font-weight:600;
+    }
+
+    /* GRID INSIDE CARD */
+    .two-col-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:14px;
+      margin-top:10px;
+    }
+
+    .pill-list{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:8px;
+    }
+
+    .pill{
+      background:#FFF4C6;
+      color:var(--maize-deep);
+      padding:4px 10px;
+      border-radius:999px;
+      font-size:0.82rem;
+      font-weight:500;
+    }
+
+    /* Pest/disease cards */
+    .d-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+      gap:14px;
+      margin-top:10px;
+    }
+
+    .d-card{
+      background:#fffbf3;
+      border-radius:12px;
+      padding:10px 12px;
+      border:1px solid #f4e0b9;
+      box-shadow:0 6px 18px rgba(0,0,0,0.04);
+    }
+
+    .d-card h4{
+      margin:0 0 4px;
+      color:var(--maize-deep);
+      font-size:1.02rem;
+    }
+
+    .d-card small{
+      font-size:0.8rem;
+      color:#8D6E3A;
+    }
+
+    .bullet-tight{
+      padding-left:18px;
+      margin-top:6px;
+    }
+
+    .bullet-tight li{
+      font-size:0.9rem;
+      margin-bottom:3px;
+    }
+
+    /* ================= NUTRIENT CALCULATOR ================= */
+    .calc-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:16px;
+      margin-top:12px;
+      align-items:flex-start;
+    }
+
+    .calc-box{
+      background:#FFF8E1;
+      border-radius:12px;
+      padding:10px 12px;
+      border:1px solid #FFE082;
+    }
+
+    .calc-box label{
+      font-size:0.9rem;
+      display:block;
+      margin-bottom:4px;
+      color:#8D6E3A;
+      font-weight:600;
+    }
+
+    .calc-box input,
+    .calc-box select{
+      width:100%;
+      padding:6px 8px;
+      border-radius:8px;
+      border:1px solid #e3cda6;
+      outline:none;
+      font-size:0.9rem;
+      margin-bottom:8px;
+    }
+
+    .calc-result{
+      font-size:0.92rem;
+      margin-top:6px;
+      color:#8E6F1E;
+      font-weight:600;
+    }
+
+    /* ================= GROWTH STAGE TIMELINE ================= */
+    .timeline{
+      margin-top:12px;
+    }
+
+    .timeline-bar{
+      position:relative;
+      height:4px;
+      background:#FFE2A8;
+      border-radius:999px;
+      margin:20px 0 18px;
+    }
+
+    .timeline-fill{
+      position:absolute;
+      left:0;
+      top:0;
+      height:100%;
+      width:100%;
+      background:linear-gradient(90deg,#8E6F1E,#F7D774);
+      border-radius:999px;
+      opacity:0.85;
+    }
+
+    .stage-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+      gap:12px;
+    }
+
+    .stage{
+      background:#ffffff;
+      border-radius:12px;
+      padding:8px 10px;
+      box-shadow:0 8px 18px rgba(0,0,0,0.04);
+      border:1px solid #f3dfba;
+    }
+
+    .stage-title{
+      font-size:0.95rem;
+      font-weight:600;
+      color:var(--maize-deep);
+    }
+
+    .stage-sub{
+      font-size:0.82rem;
+      color:#7a634b;
+    }
+
+    /* ================= FAQ ACCORDION ================= */
+    .faq-list{
+      margin-top:10px;
+    }
+
+    .faq-item{
+      border-radius:10px;
+      border:1px solid #f1dfbf;
+      margin-bottom:8px;
+      overflow:hidden;
+      background:#ffffff;
+    }
+
+    .faq-question{
+      padding:10px 12px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      cursor:pointer;
+      font-size:0.97rem;
+      font-weight:600;
+      color:var(--maize-deep);
+    }
+
+    .faq-question span.icon{
+      font-size:18px;
+      color:#E5B73B;
+      transition:transform 0.2s ease;
+    }
+
+    .faq-answer{
+      max-height:0;
+      overflow:hidden;
+      transition:max-height 0.3s ease;
+      padding:0 12px;
+    }
+
+    .faq-answer p{
+      font-size:0.96rem;
+      color:#6b5744;
+      padding:6px 0 10px;
+    }
+
+    .faq-item.active .faq-answer{
+      max-height:220px;
+    }
+
+    .faq-item.active .faq-question span.icon{
+      transform:rotate(90deg);
+    }
+
+    /* ================= 2x2 CARD GRID FOR 6–9 ================= */
+    .card-grid-2{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:18px;
+      margin-top:4px;
+    }
+
+    .card-grid-2 .card{
+      margin-bottom:0;
+    }
+
+    /* ================= SIDEBAR ================= */
+    .side-card{
+      background:#ffffff;
+      padding:16px 16px 14px;
+      border-radius:14px;
+      box-shadow:0 10px 24px rgba(0,0,0,0.06);
+      border:1px solid #f3dfba;
+      margin-bottom:16px;
+    }
+
+    .side-card h4{
+      margin:0 0 6px;
+      color:var(--maize-deep);
+      font-size:1.05rem;
+      display:flex;
+      align-items:center;
+      gap:6px;
+    }
+
+    .side-card h4 ion-icon{
+      color:var(--maize-main);
+      font-size:18px;
+    }
+
+    .side-card p{
+      font-size:0.95rem;
+      color:var(--text-muted);
+    }
+
+    .badge-mini{
+      display:inline-block;
+      padding:3px 8px;
+      border-radius:999px;
+      background:#FFE082;
+      color:#8E6F1E;
+      font-size:0.8rem;
+      font-weight:600;
+      margin-top:4px;
+    }
+
+    /* VIDEO CARD + MODAL */
+    .video-thumb-card{
+      position:relative;
+      border-radius:14px;
+      overflow:hidden;
+      cursor:pointer;
+      margin-top:8px;
+      box-shadow:0 10px 26px rgba(0,0,0,0.25);
+    }
+
+    .video-thumb{
+      width:100%;
+      height:200px;
+      object-fit:cover;
+      display:block;
+      transition:transform .3s ease;
+    }
+
+    .video-thumb-card:hover .video-thumb{
+      transform:scale(1.03);
+    }
+
+    .play-overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top,rgba(0,0,0,0.55),rgba(0,0,0,0.15));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .play-circle{
+      width:64px;
+      height:64px;
+      border-radius:50%;
+      border:3px solid #fffde7;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      -webkit-backdrop-filter: blur(4px);
+      backdrop-filter: blur(4px);
+      box-shadow:0 0 18px rgba(0,0,0,0.5);
+    }
+
+    .play-circle ion-icon{
+      font-size:32px;
+      color:#fffde7;
+      margin-left:3px;
+    }
+
+    .video-caption{
+      position:absolute;
+      left:10px;
+      bottom:8px;
+      color:#fffde7;
+      font-size:0.8rem;
+      text-shadow:0 1px 4px rgba(0,0,0,0.7);
+    }
+
+    .video-actions{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-top:8px;
+      gap:6px;
+    }
+
+    .btn-yt{
+      flex:1;
+      text-align:center;
+      text-decoration:none;
+      font-size:0.85rem;
+      font-weight:600;
+      padding:7px 10px;
+      border-radius:999px;
+      background:#FFCA28;
+      color:#5d3b00;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:5px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .btn-yt ion-icon{
+      font-size:16px;
+    }
+
+    .btn-note{
+      font-size:0.8rem;
+      color:#7e6a63;
+      text-align:right;
+    }
+
+    /* MODAL */
+    .modal-backdrop{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.6);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:2000;
+    }
+
+    .modal-backdrop.active{
+      display:flex;
+    }
+
+    .modal-content{
+      width:90%;
+      max-width:780px;
+      background:#000;
+      border-radius:16px;
+      overflow:hidden;
+      box-shadow:0 20px 50px rgba(0,0,0,0.6);
+      position:relative;
+    }
+
+    .modal-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:8px 14px;
+      background:linear-gradient(90deg,#8E6F1E,#E5B73B);
+      color:#fff;
+      font-size:0.95rem;
+    }
+
+    .modal-header button{
+      border:none;
+      background:transparent;
+      color:#fff;
+      font-size:1.3rem;
+      cursor:pointer;
+    }
+
+    .modal-body iframe{
+      width:100%;
+      height:420px;
+      border:none;
+      display:block;
+    }
+
+    @media(max-width:768px){
+      .modal-body iframe{
+        height:240px;
+      }
+    }
+
+    /* FOOTER */
+    footer{
+      background:#FFF3CD;
+      border-top:1px solid #f2dfb8;
+      padding:14px 6% 18px;
+      text-align:center;
+      font-size:0.9rem;
+      color:#6b5744;
+      margin-top:20px;
+    }
+
+    footer a{
+      color:var(--maize-deep);
+      font-weight:600;
+      text-decoration:none;
+      margin-right:8px;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:1024px){
+      .hero{
+        grid-template-columns:1fr;
+      }
+      .hero-right{
+        max-width:520px;
+        margin:0 auto;
+      }
+      .main-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media(max-width:720px){
+      .navbar{
+        flex-wrap:wrap;
+        gap:10px;
+        padding-inline:16px;
+      }
+      nav ul{
+        gap:14px;
+        font-size:0.9rem;
+      }
+      .hero{
+        padding-inline:16px;
+      }
+      .page-wrap{
+        padding-inline:16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============== NAVBAR ============== -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline" class="logo-icon"></ion-icon>
+      <h1>Farm<span>Mitra</span> <small>2.0</small></h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="field-crops.html">🌾 Field Crops</a></li>
+      </ul>
+    </nav>
+
+    <div class="translate-box">
+      <ion-icon name="language-outline"></ion-icon>
+      <select id="languageSelect" aria-label="Select Language">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+        <option value="mr">मराठी</option>
+      </select>
+    </div>
+  </header>
+
+  <!-- Hidden Google element -->
+  <div id="google_translate_element"></div>
+
+  <!-- ============== HERO ============== -->
+  <section class="hero">
+    <div class="hero-left">
+      <span class="eyebrow">
+        <ion-icon name="sunny-outline" aria-hidden="true"></ion-icon>
+        Maize (Corn) – Versatile Golden Grain
+      </span>
+
+      <h2>Maize (<em>Zea mays</em>) – <span>High Yield</span> Multi-Purpose Crop</h2>
+
+      <p class="hero-sub">
+        Maize is a major <strong>cereal, fodder and industrial crop</strong> used for food, feed and starch/ethanol.
+        It performs well in <strong>warm, sunny conditions with good fertility and drainage</strong>. With hybrids,
+        timely sowing and proper nutrient & water management, farmers can achieve excellent yields.
+      </p>
+
+      <div class="hero-tags">
+        <span class="tag">Kharif, Rabi & Summer</span>
+        <span class="tag">Food + Fodder + Industrial use</span>
+        <span class="tag">Suitable for hybrids</span>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-label">Crop Duration</div>
+          <div class="stat-value">90 – 115 days</div>
+          <div class="stat-note">Hybrid & season dependent</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Temperature Range</div>
+          <div class="stat-value">18 – 32 °C</div>
+          <div class="stat-note">Warm & sunny climate</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Average Yield</div>
+          <div class="stat-value">3 – 6 t/ha</div>
+          <div class="stat-note">Higher with good hybrids</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <img
+        src="https://i.pinimg.com/736x/ac/42/9a/ac429afccf34dc38444f8b1c51420a8c.jpg"
+        alt="Golden maize cob with green leaves"
+        class="hero-img"
+      />
+      <div class="hero-badge">
+        <ion-icon name="leaf-outline" aria-hidden="true"></ion-icon>
+        High-value grain, feed & industrial crop
+      </div>
+    </div>
+  </section>
+  <!-- ============== MAIN CONTENT ============== -->
+  <div class="page-wrap">
+    <div class="main-grid">
+      <!-- ========= LEFT MAIN COLUMN ========= -->
+      <div>
+
+        <!-- 1. Overview & Climate -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="information-circle-outline"></ion-icon>
+            1️⃣ Overview & Climate Requirement
+          </h3>
+          <p>
+            Maize (<strong>corn</strong>) is the <strong>third most important cereal crop</strong> in India after rice
+            and wheat. It is grown for <strong>human food, cattle & poultry feed, silage, green fodder and starch/
+            ethanol industry</strong>. Major maize-growing states are <strong>Karnataka, Madhya Pradesh, Maharashtra,
+            Bihar, Telangana, Andhra Pradesh and Uttar Pradesh</strong>.
+          </p>
+          <p>
+            Maize prefers a <strong>warm, frost-free climate</strong>, deep well-drained soils and adequate
+            moisture. It is mainly a <strong>Kharif crop</strong> under rainfed/irrigated conditions but can be grown
+            in Rabi and summer where irrigation is available.
+          </p>
+
+          <div class="two-col-grid mt-8">
+            <div>
+              <strong>Ideal Climate</strong>
+              <ul>
+                <li>Temperature: <strong>18–27°C</strong> for germination & early growth.</li>
+                <li><strong>26–32°C</strong> during vegetative and reproductive stages.</li>
+                <li>Rainfall: <strong>500–800 mm</strong>, evenly distributed.</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Soil Requirements</strong>
+              <ul>
+                <li>Well-drained <strong>loam to silty clay loam</strong> soils.</li>
+                <li>Soil pH: <strong>6.0–7.5</strong>.</li>
+                <li>Avoid waterlogged, compact or very sandy soils.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="highlight-box">
+            🌞 <strong>Tip:</strong> Maize is <strong>very sensitive to waterlogging</strong> – ensure
+            good drainage, especially in heavy rainfall areas.
+          </div>
+
+          <div class="img-strip">
+            <img src="https://i.pinimg.com/736x/3a/7c/e7/3a7ce761c9206482438661074f5f994f.jpg"
+                 alt="Close-up of yellow maize cob in field">
+            <img src="https://i.pinimg.com/736x/a5/11/db/a511dbbc29c0a28d32ee5015dc0662f2.jpg"
+                 alt="Maize crop standing in rows in a farm">
+          </div>
+        </section>
+
+        <!-- 2. Varieties & Seed Information -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="leaf-outline"></ion-icon>
+            2️⃣ Varieties & Seed Information (with Comparison)
+          </h3>
+          <p class="section-note">
+            Use region-specific <strong>hybrids or composites</strong> with good grain yield, lodging resistance and tolerance
+            to major pests & diseases.
+          </p>
+
+          <div class="table-wrap">
+            <table aria-label="Popular maize varieties and comparison">
+              <thead>
+                <tr>
+                  <th>Hybrid / Variety</th>
+                  <th>Type / Use</th>
+                  <th>Duration (days)</th>
+                  <th>Special Features</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Ganga-5</td>
+                  <td>Grain hybrid</td>
+                  <td>95–105</td>
+                  <td>Good yield, widely adapted in Kharif</td>
+                </tr>
+                <tr>
+                  <td>Deccan-103</td>
+                  <td>Grain & feed</td>
+                  <td>100–110</td>
+                  <td>Performs well under rainfed conditions</td>
+                </tr>
+                <tr>
+                  <td>Vivek QPM-9</td>
+                  <td>Quality Protein Maize</td>
+                  <td>95–105</td>
+                  <td>Higher lysine & tryptophan for nutrition</td>
+                </tr>
+                <tr>
+                  <td>Local fodder hybrids</td>
+                  <td>Silage/green fodder</td>
+                  <td>85–95</td>
+                  <td>High biomass and juicy stems</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <ul class="mt-8">
+            <li><strong>Seed rate:</strong> 18–20 kg/ha (irrigated), 20–25 kg/ha (rainfed Kharif).</li>
+            <li>Use only <strong>certified hybrid seed</strong> from reliable sources for uniform crop.</li>
+            <li>Seed treatment with <strong>fungicide (Captan/Thiram 2.5 g/kg)</strong> protects against seed & soil-borne diseases.</li>
+          </ul>
+        </section>
+
+        <!-- 3. Land Preparation & Sowing -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="construct-outline"></ion-icon>
+            3️⃣ Land Preparation & Sowing
+          </h3>
+          <p>
+            Maize needs a <strong>well-prepared, fine tilth</strong> with good moisture and drainage. Avoid clods
+            and uneven land which cause poor germination and irregular plant stand.
+          </p>
+
+          <div class="two-col-grid mt-8">
+            <div>
+              <strong>Land Preparation</strong>
+              <ul>
+                <li>2–3 ploughings with country/tractor plough followed by harrowing.</li>
+                <li>Incorporate <strong>8–10 tons/ha FYM or compost</strong> during last ploughing.</li>
+                <li>Form broad beds & furrows or ridges for better drainage in heavy soils.</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Sowing Time & Spacing</strong>
+              <ul>
+                <li><strong>Kharif:</strong> June–July with onset of monsoon.</li>
+                <li><strong>Rabi/Summer (irrigated):</strong> Oct–Nov / Jan–Feb.</li>
+                <li>Spacing (grain maize): <strong>60 × 20 cm</strong> (rainfed) or <strong>75 × 20–25 cm</strong> (irrigated).</li>
+                <li>Depth: <strong>4–5 cm</strong> using seed drill or dibbling behind plough.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="two-col-grid mt-8">
+            <div>
+              <strong>Fodder / Silage Maize</strong>
+              <ul>
+                <li>Closer spacing: <strong>45 × 15–20 cm</strong> for higher biomass.</li>
+                <li>Higher seed rate: 30–40 kg/ha.</li>
+              </ul>
+            </div>
+            <div>
+              <strong>After Rice/Soybean</strong>
+              <ul>
+                <li>Zero-till planters can be used to save time & moisture.</li>
+                <li>Laser levelling improves irrigation uniformity.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. Nutrient Management + Calculator -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="beaker-outline"></ion-icon>
+            4️⃣ Nutrient Management + Simple NPK Calculator
+          </h3>
+          <p class="section-note">
+            Maize is a <strong>heavy feeder of nutrients</strong>. Balanced NPK and organic manures are critical
+            for high yields and better cob filling.
+          </p>
+
+          <ul>
+            <li>Apply <strong>5–10 tons/ha</strong> of well-decomposed FYM/compost before sowing.</li>
+          </ul>
+
+          <div class="table-wrap">
+            <table aria-label="Maize fertilizer recommendation">
+              <thead>
+                <tr>
+                  <th>Condition</th>
+                  <th>N (kg/ha)</th>
+                  <th>P₂O₅ (kg/ha)</th>
+                  <th>K₂O (kg/ha)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Rainfed maize</td>
+                  <td>80–100</td>
+                  <td>40–50</td>
+                  <td>30–40</td>
+                </tr>
+                <tr>
+                  <td>Irrigated hybrid maize</td>
+                  <td>120</td>
+                  <td>60</td>
+                  <td>40</td>
+                </tr>
+                <tr>
+                  <td>High-input intensive maize</td>
+                  <td>150</td>
+                  <td>60–75</td>
+                  <td>40–50</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="calc-grid">
+            <div class="calc-box">
+              <label for="areaInput">Enter your field area</label>
+              <input type="number" id="areaInput" min="0" step="0.01" placeholder="e.g. 1.0" />
+              <label for="unitSelect">Select unit</label>
+              <select id="unitSelect">
+                <option value="ha">Hectare (ha)</option>
+                <option value="acre">Acre</option>
+              </select>
+              <label for="npkLevel">Fertilizer level</label>
+              <select id="npkLevel">
+                <option value="rainfed">Rainfed maize</option>
+                <option value="irrigated">Irrigated hybrid maize</option>
+                <option value="intensive">High-input intensive maize</option>
+              </select>
+
+              <div class="calc-result" id="calcResult">
+                Enter area and select level to see NPK recommendation.
+              </div>
+            </div>
+
+            <div>
+              <ul>
+                <li>Apply full P & K and <strong>¼ to ⅓ N as basal</strong> at sowing.</li>
+                <li>Split remaining N into <strong>2–3 doses</strong> at knee-high stage, pre-tasseling and grain filling.</li>
+                <li>Use <strong>ZnSO₄ @ 25 kg/ha</strong> once in 2–3 years where zinc deficiency (white/yellow streaks) is seen.</li>
+                <li>Biofertilizers (Azotobacter, PSB) + organic manures improve soil structure and nutrient uptake.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5. Water & Weed Management -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="water-outline"></ion-icon>
+            5️⃣ Water Management & Weed Control
+          </h3>
+
+          <div class="two-col-grid">
+            <div>
+              <strong>Water Management</strong>
+              <ul>
+                <li>Critical stages: <strong>knee-high, tasseling, silking and grain filling</strong>.</li>
+                <li>Provide <strong>4–6 irrigations</strong> in irrigated crop depending on soil & climate.</li>
+                <li>Avoid stress at tasseling–silking stage – it severely reduces grain set.</li>
+                <li>Use furrow or drip irrigation to save water and reduce lodging.</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Weed Management</strong>
+              <ul>
+                <li>Critical period: <strong>20–45 days</strong> after sowing.</li>
+                <li>One pre-emergence herbicide (e.g. Atrazine as per local recommendation) + 1–2 hand weedings/hoeings.</li>
+                <li>Inter-cultivation and earthing up at 30–35 DAS helps weed control & root anchorage.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="highlight-box">
+            🌱 <strong>Tip:</strong> Earthing-up not only controls weeds but also
+            <strong>prevents lodging</strong> and improves root spread in maize.
+          </div>
+        </section>
+
+        <!-- === 6–9 IN 2×2 CARD GRID (6 near 7, next line 8 & 9) === -->
+        <div class="card-grid-2">
+
+          <!-- 6. Pests & Diseases -->
+          <section class="card">
+            <h3 class="section-title">
+              <ion-icon name="bug-outline"></ion-icon>
+              6️⃣ Major Pests & Diseases – Field Identification
+            </h3>
+
+            <div class="d-grid">
+              <div class="d-card">
+                <h4>Fall Armyworm</h4>
+                <small>Window-like leaf feeding, frass in whorl</small>
+                <ul class="bullet-tight">
+                  <li>Regularly inspect whorl in early crop stages.</li>
+                  <li>Use pheromone traps, neem-based sprays & recommended biocontrols/chemicals as per advisory.</li>
+                </ul>
+              </div>
+
+              <div class="d-card">
+                <h4>Stem Borer</h4>
+                <small>Dead-heart in young plants, bore holes on stems</small>
+                <ul class="bullet-tight">
+                  <li>Destroy stubbles after harvest.</li>
+                  <li>Use light/pheromone traps and need-based control measures.</li>
+                </ul>
+              </div>
+
+              <div class="d-card">
+                <h4>Turcicum Leaf Blight</h4>
+                <small>Elongated greyish lesions on leaves</small>
+                <ul class="bullet-tight">
+                  <li>Use tolerant hybrids and avoid dense sowing & excess N.</li>
+                  <li>Need-based fungicide sprays if disease spreads.</li>
+                </ul>
+              </div>
+
+              <div class="d-card">
+                <h4>Downy Mildew / Rust</h4>
+                <small>Whitish downy growth, yellowing or rust pustules</small>
+                <ul class="bullet-tight">
+                  <li>Use resistant hybrids and crop rotation.</li>
+                  <li>Destroy infected plants if incidence is high.</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- 7. Growth Stages Timeline -->
+          <section class="card">
+            <h3 class="section-title">
+              <ion-icon name="hourglass-outline"></ion-icon>
+              7️⃣ Maize Growth Stages (Timeline)
+            </h3>
+            <p class="section-note">
+              Knowing stages helps in timely fertilizer, irrigation and pest management.
+            </p>
+
+            <div class="timeline">
+              <div class="timeline-bar">
+                <div class="timeline-fill"></div>
+              </div>
+              <div class="stage-grid">
+                <div class="stage">
+                  <div class="stage-title">1. Emergence & Seedling</div>
+                  <div class="stage-sub">0–15 days</div>
+                </div>
+                <div class="stage">
+                  <div class="stage-title">2. Vegetative (V stages)</div>
+                  <div class="stage-sub">15–35 days</div>
+                </div>
+                <div class="stage">
+                  <div class="stage-title">3. Knee-high to Tasseling</div>
+                  <div class="stage-sub">35–55 days</div>
+                </div>
+                <div class="stage">
+                  <div class="stage-title">4. Silking & Pollination</div>
+                  <div class="stage-sub">55–70 days</div>
+                </div>
+                <div class="stage">
+                  <div class="stage-title">5. Grain Filling & Maturity</div>
+                  <div class="stage-sub">70–100+ days</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- 8. Harvesting & Yield -->
+          <section class="card">
+            <h3 class="section-title">
+              <ion-icon name="bar-chart-outline"></ion-icon>
+              8️⃣ Harvesting & Yield
+            </h3>
+            <p>
+              Maize is ready for grain harvest when <strong>husks turn dry & brown</strong>, grains become hard and
+              contain about <strong>20% moisture</strong>. Delayed harvest can lead to lodging, grain damage by birds
+              and pests, and higher shattering losses.
+            </p>
+            <ul class="mt-8">
+              <li>Harvest cobs, dry them in sun for <strong>7–10 days</strong>, then shell.</li>
+              <li>Grain moisture should be reduced to <strong>12–13%</strong> for safe storage.</li>
+              <li>Average grain yield: <strong>30–50 q/ha</strong> under normal conditions.</li>
+              <li>With good hybrids and management, yields above <strong>60 q/ha</strong> are achievable.</li>
+            </ul>
+          </section>
+
+          <!-- 9. Farmer FAQ -->
+          <section class="card">
+            <h3 class="section-title">
+              <ion-icon name="help-circle-outline"></ion-icon>
+              9️⃣ Farmer FAQ – Maize Cultivation
+            </h3>
+
+            <div class="faq-list" id="faqList">
+              <div class="faq-item">
+                <div class="faq-question">
+                  <span>Q1. What is the best time to sow maize?</span>
+                  <span class="icon">›</span>
+                </div>
+                <div class="faq-answer">
+                  <p>
+                    For Kharif, sow with the onset of <strong>monsoon (June–July)</strong>. For Rabi/summer maize,
+                    sow in <strong>Oct–Nov or Jan–Feb</strong> with assured irrigation. Timely sowing helps avoid
+                    moisture stress at tasseling & silking.
+                  </p>
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <div class="faq-question">
+                  <span>Q2. How many irrigations are required?</span>
+                  <span class="icon">›</span>
+                </div>
+                <div class="faq-answer">
+                  <p>
+                    Usually <strong>4–6 irrigations</strong> are given in irrigated maize, with priority at
+                    <strong>knee-high, tasseling, silking and grain filling</strong> stages.
+                  </p>
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <div class="faq-question">
+                  <span>Q3. How can I manage Fall Armyworm safely?</span>
+                  <span class="icon">›</span>
+                </div>
+                <div class="faq-answer">
+                  <p>
+                    Regular field scouting, <strong>pheromone traps</strong>, destruction of infested whorls,
+                    neem-based sprays and recommended biocontrol/chemical options as per local
+                    <strong>agriculture department / KVK advisory</strong> are important.
+                  </p>
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <div class="faq-question">
+                  <span>Q4. Is maize profitable for fodder/silage?</span>
+                  <span class="icon">›</span>
+                </div>
+                <div class="faq-answer">
+                  <p>
+                    Yes, maize gives <strong>high green fodder yield</strong> with good palatability and energy.
+                    Cutting at milk to early dough stage gives excellent silage quality for dairy animals.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </div> <!-- /card-grid-2 -->
+
+      </div>
+      <!-- ========= RIGHT SIDEBAR ========= -->
+      <aside>
+
+        <div class="side-card">
+          <h4>
+            <ion-icon name="sunny-outline"></ion-icon>
+            Quick Climate Summary
+          </h4>
+          <ul class="bullet-tight">
+            <li>Warm, frost-free climate</li>
+            <li>Growth: <strong>18–27°C</strong></li>
+            <li>Reproductive: <strong>26–32°C</strong></li>
+            <li>Avoid waterlogging & prolonged drought</li>
+          </ul>
+        </div>
+
+        <div class="side-card">
+          <h4>
+            <ion-icon name="leaf-outline"></ion-icon>
+            Maize Field Checklist
+          </h4>
+          <ul class="bullet-tight">
+            <li>Well-drained, level field</li>
+            <li>Certified hybrid seed</li>
+            <li>Timely sowing at correct spacing</li>
+            <li>Basal FYM + recommended NPK</li>
+            <li>Plan irrigation for tasseling & silking</li>
+          </ul>
+          <span class="badge-mini">✔ Check before sowing</span>
+        </div>
+
+        <!-- Video: Modal + YouTube button -->
+        <div class="side-card">
+          <h4>
+            <ion-icon name="play-circle-outline"></ion-icon>
+            Maize Cultivation Video
+          </h4>
+          <p>
+            Watch a practical maize farming video showing land preparation, sowing, fertilizer schedule,
+            pest management and harvesting techniques.
+          </p>
+
+          <!-- Clickable thumbnail opens modal -->
+          <div class="video-thumb-card" id="videoThumb">
+            <img
+              src="https://img.youtube.com/vi/Y9x6NbNcMTc/hqdefault.jpg"
+              alt="Maize cultivation YouTube thumbnail"
+              class="video-thumb"
+            />
+            <div class="play-overlay">
+              <div class="play-circle">
+                <ion-icon name="play" aria-hidden="true"></ion-icon>
+              </div>
+            </div>
+            <div class="video-caption">Tap to play inside page</div>
+          </div>
+
+          <div class="video-actions">
+            <a
+              href="https://www.youtube.com/watch?v=Y9x6NbNcMTc"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-yt"
+            >
+              <ion-icon name="logo-youtube" aria-hidden="true"></ion-icon>
+              Watch on YouTube
+            </a>
+            <span class="btn-note">Opens in new tab</span>
+          </div>
+        </div>
+
+        <div class="side-card">
+          <h4>
+            <ion-icon name="shield-checkmark-outline"></ion-icon>
+            Safety & Good Practices
+          </h4>
+          <ul class="bullet-tight">
+            <li>Use gloves, mask and long clothing when handling chemicals.</li>
+            <li>Store pesticides & fertilizers away from food and children.</li>
+            <li>Follow label dose and waiting periods strictly.</li>
+            <li>Prefer <strong>IPM, bio-agents and resistant hybrids</strong> wherever possible.</li>
+          </ul>
+        </div>
+
+      </aside>
+    </div> <!-- /main-grid -->
+  </div> <!-- /page-wrap -->
+
+  <!-- ============== MODAL FOR VIDEO ============== -->
+  <div class="modal-backdrop" id="videoModal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-label="Maize farming video">
+      <div class="modal-header">
+        <span>🎥 Maize (Corn) Farming – Video Guide</span>
+        <button type="button" id="closeModal" aria-label="Close video">&times;</button>
+      </div>
+      <div class="modal-body">
+        <iframe
+          id="videoFrame"
+          src=""
+          title="Maize Farming Video from YouTube"
+          allowfullscreen
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============== FOOTER ============== -->
+  <footer>
+    <a href="field-crops.html">← Back to Field Crops</a>
+    © 2025 FarmMitra 2.0 — Maize (Corn) Smart Farming Guide
+  </footer>
+
+  <!-- ============== GOOGLE TRANSLATE + LANGUAGE SELECT ============== -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+        autoDisplay: false
+      }, "google_translate_element");
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const select = document.getElementById("languageSelect");
+
+      select.addEventListener("change", function () {
+        const lang = select.value;
+        const googleSelect = document.querySelector(".goog-te-combo");
+        if (googleSelect) {
+          googleSelect.value = lang;
+          googleSelect.dispatchEvent(new Event("change"));
+        }
+      });
+    });
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <!-- ============== VIDEO MODAL + NPK CALCULATOR + FAQ SCRIPT ============== -->
+  <script>
+    // ============================
+    // 🎥 Video modal
+    // ============================
+    const videoThumb = document.getElementById("videoThumb");
+    const videoModal = document.getElementById("videoModal");
+    const closeModal = document.getElementById("closeModal");
+    const videoFrame = document.getElementById("videoFrame");
+
+    // Modal video autoplay iframe URL (Maize farming video)
+    const ytEmbedUrl = "https://www.youtube.com/embed/Y9x6NbNcMTc?autoplay=1";
+
+    function openVideoModal() {
+      if (!videoModal || !videoFrame) return;
+      videoModal.classList.add("active");
+      videoFrame.src = ytEmbedUrl;
+      videoModal.setAttribute("aria-hidden","false");
+    }
+
+    function hideModal() {
+      if (!videoModal || !videoFrame) return;
+      videoModal.classList.remove("active");
+      videoFrame.src = "";
+      videoModal.setAttribute("aria-hidden","true");
+    }
+
+    if (videoThumb) {
+      videoThumb.addEventListener("click", openVideoModal);
+    }
+    if (closeModal) {
+      closeModal.addEventListener("click", hideModal);
+    }
+    if (videoModal) {
+      videoModal.addEventListener("click", (e) => {
+        if (e.target === videoModal) hideModal();
+      });
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && videoModal && videoModal.classList.contains("active")) {
+        hideModal();
+      }
+    });
+
+    // Optional: thumbnail injection to keep consistent content
+    if (videoThumb) {
+      videoThumb.innerHTML = `
+        <img
+          src="https://img.youtube.com/vi/Y9x6NbNcMTc/hqdefault.jpg"
+          alt="Maize farming YouTube thumbnail"
+          class="video-thumb"
+        />
+        <div class="play-overlay">
+          <div class="play-circle">
+            <ion-icon name="play"></ion-icon>
+          </div>
+        </div>
+        <div class="video-caption">Tap to play</div>
+      `;
+    }
+  </script>
+
+  <script>
+    // ============================
+    // 🌱 Simple NPK calculator for Maize
+    // ============================
+    const areaInput   = document.getElementById("areaInput");
+    const unitSelect  = document.getElementById("unitSelect");
+    const npkLevel    = document.getElementById("npkLevel");
+    const calcResult  = document.getElementById("calcResult");
+
+    function updateNpkCalc() {
+      const area = parseFloat(areaInput.value || "0");
+      if (!calcResult) return;
+
+      if (isNaN(area) || area <= 0) {
+        calcResult.textContent = "Enter a valid field area to get fertilizer recommendation.";
+        return;
+      }
+
+      let factor = 1;
+      if (unitSelect.value === "acre") {
+        factor = 0.4047; // 1 acre = 0.4047 ha
+      }
+
+      let N=0, P=0, K=0;
+      if (npkLevel.value === "rainfed") {
+        N = 90; P = 45; K = 35;
+      } else if (npkLevel.value === "irrigated") {
+        N = 120; P = 60; K = 40;
+      } else if (npkLevel.value === "intensive") {
+        N = 150; P = 70; K = 45;
+      }
+
+      const areaHa = area * factor;
+      const totalN = (N * areaHa).toFixed(1);
+      const totalP = (P * areaHa).toFixed(1);
+      const totalK = (K * areaHa).toFixed(1);
+
+      calcResult.textContent =
+        "Approx. requirement for your field: " +
+        totalN + " kg N, " +
+        totalP + " kg P₂O₅, " +
+        totalK + " kg K₂O.";
+    }
+
+    if (areaInput && unitSelect && npkLevel) {
+      areaInput.addEventListener("input", updateNpkCalc);
+      unitSelect.addEventListener("change", updateNpkCalc);
+      npkLevel.addEventListener("change", updateNpkCalc);
+    }
+
+    // ============================
+    // ❓ FAQ accordion (Maize)
+    // ============================
+    const faqList = document.getElementById("faqList");
+    if (faqList) {
+      faqList.addEventListener("click", function (e) {
+        const item = e.target.closest(".faq-item");
+        if (!item) return;
+        item.classList.toggle("active");
+      });
+    }
+  </script>
+
+</body>
+</html>

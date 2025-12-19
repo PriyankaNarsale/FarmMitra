@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FarmMitra 2.0</title>
+
+  <!-- External CSS (put style.css inside /css folder) -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    /* 🌐 Language Selector styling */
+    .translate-box {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #e8f5e9;
+      border-radius: 30px;
+      padding: 5px 12px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    }
+    .translate-box ion-icon {
+      color: #22c55e;
+      font-size: 20px;
+    }
+    .translate-box select {
+      border: none;
+      background: transparent;
+      font-weight: 600;
+      color: #166534;
+      outline: none;
+      cursor: pointer;
+      font-family: "DM Sans", sans-serif;
+    }
+    .goog-te-banner-frame.skiptranslate {
+      display: none !important;
+    }
+    body {
+      top: 0px !important;
+    }
+    #google_translate_element {
+      display: none;
+    }
+
+    .card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    margin-bottom: 30px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: block;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #dcdcdc;
+    border-radius: 12px;
+    font-size: 15px;
+    background: #fafafa;
+    transition: 0.25s;
+}
+
+input:focus, select:focus {
+    border-color: #22c55e;
+    background: white;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    border: none;
+    background: #ccc;
+    color: #333;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+button.enabled {
+    background: linear-gradient(to right, #22c55e, #059669);
+    color: white;
+}
+
+.crop-card {
+    background: #fff;
+    padding: 22px;
+    border-radius: 18px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    border: 2px solid #d4f5d8;
+    animation: slideUp 0.6s ease both;
+}
+
+.bar {
+    height: 10px;
+    background: #e5e7eb;
+    border-radius: 10px;
+}
+
+.bar-fill {
+    height: 10px;
+    background: linear-gradient(to right, #22c55e, #059669);
+    border-radius: 10px;
+    width: 0;
+    animation: fillBar 1.5s forwards;
+}
+
+@keyframes slideUp {
+    from { opacity:0; transform:translateY(20px); }
+    to { opacity:1; transform:translateY(0); }
+}
+
+@keyframes fillBar {
+    from { width: 0; }
+}
+
+  </style>
+</head>
+
+<body>
+  <!-- 🌿 Splash Screen -->
+  <div class="splash-screen">
+    <ion-icon name="leaf-outline" class="splash-leaf"></ion-icon>
+    <h1>FarmMitra <span>2.0</span></h1>
+    <p>Smart Farming Portal</p>
+  </div>
+
+  <!-- 🌱 Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline" class="logo-icon"></ion-icon>
+      <h1>Farm<span>Mitra</span> <small>2.0</small></h1>
+    </div>
+
+    <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#farm-guide">Farm Guide</a></li>
+      <li><a href="#weather" class="scroll-weather">Weather</a></li>
+      <li><a href="#recommendation" class="scroll-recommend">Crop Recommendation</a></li>
+      <li><a href="./pages/scheams.html">Schemes</a></li>
+      <li><a href="./pages/crop-comparison.html">Compare</a></li>
+      <li><a href="pages/market-prices.html">Market Prices</a></li>
+    </ul>
+  </nav>
+
+    <!-- 🌐 Stylish Language Selector -->
+    <div class="translate-box">
+      <ion-icon name="language-outline"></ion-icon>
+      <select id="languageSelect" aria-label="Select Language">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+        <option value="mr">मराठी</option>
+      </select>
+    </div>
+  </header>
+
+  <!-- Hidden Google Translate Element -->
+  <div id="google_translate_element"></div>
+
+  <!-- 🌾 Main Content -->
+  <main>
+    <!-- 🏡 Home Section -->
+    <section id="home" class="hero">
+      <h2 data-translate="welcome">Welcome to FarmMitra 🌾</h2>
+      <p data-translate="tagline">Your digital companion for smart farming solutions.</p>
+      <a href="#farm-guide" class="btn" data-translate="explore">Explore Now</a>
+    </section>
+
+    <!-- 🌿 Farm Guide -->
+    <section id="farm-guide" class="section">
+      <h2 data-translate="guideTitle">🌾 Farm Guide</h2>
+      <p data-translate="guideDesc">
+        Learn about best farming practices, seasonal crops, and modern techniques to boost your yield.
+      </p>
+
+      <div class="cards">
+        <!-- all detailed pages live in /pages now -->
+        <a href="pages/agriculture.html" class="card">
+          <img src="https://i.pinimg.com/1200x/6b/72/94/6b729468713c2b5df8e81dc76f92a03e.jpg" alt="Agriculture">
+          <h3 data-translate="agriculture">Agriculture</h3>
+          <p data-translate="agricultureDesc">
+            Soil type, irrigation methods, and seed recommendations for optimal growth.
+          </p>
+        </a>
+
+        <a href="pages/agroforestry.html" class="card">
+          <img src="https://i.pinimg.com/736x/3c/37/27/3c37270121c125a18a85a86181b1f87e.jpg" alt="Agroforestry">
+          <h3 data-translate="agroforestry">Agroforestry</h3>
+          <p data-translate="agroforestryDesc">
+            Guidelines for paddy fields and modern fertilization techniques.
+          </p>
+        </a>
+
+        <a href="pages/protected-cultivation.html" class="card">
+          <img src="https://i.pinimg.com/1200x/aa/e6/1c/aae61cdbe86d37626aaaf69340c13152.jpg" alt="Protected Cultivation">
+          <h3 data-translate="protected">Protected Cultivation</h3>
+          <p data-translate="protectedDesc">
+            Learn the best harvesting time and disease control tips.
+          </p>
+        </a>
+
+        <a href="pages/organic-farming.html" class="card">
+          <img src="https://i.pinimg.com/736x/f2/82/4d/f2824de101864ec7f15c26fb0d8331cf.jpg" alt="Organic Farming">
+          <h3 data-translate="organic">Organic Farming</h3>
+          <p data-translate="organicDesc">
+            Organic techniques to improve soil health and crop yield.
+          </p>
+        </a>
+
+        <a href="pages/animal-husbandry.html" class="card">
+          <img src="https://i.pinimg.com/736x/4a/c8/c6/4ac8c69810af6f7754e9e84b7374d523.jpg" alt="Animal Husbandry">
+          <h3 data-translate="animal">Animal Husbandry</h3>
+          <p data-translate="animalDesc">
+            Learn about livestock management and dairy farming best practices.
+          </p>
+        </a>
+
+        <a href="pages/farm-management.html" class="card">
+          <img src="https://i.pinimg.com/1200x/ff/8a/3b/ff8a3bd27132c36b1cd77cb76a4a7ac8.jpg" alt="Farm Management">
+          <h3 data-translate="management">Farm Management</h3>
+          <p data-translate="managementDesc">
+            Plan and manage your farm efficiently using modern techniques.
+          </p>
+        </a>
+      </div>
+    </section>
+
+    <!-- 🌦️ Weather Prediction Section -->
+    <section id="weather" class="section weather-section">
+      <h2 class="section-title" data-lang="weather-title">☁️ Weather Prediction</h2>
+
+      <div class="weather-input">
+        <input type="text" id="cityInput" placeholder="Enter your city...">
+        <button id="getWeatherBtn" data-lang="get-weather-btn">Get Weather</button>
+      </div>
+
+      <div class="weather-display">
+        <div class="weather-card">
+          <h3 id="cityName">--</h3>
+          <p><strong data-lang="temperature">Temperature:</strong> <span id="tempValue">--</span> °C</p>
+          <p><strong data-lang="humidity">Humidity:</strong> <span id="humidityValue">--</span> %</p>
+          <p><strong data-lang="rainfall">Rainfall:</strong> <span id="rainValue">--</span> mm</p>
+          <p><strong data-lang="condition">Condition:</strong> <span id="conditionValue">--</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🌱 Crop Recommendation System Section -->
+<section id="recommendation" class="section">
+  <div class="container">
+
+    <h2 style="text-align:center; font-size:34px; font-weight:700;">
+      🌾 Crop Recommendation System
+    </h2>
+    <p style="text-align:center; color:#666; font-size:18px; margin-bottom:30px;">
+      Get AI-powered crop suggestions based on your farm conditions
+    </p>
+
+    <!-- INPUT FORM -->
+    <div class="card">
+      <div class="grid">
+
+        <div>
+          <label>Soil Type</label>
+          <select id="soilType">
+            <option value="">Select Soil Type</option>
+            <option value="black">Black Soil</option>
+            <option value="red">Red Soil</option>
+            <option value="loamy">Loamy Soil</option>
+            <option value="sandy">Sandy Soil</option>
+            <option value="clay">Clay Soil</option>
+            <option value="alluvial">Alluvial Soil</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Temperature (°C)</label>
+          <input id="temperature" type="number" placeholder="e.g., 25">
+        </div>
+
+        <div>
+          <label>Rainfall (mm)</label>
+          <input id="rainfall" type="number" placeholder="e.g., 800">
+        </div>
+
+        <div>
+          <label>Region</label>
+          <select id="region">
+            <option value="">Select Region</option>
+            <option value="north">North India</option>
+            <option value="south">South India</option>
+            <option value="east">East India</option>
+            <option value="west">West India</option>
+            <option value="central">Central India</option>
+            <option value="northeast">North-East India</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Growing Season</label>
+          <select id="season">
+            <option value="">Select Season</option>
+            <option value="kharif">Kharif (June–Oct)</option>
+            <option value="rabi">Rabi (Oct–Mar)</option>
+            <option value="zaid">Zaid (Mar–Jun)</option>
+            <option value="perennial">Perennial</option>
+          </select>
+        </div>
+
+        <div>
+          <button id="recommendBtn">Get Recommendations</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- OUTPUT SECTION -->
+    <div id="results"></div>
+
+  </div>
+</section>
+
+  </main>
+
+  <!-- 🌾 Footer -->
+  <footer>
+    <p>© 2025 FarmMitra 2.0 | Developed for Smart Farming Awareness</p>
+  </footer>
+
+  <!-- Main JS file (put script.js inside /js folder) -->
+  <script src="js/script.js"></script>
+
+  <!-- ✅ Google Translate & Splash Logic -->
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,hi,mr',
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+
+    // Language switcher
+    function setGoogleLanguage(lang) {
+      const combo = document.querySelector('.goog-te-combo');
+      if (combo) {
+        combo.value = lang;
+        combo.dispatchEvent(new Event('change'));
+        return true;
+      }
+      return false;
+    }
+
+    function changeLanguage(lang) {
+      if (setGoogleLanguage(lang)) return;
+      let tries = 0;
+      const timer = setInterval(() => {
+        if (setGoogleLanguage(lang) || tries++ > 10) clearInterval(timer);
+      }, 300);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const select = document.getElementById("languageSelect");
+      select.addEventListener("change", (e) => changeLanguage(e.target.value));
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const splash = document.querySelector(".splash-screen");
+
+      // Show splash only first time
+      if (!localStorage.getItem("splashShown")) {
+        splash.style.display = "flex";
+
+        setTimeout(() => {
+          splash.style.opacity = "0";
+          setTimeout(() => splash.style.display = "none", 500);
+        }, 2000);
+
+        localStorage.setItem("splashShown", "true");
+      } else {
+        splash.style.display = "none";
+      }
+    });
+  </script>
+
+  <!-- Load Google Translate -->
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <script>
+function validateForm() {
+  const btn = document.getElementById("recommendBtn");
+  const allFilled = [
+    soilType.value,
+    temperature.value,
+    rainfall.value,
+    region.value,
+    season.value
+  ].every(x => x.trim() !== "");
+
+  if (allFilled) btn.classList.add("enabled");
+  else btn.classList.remove("enabled");
+}
+
+document.querySelectorAll("select, input").forEach(el =>
+  el.addEventListener("input", validateForm)
+);
+
+document.getElementById("recommendBtn").onclick = function () {
+  if (!this.classList.contains("enabled")) return;
+
+  const temp = +temperature.value;
+  const rain = +rainfall.value;
+  const soil = soilType.value;
+  const seasonVal = season.value;
+
+  let crops = [
+    { name:"Rice", icon:"🌾", reason:"High water crop", details:"Best in Kharif", suitability:0 },
+    { name:"Wheat", icon:"🌾", reason:"Cool season", details:"Ideal for Rabi", suitability:0 },
+    { name:"Cotton", icon:"🌱", reason:"Black soil crop", details:"Warm climate crop", suitability:0 },
+    { name:"Maize", icon:"🌽", reason:"Versatile crop", details:"Grows widely", suitability:0 },
+    { name:"Soybean", icon:"🫘", reason:"Legume crop", details:"Improves soil health", suitability:0 },
+    { name:"Groundnut", icon:"🥜", reason:"Sandy soil crop", details:"Low rainfall areas", suitability:0 },
+    { name:"Sugarcane", icon:"🎋", reason:"Heavy water crop", details:"Long duration", suitability:0 },
+    { name:"Jowar", icon:"🌾", reason:"Drought tolerant", details:"Excellent for drylands", suitability:0 }
+  ];
+
+  crops.forEach(crop => {
+    let score = 50;
+
+    if (soil === "black" && ["Cotton","Soybean","Jowar"].includes(crop.name)) score += 30;
+    if (soil === "loamy" && ["Wheat","Maize","Sugarcane"].includes(crop.name)) score += 30;
+    if (soil === "sandy" && ["Groundnut","Jowar"].includes(crop.name)) score += 30;
+    if (soil === "clay" && crop.name === "Rice") score += 30;
+
+    if (temp > 25 && ["Rice","Cotton","Sugarcane"].includes(crop.name)) score += 20;
+    if (temp >= 15 && temp <= 25 && ["Wheat","Maize"].includes(crop.name)) score += 20;
+
+    if (rain > 1000 && ["Rice","Sugarcane"].includes(crop.name)) score += 20;
+    if (rain >= 500 && rain <= 1000 && ["Cotton","Maize","Soybean"].includes(crop.name)) score += 20;
+    if (rain < 500 && ["Jowar","Groundnut"].includes(crop.name)) score += 25;
+
+    if (seasonVal === "kharif" && ["Rice","Cotton","Soybean","Maize"].includes(crop.name)) score += 15;
+    if (seasonVal === "rabi" && ["Wheat","Groundnut","Jowar"].includes(crop.name)) score += 15;
+
+    crop.suitability = Math.min(score, 100);
+  });
+
+  crops.sort((a,b) => b.suitability - a.suitability);
+  let top = crops.slice(0,5);
+
+  let output = `<h2 style="font-size:26px; margin-bottom:15px;">🌟 Top 5 Recommended Crops</h2>
+                <div class="grid">`;
+
+  top.forEach((c, index) => {
+    output += `
+      <div class="crop-card">
+        <div style="display:flex; justify-content:space-between;">
+          <div style="font-size:50px;">${c.icon}</div>
+          <div class="badge badge${index+1}">#${index+1} Match</div>
+        </div>
+
+        <h3 style="font-size:22px;">${c.name}</h3>
+        <p>${c.reason}</p>
+
+        <div class="bar"><div class="bar-fill" style="width:${c.suitability}%; animation-delay:${index * 0.2}s;"></div></div>
+
+        <p style="background:#e8f9e9;padding:10px;border-radius:10px;">${c.details}</p>
+      </div>
+    `;
+  });
+
+  output += "</div>";
+
+  document.getElementById("results").innerHTML = output;
+};
+</script>
+
+</body>
+</html>

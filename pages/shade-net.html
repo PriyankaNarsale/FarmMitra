@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shade Net Cultivation | FarmMitra 2.0</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; }
+
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: #fff8e1; /* Light yellow theme for shade net */
+    }
+
+    /* Navbar */
+    .navbar {
+      width: 100%;
+      padding: 15px 25px;
+      background: #f9a825; /* Shade net yellow */
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .navbar .logo h1 { font-size: 24px; margin: 0; }
+
+    .navbar nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .lang-select {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.25);
+      padding: 5px 8px;
+      border-radius: 8px;
+    }
+
+    .lang-icon { color: white; font-size: 20px; }
+
+    .goog-logo-link, .goog-te-gadget span { display: none !important; }
+    .goog-te-combo {
+      background-color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 4px 6px;
+      font-size: 14px;
+      color: #f57f17;
+      cursor: pointer;
+    }
+
+    /* Crop Images */
+    .crop-images {
+      display: flex;
+      justify-content: center;
+      margin: 25px auto;
+      width: 90%;
+    }
+
+    .crop-wrapper {
+      width: 100%;
+      max-width: 650px;
+      height: 320px;
+      overflow: hidden;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+
+    .crop-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .crop-image:hover { transform: scale(1.05); }
+
+    h2 {
+      margin-top: 30px;
+      border-left: 6px solid #f57f17; /* Shade net accent */
+      padding-left: 10px;
+      font-size: 1.4rem;
+    }
+
+    ul { margin-left: 25px; list-style-type: "🌾 "; }
+
+    .content img {
+      width: 100%;
+      max-width: 650px;
+      display: block;
+      margin: 20px auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .content-box { padding: 20px 30px; line-height: 1.6; font-size: 18px; }
+
+    .header h1 { font-size: 48px; font-weight: 700; text-shadow: 2px 2px 5px rgba(0,0,0,0.4); }
+
+    .container { width: 90%; max-width: 1100px; margin: auto; padding: 40px 0; }
+
+    .card {
+      background: rgba(255, 255, 255, 0.85);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      padding: 25px;
+      margin: 20px 0;
+      border-radius: 18px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover { transform: translateY(-4px); }
+
+    .card h2 { color: #f57f17; margin-bottom: 10px; font-size: 26px; }
+
+    .highlight {
+      background: #fff3e0;
+      padding: 10px 15px;
+      border-radius: 10px;
+      margin: 10px 0;
+      border-left: 5px solid #f57f17;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    table, th, td { border: 1px solid #f57f17; }
+
+    th, td { padding: 12px; text-align: left; }
+
+    th { background: #f9a825; color: white; }
+
+    .video-container {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .video-container iframe {
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+      width: 80%;
+      height: 400px;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin: 25px 0;
+      padding: 12px 20px;
+      background: #f9a825;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 600;
+    }
+
+    .back-btn:hover { background: #f57f17; }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 30px;
+      background: #f57f17;
+      color: #fff3e0;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline" class="logo-icon"></ion-icon>
+      <h1>Farm<span>Mitra</span> <small>2.0</small></h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="protected-cultivation.html">⬅ Protected Cultivation</a></li>
+      </ul>
+    </nav>
+
+    <div class="lang-select">
+      <ion-icon name="language-outline" class="lang-icon"></ion-icon>
+      <div id="google_translate_element"></div>
+    </div>
+  </header>
+
+  <!-- Shade Net Image -->
+  <div class="crop-images">
+    <div class="crop-wrapper">
+      <img src="https://i.pinimg.com/1200x/0d/92/ac/0d92ac867be447950af4b3b68418a46d.jpg" 
+      alt="Shade Net House" class="crop-image" />
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="card">
+      <h2>🌱 Introduction</h2>
+      <p>Shade net cultivation uses a structure covered with shade nets to protect crops from excessive sunlight, wind, and pests. It reduces stress on plants, improves water efficiency, and increases yield quality.</p>
+      <div class="highlight">Ideal for: Leafy vegetables, herbs, nursery plants, flowers, and ornamental crops.</div>
+    </div>
+
+    <div class="card">
+      <h2>🏗 Shade Net Structure</h2>
+      <ul>
+        <li>Frame: Bamboo, steel, or aluminum</li>
+        <li>Cover: Shade net (30–75% shading depending on crop)</li>
+        <li>Ventilation: Open sides or vents for air circulation</li>
+        <li>Irrigation: Drip, sprinkler, or manual watering</li>
+        <li>Support structures for hanging crops like tomato or cucumber</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>🌤 Climate Management</h2>
+      <ul>
+        <li>Temperature: 18–30°C depending on crop type</li>
+        <li>Humidity: 50–70%</li>
+        <li>Light: Reduced sunlight prevents scorching but ensures photosynthesis</li>
+        <li>Wind protection using side nets</li>
+      </ul>
+      <div class="highlight">Shade net reduces crop stress and ensures uniform growth.</div>
+    </div>
+
+    <div class="crop-images">
+      <div class="crop-wrapper">
+        <img src="https://i.pinimg.com/1200x/99/15/4f/99154f6962c8aee662846b3838facd97.jpg" 
+        alt="Shade Net Tomato" class="crop-image" />
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>💧 Irrigation & Fertilization</h2>
+      <ul>
+        <li>Drip irrigation or frequent light watering</li>
+        <li>Fertigation with NPK and micronutrients</li>
+        <li>Organic compost for soil health</li>
+        <li>Adjust water frequency based on temperature and crop stage</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>🐞 Pest & Disease Management</h2>
+      <table>
+        <tr><th>Pest / Disease</th><th>Symptoms</th><th>Control</th></tr>
+        <tr><td>Aphids</td><td>Leaf curling, sticky secretion</td><td>Neem oil, insecticidal soap</td></tr>
+        <tr><td>Whitefly</td><td>Yellowing leaves, weak plants</td><td>Sticky traps, biological control</td></tr>
+        <tr><td>Powdery Mildew</td><td>White powdery coating</td><td>Fungicide spray, improve air circulation</td></tr>
+        <tr><td>Leaf miners</td><td>White trails on leaves</td><td>Remove affected leaves, insecticides</td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>🌿 Harvesting & Yield</h2>
+      <ul>
+        <li>Vegetables: 30–60 days depending on crop</li>
+        <li>Flowers & Herbs: Pick at optimum maturity</li>
+        <li>Yield: 15–30% higher than open-field cultivation</li>
+        <li>Continuous harvesting possible due to reduced stress on crops</li>
+      </ul>
+    </div>
+
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/I9CHvUN9Yy0?si=kcVWZE5zYewK1s9F"
+       title="Shade Net Cultivation Video" allowfullscreen></iframe>
+    </div>
+
+    <a href="protected-cultivation.html" class="back-btn">⬅ Back to Protected Cultivation</a>
+  </div>
+
+  <footer>
+    © 2025 FarmMitra 2.0 — Smart Farming Guide
+  </footer>
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+      }, "google_translate_element");
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

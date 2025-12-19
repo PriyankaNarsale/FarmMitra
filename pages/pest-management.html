@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pest Management | FarmMitra 2.0</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    :root {
+      --primary: #558b2f;
+      --primary-dark: #33691e;
+      --lime: #e6f4d9;
+      --white: #ffffff;
+      --gray: #666;
+      --card: #ffffff;
+      --gradient: linear-gradient(135deg, #33691e, #66bb6a);
+    }
+
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: var(--lime);
+      color: #222;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 6%;
+      background: var(--gradient);
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    }
+    nav ul {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    nav a {
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo h1 {
+      margin: 0;
+      font-size: 1.6rem;
+      color: white;
+    }
+    .logo span {
+      color: #dcedc8;
+    }
+
+    .lang-select {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.18);
+      padding: 6px 10px;
+      border-radius: 6px;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 60px 6%;
+      display: grid;
+      grid-template-columns: 1fr 450px;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .hero-left span {
+      background: #dcedc8;
+      padding: 6px 14px;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+
+    .hero-left h2 {
+      font-size: 2rem;
+      margin-top: 14px;
+      color: var(--primary-dark);
+    }
+
+    .hero-left p {
+      color: var(--gray);
+      line-height: 1.7;
+      margin-top: 12px;
+    }
+
+    .hero-img {
+      width: 100%;
+      height: 350px;
+      border-radius: 18px;
+      object-fit: cover;
+      box-shadow: 0 0 35px rgba(85,139,47,0.35);
+    }
+
+    /* MAIN */
+    .container {
+      max-width: 1350px;
+      margin: 0 auto;
+      padding: 0 6%;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 25px;
+      border-radius: 14px;
+      margin-bottom: 25px;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.1);
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      color: var(--primary-dark);
+      margin-bottom: 16px;
+    }
+
+    /* PEST GRID */
+    .pest-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px;
+    }
+    .pest-card {
+      background: var(--white);
+      padding: 16px;
+      border-radius: 14px;
+      border-left: 6px solid var(--primary);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      transition: .3s ease;
+    }
+    .pest-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 32px rgba(85,139,47,0.25);
+    }
+    .pest-card img {
+      width: 100%;
+      height: 140px;
+      border-radius: 10px;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+    .pest-card h4 {
+      margin: 8px 0;
+      color: var(--primary-dark);
+    }
+    .pest-card p {
+      color: var(--gray);
+      font-size: 0.95rem;
+    }
+
+    /* TABLE */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+    th, td {
+      border: 1px solid #d7eccc;
+      padding: 12px;
+      text-align: left;
+    }
+    th {
+      background: #dcedc8;
+      color: #33691e;
+    }
+
+    /* VIDEO */
+    iframe {
+      width: 100%;
+      height: 380px;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+      border: 0;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width: 1100px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .hero-img {
+        height: 260px;
+      }
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--gradient);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="bug-outline" style="font-size:28px;color:#dcedc8"></ion-icon>
+      <h1>Farm<span>Mitra</span> 2.0</h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+       
+        <li><a href="farm-management.html">Farm Management</a></li>
+      </ul>
+    </nav>
+
+    <div class="lang-select">
+      <ion-icon name="language-outline"></ion-icon>
+      <div id="google_translate_element"></div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <span>Pest Management</span>
+      <h2>Identify, Control & Prevent Crop Pests using Smart IPM Techniques.</h2>
+
+      <p>
+        Pest management helps protect crops from insect attacks using integrated methods such as
+        biological control, traps, resistant varieties, and safe chemical use. Early detection ensures
+        healthier plants and higher yield.
+      </p>
+    </div>
+
+    <img class="hero-img"
+      src="https://i.pinimg.com/1200x/f1/c0/b5/f1c0b5ad617d1238e98024666f598108.jpg"
+      alt="Pest Control Image">
+  </section>
+
+  <main class="container">
+
+    <!-- OVERVIEW -->
+    <section class="card">
+      <h3 class="section-title">Overview</h3>
+      <p>
+        Pest management involves monitoring, identifying, and controlling harmful insects that damage crops.
+        Using Integrated Pest Management (IPM) methods helps reduce pesticide use and promotes
+        sustainable farming.
+      </p>
+    </section>
+
+    <!-- COMMON PESTS -->
+    <section class="card">
+      <h3 class="section-title">Common Crop Pests</h3>
+      <div class="pest-grid">
+
+        <div class="pest-card">
+          <img src="https://i.pinimg.com/736x/57/99/d5/5799d5869ccb8bff9131260132d9bdb1.jpg" alt="Aphids">
+          <h4>Aphids</h4>
+          <p>Small sap-sucking insects; cause leaf curl and stunted growth.</p>
+        </div>
+
+        <div class="pest-card">
+          <img src="https://i.pinimg.com/736x/73/c6/9e/73c69e3d04474a520cf923d31c49da3e.jpg" alt="Whiteflies">
+          <h4>Whiteflies</h4>
+          <p>Spread viral diseases; found on underside of leaves.</p>
+        </div>
+
+        <div class="pest-card">
+          <img src="https://i.pinimg.com/736x/61/49/56/61495635405297f2b7cd784172d1213b.jpg" alt="Stem Borer">
+          <h4>Stem Borer</h4>
+          <p>Damages rice, sugarcane; causes dead heart symptoms.</p>
+        </div>
+
+        <div class="pest-card">
+          <img src="https://i.pinimg.com/736x/7a/a7/7f/7aa77f1d2cca91e081649e3f4116105f.jpg" alt="Fruit Borer">
+          <h4>Fruit Borer</h4>
+          <p>Attacks tomato, brinjal, cotton & chilli fruits.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- IPM METHODS -->
+    <section class="card">
+      <h3 class="section-title">Integrated Pest Management (IPM)</h3>
+      <table>
+        <tr>
+          <th>Method</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td>Biological Control</td>
+          <td>Use of ladybirds, parasitoids, Trichoderma & NPV.</td>
+        </tr>
+        <tr>
+          <td>Cultural Practices</td>
+          <td>Crop rotation, field sanitation, resistant varieties.</td>
+        </tr>
+        <tr>
+          <td>Mechanical Control</td>
+          <td>Hand picking, pheromone traps, light traps.</td>
+        </tr>
+        <tr>
+          <td>Chemical Control</td>
+          <td>Safe use of approved pesticides only when required.</td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- PREVENTION -->
+    <section class="card">
+      <h3 class="section-title">Pest Prevention Tips</h3>
+      <ul style="color:var(--gray); line-height:1.7;">
+        <li>Remove weeds regularly to reduce breeding sites</li>
+        <li>Use yellow sticky traps for pests like whiteflies</li>
+        <li>Promote natural predators in the field</li>
+        <li>Ensure proper spacing & irrigation</li>
+        <li>Spray neem oil as a natural bio-pesticide</li>
+      </ul>
+    </section>
+
+    <!-- VIDEO -->
+    <section class="card">
+      <h3 class="section-title">Video Guide</h3>
+      <iframe src="https://www.youtube.com/embed/3HDMrYkhDIY?si=L75-cYF6oEhcoT83" allowfullscreen></iframe>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2025 FarmMitra 2.0 — Pest Management Guide
+  </footer>
+
+  <!-- GOOGLE TRANSLATE -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+      }, "google_translate_element");
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

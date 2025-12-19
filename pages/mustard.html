@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mustard Crop Details | FarmMitra 2.0</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    /* 🌼 Mustard Theme */
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(to bottom, #fff7d1, #ffe27a); 
+      margin: 0;
+      color: #4a3b15; 
+      line-height: 1.8;
+    }
+
+    h1, h2 {
+      color: #4b830d; 
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.4rem;
+      margin: 30px 0;
+    }
+
+    /* 🌱 Navbar */
+    header.navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(90deg, #4b830d, #2e5f07);
+      padding: 15px 8%;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo h1 {
+      font-size: 1.6rem;
+      margin: 0;
+      color: white;
+    }
+
+    .logo span {
+      color: #f7d55a; 
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #fff6c4;
+    }
+
+    .lang-select {
+      background: rgba(255, 255, 255, 0.25);
+      padding: 5px 8px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .lang-icon {
+      color: #fff;
+    }
+
+    .goog-logo-link, .goog-te-gadget span { display: none !important; }
+
+    .goog-te-combo {
+      background-color: #fff;
+      border: none;
+      padding: 4px 6px;
+      border-radius: 6px;
+      color: #4b830d;
+      cursor: pointer;
+    }
+
+    /* 📄 Main Content */
+    main {
+      max-width: 1000px;
+      margin: 20px auto 60px;
+      padding: 20px;
+      background-color: #ffffffd9;
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    /* Images */
+    .crop-images {
+      display: flex;
+      justify-content: center;
+      margin: 25px 0;
+      width: 100%;
+    }
+
+    .crop-wrapper {
+      width: 100%;
+      max-width: 650px;
+      height: 340px;
+      overflow: hidden;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+
+    .crop-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+
+    .crop-image:hover {
+      transform: scale(1.05);
+    }
+
+    h2 {
+      margin-top: 35px;
+      border-left: 6px solid #4b830d;
+      padding-left: 10px;
+      font-size: 1.4rem;
+    }
+
+    ul {
+      margin-left: 25px;
+      list-style-type: "🌱 ";
+    }
+
+    .content img {
+      width: 100%;
+      max-width: 650px;
+      display: block;
+      margin: 20px auto;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    /* Video */
+    .video-container {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .video-container iframe {
+      width: 80%;
+      height: 400px;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    }
+
+    footer {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .back-btn {
+      background: #4b830d;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 25px;
+      text-decoration: none;
+      transition: 0.3s;
+      font-weight: 600;
+    }
+
+    .back-btn:hover {
+      background: #336306;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 🌼 Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline"></ion-icon>
+      <h1>Farm<span>Mitra</span> <small>2.0</small></h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="spice-crops.html">⬅ Spice Crops</a></li>
+      </ul>
+    </nav>
+
+    <div class="lang-select">
+      <ion-icon name="language-outline" class="lang-icon"></ion-icon>
+      <div id="google_translate_element"></div>
+    </div>
+  </header>
+
+  <!-- 🌱 Mustard Content -->
+  <main>
+    <h1>Mustard (Sarson / Mohri)</h1>
+
+    <!-- Main Image -->
+    <div class="crop-images">
+      <div class="crop-wrapper">
+        <img src="https://i.pinimg.com/736x/df/3c/ed/df3ced429e45e6e951b5064ff937f28f.jpg"
+             class="crop-image"
+             alt="Mustard Crop">
+      </div>
+    </div>
+
+    <section class="content">
+
+      <h2>1️⃣ Basic Crop Information</h2>
+      <p>
+        Mustard (<em>Brassica juncea</em>) is an important Indian spice crop used for oil extraction, spices, pickles, and daily cooking.
+        It grows best in **cool, dry winters**, making it ideal for rabi season.
+      </p>
+
+      <h2>2️⃣ Climate Requirements</h2>
+      <ul>
+        <li>Best temperature: **10°C to 25°C**</li>
+        <li>Rainfall: **400–600 mm**</li>
+        <li>Not tolerant to frost or excessive humidity</li>
+      </ul>
+
+      <h2>3️⃣ Soil & Land Preparation</h2>
+      <ul>
+        <li>Prefers loamy or alluvial soils</li>
+        <li>Soil pH: **6.0 – 7.5**</li>
+        <li>Fields should be well-drained and weed-free</li>
+        <li>Apply **FYM 8–10 tons/acre** during land prep</li>
+      </ul>
+
+      <h2>4️⃣ Sowing Information</h2>
+      <ul>
+        <li>Season: **October–November**</li>
+        <li>Spacing: **45 cm × 15 cm**</li>
+        <li>Seed Rate: **4–5 kg/acre**</li>
+      </ul>
+
+      <!-- Second Image -->
+      <div class="crop-images">
+        <div class="crop-wrapper">
+          <img src="https://i.pinimg.com/1200x/3d/25/d9/3d25d904c4ade1e5d06d1c049ae1934a.jpg"
+               class="crop-image"
+               alt="Mustard Harvesting">
+        </div>
+      </div>
+
+      <h2>5️⃣ Irrigation Management</h2>
+      <ul>
+        <li>First irrigation: **25–30 days after sowing**</li>
+        <li>Second irrigation: at flowering stage</li>
+        <li>Avoid waterlogging → reduces oil content</li>
+      </ul>
+
+      <h2>6️⃣ Fertilizer Management</h2>
+      <ul>
+        <li>NPK Recommendation (per acre):  
+            **N – 40 kg, P – 20 kg, K – 20 kg**</li>
+        <li>Apply sulfur for higher oil percentage</li>
+        <li>Use micronutrients like Boron for seed quality</li>
+      </ul>
+
+      <h2>7️⃣ Pest & Disease Management</h2>
+      <ul>
+        <li><strong>Pests:</strong> Aphids, painted bugs</li>
+        <li><strong>Diseases:</strong> White rust, Alternaria blight</li>
+        <li>Use neem oil + sticky traps for aphids</li>
+      </ul>
+
+      <h2>8️⃣ Harvesting</h2>
+      <ul>
+        <li>Harvest when 70–80% pods turn yellow</li>
+        <li>Threshed and dried to 8% moisture</li>
+      </ul>
+
+      <h2>9️⃣ Average Yield</h2>
+      <p>
+        Well-managed crop yields **6–8 quintals per acre**.
+      </p>
+
+      <h2>🔟 Government Schemes</h2>
+      <ul>
+        <li>NFSM (National Food Security Mission)</li>
+        <li>Subsidy on mustard seeds by Agriculture Department</li>
+        <li>Support for oilseed extraction units</li>
+      </ul>
+
+      <!-- 🎥 Video -->
+     <div class="video-container">
+  <iframe 
+      src="https://www.youtube.com/embed/Zl9L-uGokFM?si=65SBKnQ7W_0kkhrB"
+      title="YouTube Video Player"
+      allowfullscreen>
+  </iframe>
+</div>
+
+
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <a href="spice-crops.html" class="back-btn">← Back to Spice Crops</a>
+  </footer>
+
+  <!-- Translator Script -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+      }, "google_translate_element");
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

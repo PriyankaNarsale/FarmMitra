@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rice (Paddy) Farming | FarmMitra 2.0</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    :root{
+      /* 🌾 Rice Theme */
+      --rice-deep:#1B5E20;        /* dark paddy green */
+      --rice-main:#2E7D32;        /* main green */
+      --rice-accent:#FBC02D;      /* grain golden */
+      --rice-soft:#E8F5E9;        /* soft green bg */
+      --rice-sky:#E3F2FD;         /* sky hint */
+      --text-muted:#5c6f5c;
+      --card:#ffffff;
+      --shadow-main:rgba(46,125,50,0.28);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0;}
+
+    body{
+      font-family:"Poppins",sans-serif;
+      background:linear-gradient(180deg,#F1F8E9,#ffffff);
+      color:#1f261c;
+      line-height:1.75;
+    }
+
+    /* ================= NAVBAR (Agriculture style) ================= */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #2e7d32;
+      padding: 15px 8%;
+      color: #fff;
+      flex-wrap: wrap;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo-icon {
+      font-size: 32px;
+      color: #cddc39;
+    }
+
+    .logo h1 {
+      font-size: 1.9rem;
+      color: #fff;
+      margin: 0;
+    }
+
+    .logo span {
+      color: #cddc39;
+    }
+
+    .logo small {
+      font-size: 0.8rem;
+      color: #e8f5e9;
+      margin-left: 3px;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #cddc39;
+    }
+
+    .translate-box {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.15);
+      padding: 6px 12px;
+      border-radius: 999px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    .translate-box ion-icon {
+      color: #fff;
+      font-size: 20px;
+    }
+
+    .translate-box select {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #1c1818;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    .goog-te-banner-frame.skiptranslate {
+      display: none !important;
+    }
+
+    #google_translate_element {
+      display: none;
+    }
+
+    /* ================= HERO ================= */
+    .hero{
+      display:grid;
+      grid-template-columns: minmax(0,1.4fr) minmax(280px,0.9fr);
+      gap:32px;
+      padding:40px 6% 20px;
+      align-items:center;
+    }
+
+    .hero-left{
+      background:var(--card);
+      padding:26px 26px 22px;
+      border-radius:16px;
+      box-shadow:0 14px 30px rgba(0,0,0,0.06);
+      border:1px solid #dce9d8;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero-left::before{
+      content:"";
+      position:absolute;
+      right:-60px;
+      top:-60px;
+      width:160px;
+      height:160px;
+      background:radial-gradient(circle at center,rgba(251,192,45,0.7),transparent 60%);
+      opacity:0.5;
+      pointer-events:none;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      background:#FFF9C4;
+      color:#8D6E00;
+      padding:5px 14px;
+      border-radius:999px;
+      font-size:0.9rem;
+      font-weight:600;
+      letter-spacing:0.02em;
+    }
+
+    .eyebrow ion-icon{
+      font-size:15px;
+    }
+
+    .hero-left h2{
+      margin-top:14px;
+      font-size:2.1rem;
+      color:var(--rice-deep);
+      line-height:1.3;
+    }
+
+    .hero-left h2 span{
+      color:var(--rice-accent);
+    }
+
+    .hero-sub{
+      color:var(--text-muted);
+      margin-top:12px;
+      font-size:1.02rem;
+    }
+
+    .hero-tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:16px;
+    }
+
+    .tag{
+      font-size:0.8rem;
+      background:#E3F2FD;
+      color:#0d47a1;
+      border-radius:999px;
+      padding:5px 11px;
+      font-weight:500;
+    }
+
+    .hero-stats{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .stat{
+      flex:0 1 150px;
+      background:#ffffff;
+      border-radius:12px;
+      padding:11px 13px;
+      box-shadow:0 10px 22px rgba(0,0,0,0.06);
+      border:1px solid #dde6da;
+    }
+
+    .stat-label{
+      font-size:0.8rem;
+      color:#78926f;
+      text-transform:uppercase;
+      letter-spacing:0.05em;
+      margin-bottom:3px;
+    }
+
+    .stat-value{
+      font-weight:700;
+      color:var(--rice-deep);
+      font-size:1rem;
+    }
+
+    .stat-note{
+      font-size:0.8rem;
+      color:var(--text-muted);
+    }
+
+    .hero-right{
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow:0 18px 40px var(--shadow-main);
+      position:relative;
+      min-height:260px;
+      background:#c8e6c9;
+    }
+
+    .hero-img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transform:scale(1.02);
+      transition:transform 0.35s ease;
+    }
+
+    .hero-right:hover .hero-img{
+      transform:scale(1.06);
+    }
+
+    .hero-badge{
+      position:absolute;
+      left:14px;
+      bottom:14px;
+      background:rgba(0,0,0,0.55);
+      color:#fffde7;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:0.85rem;
+      display:flex;
+      align-items:center;
+      gap:6px;
+      -webkit-backdrop-filter: blur(4px);
+      backdrop-filter: blur(4px);
+    }
+
+    .hero-badge ion-icon{
+      font-size:16px;
+    }
+
+    /* ================= MAIN LAYOUT ================= */
+    .page-wrap{
+      max-width:1320px;
+      margin:0 auto 40px;
+      padding:0 6% 10px;
+    }
+
+    .main-grid{
+      display:grid;
+      grid-template-columns:minmax(0,1.5fr) minmax(280px,0.9fr);
+      gap:26px;
+      align-items:flex-start;
+    }
+
+    .card{
+      background:var(--card);
+      padding:18px 20px;
+      border-radius:14px;
+      box-shadow:0 12px 28px rgba(0,0,0,0.05);
+      border:1px solid #dde7d9;
+      margin-bottom:18px;
+    }
+
+    h3.section-title{
+      margin:0 0 8px;
+      color:var(--rice-deep);
+      font-size:1.3rem;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    h3.section-title ion-icon{
+      color:var(--rice-main);
+      font-size:18px;
+    }
+
+    .section-note{
+      font-size:0.9rem;
+      color:var(--text-muted);
+      margin-bottom:6px;
+    }
+
+    p, li{
+      font-size:1.01rem;
+      color:#314131;
+    }
+
+    ul{
+      padding-left:20px;
+      margin-top:8px;
+    }
+
+    .mt-8{
+      margin-top:8px;
+    }
+
+    /* Highlight box inside section */
+    .highlight-box{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:10px;
+      background:#E3F2FD;
+      border-left:4px solid #1E88E5;
+      font-size:0.9rem;
+      color:#17527f;
+    }
+
+    /* IMAGE STRIP */
+    .img-strip{
+      display:flex;
+      gap:10px;
+      margin-top:12px;
+      flex-wrap:wrap;
+    }
+
+    .img-strip img{
+      flex:1 1 140px;
+      border-radius:12px;
+      height:140px;
+      object-fit:cover;
+      box-shadow:0 10px 20px rgba(0,0,0,0.08);
+    }
+
+    /* TABLES */
+    .table-wrap{
+      margin-top:10px;
+      overflow-x:auto;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      font-size:0.95rem;
+      min-width:280px;
+    }
+
+    th,td{
+      padding:9px 10px;
+      border:1px solid #dce5d6;
+      text-align:left;
+    }
+
+    th{
+      background:#E8F5E9;
+      color:#1B5E20;
+      font-weight:600;
+    }
+
+    /* GRID INSIDE CARD */
+    .two-col-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:14px;
+      margin-top:10px;
+    }
+
+    .pill-list{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:8px;
+    }
+
+    .pill{
+      background:#e8f5e9;
+      color:var(--rice-deep);
+      padding:4px 10px;
+      border-radius:999px;
+      font-size:0.82rem;
+      font-weight:500;
+    }
+
+    /* Pest/disease cards */
+    .d-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+      gap:14px;
+      margin-top:10px;
+    }
+
+    .d-card{
+      background:#fcfffb;
+      border-radius:12px;
+      padding:10px 12px;
+      border:1px solid #e0ebdd;
+      box-shadow:0 6px 18px rgba(0,0,0,0.04);
+    }
+
+    .d-card h4{
+      margin:0 0 4px;
+      color:var(--rice-deep);
+      font-size:1.02rem;
+    }
+
+    .d-card small{
+      font-size:0.8rem;
+      color:#1565C0;
+    }
+
+    .bullet-tight{
+      padding-left:18px;
+      margin-top:6px;
+    }
+
+    .bullet-tight li{
+      font-size:0.9rem;
+      margin-bottom:3px;
+    }
+
+    /* ================= NUTRIENT CALCULATOR ================= */
+    .calc-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:16px;
+      margin-top:12px;
+      align-items:flex-start;
+    }
+
+    .calc-box{
+      background:#F1F8E9;
+      border-radius:12px;
+      padding:10px 12px;
+      border:1px solid #C5E1A5;
+    }
+
+    .calc-box label{
+      font-size:0.9rem;
+      display:block;
+      margin-bottom:4px;
+      color:#33691E;
+      font-weight:600;
+    }
+
+    .calc-box input,
+    .calc-box select{
+      width:100%;
+      padding:6px 8px;
+      border-radius:8px;
+      border:1px solid #cbd5c0;
+      outline:none;
+      font-size:0.9rem;
+      margin-bottom:8px;
+    }
+
+    .calc-result{
+      font-size:0.92rem;
+      margin-top:6px;
+      color:#2E7D32;
+      font-weight:600;
+    }
+
+    /* ================= GROWTH STAGE TIMELINE ================= */
+    .timeline{
+      margin-top:12px;
+    }
+
+    .timeline-bar{
+      position:relative;
+      height:4px;
+      background:#C8E6C9;
+      border-radius:999px;
+      margin:20px 0 18px;
+    }
+
+    .timeline-fill{
+      position:absolute;
+      left:0;
+      top:0;
+      height:100%;
+      width:100%;
+      background:linear-gradient(90deg,#2E7D32,#FBC02D);
+      border-radius:999px;
+      opacity:0.7;
+    }
+
+    .stage-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+      gap:12px;
+    }
+
+    .stage{
+      background:#ffffff;
+      border-radius:12px;
+      padding:8px 10px;
+      box-shadow:0 8px 18px rgba(0,0,0,0.04);
+      border:1px solid #E0F2F1;
+    }
+
+    .stage-title{
+      font-size:0.95rem;
+      font-weight:600;
+      color:var(--rice-deep);
+    }
+
+    .stage-sub{
+      font-size:0.82rem;
+      color:#546E7A;
+    }
+
+    /* ================= FAQ ACCORDION ================= */
+    .faq-list{
+      margin-top:10px;
+    }
+
+    .faq-item{
+      border-radius:10px;
+      border:1px solid #dce6d7;
+      margin-bottom:8px;
+      overflow:hidden;
+      background:#ffffff;
+    }
+
+    .faq-question{
+      padding:10px 12px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      cursor:pointer;
+      font-size:0.97rem;
+      font-weight:600;
+      color:var(--rice-deep);
+    }
+
+    .faq-question span.icon{
+      font-size:18px;
+      color:#2E7D32;
+      transition:transform 0.2s ease;
+    }
+
+    .faq-answer{
+      max-height:0;
+      overflow:hidden;
+      transition:max-height 0.3s ease;
+      padding:0 12px;
+    }
+
+    .faq-answer p{
+      font-size:0.96rem;
+      color:#455A64;
+      padding:6px 0 10px;
+    }
+
+    .faq-item.active .faq-answer{
+      max-height:200px;
+    }
+
+    .faq-item.active .faq-question span.icon{
+      transform:rotate(90deg);
+    }
+
+    /* ================= SIDEBAR ================= */
+    .side-card{
+      background:#ffffff;
+      padding:16px 16px 14px;
+      border-radius:14px;
+      box-shadow:0 10px 24px rgba(0,0,0,0.06);
+      border:1px solid #e0e9da;
+      margin-bottom:16px;
+    }
+
+    .side-card h4{
+      margin:0 0 6px;
+      color:var(--rice-deep);
+      font-size:1.05rem;
+      display:flex;
+      align-items:center;
+      gap:6px;
+    }
+
+    .side-card h4 ion-icon{
+      color:var(--rice-main);
+      font-size:18px;
+    }
+
+    .side-card p{
+      font-size:0.95rem;
+      color:var(--text-muted);
+    }
+
+    .badge-mini{
+      display:inline-block;
+      padding:3px 8px;
+      border-radius:999px;
+      background:#FFF59D;
+      color:#6b4e00;
+      font-size:0.8rem;
+      font-weight:600;
+      margin-top:4px;
+    }
+
+    /* VIDEO CARD + MODAL */
+    .video-thumb-card{
+      position:relative;
+      border-radius:14px;
+      overflow:hidden;
+      cursor:pointer;
+      margin-top:8px;
+      box-shadow:0 10px 26px rgba(0,0,0,0.25);
+    }
+
+    .video-thumb{
+      width:100%;
+      height:200px;
+      object-fit:cover;
+      display:block;
+      transition:transform .3s ease;
+    }
+
+    .video-thumb-card:hover .video-thumb{
+      transform:scale(1.03);
+    }
+
+    .play-overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top,rgba(0,0,0,0.55),rgba(0,0,0,0.15));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .play-circle{
+      width:64px;
+      height:64px;
+      border-radius:50%;
+      border:3px solid #fffde7;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      -webkit-backdrop-filter: blur(4px);
+      backdrop-filter: blur(4px);
+      box-shadow:0 0 18px rgba(0,0,0,0.5);
+    }
+
+    .play-circle ion-icon{
+      font-size:32px;
+      color:#fffde7;
+      margin-left:3px;
+    }
+
+    .video-caption{
+      position:absolute;
+      left:10px;
+      bottom:8px;
+      color:#fffde7;
+      font-size:0.8rem;
+      text-shadow:0 1px 4px rgba(0,0,0,0.7);
+    }
+
+    .video-actions{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-top:8px;
+      gap:6px;
+    }
+
+    .btn-yt{
+      flex:1;
+      text-align:center;
+      text-decoration:none;
+      font-size:0.85rem;
+      font-weight:600;
+      padding:7px 10px;
+      border-radius:999px;
+      background:#FFEB3B;
+      color:#5d4300;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:5px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .btn-yt ion-icon{
+      font-size:16px;
+    }
+
+    .btn-note{
+      font-size:0.8rem;
+      color:#7e8f7e;
+      text-align:right;
+    }
+
+    /* MODAL */
+    .modal-backdrop{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.6);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:2000;
+    }
+
+    .modal-backdrop.active{
+      display:flex;
+    }
+
+    .modal-content{
+      width:90%;
+      max-width:780px;
+      background:#000;
+      border-radius:16px;
+      overflow:hidden;
+      box-shadow:0 20px 50px rgba(0,0,0,0.6);
+      position:relative;
+    }
+
+    .modal-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:8px 14px;
+      background:linear-gradient(90deg,#1B5E20,#2E7D32);
+      color:#fff;
+      font-size:0.95rem;
+    }
+
+    .modal-header button{
+      border:none;
+      background:transparent;
+      color:#fff;
+      font-size:1.3rem;
+      cursor:pointer;
+    }
+
+    .modal-body iframe{
+      width:100%;
+      height:420px;
+      border:none;
+      display:block;
+    }
+
+    @media(max-width:768px){
+      .modal-body iframe{
+        height:240px;
+      }
+    }
+
+    /* FOOTER */
+    footer{
+      background:#E8F5E9;
+      border-top:1px solid #d7e5d4;
+      padding:14px 6% 18px;
+      text-align:center;
+      font-size:0.9rem;
+      color:#486148;
+      margin-top:20px;
+    }
+
+    footer a{
+      color:var(--rice-deep);
+      font-weight:600;
+      text-decoration:none;
+      margin-right:8px;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:1024px){
+      .hero{
+        grid-template-columns:1fr;
+      }
+      .hero-right{
+        max-width:520px;
+        margin:0 auto;
+      }
+      .main-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media(max-width:720px){
+      .navbar{
+        flex-wrap:wrap;
+        gap:10px;
+        padding-inline:16px;
+      }
+      nav ul{
+        gap:14px;
+        font-size:0.9rem;
+      }
+      .hero{
+        padding-inline:16px;
+      }
+      .page-wrap{
+        padding-inline:16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============== NAVBAR ============== -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline" class="logo-icon"></ion-icon>
+      <h1>Farm<span>Mitra</span> <small>2.0</small></h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="field-crops.html">🌾 Field Crops</a></li>
+      </ul>
+    </nav>
+
+    <div class="translate-box">
+      <ion-icon name="language-outline"></ion-icon>
+      <select id="languageSelect" aria-label="Select Language">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+        <option value="mr">मराठी</option>
+      </select>
+    </div>
+  </header>
+
+  <!-- Hidden Google element -->
+  <div id="google_translate_element"></div>
+
+  <!-- ============== HERO ============== -->
+  <section class="hero">
+    <div class="hero-left">
+      <span class="eyebrow">
+        <ion-icon name="water-outline" aria-hidden="true"></ion-icon>
+        Rice (Paddy) – India’s Staple Crop
+      </span>
+
+      <h2>Rice (Oryza sativa) – <span>High Yield</span> Grain for Wet Fields</h2>
+
+      <p class="hero-sub">
+        Rice is the main food grain for more than half of India’s population. It loves
+        <strong>warm temperature, standing water and fertile puddled soil</strong>. With the right variety,
+        nursery, fertilizer and water management, farmers can achieve excellent yields.
+      </p>
+
+      <div class="hero-tags">
+        <span class="tag">Kharif & Rabi (in canals)</span>
+        <span class="tag">Transplanted & direct seeded</span>
+        <span class="tag">High market demand</span>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-label">Crop Duration</div>
+          <div class="stat-value">110 – 135 days</div>
+          <div class="stat-note">Depends on variety & season</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Water Requirement</div>
+          <div class="stat-value">1200 – 1500 mm</div>
+          <div class="stat-note">With standing water</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Average Yield</div>
+          <div class="stat-value">3 – 6 t/ha</div>
+          <div class="stat-note">Higher with hybrids & SRI</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <img
+        src="https://i.pinimg.com/1200x/1a/06/26/1a062644fd9309daddd1764a29458335.jpg"
+        alt="Rice paddy field with standing water and green plants"
+        class="hero-img"
+      />
+      <div class="hero-badge">
+        <ion-icon name="leaf-outline" aria-hidden="true"></ion-icon>
+        Thrives in puddled, waterlogged fields
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== MAIN CONTENT ============== -->
+  <div class="page-wrap">
+    <div class="main-grid">
+      <!-- ========= LEFT MAIN COLUMN ========= -->
+      <div>
+
+        <!-- 1. Overview & Climate -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="information-circle-outline"></ion-icon>
+            1️⃣ Overview & Climate Requirement
+          </h3>
+          <p>
+            Rice (<em>Oryza sativa</em>) is a <strong>Kharif crop</strong> in most of India and a <strong>staple food grain</strong>.
+            It grows best in areas with <strong>high temperature (20–35°C)</strong>, high humidity and assured water.
+            Major rice-growing states include <strong>West Bengal, Uttar Pradesh, Punjab, Andhra Pradesh,
+            Telangana, Tamil Nadu, Chhattisgarh and Odisha</strong>.
+          </p>
+          <p>
+            Rice can be grown under rainfed shallow lowland, irrigated transplanted, direct-seeded,
+            and even SRI (System of Rice Intensification) methods. Choosing the right method depends on
+            water availability, labour and machinery.
+          </p>
+
+          <div class="two-col-grid mt-8">
+            <div>
+              <strong>Best Soil Type</strong>
+              <ul>
+                <li>Clayey loam to clay with <strong>high water-holding capacity</strong></li>
+                <li>Soil pH: <strong>5.5–7.0</strong> (slightly acidic to neutral)</li>
+                <li>Low-lying, bunded fields ideal for puddling</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Season of Planting</strong>
+              <ul>
+                <li><strong>Kharif:</strong> Nursery in June, transplanting in July</li>
+                <li><strong>Rabi/summer (irrigated):</strong> Nov–Dec to Jan–Feb</li>
+                <li>Harvest: Oct–Dec (Kharif) depending on duration</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="highlight-box">
+            🌦️ <strong>Tip:</strong> Rice is sensitive at flowering – avoid moisture stress and
+            water shortage at this stage for better grain filling and yield.
+          </div>
+
+          <div class="img-strip">
+            <img src="https://i.pinimg.com/736x/fc/9c/3f/fc9c3f82b4e00cad456591116245b23a.jpg"
+                 alt="Close-up of rice panicles filled with grains">
+            <img src="https://i.pinimg.com/736x/cf/ea/40/cfea400e0829b9a644d8ca2fe7e18a2a.jpg"
+                 alt="Rice nursery seedlings ready for transplanting">
+          </div>
+        </section>
+
+        <!-- 2. Varieties & Comparison -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="leaf-outline"></ion-icon>
+            2️⃣ Varieties & Seed Information (with Comparison)
+          </h3>
+          <p class="section-note">
+            Select variety based on duration, grain quality, market preference and disease resistance.
+          </p>
+
+          <div class="table-wrap">
+            <table aria-label="Popular rice varieties and comparison">
+              <thead>
+                <tr>
+                  <th>Variety</th>
+                  <th>Type / Grain</th>
+                  <th>Duration (days)</th>
+                  <th>Special Features</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Swarna (MTU 7029)</td>
+                  <td>Medium bold</td>
+                  <td>140–145</td>
+                  <td>Stable yield, tolerant to submergence</td>
+                </tr>
+                <tr>
+                  <td>BPT 5204 (Samba Masuri)</td>
+                  <td>Fine grain</td>
+                  <td>135–140</td>
+                  <td>Premium market price, good cooking quality</td>
+                </tr>
+                <tr>
+                  <td>IR-36 / IR-64</td>
+                  <td>High yielding</td>
+                  <td>110–120</td>
+                  <td>Suitable for irrigated areas, popular in many states</td>
+                </tr>
+                <tr>
+                  <td>Hybrid KRH-2 / PRH-10</td>
+                  <td>Hybrid paddy</td>
+                  <td>120–130</td>
+                  <td>Higher yield potential under good management</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <ul class="mt-8">
+            <li><strong>Seed rate:</strong> 20–25 kg/ha (nursery + transplanting), 30–35 kg/ha (direct seeding).</li>
+            <li>Use <strong>certified seed</strong> and avoid mixed or discoloured grains.</li>
+            <li>Seed treatment with <strong>fungicide (e.g., Carbendazim or Captan @ 2–3 g/kg)</strong> helps control seed-borne diseases.</li>
+          </ul>
+        </section>
+
+        <!-- 3. Soil Preparation & Planting -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="construct-outline"></ion-icon>
+            3️⃣ Soil Preparation, Nursery & Transplanting
+          </h3>
+          <p>
+            For transplanted rice, first prepare a <strong>raised or wet nursery</strong>. Select a fertile,
+            well-drained corner of the field, apply FYM and puddle/lightly till. Sow pre-soaked and sprouted seeds,
+            keep the nursery moist and weed-free.
+          </p>
+
+          <div class="two-col-grid mt-8">
+            <div>
+              <strong>Nursery</strong>
+              <ul>
+                <li>Seedlings should be <strong>20–25 days old</strong> for most varieties.</li>
+                <li>Root dipping with bio-fertilizers (Azospirillum, PSB) improves establishment.</li>
+                <li>Avoid over-aged, yellow, spindly seedlings.</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Main Field Preparation</strong>
+              <ul>
+                <li>Plough field, apply FYM, then <strong>puddle with standing water</strong>.</li>
+                <li>Level field properly for uniform water depth.</li>
+                <li>Form strong <strong>field bunds</strong> to hold water.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="two-col-grid mt-8">
+            <div>
+              <strong>Transplanting</strong>
+              <ul>
+                <li>Spacing: <strong>20 × 15 cm</strong> (rows × plants).</li>
+                <li>Plant <strong>2–3 seedlings per hill</strong>, not big bunches.</li>
+                <li>Shallow planting (2–3 cm) gives better tillering.</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Direct-Seeded Rice (DSR)</strong>
+              <ul>
+                <li>Sowing by seed drill or drum seeder in unpuddled fields.</li>
+                <li>Requires good weed control but saves labour and water.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. Nutrient Management + Calculator -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="beaker-outline"></ion-icon>
+            4️⃣ Nutrient Management + Simple NPK Calculator
+          </h3>
+          <p class="section-note">
+            Balanced use of nitrogen (N), phosphorus (P), and potassium (K) with organic manures ensures
+            strong tillering and good grain filling.
+          </p>
+
+          <ul>
+            <li>Apply <strong>5–10 tons/ha</strong> well-decomposed FYM or compost before puddling.</li>
+          </ul>
+
+          <div class="table-wrap">
+            <table aria-label="Rice fertilizer recommendation">
+              <thead>
+                <tr>
+                  <th>Condition</th>
+                  <th>N (kg/ha)</th>
+                  <th>P₂O₅ (kg/ha)</th>
+                  <th>K₂O (kg/ha)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Rainfed lowland</td>
+                  <td>60–80</td>
+                  <td>30–40</td>
+                  <td>20–30</td>
+                </tr>
+                <tr>
+                  <td>Irrigated transplanted</td>
+                  <td>100–120</td>
+                  <td>40–50</td>
+                  <td>40</td>
+                </tr>
+                <tr>
+                  <td>Hybrid rice</td>
+                  <td>120–150</td>
+                  <td>50–60</td>
+                  <td>40–50</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="calc-grid">
+            <div class="calc-box">
+              <label for="areaInput">Enter your field area</label>
+              <input type="number" id="areaInput" min="0" step="0.01" placeholder="e.g. 1.0" />
+              <label for="unitSelect">Select unit</label>
+              <select id="unitSelect">
+                <option value="ha">Hectare (ha)</option>
+                <option value="acre">Acre</option>
+              </select>
+              <label for="npkLevel">Fertilizer level</label>
+              <select id="npkLevel">
+                <option value="irrigated">Irrigated transplanted</option>
+                <option value="rainfed">Rainfed lowland</option>
+                <option value="hybrid">Hybrid rice</option>
+              </select>
+
+              <div class="calc-result" id="calcResult">
+                Enter area and select level to see NPK recommendation.
+              </div>
+            </div>
+
+            <div>
+              <ul>
+                <li>Split <strong>N into 3 parts</strong> – basal, tillering and panicle initiation.</li>
+                <li>Apply full P & K as basal during final puddling.</li>
+                <li>Use <strong> ZnSO₄ @ 25 kg/ha</strong> once in 2–3 years where zinc deficiency appears (bronzing of leaves).</li>
+                <li>Organic manures + biofertilizers improve soil health in the long term.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5. Irrigation & Weed Management -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="water-outline"></ion-icon>
+            5️⃣ Water Management & Weed Control
+          </h3>
+
+          <div class="two-col-grid">
+            <div>
+              <strong>Water Management</strong>
+              <ul>
+                <li>Maintain <strong>2–5 cm standing water</strong> after transplanting.</li>
+                <li>Do not keep deep water immediately after transplanting – shallow is better.</li>
+                <li>Practice <strong>Alternate Wetting and Drying (AWD)</strong> in irrigated areas to save water.</li>
+                <li>Drain water before harvest to ease cutting and reduce lodging.</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Weed Management</strong>
+              <ul>
+                <li>Critical period: <strong>15–45 days</strong> after transplanting.</li>
+                <li>Use conoweeder/rotary weeder between rows under SRI/line planting.</li>
+                <li>Manual weeding or recommended herbicides as per local guidelines.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="highlight-box">
+            💧 <strong>Tip:</strong> For AWD, allow water to recede until small cracks appear on the soil surface,
+            then irrigate again – it saves water without reducing yield.
+          </div>
+        </section>
+
+        <!-- 6. Pests & Diseases -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="bug-outline"></ion-icon>
+            6️⃣ Major Pests & Diseases – Field Identification
+          </h3>
+
+          <div class="d-grid">
+            <div class="d-card">
+              <h4>Stem Borer</h4>
+              <small>“Dead heart” at tillering, “white ear” at heading</small>
+              <ul class="bullet-tight">
+                <li>Destroy stubbles after harvest.</li>
+                <li>Use pheromone traps, need-based sprays as per experts.</li>
+              </ul>
+            </div>
+
+            <div class="d-card">
+              <h4>Brown Planthopper (BPH)</h4>
+              <small>Brown patches, hopper burn in patches</small>
+              <ul class="bullet-tight">
+                <li>Avoid heavy nitrogen and standing deep water.</li>
+                <li>Use resistant varieties and IPM practices.</li>
+              </ul>
+            </div>
+
+            <div class="d-card">
+              <h4>Blast Disease</h4>
+              <small>Diamond-shaped lesions on leaves and neck</small>
+              <ul class="bullet-tight">
+                <li>Use tolerant varieties and balanced NPK.</li>
+                <li>Need-based fungicide sprays at booting/ear emergence.</li>
+              </ul>
+            </div>
+
+            <div class="d-card">
+              <h4>Bacterial Leaf Blight</h4>
+              <small>Yellow drying of leaves from tip downward</small>
+              <ul class="bullet-tight">
+                <li>Resistant varieties are best solution.</li>
+                <li>Avoid injury to plants and heavy N.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7. Growth Stages Timeline -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="hourglass-outline"></ion-icon>
+            7️⃣ Rice Growth Stages (Timeline)
+          </h3>
+          <p class="section-note">
+            Understanding stages helps in timing irrigation, fertilizer and plant protection.
+          </p>
+
+          <div class="timeline">
+            <div class="timeline-bar">
+              <div class="timeline-fill"></div>
+            </div>
+            <div class="stage-grid">
+              <div class="stage">
+                <div class="stage-title">1. Nursery / Seedling</div>
+                <div class="stage-sub">0–25 days</div>
+              </div>
+              <div class="stage">
+                <div class="stage-title">2. Tillering</div>
+                <div class="stage-sub">25–45 days</div>
+              </div>
+              <div class="stage">
+                <div class="stage-title">3. Panicle Initiation</div>
+                <div class="stage-sub">45–65 days</div>
+              </div>
+              <div class="stage">
+                <div class="stage-title">4. Flowering</div>
+                <div class="stage-sub">65–85 days</div>
+              </div>
+              <div class="stage">
+                <div class="stage-title">5. Grain Filling & Maturity</div>
+                <div class="stage-sub">85–120+ days</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 8. FAQ Section -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="help-circle-outline"></ion-icon>
+            8️⃣ Farmer FAQ – Rice Cultivation
+          </h3>
+
+          <div class="faq-list" id="faqList">
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>Q1. How many seedlings per hill should I plant?</span>
+                <span class="icon">›</span>
+              </div>
+              <div class="faq-answer">
+                <p>Planting <strong>2–3 healthy seedlings per hill</strong> at correct spacing (20×15 cm) is ideal.
+                Bunch planting with 8–10 seedlings causes weak tillers and poor yield.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>Q2. When should I apply urea in rice?</span>
+                <span class="icon">›</span>
+              </div>
+              <div class="faq-answer">
+                <p>Split nitrogen into <strong>three equal parts</strong> – at transplanting (basal), at active
+                tillering (25–30 days after transplanting), and at panicle initiation (45–50 days).</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>Q3. How can I reduce water use without reducing yield?</span>
+                <span class="icon">›</span>
+              </div>
+              <div class="faq-answer">
+                <p>Use <strong>Alternate Wetting and Drying (AWD)</strong>, good land levelling, timely weeding,
+                and in some cases SRI / direct-seeded rice to save water with similar yield.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>Q4. Which variety should I choose for better market price?</span>
+                <span class="icon">›</span>
+              </div>
+              <div class="faq-answer">
+                <p>Fine grain varieties like <strong>BPT 5204 (Samba Masuri)</strong> and regionally preferred
+                local fine varieties often get higher price. Check local mandi preference before sowing.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- ========= RIGHT SIDEBAR ========= -->
+      <aside>
+
+        <div class="side-card">
+          <h4>
+            <ion-icon name="sunny-outline"></ion-icon>
+            Quick Climate Summary
+          </h4>
+          <ul class="bullet-tight">
+            <li>Temperature: <strong>20–35°C</strong></li>
+            <li>High humidity and sunshine</li>
+            <li>Water: continuous shallow ponding</li>
+            <li>Best under monsoon + irrigation</li>
+          </ul>
+        </div>
+
+        <div class="side-card">
+          <h4>
+            <ion-icon name="leaf-outline"></ion-icon>
+            Rice Field Checklist
+          </h4>
+          <ul class="bullet-tight">
+            <li>Properly puddled, levelled field</li>
+            <li>Certified seed & healthy seedlings</li>
+            <li>Strong bunds to hold water</li>
+            <li>Balanced NPK + FYM</li>
+            <li>Timely weeding and pest checks</li>
+          </ul>
+          <span class="badge-mini">✔ Check before transplanting</span>
+        </div>
+
+        <!-- Video: Modal + YouTube button -->
+        <div class="side-card">
+          <h4>
+            <ion-icon name="play-circle-outline"></ion-icon>
+            Rice Cultivation Video
+          </h4>
+          <p>
+            Watch a step-by-step rice farming video with field visuals and practical guidance.
+          </p>
+
+          <!-- Clickable thumbnail opens modal -->
+          <div class="video-thumb-card" id="videoThumb">
+            <img
+              src="https://img.youtube.com/vi/BsOZzv1fR7Y/hqdefault.jpg"
+              alt="Rice cultivation YouTube thumbnail"
+              class="video-thumb"
+            />
+            <div class="play-overlay">
+              <div class="play-circle">
+                <ion-icon name="play" aria-hidden="true"></ion-icon>
+              </div>
+            </div>
+            <div class="video-caption">Tap to play inside page</div>
+          </div>
+
+          <div class="video-actions">
+            <a
+              href="https://www.youtube.com/watch?v=BsOZzv1fR7Y"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-yt"
+            >
+              <ion-icon name="logo-youtube" aria-hidden="true"></ion-icon>
+              Watch on YouTube
+            </a>
+            <span class="btn-note">Opens in new tab</span>
+          </div>
+        </div>
+
+        <div class="side-card">
+          <h4>
+            <ion-icon name="shield-checkmark-outline"></ion-icon>
+            Safety & Good Practices
+          </h4>
+          <ul class="bullet-tight">
+            <li>Use gloves and mask when spraying chemicals.</li>
+            <li>Store fertilizers & pesticides away from children & animals.</li>
+            <li>Follow label dose and waiting period strictly.</li>
+            <li>Prefer IPM & biological control where possible.</li>
+          </ul>
+        </div>
+
+      </aside>
+    </div>
+  </div>
+
+  <!-- ============== MODAL FOR VIDEO ============== -->
+  <div class="modal-backdrop" id="videoModal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-label="Rice farming video">
+      <div class="modal-header">
+        <span>🎥 Rice (Paddy) Farming – Video Guide</span>
+        <button type="button" id="closeModal" aria-label="Close video">&times;</button>
+      </div>
+      <div class="modal-body">
+        <iframe
+          id="videoFrame"
+          src=""
+          title="Rice Farming Video from YouTube"
+          allowfullscreen
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============== FOOTER ============== -->
+  <footer>
+    <a href="field-crops.html">← Back to Field Crops</a>
+    © 2025 FarmMitra 2.0 — Rice (Paddy) Smart Farming Guide
+  </footer>
+
+  <!-- ============== GOOGLE TRANSLATE + LANGUAGE SELECT ============== -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+        autoDisplay: false
+      }, "google_translate_element");
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const select = document.getElementById("languageSelect");
+
+      select.addEventListener("change", function () {
+        const lang = select.value;
+        const googleSelect = document.querySelector(".goog-te-combo");
+        if (googleSelect) {
+          googleSelect.value = lang;
+          googleSelect.dispatchEvent(new Event("change"));
+        }
+      });
+    });
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <!-- ============== VIDEO MODAL + NPK CALCULATOR + FAQ SCRIPT ============== -->
+  <script>
+// Video modal
+const videoThumb = document.getElementById("videoThumb");
+const videoModal = document.getElementById("videoModal");
+const closeModal = document.getElementById("closeModal");
+const videoFrame = document.getElementById("videoFrame");
+
+// Modal video autoplay iframe URL (your video)
+const ytEmbedUrl = "https://www.youtube.com/embed/X3Cg2h2uccM?autoplay=1";
+
+function openVideoModal() {
+  if (!videoModal || !videoFrame) return;
+  videoModal.classList.add("active");
+  videoFrame.src = ytEmbedUrl;   // load video inside modal
+  videoModal.setAttribute("aria-hidden","false");
+}
+
+function hideModal() {
+  if (!videoModal || !videoFrame) return;
+  videoModal.classList.remove("active");
+  videoFrame.src = "";           // stop video on close
+  videoModal.setAttribute("aria-hidden","true");
+}
+
+if (videoThumb) {
+  videoThumb.addEventListener("click", openVideoModal);
+}
+if (closeModal) {
+  closeModal.addEventListener("click", hideModal);
+}
+if (videoModal) {
+  videoModal.addEventListener("click", (e) => {
+    if (e.target === videoModal) hideModal();
+  });
+}
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && videoModal && videoModal.classList.contains("active")) {
+    hideModal();
+  }
+});
+
+// Thumbnail markup injection (optional, if you use JS to set it)
+if (videoThumb) {
+  videoThumb.innerHTML = `
+    <img 
+      src="https://img.youtube.com/vi/X3Cg2h2uccM/hqdefault.jpg"
+      alt="Rice farming YouTube thumbnail"
+      class="video-thumb"
+    />
+    <div class="play-overlay">
+      <div class="play-circle">
+        <ion-icon name="play"></ion-icon>
+      </div>
+    </div>
+    <div class="video-caption">Tap to play</div>
+  `;
+}
+</script>
+<script>
+
+    // ============================
+    // 🌱 Simple NPK calculator
+    // ============================
+    const areaInput   = document.getElementById("areaInput");
+    const unitSelect  = document.getElementById("unitSelect");
+    const npkLevel    = document.getElementById("npkLevel");
+    const calcResult  = document.getElementById("calcResult");
+
+    function updateNpkCalc() {
+      const area = parseFloat(areaInput.value || "0");
+      if (!calcResult) return;
+
+      if (isNaN(area) || area <= 0) {
+        calcResult.textContent = "Enter a valid field area to get fertilizer recommendation.";
+        return;
+      }
+
+      let factor = 1;
+      if (unitSelect.value === "acre") {
+        factor = 0.4047; // 1 acre = 0.4047 ha
+      }
+
+      let N=0, P=0, K=0;
+      if (npkLevel.value === "rainfed") {
+        N = 70; P = 35; K = 25;
+      } else if (npkLevel.value === "irrigated") {
+        N = 110; P = 45; K = 40;
+      } else if (npkLevel.value === "hybrid") {
+        N = 135; P = 55; K = 45;
+      }
+
+      const areaHa = area * factor;
+      const totalN = (N * areaHa).toFixed(1);
+      const totalP = (P * areaHa).toFixed(1);
+      const totalK = (K * areaHa).toFixed(1);
+
+      calcResult.textContent =
+        "Approx. requirement for your field: " +
+        totalN + " kg N, " +
+        totalP + " kg P₂O₅, " +
+        totalK + " kg K₂O.";
+    }
+
+    if (areaInput && unitSelect && npkLevel) {
+      areaInput.addEventListener("input", updateNpkCalc);
+      unitSelect.addEventListener("change", updateNpkCalc);
+      npkLevel.addEventListener("change", updateNpkCalc);
+    }
+
+    // ============================
+    // ❓ FAQ accordion
+    // ============================
+    const faqList = document.getElementById("faqList");
+    if (faqList) {
+      faqList.addEventListener("click", function (e) {
+        const item = e.target.closest(".faq-item");
+        if (!item) return;
+        item.classList.toggle("active");
+      });
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chilli Crop Details | FarmMitra 2.0</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    /* 🌶 Theme Colors (Red + Green for Chilli) */
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(to bottom, #ffecec, #ffd1d1); /* soft red tones */
+      margin: 0;
+      color: #4a2c2c; /* dark brown-red */
+      line-height: 1.8;
+    }
+
+    h1, h2, h3 {
+      color: #d32f2f; /* chilli red */
+      line-height: 1.2;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.4rem;
+      margin: 30px 0;
+      letter-spacing: 0.5px;
+    }
+
+    /* Navbar */
+    header.navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(90deg, #ef5350, #e53935, #b71c1c);
+      padding: 15px 8%;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo h1 {
+      margin: 0;
+      font-size: 1.6rem;
+      color: #fff;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffebee;
+      text-shadow: 0 0 5px rgba(255,255,255,0.6);
+    }
+
+    /* Main content UI */
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px 20px 60px;
+      background-color: #ffffffc9;
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      margin-top: 30px;
+    }
+
+    .crop-images {
+      display: flex;
+      justify-content: center;
+      margin: 25px auto;
+      width: 90%;
+    }
+
+    .crop-wrapper {
+      width: 100%;
+      max-width: 650px;
+      height: 320px;
+      overflow: hidden;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+
+    .crop-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.3s ease;
+    }
+
+    .crop-image:hover {
+      transform: scale(1.05);
+    }
+
+    h2 {
+      margin-top: 30px;
+      border-left: 6px solid #ff6f60;
+      padding-left: 10px;
+      font-size: 1.4rem;
+    }
+
+    ul {
+      margin-left: 25px;
+      list-style-type: "🌶 ";
+    }
+
+    .content img {
+      width: 100%;
+      max-width: 650px;
+      margin: 20px auto;
+      display: block;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    /* Video */
+    .video-container {
+      text-align: center;
+      margin: 40px 0;
+    }
+    .video-container iframe {
+      width: 80%;
+      height: 400px;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    }
+
+    /* Back button */
+    footer {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .back-btn {
+      background: #e53935;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .back-btn:hover {
+      background: #b71c1c;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline"></ion-icon>
+      <h1>Farm<span>Mitra</span> 2.0</h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="spice-crops.html">⬅ Spice Crops</a></li>
+      </ul>
+    </nav>
+
+    <div class="lang-select">
+      <ion-icon name="language-outline"></ion-icon>
+      <div id="google_translate_element"></div>
+    </div>
+  </header>
+
+  <!-- Chilli Information -->
+  <main>
+    <h1>Chilli (Mirchi)</h1>
+
+    <!-- Main Image -->
+    <div class="crop-images">
+      <div class="crop-wrapper">
+        <img src="https://i.pinimg.com/1200x/e4/bb/13/e4bb13ee68a4f5b0ca18d5e26a09d497.jpg"
+             alt="Chilli Crop" class="crop-image" />
+      </div>
+    </div>
+
+    <section class="content">
+      <h2>1️⃣ Basic Crop Information</h2>
+      <p>
+        Chilli (<em>Capsicum annuum</em>) is one of the most widely used spices in India. 
+        It is consumed daily in almost every household.  
+        Ideal temperature: <strong>18–32°C</strong>.  
+        Soil: Well-drained loamy soil with pH 6.0–7.0.  
+        Chilli is grown for green chillies as well as dry red chilli production.
+      </p>
+
+     
+
+      <h2>2️⃣ Variety & Seed Information</h2>
+      <ul>
+        <li>Popular varieties: Teja, Byadgi, Sankeshwari, Pusa Jwala, Guntur Red.</li>
+        <li>Seed rate: 1–1.25 kg/ha.</li>
+        <li>Treat seeds with Thiram/Carbendazim to prevent damping-off.</li>
+        <li>Nursery required for transplanting seedlings.</li>
+      </ul>
+
+      <h2>3️⃣ Soil & Land Preparation</h2>
+      <ul>
+        <li>Deeply plough the land to remove weeds.</li>
+        <li>Add 20–25 tons FYM/ha.</li>
+        <li>Create raised beds or ridges for better drainage.</li>
+      </ul>
+
+      <h2>4️⃣ Planting / Transplanting</h2>
+      <p>
+        Seedlings (35–40 days old) are transplanted into the main field.  
+        Spacing: <strong>45 × 45 cm</strong>.  
+        Avoid waterlogging as chilli roots are sensitive to excess moisture.
+      </p>
+
+   
+
+      <h2>5️⃣ Irrigation Management</h2>
+      <ul>
+        <li>Light irrigation immediately after transplanting.</li>
+        <li>Maintain moisture during flowering & fruiting.</li>
+        <li>Drip irrigation increases yield by 25–30%.</li>
+      </ul>
+          <div class="crop-images">
+      <div class="crop-wrapper">
+        <img src="https://i.pinimg.com/1200x/93/6d/45/936d456d3cf1c99cabc97a2900a5ee70.jpg"
+             alt="Chilli Crop" class="crop-image" />
+      </div>
+    </div>
+
+      <h2>6️⃣ Nutrient Management</h2>
+      <ul>
+        <li>Apply NPK @ 120:60:60 per hectare.</li>
+        <li>Add micronutrients to improve fruit color & shine.</li>
+        <li>Apply organic manure for long-term soil health.</li>
+      </ul>
+
+      <h2>7️⃣ Pest & Disease Management</h2>
+      <ul>
+        <li><strong>Pests:</strong> Thrips, mites, fruit borer.</li>
+        <li><strong>Diseases:</strong> Leaf curl virus, die-back, powdery mildew.</li>
+        <li>Control: Neem oil spraying, virus-free seedlings, proper spacing.</li>
+      </ul>
+
+      <h2>8️⃣ Harvesting</h2>
+      <p>
+        Green chillies are harvested after 60–70 days of transplanting.  
+        For dry chilli, fruits are fully ripened and sun-dried.  
+        Average yield: <strong>80–100 quintals green / 20–25 quintals dry chilli per hectare.</strong>
+      </p>
+
+      <h2>9️⃣ Government Schemes</h2>
+      <ul>
+        <li>Subsidy for drip irrigation under PMKSY.</li>
+        <li>Crop insurance under PMFBY.</li>
+        <li>Support for chilli processing units under MIDH.</li>
+      </ul>
+
+      <!-- Video -->
+     <div class="video-container">
+  <iframe 
+      src="https://www.youtube.com/embed/YbAcJ1SH0QY?si=ZLe1O1Q29twEoPfB"
+      title="YouTube Video Player"
+      allowfullscreen>
+  </iframe>
+</div>
+
+
+    </section>
+  </main>
+
+  <footer>
+    <a href="spice-crops.html" class="back-btn">← Back to Spice Crops</a>
+  </footer>
+
+  <!-- Translator Script -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr"
+      }, "google_translate_element");
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

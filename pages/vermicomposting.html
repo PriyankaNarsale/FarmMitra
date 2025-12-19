@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vermicomposting | FarmMitra 2.0</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; }
+
+    body {
+      background: #f2f7ef; /* light soft green */
+      color: #2f3b2f;
+    }
+
+    /* Navbar */
+    .navbar {
+      width: 100%;
+      padding: 15px 25px;
+      background: #4a7c4a; /* fresh green */
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar .logo h1 { font-size: 24px; }
+
+    .navbar nav ul { list-style: none; display: flex; gap: 20px; }
+    .navbar nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    /* Language Toggle */
+    .lang-select {
+      display: flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,0.3);
+      padding: 5px 8px; border-radius: 8px;
+    }
+    .goog-logo-link, .goog-te-gadget span { display: none !important; }
+
+    .goog-te-combo {
+      background-color: #fff;
+      border: none; border-radius: 6px;
+      padding: 4px 6px; font-size: 14px;
+      color: #4a7c4a;
+    }
+
+    /* Main Image */
+    .crop-images {
+      display: flex;
+      justify-content: center;
+      margin: 25px auto;
+      width: 90%;
+    }
+
+    .crop-wrapper {
+      width: 100%;
+      max-width: 650px;
+      height: 320px;
+      overflow: hidden;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+
+    .crop-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .crop-image:hover { transform: scale(1.05); }
+
+    /* Cards */
+    .container { width: 90%; max-width: 1100px; margin: auto; padding: 20px 0 50px 0; }
+
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 25px;
+      margin: 20px 0;
+      border-radius: 18px;
+      border-left: 6px solid #4a7c4a;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: 0.3s ease;
+    }
+
+    .card:hover { transform: translateY(-4px); }
+
+    .card h2 {
+      color: #316231;
+      margin-bottom: 10px;
+      font-size: 26px;
+    }
+
+    ul { margin-left: 25px; line-height: 1.6; list-style-type: "🪱 "; }
+
+    /* Video */
+    .video-container {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .video-container iframe {
+      width: 80%;
+      height: 400px;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    }
+
+    /* Back Button */
+    .back-btn {
+      display: inline-block; margin: 30px 0;
+      padding: 12px 20px;
+      background: #316231;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 600;
+    }
+    .back-btn:hover { background: #274e27; }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #345b34;
+      color: white;
+      font-weight: 600;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline"></ion-icon>
+      <h1>FarmMitra 2.0</h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="organic-farming.html">⬅ Farming Techniques</a></li>
+      </ul>
+    </nav>
+
+    <div class="lang-select">
+      <ion-icon name="language-outline"></ion-icon>
+      <div id="google_translate_element"></div>
+    </div>
+  </header>
+
+  <!-- Main Image -->
+  <div class="crop-images">
+    <div class="crop-wrapper">
+      <img src="https://i.pinimg.com/1200x/e7/fd/35/e7fd35ee800dee2182d5ff253859335d.jpg"
+           alt="Vermicomposting"
+           class="crop-image" />
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="container">
+
+    <div class="card">
+      <h2>🌿 Introduction</h2>
+      <p>Vermicomposting is a biological process in which earthworms convert organic waste into nutrient-rich compost called vermicompost. It improves soil structure, increases nutrient availability, and enhances microbial activity—making it one of the best organic fertilizers for farmers.</p>
+    </div>
+
+    <div class="card">
+      <h2>🎯 Objectives of Vermicomposting</h2>
+      <ul>
+        <li>Convert farm waste into high-quality organic manure</li>
+        <li>Improve soil fertility and structure</li>
+        <li>Enhance beneficial microbial activity</li>
+        <li>Reduce dependency on chemical fertilizers</li>
+        <li>Promote sustainable and eco-friendly farming</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>🪱 Types of Earthworms Used</h2>
+      <ul>
+        <li><b>Eisenia fetida (Red Wiggler):</b> Most commonly used for vermicomposting</li>
+        <li><b>Eudrilus eugeniae (African Nightcrawler):</b> Fast decomposer</li>
+        <li><b>Perionyx excavatus (Indian Blue):</b> Suitable for tropical climates</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>🔄 Vermicomposting Process</h2>
+      <ul>
+        <li>Select a shaded area away from direct sunlight</li>
+        <li>Prepare a bed using soil, cow dung, and organic waste</li>
+        <li>Maintain moisture at 60–70%</li>
+        <li>Add earthworms into the compost bed</li>
+        <li>Cover the bed with wet gunny bags</li>
+        <li>Turn the mixture every 2–3 weeks</li>
+        <li>Vermicompost is ready in 45–60 days</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>🌱 Benefits of Vermicomposting</h2>
+      <ul>
+        <li>Rich in essential nutrients like N, P, K</li>
+        <li>Improves soil texture and aeration</li>
+        <li>Boosts plant growth and yield</li>
+        <li>Reduces waste and promotes recycling</li>
+        <li>Environment-friendly and cost-effective</li>
+      </ul>
+    </div>
+
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/lCslChzith0?si=ny-og4GF5ho1DZ22"
+              title="Vermicomposting Video" allowfullscreen></iframe>
+    </div>
+
+    <a href="organic-farming.html" class="back-btn">⬅ Back to Techniques</a>
+
+  </div>
+
+  <footer>
+    © 2025 FarmMitra 2.0 — Sustainable Farming Guide
+  </footer>
+
+  <!-- Translator -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+      }, "google_translate_element");
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

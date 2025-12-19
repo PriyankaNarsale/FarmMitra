@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jasmine Crop Details | FarmMitra 2.0</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; }
+
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: #fffdf5; /* Soft jasmine-themed background */
+    }
+
+    /* Navbar */
+    .navbar {
+      width: 100%;
+      padding: 15px 25px;
+      background: #fdd835; /* Jasmine yellow theme */
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .navbar .logo h1 {
+      font-size: 24px;
+      margin: 0;
+      color: #333;
+    }
+
+    .navbar nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .lang-select {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.25);
+      padding: 5px 8px;
+      border-radius: 8px;
+    }
+
+   .lang-select {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.25);
+      padding: 5px 8px;
+      border-radius: 8px;
+    }
+
+    .lang-icon {
+      color: white;
+      font-size: 20px;
+    }
+
+    .goog-logo-link, .goog-te-gadget span { display: none !important; }
+
+    .goog-te-combo {
+      background-color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 4px 6px;
+      font-size: 14px;
+      color: #5c4530;
+      cursor: pointer;
+    }
+
+    .crop-images {
+      display: flex;
+      justify-content: center;
+      margin: 25px auto;
+      width: 90%;
+    }
+
+    .crop-wrapper {
+      width: 100%;
+      max-width: 650px;
+      height: 320px;
+      overflow: hidden;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+
+    .crop-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .crop-image:hover {
+      transform: scale(1.05);
+    }
+
+    h2 {
+      margin-top: 30px;
+      border-left: 6px solid #ffee58; /* Jasmine accent color */
+      padding-left: 10px;
+      font-size: 1.4rem;
+    }
+
+    ul {
+      margin-left: 25px;
+      list-style-type: "🌼 ";
+    }
+
+    .content img {
+      width: 100%;
+      max-width: 650px;
+      display: block;
+      margin: 20px auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    /* Content Area */
+    .content-box {
+      padding: 20px 30px;
+      line-height: 1.6;
+      font-size: 18px;
+    }
+
+    .header h1 {
+      font-size: 48px;
+      font-weight: 700;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Container */
+    .container { width: 90%; max-width: 1100px; margin: auto; padding: 40px 0; }
+
+    /* Section Cards */
+    .card {
+      background: rgba(255, 255, 255, 0.85);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      padding: 25px;
+      margin: 20px 0;
+      border-radius: 18px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+    .card:hover { transform: translateY(-4px); }
+
+    .card h2 {
+      color: #fdd835;
+      margin-bottom: 10px;
+      font-size: 26px;
+    }
+
+    .highlight {
+      background: #fff9c4;
+      padding: 10px 15px;
+      border-radius: 10px;
+      margin: 10px 0;
+      border-left: 5px solid #fdd835;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    table, th, td { border: 1px solid #ddd; }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+    }
+
+    th { background: #fff176; }
+
+    /* Video */
+    .video-container {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .video-container iframe {
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+      width: 80%;
+      height: 400px;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin: 25px 0;
+      padding: 12px 20px;
+      background: #fdd835;
+      color: #333;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 600;
+    }
+
+    .back-btn:hover { background: #fbc02d; }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 30px;
+      background: #fff59d;
+      color: #5a3300;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline" class="logo-icon"></ion-icon>
+      <h1>Farm<span>Mitra</span> <small>2.0</small></h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="flower-farming.html">⬅ Flower Crops</a></li>
+      </ul>
+    </nav>
+
+    <div class="lang-select">
+      <ion-icon name="language-outline" class="lang-icon"></ion-icon>
+      <div id="google_translate_element"></div>
+    </div>
+  </header>
+
+  <div class="crop-images">
+    <div class="crop-wrapper">
+      <img src="https://i.pinimg.com/736x/08/7d/59/087d597e301343753ecd233ec47f2024.jpg"
+           alt="Jasmine Plant" class="crop-image" />
+    </div>
+  </div>
+
+  <div class="container">
+
+    <div class="card">
+      <h2>🌼 Introduction</h2>
+      <p>Jasmine (Jasminum spp.) is a fragrant ornamental plant, widely cultivated for **perfume, garlands, and decorative purposes**. It is highly valued in the floral and essential oil markets.</p>
+      <div class="highlight"><strong>Ideal For:</strong> Perfume industry, garlands, home gardens, export market.</div>
+    </div>
+
+    <div class="card">
+      <h2>🌱 Soil Requirements</h2>
+      <p>Jasmine grows best in:</p>
+      <ul>
+        <li>Well-drained loamy or sandy soil</li>
+        <li>pH 6.0–7.0</li>
+        <li>Soil enriched with organic compost enhances flowering</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>🌤 Climate</h2>
+      <p>Jasmine thrives in:</p>
+      <ul>
+        <li>Tropical to subtropical climates (20–30°C)</li>
+        <li>Full sunlight for at least 6 hours daily</li>
+      </ul>
+      <div class="highlight">Avoid waterlogging; it may cause root rot and reduce flower fragrance.</div>
+    </div>
+
+    <div class="card">
+      <h2>🌾 Sowing & Planting</h2>
+      <p><strong>Planting methods:</strong> Cuttings, layering, or seedlings</p>
+      <ul>
+        <li>Spacing: 50 × 50 cm</li>
+        <li>Best planting season: Spring or monsoon</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>💧 Irrigation</h2>
+      <ul>
+        <li>Water immediately after planting</li>
+        <li>Irrigate every 5–7 days; increase during hot months</li>
+        <li>Use drip irrigation to maintain soil moisture</li>
+      </ul>
+    </div>
+
+    <div class="crop-images">
+      <div class="crop-wrapper">
+        <img src="https://i.pinimg.com/736x/30/15/e5/3015e5546570a2bd7d7cb8bc33d12cf8.jpg"
+             alt="Jasmine Plant" class="crop-image" />
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🌿 Fertilizer Management</h2>
+      <ul>
+        <li>Farmyard manure: 8–10 tons/acre</li>
+        <li>NPK: 50:30:30 kg/acre</li>
+        <li>Apply nitrogen in 2–3 split doses for better flowering</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>🐞 Pest & Disease Management</h2>
+      <table>
+        <tr><th>Pest/Disease</th><th>Symptoms</th><th>Control</th></tr>
+        <tr><td>Aphids</td><td>Yellowing leaves, sticky honeydew</td><td>Neem oil / Imidacloprid spray</td></tr>
+        <tr><td>Whitefly</td><td>Leaf curling, stunted growth</td><td>Insecticidal soap / Neem oil</td></tr>
+        <tr><td>Powdery mildew</td><td>White powder on leaves</td><td>Wettable sulphur</td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>🌻 Harvesting & Yield</h2>
+      <ul>
+        <li>First harvest 90–100 days after planting</li>
+        <li>Pick flowers in early morning for maximum fragrance</li>
+        <li><strong>Average Yield:</strong> 1–2 tons per acre</li>
+      </ul>
+    </div>
+
+    <div class="video-container">
+      <iframe 
+          src="https://www.youtube.com/embed/J4KvtaHNQZE?si=fzxuWvHl_S2PMclt"
+          title="YouTube Video Player"
+          allowfullscreen>
+      </iframe>
+    </div>
+
+    <a href="flower-farming.html" class="back-btn">⬅ Back to Flower Crops</a>
+
+  </div>
+
+  <footer>
+    © 2025 FarmMitra 2.0 — Smart Farming Guide
+  </footer>
+
+   <!-- Translator -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+      }, "google_translate_element");
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

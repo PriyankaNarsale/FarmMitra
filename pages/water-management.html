@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Water Management | FarmMitra 2.0</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    :root {
+      --primary: #0277bd;
+      --primary-dark: #01579b;
+      --light: #e1f5fe;
+      --white: #ffffff;
+      --gray: #666;
+      --card: #ffffff;
+      --gradient: linear-gradient(135deg, #01579b, #039be5);
+    }
+
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: var(--light);
+      color: #222;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 6%;
+      background: var(--gradient);
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    }
+    nav ul {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    nav a {
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo h1 {
+      margin: 0;
+      font-size: 1.6rem;
+      color: white;
+    }
+    .logo span {
+      color: #b3e5fc;
+    }
+
+    .lang-select {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.18);
+      padding: 6px 10px;
+      border-radius: 6px;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 60px 6%;
+      display: grid;
+      grid-template-columns: 1fr 450px;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .hero-left span {
+      background: #b3e5fc;
+      padding: 6px 14px;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+
+    .hero-left h2 {
+      font-size: 2rem;
+      margin-top: 14px;
+      color: var(--primary-dark);
+    }
+
+    .hero-left p {
+      color: var(--gray);
+      line-height: 1.7;
+      margin-top: 12px;
+    }
+
+    .hero-img {
+      width: 100%;
+      height: 350px;
+      border-radius: 18px;
+      object-fit: cover;
+      box-shadow: 0 0 35px rgba(2,119,189,0.35);
+    }
+
+    /* MAIN */
+    .container {
+      max-width: 1350px;
+      margin: 0 auto;
+      padding: 0 6%;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 25px;
+      border-radius: 14px;
+      margin-bottom: 25px;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.1);
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      color: var(--primary-dark);
+      margin-bottom: 16px;
+    }
+
+    /* IRRIGATION CARDS */
+    .irrigation-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px;
+    }
+    .irrigation-card {
+      background: var(--white);
+      padding: 18px;
+      border-radius: 14px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      transition: .3s ease;
+      border-left: 6px solid var(--primary);
+    }
+    .irrigation-card img {
+      width: 100%;
+      height: 140px;
+      border-radius: 10px;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+    .irrigation-card h4 {
+      margin: 8px 0;
+      color: var(--primary-dark);
+    }
+    .irrigation-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 32px rgba(2,119,189,0.25);
+    }
+
+    /* TABLE */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+    th, td {
+      border: 1px solid #cce7f5;
+      padding: 12px;
+      text-align: left;
+    }
+    th {
+      background: #b3e5fc;
+      color: #01579b;
+    }
+
+    /* VIDEO */
+    iframe {
+      width: 100%;
+      height: 380px;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+      border: 0;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width: 1100px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .hero-img {
+        height: 260px;
+      }
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--gradient);
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="water-outline" style="font-size:28px;color:#b3e5fc"></ion-icon>
+      <h1>Farm<span>Mitra</span> 2.0</h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        
+        <li><a href="farm-management.html">Farm Management</a></li>
+    </nav>
+
+    <div class="lang-select">
+      <ion-icon name="language-outline"></ion-icon>
+      <div id="google_translate_element"></div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <span>Water Management</span>
+      <h2>Efficient Irrigation = Better Yield. Learn Smart Water Use & Conservation.</h2>
+
+      <p>
+        Water management ensures optimal use of available water resources through smart irrigation,
+        rainwater harvesting, and moisture conservation practices. Proper water planning increases yield,
+        saves resources, and protects soil structure.
+      </p>
+    </div>
+
+    <img class="hero-img"
+      src="https://i.pinimg.com/736x/23/82/b5/2382b5dd075adf6033448c6f8facafa1.jpg"
+      alt="Water Management">
+  </section>
+
+  <main class="container">
+
+    <!-- OVERVIEW -->
+    <section class="card">
+      <h3 class="section-title">Overview</h3>
+      <p>
+        Water is a critical resource for agriculture. Efficient water management reduces wastage,
+        improves crop health, prevents soil erosion, and reduces input cost. Modern irrigation systems
+        help farmers deliver water directly to the root zone.
+      </p>
+    </section>
+
+    <!-- IRRIGATION METHODS -->
+    <section class="card">
+      <h3 class="section-title">Irrigation Methods</h3>
+
+      <div class="irrigation-grid">
+
+        <div class="irrigation-card">
+          <img src="https://i.pinimg.com/1200x/48/7c/d6/487cd6fa836932197ebb35ab6d815ed3.jpg" alt="Drip Irrigation">
+          <h4>Drip Irrigation</h4>
+          <p>Water reaches directly to roots; reduces wastage by 60–70%.</p>
+        </div>
+
+        <div class="irrigation-card">
+          <img src="https://i.pinimg.com/1200x/d6/72/aa/d672aaa6d4be2fdf4a401f9841ab6d7f.jpg" alt="Sprinkler Irrigation">
+          <h4>Sprinkler Irrigation</h4>
+          <p>Best for vegetables & pulses; uniform water distribution.</p>
+        </div>
+
+        <div class="irrigation-card">
+          <img src="https://i.pinimg.com/1200x/8c/62/7b/8c627baf7b7215d58c20e735882704c8.jpg" alt="Furrow Irrigation">
+          <h4>Furrow Irrigation</h4>
+          <p>Used for crops like sugarcane, cotton & maize.</p>
+        </div>
+
+        <div class="irrigation-card">
+          <img src="https://i.pinimg.com/1200x/30/a6/47/30a647babaa06dde6d064458301df75a.jpg" alt="Flood Irrigation">
+          <h4>Flood Irrigation</h4>
+          <p>Traditional method but leads to water loss & erosion.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- WATER REQUIREMENT TABLE -->
+    <section class="card">
+      <h3 class="section-title">Crop Water Requirement</h3>
+
+      <table>
+        <tr>
+          <th>Crop</th>
+          <th>Water Requirement</th>
+          <th>Season</th>
+        </tr>
+        <tr>
+          <td>Rice</td>
+          <td>1200–1500 mm</td>
+          <td>Kharif</td>
+        </tr>
+        <tr>
+          <td>Wheat</td>
+          <td>450–650 mm</td>
+          <td>Rabi</td>
+        </tr>
+        <tr>
+          <td>Sugarcane</td>
+          <td>1500–2500 mm</td>
+          <td>Annual</td>
+        </tr>
+        <tr>
+          <td>Vegetables</td>
+          <td>350–600 mm</td>
+          <td>Any season</td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- WATER CONSERVATION -->
+    <section class="card">
+      <h3 class="section-title">Water Conservation Techniques</h3>
+      <ul style="color:var(--gray); line-height:1.7;">
+        <li>Use mulching to reduce evaporation</li>
+        <li>Adopt drip & sprinkler systems</li>
+        <li>Construct farm ponds & check dams</li>
+        <li>Use rainwater harvesting structures</li>
+        <li>Promote soil moisture conservation practices</li>
+      </ul>
+    </section>
+
+    <!-- VIDEO -->
+    <section class="card">
+      <h3 class="section-title">Video Guide</h3>
+      <iframe src="https://www.youtube.com/embed/ICX6g4RuEfk?si=8EZv7SR_iQfFwTnQ" allowfullscreen></iframe>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2025 FarmMitra 2.0 — Water Management Guide
+  </footer>
+
+  <!-- GOOGLE TRANSLATE -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+      }, "google_translate_element");
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

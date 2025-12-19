@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crop Rotation | FarmMitra 2.0</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    :root {
+      --primary: #ef6c00;
+      --primary-dark: #e65100;
+      --green: #2e7d32;
+      --light: #fff3e0;
+      --white: #ffffff;
+      --gray: #666;
+      --card: #ffffff;
+      --gradient: linear-gradient(135deg, #e65100, #ff9800);
+    }
+
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: var(--light);
+      color: #222;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 6%;
+      background: var(--gradient);
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    }
+    nav ul {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    nav a {
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo h1 {
+      margin: 0;
+      font-size: 1.6rem;
+      color: white;
+    }
+    .logo span {
+      color: #ffe0b2;
+    }
+
+    .lang-select {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.18);
+      padding: 6px 10px;
+      border-radius: 6px;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 60px 6%;
+      display: grid;
+      grid-template-columns: 1fr 450px;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .hero-left span {
+      background: #ffe0b2;
+      padding: 6px 14px;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+
+    .hero-left h2 {
+      font-size: 2rem;
+      margin-top: 14px;
+      color: var(--primary-dark);
+    }
+
+    .hero-left p {
+      color: var(--gray);
+      line-height: 1.7;
+      margin-top: 12px;
+    }
+
+    .hero-img {
+      width: 100%;
+      height: 350px;
+      border-radius: 18px;
+      object-fit: cover;
+      box-shadow: 0 0 35px rgba(239,108,0,0.35);
+    }
+
+    /* MAIN */
+    .container {
+      max-width: 1350px;
+      margin: 0 auto;
+      padding: 0 6%;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 25px;
+      border-radius: 14px;
+      margin-bottom: 25px;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.1);
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      color: var(--primary-dark);
+      margin-bottom: 16px;
+    }
+
+    /* CROP ROTATION GRID */
+    .rotation-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px;
+    }
+    .rotation-card {
+      background: var(--white);
+      padding: 18px;
+      border-radius: 14px;
+      border-left: 6px solid var(--primary);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      transition: .3s ease;
+    }
+    .rotation-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 32px rgba(239,108,0,0.25);
+    }
+    .rotation-card img {
+      width: 100%;
+      height: 140px;
+      border-radius: 10px;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+    .rotation-card h4 {
+      margin: 8px 0;
+      color: var(--primary-dark);
+    }
+    .rotation-card p {
+      color: var(--gray);
+      font-size: 0.95rem;
+    }
+
+    /* TABLE */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+    th, td {
+      border: 1px solid #ffe0b2;
+      padding: 12px;
+      text-align: left;
+    }
+    th {
+      background: #ffe0b2;
+      color: #e65100;
+    }
+
+    /* VIDEO */
+    iframe {
+      width: 100%;
+      height: 380px;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+      border: 0;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width: 1100px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .hero-img {
+        height: 260px;
+      }
+    }
+
+    footer {
+      background: var(--gradient);
+      padding: 20px;
+      color: white;
+      text-align: center;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="repeat-outline" style="font-size:28px;color:#ffe0b2"></ion-icon>
+      <h1>Farm<span>Mitra</span> 2.0</h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        
+        <li><a href="farm-management.html">Farm Management</a></li>
+      </ul>
+    </nav>
+
+    <div class="lang-select">
+      <ion-icon name="language-outline"></ion-icon>
+      <div id="google_translate_element"></div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <span>Crop Rotation</span>
+      <h2>Increase Soil Fertility & Reduce Pests with Smart Crop Rotation Cycles.</h2>
+
+      <p>
+        Crop rotation is the practice of growing different crops in the same field across seasons to
+        improve soil health, control pests, and increase productivity. It ensures balanced nutrient use 
+        and long-term sustainability.
+      </p>
+    </div>
+
+    <img class="hero-img"
+      src="https://i.pinimg.com/1200x/f0/3c/95/f03c959d9c6c527d19eda4d6c58924b7.jpg"
+      alt="Crop Rotation Image">
+  </section>
+
+  <main class="container">
+
+    <!-- OVERVIEW -->
+    <section class="card">
+      <h3 class="section-title">Overview</h3>
+      <p>
+        Crop rotation boosts soil fertility, breaks pest cycles, reduces disease infestation, and supports 
+        better nutrient management. It also improves soil structure and increases water retention.
+      </p>
+    </section>
+
+    <!-- COMMON ROTATION SYSTEMS -->
+    <section class="card">
+      <h3 class="section-title">Common Crop Rotation Systems</h3>
+      <div class="rotation-grid">
+
+        <div class="rotation-card">
+          <img src="https://i.pinimg.com/736x/20/64/23/206423e62f52ec47be18bd47a7f6889d.jpg" alt="Cereal-Legume Rotation">
+          <h4>Cereal → Legume Rotation</h4>
+          <p>Wheat/Maize → Gram/Soybean helps fix nitrogen & improve soil.</p>
+        </div>
+
+        <div class="rotation-card">
+          <img src="https://i.pinimg.com/736x/d2/98/26/d29826ceb937210a2370bfedc5062bcf.jpg" alt="Rice Rotation">
+          <h4>Rice → Pulse Rotation</h4>
+          <p>Ideal for Kharif to Rabi transition; restores nutrients lost in rice.</p>
+        </div>
+
+        <div class="rotation-card">
+          <img src="https://i.pinimg.com/736x/95/60/d8/9560d82110a7b6849e2254a4779c12e0.jpg" alt="Vegetable Rotation">
+          <h4>Vegetable Rotation</h4>
+          <p>Leafy → Fruit → Root vegetables reduce pest buildup.</p>
+        </div>
+
+        <div class="rotation-card">
+          <img src="https://i.pinimg.com/736x/73/8e/0d/738e0d37055ac4b5005bef399b01591c.jpg" alt="Oilseed Rotation">
+          <h4>Cotton → Groundnut Rotation</h4>
+          <p>Improves nitrogen balance & prevents soil sickness.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- BENEFITS -->
+    <section class="card">
+      <h3 class="section-title">Benefits of Crop Rotation</h3>
+      <ul style="color:var(--gray); line-height:1.7;">
+        <li>Improves soil fertility & structure</li>
+        <li>Controls pests & diseases naturally</li>
+        <li>Enhances soil nitrogen through legumes</li>
+        <li>Reduces soil erosion & nutrient depletion</li>
+        <li>Improves water infiltration & retention</li>
+      </ul>
+    </section>
+
+    <!-- SAMPLE ROTATION TABLE -->
+    <section class="card">
+      <h3 class="section-title">Sample Rotation Plan (1-Year Cycle)</h3>
+      <table>
+        <tr>
+          <th>Season</th>
+          <th>Recommended Crop</th>
+          <th>Purpose</th>
+        </tr>
+        <tr>
+          <td>Kharif</td>
+          <td>Rice / Maize / Cotton</td>
+          <td>Primary nutrient-demanding crops</td>
+        </tr>
+        <tr>
+          <td>Rabi</td>
+          <td>Wheat / Pulses (Gram, Lentil)</td>
+          <td>Restores nitrogen, improves soil structure</td>
+        </tr>
+        <tr>
+          <td>Summer</td>
+          <td>Vegetables / Green Manure</td>
+          <td>Improves organic matter & prevents disease</td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- VIDEO -->
+    <section class="card">
+      <h3 class="section-title">Video Guide</h3>
+      <iframe src="https://www.youtube.com/embed/weovm6S_B_4?si=_loYsXTEmQoxadA-" allowfullscreen></iframe>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2025 FarmMitra 2.0 — Crop Rotation Guide
+  </footer>
+
+  <!-- GOOGLE TRANSLATE -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+      }, "google_translate_element");
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>
+s

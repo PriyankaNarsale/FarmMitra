@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cloves Crop Details | FarmMitra 2.0</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    /* 🌿 Body & Theme */
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(to bottom, #faf4ef, #e9d9cc); /* Cream to light clove brown */
+      margin: 0;
+      color: #3e2723; /* Dark coffee-brown text */
+      line-height: 1.8;
+    }
+
+    h1, h2, h3 {
+      color: #5d2c18; /* Rich clove brown */
+      line-height: 1.2;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.4rem;
+      margin: 30px 0;
+      letter-spacing: 0.5px;
+    }
+
+    /* 🌱 Navbar */
+    header.navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(90deg, #4e342e, #3e2723);
+      padding: 15px 8%;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo h1 {
+      margin: 0;
+      font-size: 1.6rem;
+      color: #fff;
+    }
+
+    .logo span {
+      color: #efbe9a; /* Soft clove beige */
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #f8e3c9;
+    }
+
+    .lang-select {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.25);
+      padding: 5px 8px;
+      border-radius: 8px;
+    }
+
+    .lang-icon {
+      color: white;
+      font-size: 20px;
+    }
+
+    .goog-logo-link, .goog-te-gadget span { display: none !important; }
+
+    .goog-te-combo {
+      background-color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 4px 6px;
+      font-size: 14px;
+      color: #3e2723;
+      cursor: pointer;
+    }
+
+    /* 📄 Main Content */
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px 20px 60px;
+      background-color: #ffffffd2;
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      margin-top: 30px;
+    }
+
+    .crop-images {
+      display: flex;
+      justify-content: center;
+      margin: 25px auto;
+      width: 90%;
+    }
+
+    .crop-wrapper {
+      width: 100%;
+      max-width: 650px;
+      height: 320px;
+      overflow: hidden;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    .crop-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .crop-image:hover {
+      transform: scale(1.05);
+    }
+
+    h2 {
+      margin-top: 30px;
+      border-left: 6px solid #8d4f2a; /* Strong clove brown */
+      padding-left: 10px;
+      font-size: 1.4rem;
+    }
+
+    ul {
+      margin-left: 25px;
+      list-style-type: "🌿 ";
+    }
+
+    .content img {
+      width: 100%;
+      max-width: 650px;
+      display: block;
+      margin: 20px auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .video-container {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .video-container iframe {
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+      width: 80%;
+      height: 400px;
+    }
+
+    footer {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .back-btn {
+      background: #5d2c18;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .back-btn:hover {
+      background: #3e1c10;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 🌱 Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline" class="logo-icon"></ion-icon>
+      <h1>Farm<span>Mitra</span> <small>2.0</small></h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="spice-crops.html">⬅ Spice Crops</a></li>
+      </ul>
+    </nav>
+
+    <div class="lang-select">
+      <ion-icon name="language-outline" class="lang-icon"></ion-icon>
+      <div id="google_translate_element"></div>
+    </div>
+  </header>
+
+  <!-- 🌱 Cloves Section -->
+  <main>
+    <h1>Cloves (Laung)</h1>
+
+    <!-- Main Image -->
+    <div class="crop-images">
+      <div class="crop-wrapper">
+        <img src="https://i.pinimg.com/1200x/bb/1c/0b/bb1c0b4217eab67900fe59ec4542d18a.jpg"
+             alt="Cloves Plant" class="crop-image" />
+      </div>
+    </div>
+
+    <section class="content">
+      <h2>1️⃣ Basic Crop Information</h2>
+      <p>Cloves (<em>Syzygium aromaticum</em>) are dried flower buds of an evergreen tree native to Indonesia. They are widely used in Indian cooking for their strong aroma and medicinal value. Clove trees grow well in **humid tropical climate**, with optimal temperature **20–30°C** and well-distributed rainfall of **1500–2500 mm**.</p>
+
+      <h2>2️⃣ Propagation Material</h2>
+      <ul>
+        <li>Propagated using **fresh seeds**.</li>
+        <li>Seeds must be sown immediately as they lose viability fast.</li>
+        <li>Nursery seedlings are transplanted after 1–2 years.</li>
+      </ul>
+
+      <h2>3️⃣ Soil & Land Preparation</h2>
+      <ul>
+        <li>Best soils: deep loamy and well-drained.</li>
+        <li>Avoid waterlogging.</li>
+        <li>Add 20–25 tonnes FYM per hectare for good growth.</li>
+      </ul>
+
+      <h2>4️⃣ Planting Information</h2>
+      <p>Planting is done during monsoon at spacing **6 × 6 meters**. Provide shade for young plants.</p>
+
+    <!-- Second Image -->
+    <div class="crop-images">
+      <div class="crop-wrapper">
+        <img src="https://i.pinimg.com/1200x/1d/55/d8/1d55d831ba86c821ab8b7a8dfa7b675c.jpg"
+             alt="Cloves Harvest" class="crop-image" />
+      </div>
+    </div>
+
+      <h2>5️⃣ Irrigation Management</h2>
+      <ul>
+        <li>Essential during dry periods.</li>
+        <li>Maintain light moisture.</li>
+        <li>Avoid stagnation of water.</li>
+      </ul>
+
+      <h2>6️⃣ Nutrient Management</h2>
+      <ul>
+        <li>Apply 100:40:140 NPK per plant annually in split doses.</li>
+        <li>Use compost, neem cake for better soil health.</li>
+        <li>Micronutrients like Boron improve flower and bud quality.</li>
+      </ul>
+
+      <h2>7️⃣ Pest & Diseases</h2>
+      <ul>
+        <li><strong>Pests:</strong> Stem borer, leaf-eating caterpillars.</li>
+        <li><strong>Diseases:</strong> Leaf spot, dieback.</li>
+        <li>Use neem oil, Trichoderma, and proper pruning for control.</li>
+      </ul>
+
+      <h2>8️⃣ Harvesting</h2>
+      <p>Flower buds are harvested when they turn pink just before blooming. They are sun-dried for 4–6 days until turning dark brown.</p>
+
+      <h2>9️⃣ Yield & Marketing</h2>
+      <p>One mature tree yields **3–10 kg dry cloves annually**. High demand in spice markets and pharmaceutical industries.</p>
+
+      <h2>🔟 Government Schemes</h2>
+      <ul>
+        <li>Spices Board support for clove cultivation.</li>
+        <li>Subsidies for irrigation under PMKSY.</li>
+        <li>Aid for organic spice farming.</li>
+      </ul>
+
+      <!-- 🎥 Video -->
+      <div class="video-container">
+  <iframe 
+      src="https://www.youtube.com/embed/tk_v91maj9Q?si=do1ZC_XISlNkZFQg"
+      title="YouTube Video Player"
+      allowfullscreen>
+  </iframe>
+</div>
+
+
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <a href="spice-crops.html" class="back-btn">← Back to Spice Crops</a>
+  </footer>
+
+  <!-- Translator -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+      }, "google_translate_element");
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

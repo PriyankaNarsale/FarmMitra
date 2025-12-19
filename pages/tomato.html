@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tomato Crop Details | FarmMitra 2.0</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    /* 🌿 Theme */
+    body {
+      font-family: "Poppins", sans-serif;
+       background: linear-gradient(to bottom, #f3fff3, #e8f5e9);
+      margin: 0;
+      color: #1b4332;
+      line-height: 1.8;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(15px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    h1, h2, h3 {
+     color: #2e7d32;
+      line-height: 1;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.2rem;
+      margin: 30px 0;
+      letter-spacing: 0.5px;
+      animation: fadeIn 1.3s ease;
+    }
+
+    /* 🌱 Navbar */
+    header.navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+       background: linear-gradient(90deg, #2e7d32, #4caf50, #81c784);
+      padding: 15px 8%;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+  .logo h1 {
+      margin: 0;
+      font-size: 1.6rem;
+      color: #fff;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    }
+
+    .logo span {
+      color: #d4ff60;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+       color: #f1f8e9;
+      text-shadow: 0 0 5px rgba(255,255,255,0.6);
+    }
+
+    .lang-select {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.25);
+      padding: 5px 8px;
+      border-radius: 8px;
+    }
+
+    .lang-icon {
+      color: white;
+      font-size: 20px;
+    }
+
+    /* 📄 Main */
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px 20px 60px;
+      background-color: #ffffffc7;
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      margin-top: 30px;
+      animation: fadeIn 1.5s ease;
+    }
+
+    /* 🖼️ Crop Image */
+    .crop-images {
+      display: flex;
+      justify-content: center;
+      margin: 25px auto;
+      width: 90%;
+    }
+
+    .crop-wrapper {
+      width: 100%;
+      max-width: 650px;
+      height: 320px;
+      overflow: hidden;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      transition: transform 0.4s ease;
+    }
+
+    .crop-wrapper:hover {
+      transform: scale(1.03);
+    }
+
+    .crop-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.3s ease;
+    }
+
+    .crop-image:hover {
+      transform: scale(1.05);
+    }
+
+    h2 {
+      position: relative;
+      margin-top: 30px;
+      border-left: 5px solid #ef5350;
+      padding-left: 10px;
+      font-size: 1.3rem;
+    }
+
+    h2::after {
+      content: "";
+      display: block;
+      height: 2px;
+      width: 60px;
+      background: #81c784;
+      margin-top: 8px;
+      border-radius: 3px;
+    }
+
+    ul {
+      margin-left: 25px;
+      list-style-type: "🍅 ";
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    .content {
+      text-align: justify;
+      font-size: 1.05rem;
+      padding: 0 10px;
+    }
+
+    /* 🎥 Video */
+    .video-container {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .video-container iframe {
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+      width: 80%;
+      height: 400px;
+    }
+
+    footer {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .back-btn {
+       background: #2e7d32;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .back-btn:hover {
+      background: #1b5e20;
+    }
+
+    @media (max-width: 768px) {
+      .crop-wrapper {
+        height: 260px;
+      }
+
+      .video-container iframe {
+        height: 220px;
+      }
+
+      nav ul {
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 🌾 Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline"></ion-icon>
+      <h1>Farm<span>Mitra</span> <small>2.0</small></h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="vegetable-crops.html">⬅ Vegetable Crops</a></li>
+      </ul>
+    </nav>
+
+    <div class="lang-select">
+      <ion-icon name="language-outline" class="lang-icon"></ion-icon>
+      <div id="google_translate_element"></div>
+    </div>
+  </header>
+
+  <!-- 🍅 Tomato Section -->
+  <main>
+    <h1>Tomato (टोमॅटो)</h1>
+
+    <div class="crop-images">
+      <div class="crop-wrapper">
+        <img src="https://i.pinimg.com/736x/df/58/c4/df58c4142e111d5ca439206447c5b0d4.jpg"
+             alt="Tomato Crop Field" class="crop-image" />
+      </div>
+    </div>
+
+    <section class="content">
+
+      <h2>1️⃣ Basic Crop Information</h2>
+      <p>
+        Tomato (Solanum lycopersicum) is a major vegetable crop grown for fresh consumption and processing 
+        (ketchup, puree, sauce).  
+        It thrives in **warm climates**, grows well between **20–30°C**, and is sensitive to frost.
+      </p>
+
+      <h2>2️⃣ Climate & Soil Requirements</h2>
+      <ul>
+        <li>Climate: Warm & dry</li>
+        <li>Temperature: 20–30°C</li>
+        <li>Soil type: Well-drained loamy soil</li>
+        <li>pH: 6.0–7.0</li>
+        <li>High organic matter improves quality</li>
+      </ul>
+
+      <h2>3️⃣ Seed & Nursery Details</h2>
+      <ul>
+        <li>Seed rate: 60–80 g per acre</li>
+        <li>Nursery raising required</li>
+        <li>Seedlings ready in 25–30 days</li>
+        <li>Varieties: Pusa Ruby, Pusa Rohini, Arka Vikas, Hybrid 322</li>
+      </ul>
+
+      <h2>4️⃣ Land Preparation</h2>
+      <ul>
+        <li>3–4 ploughings</li>
+        <li>Apply 8–10 tons FYM/acre</li>
+        <li>Prepare ridges & furrows</li>
+      </ul>
+
+      <h2>5️⃣ Planting & Spacing</h2>
+      <ul>
+        <li>Transplant seedlings at 25–30 days</li>
+        <li>Spacing: 60×45 cm or 75×60 cm</li>
+        <li>Plant in evening</li>
+      </ul>
+
+      <div class="crop-images">
+        <div class="crop-wrapper">
+          <img src="https://i.pinimg.com/736x/0c/68/07/0c68074d36d161a5ddf8ee88c3137c45.jpg"
+               alt="Tomato Plants" class="crop-image" />
+        </div>
+      </div>
+
+      <h2>6️⃣ Irrigation Needs</h2>
+      <ul>
+        <li>First irrigation after transplanting</li>
+        <li>Then every 5–6 days</li>
+        <li>Critical stage: Flowering & fruiting</li>
+        <li>Avoid waterlogging</li>
+      </ul>
+
+      <h2>7️⃣ Fertilizer Schedule</h2>
+      <ul>
+        <li>Basal: 40:20:20 NPK kg/acre</li>
+        <li>Top dressing: Urea @ 25 & 45 days</li>
+        <li>Micronutrients: Calcium & Boron</li>
+        <li>Organic: 1 ton Vermicompost/acre</li>
+      </ul>
+
+      <h2>8️⃣ Pest & Disease Solutions</h2>
+      <ul>
+        <li><strong>Pests:</strong> Fruit borer, aphids, whitefly, leaf miner</li>
+        <li><strong>Solution:</strong> Neem oil + recommended pesticides</li>
+        <li><strong>Diseases:</strong> Early blight, late blight, wilt, leaf curl virus</li>
+        <li><strong>Control:</strong> Fungicide sprays + resistant hybrids</li>
+      </ul>
+
+      <h2>9️⃣ Harvesting & Yield</h2>
+      <p>
+        Harvesting starts in **90–115 days**.  
+        Fruits should be picked at the red or pink stage.  
+        Average yield: **80–150 quintals per acre**.
+      </p>
+
+      <h2>🔟 Storage & Market</h2>
+      <p>
+        Store tomatoes at **12–15°C** for best shelf life.  
+        High market demand during rainy seasons.  
+        Good for fresh market & processing industries.
+      </p>
+
+      <h2>1️⃣1️⃣ Government Schemes & Support</h2>
+      <ul>
+        <li>PMKSY: Micro-irrigation subsidy</li>
+        <li>PMFBY: Crop insurance</li>
+        <li>Soil Health Card Scheme</li>
+        <li>ATMA Farmer Training</li>
+      </ul>
+
+      <!-- 🎥 Video -->
+      <div class="video-container">
+  <iframe 
+    src="https://www.youtube.com/embed/R3thA0DIhu4?si=-NZcZuno_-tkcZDZ" 
+    title="Tomato Farming Guide" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    allowfullscreen>
+  </iframe>
+  <p><em>Video: Tomato Farming Guide</em></p>
+</div>
+
+
+    </section>
+  </main>
+
+  <!-- 🔙 Footer -->
+  <footer>
+    <a href="vegetable-crops.html" class="back-btn">← Back to Vegetable Crops</a>
+  </footer>
+
+  <!-- 🌐 Translator -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+      }, "google_translate_element");
+    }
+  </script>
+
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ginger Crop Details | FarmMitra 2.0</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    /* 🌿 Body & Theme */
+    body {
+      font-family: "Poppins", sans-serif;
+  background: linear-gradient(to bottom, #fff8f0, #ffe6cc); /* Soft tan & light orange */
+  margin: 0;
+  color: #5d4037; /* Dark brown text for readability */
+  line-height: 1.8;
+    }
+
+    h1, h2, h3 {
+       color: #d84315; /* Deep ginger-orange */
+  line-height: 1.2;
+    }
+
+    h1 {
+        text-align: center;
+  font-size: 2.4rem;
+  margin: 30px 0;
+  letter-spacing: 0.5px;
+    }
+
+    /* 🌱 Navbar */
+    header.navbar {
+       display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, #ffcc80, #ffb74d, #ff8f00); /* Light to deep ginger-orange gradient */
+  padding: 15px 8%;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo h1 {
+      margin: 0;
+      font-size: 1.6rem;
+      color: #fff;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    }
+
+    .logo span {
+      color: #ffd54f;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #fff3e0; /* Pale cream for hover effect */
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
+    }
+
+    .lang-select {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.25);
+      padding: 5px 8px;
+      border-radius: 8px;
+    }
+
+    .lang-icon {
+      color: white;
+      font-size: 20px;
+    }
+
+    .goog-logo-link, .goog-te-gadget span { display: none !important; }
+
+    .goog-te-combo {
+      background-color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 4px 6px;
+      font-size: 14px;
+      color: #4e342e;
+      cursor: pointer;
+      outline: none;
+    }
+
+    /* 📄 Main Content */
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px 20px 60px;
+      background-color: #ffffffc2;
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      margin-top: 30px;
+    }
+
+    .crop-images {
+      display: flex;
+      justify-content: center;
+      margin: 25px auto;
+      width: 90%;
+    }
+
+    .crop-wrapper {
+      width: 100%;
+      max-width: 650px;
+      height: 320px;
+      overflow: hidden;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    .crop-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.3s ease;
+    }
+
+    .crop-image:hover {
+      transform: scale(1.05);
+    }
+
+    h2 {
+       margin-top: 30px;
+  border-left: 6px solid #ffb74d; /* Medium ginger accent */
+  padding-left: 10px;
+  font-size: 1.4rem;
+    }
+
+    ul {
+      margin-left: 25px;
+      list-style-type: "🌿 ";
+    }
+
+    li { margin-bottom: 6px; }
+
+    .content img {
+      width: 100%;
+      max-width: 650px;
+      display: block;
+      margin: 20px auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .video-container {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .video-container iframe {
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+      width: 80%;
+      height: 400px;
+    }
+
+    footer {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .back-btn {
+    background: #ff8f00; /* Ginger-orange button */
+  color: white;
+  padding: 12px 24px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s;
+    }
+
+    .back-btn:hover {
+      background: #d84315; /* Darker ginger on hover */
+    }
+
+    @media (max-width: 768px) {
+      .crop-wrapper { height: 260px; }
+      .video-container iframe { height: 220px; }
+      nav ul { gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- 🌱 Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline" class="logo-icon"></ion-icon>
+      <h1>Farm<span>Mitra</span> <small>2.0</small></h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="spice-crops.html">⬅ Spice Crops</a></li>
+      </ul>
+    </nav>
+
+    <div class="lang-select">
+      <ion-icon name="language-outline" class="lang-icon"></ion-icon>
+      <div id="google_translate_element"></div>
+    </div>
+  </header>
+
+  <!-- 🌱 Ginger Section -->
+  <main>
+    <h1>Ginger (Adrak)</h1>
+
+    <!-- Main Image -->
+    <div class="crop-images">
+      <div class="crop-wrapper">
+        <img src="https://i.pinimg.com/1200x/7d/54/1d/7d541d36f2da5f1f82515b9ce43f49bf.jpg" 
+             alt="Ginger Crop" class="crop-image" />
+      </div>
+    </div>
+
+    <section class="content">
+      <h2>1️⃣ Basic Crop Information</h2>
+      <p>Ginger (<em>Zingiber officinale</em>) is a perennial rhizomatous herb grown for its aromatic rhizomes used in cooking, medicine, and spice industries. It grows best in warm, humid conditions with temperature <strong>20–30°C</strong> and annual rainfall <strong>1500–3000 mm</strong>. Ideal soil: well-drained loamy or sandy loam, rich in organic matter, pH 5.5–6.5.</p>
+
+      
+      <h2>2️⃣ Seed / Rhizome Information</h2>
+      <ul>
+        <li>Use healthy rhizomes (3–5 cm thick, 5–7 cm long) for planting.</li>
+        <li>Seed rate: 15–20 q/ha of rhizomes.</li>
+        <li>Treat rhizomes with fungicide (Bavistin 0.1%) to prevent fungal infections.</li>
+        <li>Certified disease-free rhizomes ensure better yield and quality.</li>
+      </ul>
+
+      <h2>3️⃣ Soil & Land Preparation</h2>
+      <ul>
+        <li>Deep plough land 2–3 times to loosen soil.</li>
+        <li>Apply 20–25 t/ha well-decomposed farmyard manure.</li>
+        <li>Form ridges and furrows 30–45 cm apart for planting.</li>
+      </ul>
+
+      <h2>4️⃣ Planting / Sowing Information</h2>
+      <p>Plant rhizomes at the beginning of the monsoon (June–July). Depth: 5–7 cm. Spacing: 30 × 15 cm (row × plant distance). Proper spacing ensures aeration and strong rhizome growth.</p>
+
+       <div class="crop-images">
+      <div class="crop-wrapper">
+        <img src="https://i.pinimg.com/736x/75/92/a8/7592a8009cd9f10f211497672fb896f9.jpg" 
+             alt="Ginger Crop" class="crop-image" />
+      </div>
+    </div>
+
+      <h2>5️⃣ Irrigation Management</h2>
+      <ul>
+        <li>Light irrigation after planting.</li>
+        <li>Maintain soil moisture without waterlogging.</li>
+        <li>Frequent irrigation during dry periods enhances rhizome development.</li>
+      </ul>
+
+      <h2>6️⃣ Nutrient Management</h2>
+      <ul>
+        <li>Apply 100:60:60 N:P:K kg/ha in split doses.</li>
+        <li>Supplement with FYM or compost for soil health and yield improvement.</li>
+        <li>Micronutrients such as Zn and Fe improve rhizome quality.</li>
+      </ul>
+
+      <h2>7️⃣ Pest & Disease Management</h2>
+      <ul>
+        <li><strong>Pests:</strong> Shoot borer, rhizome fly, nematodes.</li>
+        <li><strong>Diseases:</strong> Leaf spot, rhizome rot, bacterial wilt.</li>
+        <li>Control: Crop rotation, disease-free rhizomes, proper drainage, and biocontrol agents.</li>
+      </ul>
+
+      <h2>8️⃣ Harvesting Information</h2>
+      <p>Harvest 8–10 months after planting when leaves turn yellow and start drying. Carefully dig out rhizomes, clean, and sun-dry before storage or sale.</p>
+
+      <h2>9️⃣ Yield & Marketing</h2>
+      <p>Average yield: 15–20 t/ha fresh rhizomes. Market prices vary; rhizomes are sold locally or to processing industries.</p>
+
+      <h2>🔟 Government Schemes & Support</h2>
+      <ul>
+        <li>PMKSY drip irrigation subsidies.</li>
+        <li>Crop insurance under PMFBY.</li>
+        <li>Assistance for certified seeds and organic ginger cultivation.</li>
+      </ul>
+
+      <!-- 🎥 Video -->
+      <div class="video-container">
+  <iframe 
+      src="https://www.youtube.com/embed/1wf34X8L4P4?si=cBKA-r-yO7xRkWvy"
+      title="YouTube Video Player"
+      allowfullscreen>
+  </iframe>
+</div>
+
+    </section>
+  </main>
+
+  <!-- 🔙 Footer -->
+  <footer>
+    <a href="spice-crops.html" class="back-btn">← Back to Spice Crops</a>
+  </footer>
+
+  <!-- 🌐 Translator -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+      }, "google_translate_element");
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>

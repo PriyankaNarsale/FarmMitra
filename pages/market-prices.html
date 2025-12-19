@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Market Prices</title>
+ <link rel="stylesheet" href="../css/style.css" />
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f1f8e9;
+        margin: 0;
+        padding: 0;
+    }
+
+    header {
+        background: #2e7d32;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    /* Tabs */
+    .tabs {
+        display: flex;
+        justify-content: center;
+        background: #c5e1a5;
+        padding: 10px;
+    }
+
+    .tab {
+        padding: 10px 20px;
+        margin: 0 10px;
+        background: #9ccc65;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    .tab.active {
+        background: #558b2f;
+        color: white;
+    }
+
+    .market-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .market-card {
+        background: white;
+        width: 250px;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        text-align: center;
+    }
+
+    .market-card h3 {
+        color: #33691e;
+    }
+
+    .price {
+        font-size: 22px;
+        color: #1b5e20;
+        margin-top: 10px;
+        font-weight: bold;
+    }
+
+    .update {
+        font-size: 12px;
+        color: gray;
+        margin-top: 5px;
+    }
+
+    #google_translate_element {
+    display: none;
+}
+
+</style>
+<!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+ <!-- 🌱 Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline" class="logo-icon"></ion-icon>
+      <h1>Farm<span>Mitra</span> <small>2.0</small></h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        
+        
+      </ul>
+    </nav>
+     <!-- 🌐 Stylish Language Selector -->
+    <div class="translate-box">
+      <ion-icon name="language-outline"></ion-icon>
+      <select id="languageSelect" aria-label="Select Language">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+        <option value="mr">मराठी</option>
+      </select>
+    </div>
+  </header>
+
+
+
+<header>🌾 Live Market Prices – Vegetables | Pulses | Millets | Fruits </header>
+
+ <!-- Hidden Google Translate Element -->
+  <div id="google_translate_element"></div>
+
+<!-- Tabs -->
+<div class="tabs">
+    <div class="tab active" onclick="switchCategory('vegetables')">Vegetables</div>
+    <div class="tab" onclick="switchCategory('pulses')">Pulses</div>
+    <div class="tab" onclick="switchCategory('millets')">Millets</div>
+    <div class="tab" onclick="switchCategory('Fruits')"> Fruits</div>
+</div>
+
+<!-- Market Cards Container -->
+<div id="marketContainer" class="market-container"></div>
+
+
+<script>
+// ---------------------- DATA -----------------------
+const marketData = {
+    vegetables: [
+        { name: "Tomato", price: 40 },
+        { name: "Potato", price: 25 },
+        { name: "Onion", price: 30 },
+        { name: "Cabbage", price: 22 },
+         { name: "Lady Finger", price:38  },
+        { name: "Egg Plant (Brinjal)", price: 36 },
+        { name: "Bell Pepper", price: 46 },
+        { name: "Cucumber", price: 22 },
+        { name: "Cauliflower", price: 30 },
+        { name: "Carrot", price: 29 },
+        { name: "Beetroot", price: 40 },
+        { name: "Spinach", price: 20 },
+        { name: "Broccoli", price: 35 },
+        { name: "Peas", price: 100 },
+        { name: "Fenugreek (Methi)", price: 15 },
+       
+    ],
+
+    pulses: [
+        { name: "Toor Dal", price: 140 },
+        { name: "Moong Dal", price: 120 },
+        { name: "Chana Dal", price: 85 },
+        { name: "Urad Dal", price: 130 },
+    ],
+
+    millets: [
+        { name: "Ragi (Finger Millet)", price: 35 },
+        { name: "Bajra", price: 28 },
+        { name: "Jowar", price: 32 },
+        { name: " Kangni (Foxtail Millet)", price: 55 },
+         { name: "Rice", price: 35 },
+        { name: " Chena / Barri(Proso Millet)", price: 28 },
+        
+    ],
+
+    Fruits: [
+        { name: "Apple", price: 140 },
+        { name: "Mango", price: 130 },
+        { name: "Orange", price: 100 },
+        { name: "chikuu", price: 60 },
+        { name: "Watermelon", price: 50 },
+       { name: "Jamun", price:34 },
+        { name: "Banana", price: 60 },
+        { name: "Gauva", price: 50 },
+         { name: "Grapes", price:34 },
+        { name: "Fig", price: 65 },
+        { name: "Custard Apple(Sitaphal)", price: 50 },
+       { name: "Papaya", price: 34 },
+        { name: "", price: 60 },
+]   
+
+
+};
+
+let currentCategory = "vegetables";
+
+// ---------------------- DISPLAY FUNCTION -----------------------
+function loadMarketCards() {
+    const container = document.getElementById("marketContainer");
+    container.innerHTML = "";
+
+    marketData[currentCategory].forEach(item => {
+        // random price variation for live effect
+        let livePrice = item.price + Math.floor((Math.random() * 10) - 5);
+
+        const card = document.createElement("div");
+        card.className = "market-card";
+
+        card.innerHTML = `
+            <h3>${item.name}</h3>
+            <div class="price">₹ ${livePrice}/kg</div>
+            <div class="update">Updated: ${new Date().toLocaleTimeString()}</div>
+        `;
+
+        container.appendChild(card);
+    });
+}
+
+// ---------------------- TAB SWITCH -----------------------
+function switchCategory(cat) {
+    currentCategory = cat;
+    document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+    event.target.classList.add("active");
+    loadMarketCards();
+}
+
+// ---------------------- AUTO REFRESH (live effect) -----------------------
+setInterval(loadMarketCards, 3000);
+
+// first load
+loadMarketCards();
+</script>
+
+
+
+
+
+  <script src="script.js"></script>
+
+  <!-- ✅ Google Translate Integration -->
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,hi,mr',
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+
+    // Language switcher
+    function setGoogleLanguage(lang) {
+      const combo = document.querySelector('.goog-te-combo');
+      if (combo) {
+        combo.value = lang;
+        combo.dispatchEvent(new Event('change'));
+        return true;
+      }
+      return false;
+    }
+
+    function changeLanguage(lang) {
+      if (setGoogleLanguage(lang)) return;
+      let tries = 0;
+      const timer = setInterval(() => {
+        if (setGoogleLanguage(lang) || tries++ > 10) clearInterval(timer);
+      }, 300);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const select = document.getElementById("languageSelect");
+      select.addEventListener("change", (e) => changeLanguage(e.target.value));
+    });
+  </script>
+
+  <!-- Load Google Translate -->
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aster Crop Details | FarmMitra 2.0</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; }
+
+    body {
+      background: #e1bee7; /* Soft aster-themed background */
+      font-family: "Poppins", sans-serif;
+    }
+
+    /* Navbar */
+    .navbar {
+      width: 100%;
+      padding: 15px 25px;
+      background: #7b1fa2; /* Aster accent theme */
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .navbar .logo h1 { font-size: 24px; color: #fff; }
+
+    .navbar nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .navbar nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .lang-select {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.25);
+      padding: 5px 8px;
+      border-radius: 8px;
+    }
+
+    .lang-icon { color: white; font-size: 20px; }
+
+    .goog-logo-link, .goog-te-gadget span { display: none !important; }
+
+    .goog-te-combo {
+      background-color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 4px 6px;
+      font-size: 14px;
+      color: #5c4530;
+      cursor: pointer;
+    }
+
+    .crop-images {
+      display: flex;
+      justify-content: center;
+      margin: 25px auto;
+      width: 90%;
+    }
+
+    .crop-wrapper {
+      width: 100%;
+      max-width: 650px;
+      height: 320px;
+      overflow: hidden;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+
+    .crop-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .crop-image:hover { transform: scale(1.05); }
+
+    h2 {
+      margin-top: 30px;
+      border-left: 6px solid #ce93d8; /* Aster accent color */
+      padding-left: 10px;
+      font-size: 1.4rem;
+    }
+
+    ul { margin-left: 25px; list-style-type: "🌸 "; }
+
+    .container { width: 90%; max-width: 1100px; margin: auto; padding: 40px 0; }
+
+    .card {
+      background: rgba(255,255,255,0.85);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      padding: 25px;
+      margin: 20px 0;
+      border-radius: 18px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .card:hover { transform: translateY(-4px); }
+
+    .card h2 { color: #7b1fa2; margin-bottom: 10px; font-size: 26px; }
+
+    .highlight {
+      background: #f3e5f5;
+      padding: 10px 15px;
+      border-radius: 10px;
+      margin: 10px 0;
+      border-left: 5px solid #7b1fa2;
+    }
+
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    table, th, td { border: 1px solid #ddd; }
+    th, td { padding: 12px; text-align: left; }
+    th { background: #ce93d8; }
+
+    .video-container { text-align: center; margin: 40px 0; }
+    .video-container iframe {
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+      width: 80%;
+      height: 400px;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin: 25px 0;
+      padding: 12px 20px;
+      background: #7b1fa2;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 600;
+    }
+    .back-btn:hover { background: #6a1b9a; }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 30px;
+      background: #ce93d8;
+      color: #4a148c;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline" class="logo-icon"></ion-icon>
+      <h1>Farm<span>Mitra</span> <small>2.0</small></h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="flower-farming.html">⬅ Flower Crops</a></li>
+      </ul>
+    </nav>
+    <div class="lang-select">
+      <ion-icon name="language-outline" class="lang-icon"></ion-icon>
+      <div id="google_translate_element"></div>
+    </div>
+  </header>
+
+  <div class="crop-images">
+    <div class="crop-wrapper">
+      <img src="https://i.pinimg.com/736x/2f/17/70/2f177044b28526a6b31d9cfd91a786f7.jpg"
+           alt="Aster Plant" class="crop-image" />
+    </div>
+  </div>
+
+  <div class="container">
+
+    <div class="card">
+      <h2>🌼 Introduction</h2>
+      <p>Aster (Aster spp.) is a colorful perennial flower grown for **ornamental purposes and garden decoration**. They are popular for their daisy-like blooms in shades of purple, pink, and white.</p>
+      <div class="highlight"><strong>Ideal For:</strong> Home gardens, flower beds, bouquets, landscape decoration.</div>
+    </div>
+
+    <div class="card">
+      <h2>🌱 Soil Requirements</h2>
+      <ul>
+        <li>Well-drained loamy soil</li>
+        <li>pH 6–7</li>
+        <li>Rich in organic matter for optimal flowering</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>🌤 Climate</h2>
+      <ul>
+        <li>Temperate to subtropical climates (15–25°C)</li>
+        <li>Full sun to partial shade</li>
+      </ul>
+      <div class="highlight">Ensure proper drainage to prevent root rot and fungal diseases.</div>
+    </div>
+
+    <div class="card">
+      <h2>🌾 Sowing & Planting</h2>
+      <ul>
+        <li>Seeds: Start indoors or direct sow outdoors</li>
+        <li>Spacing: 25 × 25 cm between plants</li>
+        <li>Best planting season: Spring</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>💧 Irrigation</h2>
+      <ul>
+        <li>Water regularly, keeping soil moist but not waterlogged</li>
+        <li>Reduce watering during flowering to maintain flower quality</li>
+        <li>Misting recommended in dry periods</li>
+      </ul>
+    </div>
+
+    <div class="crop-images">
+      <div class="crop-wrapper">
+        <img src="https://i.pinimg.com/1200x/f6/76/82/f67682846d5c79415df0fbd8ba93461c.jpg"
+             alt="Aster Blooms" class="crop-image" />
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🌿 Fertilizer Management</h2>
+      <ul>
+        <li>Organic compost: Monthly application</li>
+        <li>Balanced NPK: 10:10:10 every 2–3 weeks</li>
+        <li>Micronutrient foliar spray to enhance bloom color</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>🐞 Pest & Disease Management</h2>
+      <table>
+        <tr><th>Pest/Disease</th><th>Symptoms</th><th>Control</th></tr>
+        <tr><td>Aphids</td><td>Deformed leaves and buds</td><td>Neem oil / Insecticidal soap</td></tr>
+        <tr><td>Powdery Mildew</td><td>White powdery coating on leaves</td><td>Fungicide spray & good air circulation</td></tr>
+        <tr><td>Leaf Spot</td><td>Brown or black spots on leaves</td><td>Remove affected leaves & fungicide</td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>🌸 Harvesting & Yield</h2>
+      <ul>
+        <li>Cut flowers when fully open for bouquets</li>
+        <li>Perennial plants bloom year after year under proper care</li>
+        <li><strong>Average Yield:</strong> 2–3 tons per 1000 plants/year (flower heads)</li>
+      </ul>
+    </div>
+
+    <div class="video-container">
+      <iframe 
+          src="https://www.youtube.com/embed/uVRfXqFKtZo?si=KWRoWvpTiXEhgA6d"
+          title="YouTube Video Player"
+          allowfullscreen>
+      </iframe>
+    </div>
+
+    <a href="flower-farming.html" class="back-btn">⬅ Back to Flower Crops</a>
+
+  </div>
+
+  <footer>
+    © 2025 FarmMitra 2.0 — Smart Farming Guide
+  </footer>
+
+  <!-- Translator -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+      }, "google_translate_element");
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

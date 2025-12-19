@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Citrus Crop Details | FarmMitra 2.0</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(to bottom, #fffde7, #fff9c4);
+      margin: 0;
+      color: #33691e;
+      line-height: 1.8;
+    }
+
+    h1, h2 { color: #558b2f; }
+    h1 { text-align: center; margin: 30px 0; }
+
+    header.navbar {
+      display: flex; justify-content: space-between; align-items: center;
+      background: linear-gradient(90deg, #33691e, #689f38, #aed581);
+      padding: 15px 8%;
+      color: white;
+      position: sticky; top: 0; z-index: 10;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    }
+
+    .logo { display: flex; align-items: center; gap: 8px; }
+    .logo h1 { margin: 0; font-size: 1.6rem; color: #fff; }
+    nav ul { list-style: none; display: flex; gap: 25px; margin: 0; padding: 0; }
+    nav a { color: white; text-decoration: none; font-weight: 500; }
+    nav a:hover { color: #f1f8e9; }
+
+    .lang-select { display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.25); padding: 5px 8px; border-radius: 8px; }
+
+    main {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 20px 20px 60px;
+      background-color: #ffffffc2;
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    .crop-images { display: flex; justify-content: center; margin: 25px auto; width: 90%; }
+    .crop-wrapper { width: 100%; max-width: 650px; height: 320px; overflow: hidden; border-radius: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.25); transition: transform 0.4s ease; }
+    .crop-wrapper:hover { transform: scale(1.03); }
+    .crop-image { width: 100%; height: 100%; object-fit: cover; }
+
+    h2 { margin-top: 30px; border-left: 5px solid #c5e1a5; padding-left: 10px; }
+    ul { margin-left: 25px; list-style-type: "🍊 "; }
+
+    .video-container { text-align: center; margin: 40px 0; }
+    .video-container iframe { border-radius: 14px; box-shadow: 0 6px 18px rgba(0,0,0,0.25); width: 80%; height: 400px; }
+
+    footer { text-align: center; margin: 40px 0; }
+    .back-btn { background: #33691e; color: white; padding: 12px 24px; border-radius: 25px; text-decoration: none; font-weight: 600; }
+  </style>
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="logo">
+    <ion-icon name="leaf-outline"></ion-icon>
+    <h1>Farm<span>Mitra</span> 2.0</h1>
+  </div>
+
+  <nav>
+    <ul>
+      <li><a href="../index.html">🏡 Home</a></li>
+      <li><a href="agroforestry.html">⬅ Agroforestry Crops</a></li>
+    </ul>
+  </nav>
+
+  <div class="lang-select">
+    <ion-icon name="language-outline"></ion-icon>
+    <div id="google_translate_element"></div>
+  </div>
+</header>
+
+<main>
+  <h1>Citrus (संत्रा)</h1>
+
+  <div class="crop-images">
+    <div class="crop-wrapper">
+      <img src="https://i.pinimg.com/736x/e8/f2/b1/e8f2b12c1cf7526ab60aefb479095c62.jpg" alt="Citrus Crop" class="crop-image">
+    </div>
+  </div>
+
+  <section class="content">
+    <h2>1️⃣ Introduction</h2>
+    <p>Citrus fruits (orange, lemon, lime) are popular for their vitamin C content and commercial value. Grown in subtropical climates for fresh consumption and juice processing.</p>
+
+    <h2>2️⃣ Climate & Soil</h2>
+    <ul>
+      <li>Temperature: 20–30°C</li>
+      <li>Well-drained loamy soil</li>
+      <li>pH: 6–7</li>
+    </ul>
+
+    <h2>3️⃣ Planting & Spacing</h2>
+    <ul>
+      <li>Planting season: Spring</li>
+      <li>Spacing: 4–5 m between trees</li>
+      <li>Planting method: Saplings or grafted plants</li>
+    </ul>
+
+    <h2>4️⃣ Irrigation</h2>
+    <ul>
+      <li>Frequent irrigation during initial years</li>
+      <li>Reduce irrigation for mature trees</li>
+      <li>Drip irrigation recommended</li>
+    </ul>
+
+    <h2>5️⃣ Fertilizer & Nutrition</h2>
+    <ul>
+      <li>Apply NPK 20:20:20</li>
+      <li>Organic compost monthly</li>
+      <li>Micronutrients: Zinc, Boron for flowering</li>
+    </ul>
+
+    <h2>6️⃣ Pests & Diseases</h2>
+    <ul>
+      <li>Aphids, Leaf miners, Citrus canker</li>
+      <li>Control: Neem oil, Copper fungicide, Resistant varieties</li>
+    </ul>
+
+    <h2>7️⃣ Harvesting & Yield</h2>
+    <ul>
+      <li>Fruits ready in 8–12 months after planting</li>
+      <li>Yield: 10–15 tons per hectare</li>
+      <li>Market price: ₹30–₹80/kg depending on season</li>
+    </ul>
+
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/e2DWh4Y_vgg?si=ZNX2Xj0QXqh71xDn"
+       title="Citrus Farming Guide" allowfullscreen></iframe>
+      <p><em>Video: Citrus Farming Guide</em></p>
+    </div>
+  </section>
+
+  <a href="agroforestry.html" class="back-btn">← Back to Agroforestry Crops</a>
+</main>
+
+<footer></footer>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: "en",
+    includedLanguages: "en,hi,mr",
+    layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+  }, "google_translate_element");
+}
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

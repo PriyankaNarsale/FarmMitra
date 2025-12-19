@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ashwagandha Crop Details | FarmMitra 2.0</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    /* 🌿 Ashwagandha Theme (Earthy Herbal Colors) */
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(to bottom, #f4e9d5, #e8d7bb); /* beige to soft brown */
+      margin: 0;
+      color: #5c3b21; /* herbal dark brown */
+      line-height: 1.8;
+    }
+
+    h1, h2 {
+      color: #8a5a2c; /* root brown */
+      line-height: 1.2;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.4rem;
+      margin: 30px 0;
+    }
+
+    /* 🌱 Navbar */
+    header.navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(90deg, #8a5a2c, #5c3b21); /* deep root brown gradient */
+      padding: 15px 8%;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo h1 {
+      margin: 0;
+      font-size: 1.6rem;
+      color: #fff;
+    }
+
+    .logo span {
+      color: #f4e9d5;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffe0b2;
+    }
+
+    /* 🌿 Language Selector */
+    .lang-select {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.25);
+      padding: 5px 8px;
+      border-radius: 8px;
+    }
+
+    .goog-logo-link, .goog-te-gadget span {
+      display: none !important;
+    }
+
+    .goog-te-combo {
+      background-color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 4px 6px;
+      font-size: 14px;
+      color: #5c3b21;
+      cursor: pointer;
+    }
+
+    /* 📄 Main Content */
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px 20px 60px;
+      background-color: #ffffffd2;
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      margin-top: 30px;
+    }
+
+    /* Images */
+    .crop-images {
+      display: flex;
+      justify-content: center;
+      margin: 25px auto;
+      width: 90%;
+    }
+
+    .crop-wrapper {
+      width: 100%;
+      max-width: 650px;
+      height: 320px;
+      overflow: hidden;
+      border-radius: 14px;
+      box-shadow: 0 4px 15px rgba(100, 60, 20, 0.35);
+    }
+
+    .crop-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.3s;
+    }
+
+    .crop-image:hover {
+      transform: scale(1.05);
+    }
+
+    h2 {
+      margin-top: 30px;
+      border-left: 6px solid #8a5a2c;
+      padding-left: 10px;
+      font-size: 1.4rem;
+    }
+
+    ul {
+      margin-left: 25px;
+      list-style-type: "🌿 ";
+    }
+
+    .video-container {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .video-container iframe {
+      width: 80%;
+      height: 400px;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    }
+
+    .back-btn {
+      background: #8a5a2c;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .back-btn:hover {
+      background: #5c3b21;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline"></ion-icon>
+      <h1>Farm<span>Mitra</span> 2.0</h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="medicinal-crops.html">⬅ Medicinal & Aromatic Crops</a></li>
+      </ul>
+    </nav>
+
+    <div class="lang-select">
+      <ion-icon name="language-outline"></ion-icon>
+      <div id="google_translate_element"></div>
+    </div>
+  </header>
+
+  <!-- 🌿 Ashwagandha Section -->
+  <main>
+    <h1>Ashwagandha (Withania somnifera)</h1>
+
+    <!-- Main Image -->
+    <div class="crop-images">
+      <div class="crop-wrapper">
+        <img src="https://i.pinimg.com/1200x/e2/e0/88/e2e088754305ab3c03979776f475f071.jpg"
+             alt="Ashwagandha Plant" class="crop-image" />
+      </div>
+    </div>
+
+    <section class="content">
+
+      <h2>1️⃣ Basic Crop Information</h2>
+      <p>Ashwagandha, also known as *Indian Ginseng*, is one of India's top Ayurvedic medicinal crops.  
+         It grows well in **dry and subtropical climates**, ideal temperature **20–35°C**.</p>
+
+      <h2>2️⃣ Propagation Material</h2>
+      <ul>
+        <li>Propagated using **seeds**.</li>
+        <li>Seed treatment with Trichoderma recommended.</li>
+        <li>Germination takes 10–12 days.</li>
+      </ul>
+
+      <h2>3️⃣ Soil Requirements</h2>
+      <ul>
+        <li>Light red soil / sandy loam ideal.</li>
+        <li>Soil pH: 6.5–8.0.</li>
+        <li>Needs low fertility soil for high root quality.</li>
+      </ul>
+
+      <h2>4️⃣ Planting Details</h2>
+      <p>Best season: **June–July**  
+         Spacing: **30 × 20 cm**</p>
+
+      <!-- Second Image -->
+      <div class="crop-images">
+        <div class="crop-wrapper">
+          <img src="https://i.pinimg.com/1200x/b5/2a/cc/b52acca55c62fa089802ed0c95d10d91.jpg"
+               alt="Ashwagandha Roots" class="crop-image" />
+        </div>
+      </div>
+
+      <h2>5️⃣ Irrigation</h2>
+      <ul>
+        <li>Very less irrigation required.</li>
+        <li>1st irrigation after sowing.</li>
+        <li>Then only at 20–25 day intervals.</li>
+      </ul>
+
+      <h2>6️⃣ Nutrient Management</h2>
+      <ul>
+        <li>FYM 5–6 tons/acre at land prep.</li>
+        <li>Low fertilizer crop → avoid heavy nitrogen.</li>
+      </ul>
+
+      <h2>7️⃣ Pest & Diseases</h2>
+      <ul>
+        <li><b>Pests:</b> Cutworms, aphids.</li>
+        <li><b>Diseases:</b> Leaf spot, root rot.</li>
+        <li>Neem oil spray + proper drainage recommended.</li>
+      </ul>
+
+      <h2>8️⃣ Harvesting</h2>
+      <p>Ready in **150–180 days**.  
+         Roots are carefully dug, cleaned and dried.</p>
+
+      <h2>9️⃣ Yield</h2>
+      <p>Average yield: **4–6 quintals roots per acre**.</p>
+
+      <h2>🔟 Uses & Market</h2>
+      <ul>
+        <li>Ayurvedic medicines</li>
+        <li>Immunity boosters</li>
+        <li>Stress-relief tonics</li>
+        <li>Herbal supplements</li>
+      </ul>
+
+   <div class="video-container">
+  <iframe 
+      src="https://www.youtube.com/embed/lGIMNdcgDMk?si=mM5SWUydeaix6I4A"
+      title="YouTube Video Player"
+      allowfullscreen>
+  </iframe>
+</div>
+
+
+    </section>
+  </main>
+
+  <footer>
+    <a href="medicinal-crops.html" class="back-btn">← Back to Medicinal & Aromatic Crops</a>
+  </footer>
+
+  <!-- Google Translator -->
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+      }, "google_translate_element");
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

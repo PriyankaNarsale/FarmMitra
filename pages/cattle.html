@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cattle Details | FarmMitra 2.0</title>
+
+  <!-- Fonts & icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    :root{
+      --brown-dark: #5D4037;
+      --brown: #8D6E63;
+      --cream: #F7F3F0;
+      --accent-green: #4E342E;
+      --card-bg: #ffffff;
+      --muted: #6b5c54;
+      --accent-yellow: #ffd54f;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:"Poppins",sans-serif;
+      background: linear-gradient(180deg,var(--cream), #fff);
+      color:var(--brown-dark);
+      line-height:1.5;
+    }
+    a{color:inherit}
+
+    /* FIXED INLINE STYLE REMOVALS */
+    .logo-icon { font-size:28px; color:var(--accent-yellow); }
+    .version-badge { font-weight:600; color:var(--accent-yellow); }
+    .no-margin { margin:0; }
+    .mt-8 { margin-top:8px; }
+    .mt-14 { margin-top:14px; }
+    .mt-16 { margin-top:16px; }
+    .mt-18 { margin-top:18px; }
+    .ml-16 { margin-left:16px; }
+    .ml-18 { margin-left:18px; }
+
+    .img-cover { width:100%; height:200px; object-fit:cover; border-radius:10px; }
+
+    /* NAVBAR */
+    .navbar{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:16px 6%;
+      background: linear-gradient(90deg,var(--brown), var(--accent-green));
+      color:white;position:sticky;top:0;z-index:1000;
+      box-shadow:0 6px 18px rgba(0,0,0,0.08);
+    }
+    .logo{display:flex;align-items:center;gap:12px}
+    .logo h1{font-size:1.4rem;margin:0;color:#fff}
+    .logo span{color:var(--accent-yellow)}
+    nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+    nav a{color:white;text-decoration:none;font-weight:600}
+    .lang-select{
+      display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.08);
+      padding:6px 10px;border-radius:8px;
+    }
+    .lang-select ion-icon{font-size:18px;color:white}
+
+    /* HERO */
+    .hero{
+      display:grid;grid-template-columns:1fr 480px;gap:40px;
+      align-items:center;padding:48px 6%;
+    }
+    .hero-left{
+      background:var(--card-bg);padding:34px;border-radius:16px;
+      box-shadow:0 14px 40px rgba(93,64,55,0.10);
+    }
+
+    .eyebrow{
+      display:inline-block;padding:8px 14px;border-radius:999px;
+      background:#fff4e6;color:var(--brown-dark);font-weight:700;
+      margin-bottom:14px;font-size:0.9rem;
+    }
+
+    .hero-left h2{ margin:8px 0 14px; font-size:1.9rem; color:var(--brown-dark); }
+    .sub{color:var(--muted);font-size:0.98rem;line-height:1.6;}
+
+    .hero-stats{display:flex;gap:14px;margin-top:22px;flex-wrap:wrap}
+    .stat{
+      background:#fff;padding:14px 16px;border-radius:12px;
+      min-width:140px;box-shadow:0 8px 20px rgba(0,0,0,0.06);
+    }
+    .stat strong{font-size:1.05rem;}
+
+    .hero-right{
+      height:380px;border-radius:16px;overflow:hidden;
+      display:flex;align-items:center;justify-content:center;
+      background:#00000006;box-shadow:0 14px 40px rgba(93,64,55,0.10);
+    }
+    .hero-img{width:100%;height:100%;object-fit:cover;}
+
+    /* MAIN */
+    .container{max-width:1400px;margin:28px auto;padding:0 6%}
+    .panel{display:grid;grid-template-columns:1fr 320px;gap:34px;align-items:start}
+    .card{
+      background:var(--card-bg);padding:22px;border-radius:14px;
+      box-shadow:0 10px 26px rgba(0,0,0,0.06);
+    }
+
+    h3{color:var(--brown);margin:6px 0 12px;font-size:1.25rem}
+
+    /* BREEDS */
+    .breed-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+    .breed{
+      background:#fff;border-radius:12px;border:1px solid #f1eae6;
+      display:flex;flex-direction:column;overflow:hidden;transition:0.3s;
+    }
+    .breed img{width:100%;height:140px;object-fit:cover}
+    .breed:hover{transform:translateY(-6px);box-shadow:0 16px 36px rgba(93,64,55,0.08)}
+
+    /* Table */
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{padding:12px;border:1px solid #f0e7e3}
+    th{background:#f6e6de;font-weight:700}
+
+    /* Sidebar */
+    .aside .mini-card{background:white;padding:18px;border-radius:12px;margin-bottom:14px;box-shadow:0 8px 20px rgba(0,0,0,0.04)}
+
+    /* Disease cards */
+    .d-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+    .d-card{background:white;padding:14px;border-radius:10px;box-shadow:0 8px 20px rgba(0,0,0,0.04)}
+    .d-card h5{margin:6px 0;color:var(--brown-dark)}
+
+    iframe{width:100%;height:280px;border-radius:10px;border:0}
+
+    /* Footer */
+    footer{
+      background:linear-gradient(90deg,var(--brown),var(--accent-green));
+      color:white;text-align:center;padding:18px;margin-top:30px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar" role="banner">
+    <div class="logo">
+      <ion-icon name="leaf-outline" class="logo-icon"></ion-icon>
+      <h1>Farm<span>Mitra</span> <small class="version-badge">2.0</small></h1>
+    </div>
+
+    <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="animal-husbandry.html">Animal Hub</a></li>
+        
+      </ul>
+    </nav>
+
+    <div class="lang-select" title="Select language">
+      <ion-icon name="language-outline"></ion-icon>
+      <div id="google_translate_element"></div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <span class="eyebrow">Cattle Farming</span>
+      <h2>Practical Guide to Cattle — Care, Breeds, Feeding & Milk Management</h2>
+      <p class="sub">
+        This page covers everything a smallholder or student needs: popular breeds, feeding schedules,
+        housing guidelines, common diseases & vaccination calendar, milking best practices, and yield improvement tips.
+      </p>
+
+      <div class="hero-stats">
+        <div class="stat"><strong>Milk per day</strong><small>6–20 L</small></div>
+        <div class="stat"><strong>Feed type</strong><small>Green fodder + concentrate</small></div>
+        <div class="stat"><strong>Avg Lifespan</strong><small>8–12 years</small></div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <img class="hero-img"
+        src="https://i.pinimg.com/736x/4a/c8/c6/4ac8c69810af6f7754e9e84b7374d523.jpg"
+        alt="Cattle on farm — healthy grazing cattle">
+    </div>
+  </section>
+
+  <!-- MAIN -->
+  <main class="container">
+    <div class="panel">
+      <div>
+
+        <!-- OVERVIEW -->
+        <section class="card">
+          <h3>Overview</h3>
+          <p>
+            Cattle are raised for milk, manure & draft. Good management increases milk yield and animal health.
+          </p>
+          <div class="highlight">
+            <strong>Quick tips:</strong> Always provide clean water, shade & proper feed.
+          </div>
+        </section>
+
+        <!-- BREEDS -->
+        <section class="card mt-16">
+          <h3>Popular Breeds (India) — Quick Compare</h3>
+
+          <div class="breed-grid mt-10">
+            <a class="breed">
+              <img src="https://i.pinimg.com/736x/45/1a/ca/451aca713214976db44f3e7168951101.jpg" alt="Sahiwal cow">
+              <div class="b-content">
+                <h4>Sahiwal</h4>
+                <p>Heat tolerant, 8–12L milk.</p>
+              </div>
+            </a>
+
+            <a class="breed">
+              <img src="https://i.pinimg.com/1200x/8e/69/ba/8e69badb826a4971af2ff948b1272551.jpg" alt="Gir cow">
+              <div class="b-content">
+                <h4>Gir</h4>
+                <p>Good milkers, long-lived.</p>
+              </div>
+            </a>
+
+            <a class="breed">
+              <img src="https://i.pinimg.com/1200x/28/6a/a9/286aa99925f3186fc15680800fa372e6.jpg" alt="Jersey cow">
+              <div class="b-content">
+                <h4>Jersey</h4>
+                <p>High-fat milk.</p>
+              </div>
+            </a>
+
+            <a class="breed">
+              <img src="https://i.pinimg.com/1200x/63/6f/11/636f110bc25697341c209b224250d033.jpg" alt="Holstein cow">
+              <div class="b-content">
+                <h4>Holstein</h4>
+                <p>Very high yield.</p>
+              </div>
+            </a>
+          </div>
+        </section>
+
+        <!-- FEEDING TABLE -->
+        <section class="card mt-16">
+          <h3>Feeding Guide (Stage-wise)</h3>
+          <p>Balancing green fodder and concentrate is essential.</p>
+
+          <table>
+            <tr><th>Stage</th><th>Feed</th><th>Notes</th></tr>
+            <tr><td>Dry</td><td>6–8 kg green + 4–6 kg dry</td><td>Mineral mix</td></tr>
+            <tr><td>Lactating (low)</td><td>12–15kg green + 2–4kg concentrate</td><td>Increase protein</td></tr>
+            <tr><td>Lactating (high)</td><td>15–25kg green + 4–8kg concentrate</td><td>Monitor weight</td></tr>
+            <tr><td>Heifers</td><td>8–12kg green</td><td>Growth stage</td></tr>
+          </table>
+        </section>
+
+        <!-- MILKING -->
+        <section class="card mt-16">
+          <h3>Milking Best Practices</h3>
+          <ul class="ml-18">
+            <li>Wash udder before milking.</li>
+            <li>Maintain fixed milking times.</li>
+            <li>Use clean utensils.</li>
+          </ul>
+        </section>
+
+        <!-- DISEASES -->
+        <section class="card mt-16">
+          <h3>Common Diseases & Control</h3>
+
+          <div class="d-grid mt-10">
+            <div class="d-card"><h5>FMD</h5><p>Blisters—needs vaccination.</p></div>
+            <div class="d-card"><h5>Mastitis</h5><p>Swollen udder—needs vet care.</p></div>
+            <div class="d-card"><h5>Ticks</h5><p>Causes anemia—shed cleaning.</p></div>
+            <div class="d-card"><h5>Worms</h5><p>Weight loss—deworm regularly.</p></div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- SIDEBAR -->
+      <aside class="aside">
+        <div class="mini-card">
+          <h3>Vaccination Calendar (Essential)</h3>
+          <table>
+            <tr><th>Age</th><th>Vaccine</th></tr>
+            <tr><td>Birth</td><td>Colostrum</td></tr>
+            <tr><td>6–8 weeks</td><td>HS</td></tr>
+            <tr><td>6 months</td><td>FMD</td></tr>
+            <tr><td>Annual</td><td>Boosters</td></tr>
+          </table>
+        </div>
+
+        <div class="mini-card">
+          <h4>Milk Yield Tips</h4>
+          <ul class="ml-16">
+            <li>Comfortable resting area</li>
+            <li>Nutritious feed</li>
+            <li>Regular vet checks</li>
+          </ul>
+        </div>
+
+        <div class="mini-card video-wrap">
+          <h4>How to Improve Milk Yield — Video</h4>
+
+          <!-- FIXED WARNING: added title -->
+          <iframe 
+            src="https://www.youtube.com/embed/QoBfMoVf9TE?si=OhtVNU1mOw_PvqCP" 
+            title="How to Improve Milk Yield - Educational Video"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </aside>
+
+    </div>
+
+    <section class="card mt-18 benefits">
+      <h3>Benefits of Good Cattle Management</h3>
+      <ul class="ml-18">
+        <li>Higher milk yield</li>
+        <li>Better reproduction</li>
+        <li>Higher calf survival</li>
+        <li>More manure for fields</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2025 FarmMitra 2.0 — Cattle Guide
+  </footer>
+
+  <!-- Google Translate -->
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+      }, "google_translate_element");
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lavender Crop Details | FarmMitra 2.0</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    /* 💜 Soft Lavender Theme */
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(to bottom, #f3e9ff, #e3d4ff); /* lavender gradient */
+      margin: 0;
+      color: #4e2a7f; /* deep lavender purple */
+      line-height: 1.8;
+    }
+
+    h1, h2 {
+      color: #6d3ebc; /* lavender-purple */
+      line-height: 1.2;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.4rem;
+      margin: 30px 0;
+    }
+
+    /* Navigation Bar */
+    header.navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(90deg, #6d3ebc, #4e2a7f); /* purple gradient */
+      padding: 15px 8%;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo h1 {
+      margin: 0;
+      color: #fff;
+    }
+
+    .logo span {
+      color: #e9d7ff; /* lavender highlight */
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #f3e9ff;
+    }
+
+    /* Language Selector */
+    .lang-select {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.2);
+      padding: 5px 8px;
+      border-radius: 8px;
+    }
+
+    .goog-logo-link, .goog-te-gadget span {
+      display: none !important;
+    }
+
+    .goog-te-combo {
+      background-color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 4px 6px;
+      font-size: 14px;
+      color: #4e2a7f;
+      cursor: pointer;
+    }
+
+    /* Main Content */
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px 20px 60px;
+      background-color: #ffffffd2;
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      margin-top: 30px;
+    }
+
+    /* Images */
+    .crop-images {
+      display: flex;
+      justify-content: center;
+      margin: 25px auto;
+      width: 90%;
+    }
+
+    .crop-wrapper {
+      width: 100%;
+      max-width: 650px;
+      height: 320px;
+      overflow: hidden;
+      border-radius: 14px;
+      box-shadow: 0 4px 15px rgba(100, 50, 150, 0.35);
+    }
+
+    .crop-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.3s;
+    }
+
+    .crop-image:hover {
+      transform: scale(1.05);
+    }
+
+    h2 {
+      margin-top: 30px;
+      border-left: 6px solid #6d3ebc;
+      padding-left: 10px;
+      font-size: 1.4rem;
+    }
+
+    ul {
+      margin-left: 25px;
+      list-style-type: "💜 ";
+    }
+
+    .video-container {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .video-container iframe {
+      width: 80%;
+      height: 400px;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    }
+
+    .back-btn {
+      background: #6d3ebc;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .back-btn:hover {
+      background: #4e2a7f;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline"></ion-icon>
+      <h1>Farm<span>Mitra</span> 2.0</h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="medicinal-crops.html">⬅ Medicinal & Aromatic Crops</a></li>
+      </ul>
+    </nav>
+
+    <div class="lang-select">
+      <ion-icon name="language-outline"></ion-icon>
+      <div id="google_translate_element"></div>
+    </div>
+  </header>
+
+  <!-- 💜 Lavender Section -->
+  <main>
+    <h1>Lavender (Lavandula officinalis)</h1>
+
+    <!-- Main Image -->
+    <div class="crop-images">
+      <div class="crop-wrapper">
+        <img src="https://i.pinimg.com/736x/9a/a9/6a/9aa96af3711a7859cba40bc21ab61270.jpg"
+             alt="Lavender Farm" class="crop-image" />
+      </div>
+    </div>
+
+    <section class="content">
+
+      <h2>1️⃣ Basic Crop Information</h2>
+      <p>Lavender is a world-famous aromatic crop used for essential oils, perfumes, soaps, and wellness products.  
+         Best grown in **cool–dry climates**, temperature range **15–28°C**.</p>
+
+      <h2>2️⃣ Propagation Material</h2>
+      <ul>
+        <li>Propagated through **stem cuttings** and **rooted slips**.</li>
+        <li>Cuttings root in **3–4 weeks**.</li>
+        <li>Healthy mother plants ensure better oil quality.</li>
+      </ul>
+
+      <h2>3️⃣ Soil Requirements</h2>
+      <ul>
+        <li>Well-drained sandy–loam soil preferred.</li>
+        <li>Soil pH: **6.0–8.0**.</li>
+        <li>Tolerates poor soils but NOT waterlogging.</li>
+      </ul>
+
+      <h2>4️⃣ Planting Details</h2>
+      <p>Best season: **October–November** (winter planting)  
+         Spacing: **45 × 60 cm**</p>
+
+      <!-- Second Image -->
+      <div class="crop-images">
+        <div class="crop-wrapper">
+          <img src="https://i.pinimg.com/736x/57/10/ce/5710ceae6dda08f47413798374ee1b26.jpg"
+               alt="Lavender Plants" class="crop-image" />
+        </div>
+      </div>
+
+      <h2>5️⃣ Irrigation</h2>
+      <ul>
+        <li>Requires very less irrigation.</li>
+        <li>Irrigate only once every **12–15 days**.</li>
+        <li>Avoid excess water — root rot risk.</li>
+      </ul>
+
+      <h2>6️⃣ Nutrient Management</h2>
+      <ul>
+        <li>FYM 6–8 tons/acre is enough.</li>
+        <li>Biofertilizers improve oil quality.</li>
+        <li>Excess nitrogen reduces aroma.</li>
+      </ul>
+
+      <h2>7️⃣ Pest & Diseases</h2>
+      <ul>
+        <li><b>Pests:</b> aphids, spittlebugs.</li>
+        <li><b>Diseases:</b> fungal wilt, root rot.</li>
+        <li>Neem oil + good drainage prevents diseases.</li>
+      </ul>
+
+      <h2>8️⃣ Harvesting</h2>
+      <p>First harvest: **1 year after planting**.  
+         Flowers harvested when buds start opening.</p>
+
+      <h2>9️⃣ Yield</h2>
+      <p>Fresh flowers: **2–3 tons/acre**  
+         Essential oil: **15–25 kg/acre**</p>
+
+      <h2>🔟 Uses & Market</h2>
+      <ul>
+        <li>Essential oil (premium export value)</li>
+        <li>Aromatherapy & perfumes</li>
+        <li>Cosmetics & wellness products</li>
+        <li>Dry flowers & potpourri</li>
+      </ul>
+
+      <div class="video-container">
+  <iframe 
+      src="https://www.youtube.com/embed/W-jQe1Di8fw?si=osrMlsAQ-u6i_Dj_"
+      title="YouTube Video Player"
+      allowfullscreen>
+  </iframe>
+</div>
+
+
+    </section>
+  </main>
+
+  <footer>
+    <a href="medicinal-crops.html" class="back-btn">← Back to Medicinal & Aromatic Crops</a>
+  </footer>
+
+  <!-- Google Translator -->
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+      }, "google_translate_element");
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

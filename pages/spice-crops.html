@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spice Crops | FarmMitra 2.0</title>
+
+  <!-- Global CSS (Agriculture Theme) -->
+  <link rel="stylesheet" href="../css/style.css" />
+
+  <!-- Icons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+
+  <!-- 🌱 Navbar (Same as Agriculture) -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline" class="logo-icon"></ion-icon>
+      <h1>Farm<span>Mitra</span> <small>2.0</small></h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="agriculture.html">🌾 Agriculture</a></li>
+      </ul>
+    </nav>
+
+    <div class="translate-box">
+      <ion-icon name="language-outline"></ion-icon>
+      <select id="languageSelect" aria-label="Select Language">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+        <option value="mr">मराठी</option>
+      </select>
+    </div>
+  </header>
+
+  <!-- Google Translate Hidden Element -->
+  <div id="google_translate_element"></div>
+
+  <!-- 🌶 Spice Crops Section -->
+  <section class="section">
+    <h2>🌶 Spice Crops</h2>
+    <p>Essential spices used in daily Indian kitchens and traditional medicine.</p>
+
+    <div class="cards">
+
+      <a class="card" href="turmeric.html">
+        <img src="https://i.pinimg.com/736x/5b/5a/a2/5b5aa232b62dcd61690ab8a5ed794dbb.jpg"
+          alt="Turmeric roots and plant">
+        <h3>Turmeric (हळद)</h3>
+        <p>Widely used in cooking and Ayurvedic medicines.</p>
+      </a>
+
+      <a class="card" href="ginger.html">
+        <img src="https://i.pinimg.com/736x/15/77/f7/1577f7f2413b91cd046255a1fe62698e.jpg"
+          alt="Fresh ginger crop">
+        <h3>Ginger (आले)</h3>
+        <p>Popular for tea, digestion, and spice preparations.</p>
+      </a>
+
+      <a class="card" href="red-pepper.html">
+        <img src="https://i.pinimg.com/1200x/d7/6b/a8/d76ba8e9eab571569ca23474beba2071.jpg"
+          alt="Red chili pepper drying process">
+        <h3>Red Chili (लाल मिरची)</h3>
+        <p>Primary spice for heat and flavor in Indian cuisine.</p>
+      </a>
+
+      <a class="card" href="black-pepper.html">
+        <img src="https://i.pinimg.com/736x/21/1d/81/211d81f881b8cbada123dfb1856b9c45.jpg"
+          alt="Black pepper plant with peppercorns">
+        <h3>Black Pepper (काळी मिरी)</h3>
+        <p>Known as the ‘King of Spices’, used in seasoning.</p>
+      </a>
+
+      <a class="card" href="cloves.html">
+        <img src="https://i.pinimg.com/736x/69/b9/52/69b9523f93674a0f981132f9cc38d4f6.jpg"
+          alt="Dried cloves spice">
+        <h3>Cloves (लवंग)</h3>
+        <p>Used in tea, sweets, pickles, and medicinal syrups.</p>
+      </a>
+
+      <a class="card" href="cinnamon.html">
+        <img src="https://i.pinimg.com/1200x/29/04/34/29043411018c8c0d43ab60fd1114b6de.jpg"
+          alt="Cinnamon bark spice">
+        <h3>Cinnamon (दालचिनी)</h3>
+        <p>Sweet aromatic spice used in masalas and beverages.</p>
+      </a>
+
+      <a class="card" href="mustard.html">
+        <img src="https://i.pinimg.com/736x/13/18/8d/13188d1e419f405b39e9dc48669c823e.jpg"
+          alt="Mustard seeds and plant">
+        <h3>Mustard (मोहरी)</h3>
+        <p>Used in tadka, pickles, and mustard oil production.</p>
+      </a>
+
+      <a class="card" href="cumin.html">
+        <img src="https://i.pinimg.com/736x/e2/12/91/e21291246df1bd18cf528a02cceaf56d.jpg"
+          alt="Cumin plant and seeds">
+        <h3>Cumin (जिरे)</h3>
+        <p>Essential spice for tempering and curry flavors.</p>
+      </a>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 FarmMitra 2.0 | Spice Crops Information</p>
+  </footer>
+
+  <!-- JS -->
+  <script src="../js/script.js"></script>
+
+  <!-- Google Translate -->
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+        autoDisplay: false
+      }, "google_translate_element");
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+
+</html>

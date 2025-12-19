@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Organic Farming | FarmMitra 2.0</title>
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="../css/style.css" />
+
+  <!-- Icons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+
+  <!-- 🌿 Unified Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline" class="logo-icon"></ion-icon>
+      <h1>Farm<span>Mitra</span> <small>2.0</small></h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="agriculture.html">🌾 Agriculture</a></li>
+      </ul>
+    </nav>
+
+    <!-- Language Selector -->
+    <div class="translate-box">
+      <ion-icon name="language-outline"></ion-icon>
+      <select id="languageSelect" aria-label="Select Language">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+        <option value="mr">मराठी</option>
+      </select>
+    </div>
+  </header>
+
+  <!-- Google Translate Hidden Element -->
+  <div id="google_translate_element"></div>
+
+  <!-- 🌱 Organic Farming Section -->
+  <section class="section">
+    <h2>🌱 Organic Farming Techniques</h2>
+    <p>Natural, eco-friendly farming practices that enrich the soil.</p>
+
+    <div class="cards">
+
+      <a href="crop-rotation.html" class="card">
+        <img src="https://i.pinimg.com/736x/58/da/34/58da3435a29add669dde040154c86e45.jpg" alt="Crop Rotation">
+        <h3>Crop Rotation</h3>
+        <p>Improves soil fertility and breaks pest cycles.</p>
+      </a>
+
+      <a href="green-manuring.html" class="card">
+        <img src="https://i.pinimg.com/736x/5c/f8/3c/5cf83cb9f1f4c8d52a1e31ef72e37a77.jpg" alt="Green Manure">
+        <h3>Green Manuring</h3>
+        <p>Plants like sunhemp add natural nitrogen to the soil.</p>
+      </a>
+
+      <a href="composting.html" class="card">
+        <img src="https://i.pinimg.com/1200x/bb/a4/4e/bba44e26e21a5280c2b035667949876e.jpg" alt="Composting">
+        <h3>Composting</h3>
+        <p>Organic waste converted into nutrient-rich manure.</p>
+      </a>
+
+      <a href="bio-pest-control.html" class="card">
+        <img src="https://i.pinimg.com/736x/58/9c/d5/589cd5d72bbeb00193bcc3f6b97083f9.jpg" alt="Biological Pest Control">
+        <h3>Biological Pest Control</h3>
+        <p>Uses natural predators to reduce harmful pests.</p>
+      </a>
+
+      <a href="mulching.html" class="card">
+        <img src="https://i.pinimg.com/1200x/33/fb/b7/33fbb77cf01552c3615ec934859ac7df.jpg" alt="Mulching">
+        <h3>Mulching</h3>
+        <p>Keeps soil moist and regulates temperature.</p>
+      </a>
+
+      <a href="vermicomposting.html" class="card">
+        <img src="https://i.pinimg.com/1200x/e7/fd/35/e7fd35ee800dee2182d5ff253859335d.jpg" alt="Vermicomposting">
+        <h3>Vermicomposting</h3>
+        <p>Earthworms boost compost quality and speed.</p>
+      </a>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 FarmMitra 2.0 | Organic Farming Information</p>
+  </footer>
+
+  <!-- Main Script -->
+  <script src="../js/script.js"></script>
+
+  <!-- Google Translate Init -->
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+        autoDisplay: false
+      }, "google_translate_element");
+    }
+  </script>
+
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

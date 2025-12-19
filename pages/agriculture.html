@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agriculture | FarmMitra 2.0</title>
+
+  <!-- Correct CSS -->
+  <link rel="stylesheet" href="../css/style.css" />
+
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+
+  <!-- 🌱 Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline" class="logo-icon"></ion-icon>
+      <h1>Farm<span>Mitra</span> <small>2.0</small></h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="agriculture.html">🌾 Agriculture</a></li>
+      </ul>
+    </nav>
+
+    <!-- 🌐 Language Selector -->
+    <div class="translate-box">
+      <ion-icon name="language-outline"></ion-icon>
+      <select id="languageSelect" aria-label="Select Language">
+
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+        <option value="mr">मराठी</option>
+      </select>
+    </div>
+  </header>
+
+  <!-- Hidden Google Translate Element -->
+  <div id="google_translate_element"></div>
+
+  <!-- 🌾 Agriculture Category -->
+  <section class="section">
+    <h2>🌿 Agriculture Categories</h2>
+    <p>Explore detailed guidance for different types of crops and cultivation practices.</p>
+
+    <div class="cards">
+
+      <a href="field-crops.html" class="card">
+        <img src="https://i.pinimg.com/1200x/55/5e/16/555e16eda72ca45576cf85645599a168.jpg" alt="Field Crops">
+        <h3>Field Crops</h3>
+        <p>Includes Barley, Maize, Paddy, Wheat and more.</p>
+      </a>
+
+      <a href="vegetable-crops.html" class="card">
+        <img src="https://i.pinimg.com/736x/4c/8d/36/4c8d36788a7dfcf64e23837f459bf96d.jpg" alt="Vegetable Crops">
+        <h3>Vegetable Crops</h3>
+        <p>Explore Chilli, Drumstick, Potato, Snake Gourd, etc.</p>
+      </a>
+
+      <a href="fruit-crops.html" class="card">
+        <img src="https://i.pinimg.com/1200x/cf/9c/a3/cf9ca3c07e5dd99326a6831506c9757a.jpg" alt="Fruit Crops">
+        <h3>Fruit Crops</h3>
+        <p>Learn about Banana, Mango, Pomegranate and more.</p>
+      </a>
+
+      <a href="spice-crops.html" class="card">
+        <img src="https://i.pinimg.com/1200x/18/09/ad/1809ad6b383d4a8718beb6f91420565e.jpg" alt="Spice Crops">
+        <h3>Spice Crops</h3>
+        <p>Discover crops like Turmeric, Cardamom, Black Pepper.</p>
+      </a>
+
+      <a href="medicinal-crops.html" class="card">
+        <img src="https://i.pinimg.com/736x/a5/43/28/a543281b5039cd4bcd69f2dafd332704.jpg" alt="Medicinal & Aromatic Crops">
+        <h3>Medicinal & Aromatic Crops</h3>
+        <p>Information on herbs and plants used in Ayurveda.</p>
+      </a>
+
+      <a href="flower-farming.html" class="card">
+        <img src="https://i.pinimg.com/736x/8a/94/f5/8a94f5ecb2e7274e97524458da4140a2.jpg" alt="Flower Farming">
+        <h3>Flower Farming</h3>
+        <p>Learn about rose, marigold, jasmine and other floriculture crops.</p>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 FarmMitra 2.0 | Empowering Smart Farming</p>
+  </footer>
+
+  <!-- Include script.js -->
+  <script src="../js/script.js"></script>
+
+  <!-- Google Translate Init -->
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+        autoDisplay: false
+      }, "google_translate_element");
+    }
+  </script>
+
+  <!-- Google Translate Script -->
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+
+</html>

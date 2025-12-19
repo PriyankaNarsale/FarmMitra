@@ -1,0 +1,420 @@
+/* -------------------------------------------------------------
+ 🌿 GLOBAL RESET & BASE THEME
+------------------------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "DM Sans", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #fff;
+  color: #111;
+  overflow-x: hidden;
+  top: 0px !important;
+}
+
+/* -------------------------------------------------------------
+ 🌱 SPLASH SCREEN
+------------------------------------------------------------- */
+.splash-screen {
+  position: fixed;
+  inset: 0;
+  background: #e8f5e9;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+
+.splash-leaf {
+  font-size: 60px;
+  color: #22c55e;
+  animation: zoom 1.3s ease-in-out infinite alternate;
+}
+
+@keyframes zoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.2); }
+}
+
+/* -------------------------------------------------------------
+ 🌾 NAVBAR
+------------------------------------------------------------- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 60px;
+  background: linear-gradient(90deg, #f9fff7, #f0fdf4);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-icon {
+  font-size: 35px;
+  color: #22c55e;
+}
+
+.logo h1 {
+  font-size: 24px;
+  color: #166534;
+  font-weight: 700;
+}
+
+.logo span { color: #22c55e; }
+
+/* -------------------------------------------------------------
+ 🌐 LANGUAGE SELECTOR (FINAL VERSION)
+------------------------------------------------------------- */
+
+.translate-box {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #e8f5e9;
+  border-radius: 30px;
+  padding: 5px 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.translate-box ion-icon {
+  color: #22c55e;
+  font-size: 20px;
+}
+
+.translate-box select {
+  border: none;
+  background: transparent;
+  font-weight: 600;
+  color: #166534;
+  outline: none;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+#google_translate_element {
+  display: none !important;
+}
+
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+
+/* -------------------------------------------------------------
+ 🏡 HERO SECTION
+------------------------------------------------------------- */
+.hero {
+  text-align: center;
+  padding: 150px 20px;
+  background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
+  url('https://i.pinimg.com/736x/c2/a5/7e/c2a57e858774ad6f49a166ecb72be7b9.jpg')
+  center/cover fixed;
+  color: #fff;
+}
+
+.hero h2 {
+  font-size: 44px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #f1f5f9;
+}
+
+.btn {
+  background: linear-gradient(90deg, #22c55e, #a3e635);
+  color: #fff;
+  padding: 12px 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.btn:hover {
+  opacity: 0.9;
+  transform: scale(1.08);
+}
+
+/* -------------------------------------------------------------
+ 🌾 NAVIGATION MENU
+------------------------------------------------------------- */
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #111;
+  font-weight: 500;
+  font-size: 16px;
+  position: relative;
+  transition: color 0.3s;
+}
+
+nav ul li a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #22c55e;
+  transition: width 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #22c55e;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+/* -------------------------------------------------------------
+ 🌿 SECTION BASE
+------------------------------------------------------------- */
+.section {
+  text-align: center;
+  padding: 90px 20px;
+}
+
+.section h2 {
+  color: #166534;
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.section p {
+  color: #4b5563;
+  font-size: 16px;
+  margin-bottom: 35px;
+}
+
+/* -------------------------------------------------------------
+ 🌿 CARDS
+------------------------------------------------------------- */
+.cards {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+.card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: 0.3s ease;
+  cursor: pointer;
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 22px rgba(8, 176, 25, 0.15);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.cards a { 
+  text-decoration: none !important; 
+  color: inherit !important; 
+}
+
+.card h3 {
+  color: #15803d;
+  margin: 15px 0 8px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.card p {
+  color: #4b5563;
+  padding: 0 15px 20px;
+  font-size: 15px;
+}
+
+/* -------------------------------------------------------------
+ 🌦 WEATHER SECTION
+------------------------------------------------------------- */
+/* -------------------------------------------------------------
+ 🌦 WEATHER SECTION — FIXED TO MATCH IMAGE 1
+------------------------------------------------------------- */
+
+.weather-section {
+  background: #f0fdf4;
+  padding: 60px 20px;
+  border-radius: 12px;
+  max-width: 950px;
+  margin: 0 auto; /* center whole section */
+}
+
+.section-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #166534;
+  margin-bottom: 25px;
+}
+
+/* Weather Input Box + Button */
+/* Weather Input + Button (Like Image 2 Layout) */
+.weather-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.weather-input input {
+  width: 350px;
+  padding: 14px 18px;
+  border: 2px solid #22c55e;
+  border-radius: 10px;
+  font-size: 16px;
+  outline: none;
+}
+
+.weather-input button {
+  padding: 14px 28px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #22c55e, #a3e635);
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  white-space: nowrap; /* prevents stretching */
+  width: auto;         /* makes button shrink to fit text */
+}
+
+
+.weather-input button:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* Weather Card Center Box */
+.weather-display {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.weather-card {
+  background: #fff;
+  padding: 30px;
+  width: 320px; /* wider like screenshot */
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.10);
+  border: 2px solid #d4f5d8;
+}
+
+.weather-card h3 {
+  font-size: 28px;
+  color: #15803d;
+  margin-bottom: 15px;
+}
+
+.weather-card p {
+  margin: 10px 0;
+  font-size: 18px;
+  color: #374151;
+}
+
+/* -------------------------------------------------------------
+ 💰 GOVERNMENT SCHEMES
+------------------------------------------------------------- */
+.gov-section {
+  background: #f0fdf4;
+  padding: 70px 20px;
+  border-radius: 12px;
+  margin-top: 40px;
+}
+
+.gov-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+.gov-card {
+  background: #fff;
+  border: 1px solid #c5e1a5;
+  width: 300px;
+  padding: 20px;
+  border-radius: 14px;
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+.gov-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.12);
+}
+
+.gov-btn {
+  display: inline-block;
+  background: #22c55e;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* -------------------------------------------------------------
+ 🌿 FOOTER
+------------------------------------------------------------- */
+footer {
+  text-align: center;
+  padding: 25px;
+  background: #dcfce7;
+  color: #166534;
+  font-weight: 500;
+}
+
+/* -------------------------------------------------------------
+ 📱 RESPONSIVE DESIGN
+------------------------------------------------------------- */
+@media (max-width: 992px) {
+  .cards { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .cards { grid-template-columns: repeat(1, 1fr); }
+  .navbar { flex-direction: column; padding: 15px 20px; gap: 10px; }
+  nav ul { flex-direction: column; align-items: center; gap: 12px; }
+  .hero h2 { font-size: 34px; }
+}

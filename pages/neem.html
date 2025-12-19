@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neem Crop Details | FarmMitra 2.0</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    /* 🌿 Neem Theme — Deep Green + Herbal Brown */
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(to bottom, #e5f2e0, #c9e4c3); /* light soothing green */
+      margin: 0;
+      color: #2e4d28; /* neem leaf dark */
+      line-height: 1.8;
+    }
+
+    h1, h2 {
+      color: #235a24; /* deep neem green */
+      line-height: 1.2;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.4rem;
+      margin: 30px 0;
+    }
+
+    /* Navbar */
+    header.navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(90deg, #235a24, #183b17);
+      padding: 15px 8%;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo h1 {
+      margin: 0;
+      color: #fff;
+    }
+
+    .logo span {
+      color: #d7f8d2; /* light mint highlight */
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #e4ffe0;
+    }
+
+    /* Language Selector */
+    .lang-select {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.2);
+      padding: 5px 8px;
+      border-radius: 8px;
+    }
+
+    .goog-logo-link, .goog-te-gadget span {
+      display: none !important;
+    }
+
+    .goog-te-combo {
+      background-color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 4px 6px;
+      font-size: 14px;
+      color: #2e4d28;
+      cursor: pointer;
+    }
+
+    /* Main Content */
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px 20px 60px;
+      background-color: #ffffffd2;
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      margin-top: 30px;
+    }
+
+    /* Images */
+    .crop-images {
+      display: flex;
+      justify-content: center;
+      margin: 25px auto;
+      width: 90%;
+    }
+
+    .crop-wrapper {
+      width: 100%;
+      max-width: 650px;
+      height: 320px;
+      overflow: hidden;
+      border-radius: 14px;
+      box-shadow: 0 4px 15px rgba(30, 70, 40, 0.35);
+    }
+
+    .crop-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.3s;
+    }
+
+    .crop-image:hover {
+      transform: scale(1.05);
+    }
+
+    h2 {
+      margin-top: 30px;
+      border-left: 6px solid #235a24;
+      padding-left: 10px;
+      font-size: 1.4rem;
+    }
+
+    ul {
+      margin-left: 25px;
+      list-style-type: "🌿 ";
+    }
+
+    .video-container {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .video-container iframe {
+      width: 80%;
+      height: 400px;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    }
+
+    .back-btn {
+      background: #235a24;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .back-btn:hover {
+      background: #183b17;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline"></ion-icon>
+      <h1>Farm<span>Mitra</span> 2.0</h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="medicinal-crops.html">⬅ Medicinal & Aromatic Crops</a></li>
+      </ul>
+    </nav>
+
+    <div class="lang-select">
+      <ion-icon name="language-outline"></ion-icon>
+      <div id="google_translate_element"></div>
+    </div>
+  </header>
+
+  <!-- 🌿 Neem Section -->
+  <main>
+    <h1>Neem (Azadirachta indica)</h1>
+
+    <!-- Main Image -->
+    <div class="crop-images">
+      <div class="crop-wrapper">
+        <img src="https://i.pinimg.com/736x/d8/62/de/d862de2b1d6f5434859cc01da5eb4724.jpg"
+             alt="Neem Tree" class="crop-image" />
+      </div>
+    </div>
+
+    <section class="content">
+
+      <h2>1️⃣ Basic Crop Information</h2>
+      <p>Neem is one of the most valuable medicinal trees in India.  
+         Known for its antibacterial, antiviral, and pesticide properties.  
+         Best suited for **tropical and semi-tropical regions** with temperatures **20–40°C**.</p>
+
+      <h2>2️⃣ Propagation Material</h2>
+      <ul>
+        <li>Propagated mainly by **fresh seeds**.</li>
+        <li>Seeds lose viability quickly → sow within **2–3 weeks** of collection.</li>
+        <li>Nursery seedlings ready in **2 months**.</li>
+      </ul>
+
+      <h2>3️⃣ Soil Requirements</h2>
+      <ul>
+        <li>Grows even in poor, rocky soil.</li>
+        <li>Best growth in well-drained **loamy to sandy loam soil**.</li>
+        <li>pH range: **6.5–8.5**.</li>
+      </ul>
+
+      <h2>4️⃣ Planting Details</h2>
+      <p>Best season: **June–September (monsoon)**  
+         Spacing: **5 × 5 m** for tree plantation</p>
+
+      <!-- Second Image -->
+      <div class="crop-images">
+        <div class="crop-wrapper">
+          <img src="https://i.pinimg.com/1200x/0c/33/61/0c3361217a12e3921f1f1f946fd3600d.jpg"
+               alt="Neem Leaves" class="crop-image" />
+        </div>
+      </div>
+
+      <h2>5️⃣ Irrigation</h2>
+      <ul>
+        <li>Neem is drought-tolerant.</li>
+        <li>Only initial 1–2 years need watering.</li>
+        <li>Once established → survives only on rainfall.</li>
+      </ul>
+
+      <h2>6️⃣ Nutrient Management</h2>
+      <ul>
+        <li>FYM 5 kg per pit during planting.</li>
+        <li>Biofertilizers like Trichoderma recommended.</li>
+        <li>No heavy fertilizers required.</li>
+      </ul>
+
+      <h2>7️⃣ Pest & Diseases</h2>
+      <ul>
+        <li><b>Pests:</b> caterpillars, bark-eating insects.</li>
+        <li><b>Diseases:</b> powdery mildew (young plants).</li>
+        <li>Neem oil spray works effectively (naturally!).</li>
+      </ul>
+
+      <h2>8️⃣ Harvesting</h2>
+      <p>Leaves can be harvested **year-round**.  
+         Seeds harvested once annually (May–June).</p>
+
+      <h2>9️⃣ Yield</h2>
+      <p>A mature tree yields:  
+         • **20–50 kg** fruits per year  
+         • **5–10 kg** dry seeds → used for neem oil</p>
+
+      <h2>🔟 Uses & Market</h2>
+      <ul>
+        <li>Neem oil</li>
+        <li>Biopesticide production</li>
+        <li>Medicinal formulations</li>
+        <li>Cosmetic & skincare products</li>
+        <li>Agriculture fertilizers (Neem cake)</li>
+      </ul>
+<div class="video-container">
+  <iframe 
+      src="https://www.youtube.com/embed/VW3W_36VgE4?si=voBhy4gj9JIkLYrC"
+      title="YouTube Video Player"
+      allowfullscreen>
+  </iframe>
+</div>
+
+    </section>
+  </main>
+
+  <footer>
+    <a href="medicinal-crops.html" class="back-btn">← Back to Medicinal & Aromatic Crops</a>
+  </footer>
+
+  <!-- Google Translator -->
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+      }, "google_translate_element");
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

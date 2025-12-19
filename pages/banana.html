@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Banana Crop Details | FarmMitra 2.0</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    /* 🌿 General Theme */
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(to bottom, #f7ffe6, #f2ffd1);
+      margin: 0;
+      color: #2d3a00;
+      line-height: 1.8;
+    }
+
+    h1, h2, h3 {
+      color: #a6c400;
+      line-height: 1.4;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.2rem;
+      margin: 30px 0;
+      letter-spacing: 0.5px;
+    }
+
+    /* 🌱 Navbar */
+    header.navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(90deg, #9ec400, #c6e354, #eaff91);
+      padding: 15px 8%;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo h1 {
+      margin: 0;
+      font-size: 1.6rem;
+      color: #fff;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    }
+
+    .logo span {
+      color: #faff6d;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #fcffde;
+      text-shadow: 0 0 5px rgba(255,255,255,0.6);
+    }
+
+    .lang-select {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.25);
+      padding: 5px 8px;
+      border-radius: 8px;
+    }
+
+    .lang-icon {
+      color: white;
+      font-size: 20px;
+    }
+
+    .goog-logo-link, .goog-te-gadget span {
+      display: none !important;
+    }
+
+    .goog-te-combo {
+      background-color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 4px 6px;
+      font-size: 14px;
+      color: #8aac00;
+      cursor: pointer;
+      outline: none;
+    }
+
+    /* 📄 Main */
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px 20px 60px;
+      background-color: #ffffffc2;
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      margin-top: 30px;
+    }
+
+    /* 🖼️ Image Section */
+    .crop-images {
+      display: flex;
+      justify-content: center;
+      margin: 25px auto;
+      width: 90%;
+    }
+
+    .crop-wrapper {
+      width: 100%;
+      max-width: 650px;
+      height: 320px;
+      overflow: hidden;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    .crop-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.3s ease;
+    }
+
+    .crop-image:hover {
+      transform: scale(1.05);
+    }
+
+    h2::after {
+      content: "";
+      display: block;
+      height: 2px;
+      width: 60px;
+      background: #d9ff66;
+      margin-top: 8px;
+      border-radius: 3px;
+    }
+
+    .content {
+      text-align: justify;
+      font-size: 1.05rem;
+      padding: 0 10px;
+    }
+
+    ul {
+      margin-left: 25px;
+      list-style-type: "🍌 ";
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    /* 🎥 Video */
+    .video-container {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .video-container iframe {
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+      width: 80%;
+      height: 400px;
+    }
+
+    /* 🔙 Footer */
+    footer {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .back-btn {
+      background: #9ec400;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .back-btn:hover {
+      background: #6e8b00;
+    }
+
+    /* 📱 Responsive */
+    @media (max-width: 768px) {
+      .crop-wrapper {
+        height: 240px;
+      }
+
+      .video-container iframe {
+        height: 220px;
+      }
+
+      nav ul {
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 🍌 Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline" class="logo-icon"></ion-icon>
+      <h1>Farm<span>Mitra</span> <small>2.0</small></h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="fruit-crops.html">⬅ Fruit Crops</a></li>
+      </ul>
+    </nav>
+
+    <div class="lang-select">
+      <ion-icon name="language-outline" class="lang-icon"></ion-icon>
+      <div id="google_translate_element"></div>
+    </div>
+  </header>
+
+  <!-- 🍌 Banana Section -->
+  <main>
+    <h1>Banana (Musa paradisiaca)</h1>
+
+    <div class="crop-images">
+      <div class="crop-wrapper">
+        <img src="https://i.pinimg.com/1200x/86/4c/ff/864cff2a379ebf15ee8e4550ebc4dce8.jpg"
+             alt="Banana Plantation" class="crop-image" />
+      </div>
+    </div>
+
+    <section class="content">
+      <h2>1️⃣ Basic Crop Information</h2>
+      <p>Banana is one of India’s most widely grown fruit crops. It grows throughout the year and provides high income. Tamil Nadu, Maharashtra, Gujarat, Kerala and Bihar are major banana-growing states.</p>
+
+      <h2>2️⃣ Popular Varieties</h2>
+      <ul>
+        <li>Grand Naine (G-9)</li>
+        <li>Robusta</li>
+        <li>Rasthali</li>
+        <li>Poovan</li>
+        <li>Nendran</li>
+        <li>Red Banana</li>
+      </ul>
+
+      <h2>3️⃣ Climate & Soil</h2>
+      <ul>
+        <li>Temperature: 20–35°C</li>
+        <li>High humidity beneficial</li>
+        <li>Deep, rich loamy soil best</li>
+        <li>Soil pH: 6.0–7.5</li>
+      </ul>
+
+      <div class="crop-images">
+        <div class="crop-wrapper">
+          <img src="https://i.pinimg.com/736x/ae/95/b7/ae95b783b884ed7ca3afc8d21c8d9fc4.jpg"
+               alt="Banana Fruit Close-up" class="crop-image" />
+        </div>
+      </div>
+
+      <h2>4️⃣ Plantation & Spacing</h2>
+      <p>Best planting time: June–August or January–March.  
+        Spacing depends on variety:  
+        <strong>G-9 variety:</strong> 1.8 × 1.5 m.</p>
+
+      <h2>5️⃣ Irrigation</h2>
+      <ul>
+        <li>Irrigate every 5–7 days (summer)</li>
+        <li>Use drip irrigation for best growth</li>
+        <li>Avoid standing water</li>
+      </ul>
+
+      <h2>6️⃣ Nutrient Management</h2>
+      <ul>
+        <li>Apply FYM + 200:90:300 NPK per plant/year</li>
+        <li>Micronutrients: Zinc & Boron important</li>
+        <li>Mulching improves soil moisture</li>
+      </ul>
+
+      <h2>7️⃣ Pests & Diseases</h2>
+      <ul>
+        <li><strong>Pests:</strong> Banana Weevil, Aphids</li>
+        <li><strong>Diseases:</strong> Panama Wilt, Bunchy Top</li>
+        <li>Use disease-resistant varieties & field sanitation</li>
+      </ul>
+
+      <h2>8️⃣ Harvesting & Yield</h2>
+      <p>Banana is ready to harvest in 11–13 months.  
+         Average yield: <strong>30–40 tons/acre</strong> depending on variety and management.</p>
+
+      <!-- 🎥 Video Section -->
+      <div class="video-container">
+  <iframe
+    src="https://www.youtube.com/embed/eJh402oBn4g"
+    title="केला की खेती – banana farming tips Hindi"
+    allowfullscreen>
+  </iframe>
+  <p><em>Video: केला की खेती – हिन्दी मार्गदर्शक</em></p>
+</div>
+
+    </section>
+  </main>
+
+  <!-- 🔙 Footer -->
+  <footer>
+    <a href="fruit-crops.html" class="back-btn">← Back to Fruit Crops</a>
+  </footer>
+
+  <!-- 🌐 Translator -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+      }, "google_translate_element");
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

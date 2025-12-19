@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cumin Crop Details | FarmMitra 2.0</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    /* 🌿 Body & Theme (Cumin Color Palette) */
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(to bottom, #f5ebd6, #d9c4a1); /* Light beige to cumin brown */
+      margin: 0;
+      color: #4a3b2a; /* Earthy cumin-brown text */
+      line-height: 1.8;
+    }
+
+    h1, h2, h3 {
+      color: #7a5c2e; /* Deep cumin brown */
+      line-height: 1.2;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.4rem;
+      margin: 30px 0;
+      letter-spacing: 0.5px;
+    }
+
+    /* 🌱 Navbar */
+    header.navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(90deg, #b68641, #8b642c); /* Cumin seed golden-brown gradient */
+      padding: 15px 8%;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo h1 {
+      margin: 0;
+      font-size: 1.6rem;
+      color: #fff;
+    }
+
+    .logo span {
+      color: #f5deb3; /* Light seed beige */
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffeec7;
+    }
+
+    .lang-select {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.25);
+      padding: 5px 8px;
+      border-radius: 8px;
+    }
+
+    .lang-icon {
+      color: white;
+      font-size: 20px;
+    }
+
+    .goog-logo-link, .goog-te-gadget span { display: none !important; }
+
+    .goog-te-combo {
+      background-color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 4px 6px;
+      font-size: 14px;
+      color: #5c4530;
+      cursor: pointer;
+    }
+
+    /* 📄 Main Content */
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px 20px 60px;
+      background-color: #ffffffd2;
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      margin-top: 30px;
+    }
+
+    .crop-images {
+      display: flex;
+      justify-content: center;
+      margin: 25px auto;
+      width: 90%;
+    }
+
+    .crop-wrapper {
+      width: 100%;
+      max-width: 650px;
+      height: 320px;
+      overflow: hidden;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+
+    .crop-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .crop-image:hover {
+      transform: scale(1.05);
+    }
+
+    h2 {
+      margin-top: 30px;
+      border-left: 6px solid #b68641; /* Cumin seed accent color */
+      padding-left: 10px;
+      font-size: 1.4rem;
+    }
+
+    ul {
+      margin-left: 25px;
+      list-style-type: "🌿 ";
+    }
+
+    .content img {
+      width: 100%;
+      max-width: 650px;
+      display: block;
+      margin: 20px auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .video-container {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .video-container iframe {
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+      width: 80%;
+      height: 400px;
+    }
+
+    footer {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .back-btn {
+      background: #8b642c;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .back-btn:hover {
+      background: #6e4e20;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- 🌱 Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline" class="logo-icon"></ion-icon>
+      <h1>Farm<span>Mitra</span> <small>2.0</small></h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="spice-crops.html">⬅ Spice Crops</a></li>
+      </ul>
+    </nav>
+
+    <div class="lang-select">
+      <ion-icon name="language-outline" class="lang-icon"></ion-icon>
+      <div id="google_translate_element"></div>
+    </div>
+  </header>
+
+  <!-- 🌱 Cumin Section -->
+  <main>
+    <h1>Cumin (Jeera)</h1>
+
+    <!-- Main Image -->
+    <div class="crop-images">
+      <div class="crop-wrapper">
+        <img src="https://i.pinimg.com/736x/71/02/ea/7102ead3b06bd6bf0b54004364f0f849.jpg"
+             alt="Cumin Plant" class="crop-image" />
+      </div>
+    </div>
+
+    <section class="content">
+      <h2>1️⃣ Basic Crop Information</h2>
+      <p>Cumin (<em>Cuminum cyminum</em>) is one of India’s most important spice crops. The dried seeds are widely used in cooking, masalas, Ayurvedic medicine, and food processing industries.  
+      It thrives in **dry, arid climates** with temperatures **20–30°C** and low humidity.</p>
+
+      <h2>2️⃣ Propagation Material</h2>
+      <ul>
+        <li>Cultivated mainly through **seeds**.</li>
+        <li>Seed rate: **12–15 kg/ha**.</li>
+        <li>Use treated and disease-free certified seeds.</li>
+      </ul>
+
+      <h2>3️⃣ Soil & Land Preparation</h2>
+      <ul>
+        <li>Ideal soils: **well-drained sandy loam**.</li>
+        <li>Soil pH: **6.8–8.3**.</li>
+        <li>2 deep ploughings + well-levelled seedbed.</li>
+      </ul>
+
+      <h2>4️⃣ Sowing Information</h2>
+      <p>Sow from **November to early December** under dry conditions.  
+      Maintain spacing **30 × 15 cm** for optimal growth.</p>
+
+      <!-- Second Image -->
+      <div class="crop-images">
+        <div class="crop-wrapper">
+          <img src="https://i.pinimg.com/736x/01/a1/fe/01a1fec6e2eed946637a40236ed1ea8c.jpg"
+               alt="Cumin Seeds Close-up" class="crop-image" />
+        </div>
+      </div>
+
+      <h2>5️⃣ Irrigation Management</h2>
+      <ul>
+        <li>First irrigation: immediately after sowing.</li>
+        <li>Next irrigations: at **12–15 day intervals**.</li>
+        <li>Avoid over-irrigation → root rot increases.</li>
+      </ul>
+
+      <h2>6️⃣ Nutrient Management</h2>
+      <ul>
+        <li>Apply FYM **10–12 tonnes/ha**.</li>
+        <li>Basal dose: **15:30:20 NPK kg/ha**.</li>
+        <li>Top dressing of Nitrogen improves yield.</li>
+      </ul>
+
+      <h2>7️⃣ Pests & Diseases</h2>
+      <ul>
+        <li><strong>Pests:</strong> Aphids, mites.</li>
+        <li><strong>Diseases:</strong> Blight, wilt, powdery mildew.</li>
+        <li>Use Trichoderma, neem spray & avoid excess irrigation.</li>
+      </ul>
+
+      <h2>8️⃣ Harvesting</h2>
+      <p>Harvest when plants turn **brownish-yellow** and seeds mature.  
+      Cut plants, dry for 5–6 days, and thresh to collect seeds.</p>
+
+      <h2>9️⃣ Yield & Marketing</h2>
+      <p>Average yield: **400–700 kg/ha**.  
+      High demand in spice markets, food industries & export sectors.</p>
+
+      <h2>🔟 Government Schemes</h2>
+      <ul>
+        <li>Spices Board support for cumin growers.</li>
+        <li>Area expansion under NHM & MIDH schemes.</li>
+        <li>Assistance for drip irrigation under PMKSY.</li>
+      </ul>
+
+      <!-- 🎥 Video -->
+      <div class="video-container">
+  <iframe 
+      src="https://www.youtube.com/embed/3mnkUpz93Ms?si=2p6jaNHNKG14ZgLI"
+      title="YouTube Video Player"
+      allowfullscreen>
+  </iframe>
+</div>
+
+
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <a href="spice-crops.html" class="back-btn">← Back to Spice Crops</a>
+  </footer>
+
+  <!-- Translator -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+      }, "google_translate_element");
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

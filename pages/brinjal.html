@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brinjal Crop Details | FarmMitra 2.0</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    /* 🌿 Theme */
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(to bottom, #f3fff3, #e8f5e9);
+      margin: 0;
+      color: #1b4332;
+      line-height: 1.8;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(15px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    h1, h2 {
+      color: #2e7d32;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.2rem;
+      margin: 30px 0;
+    }
+
+    /* 🌱 Navbar */
+    header.navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(90deg, #2e7d32, #4caf50, #81c784);
+      padding: 15px 8%;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo h1 {
+      margin: 0;
+      font-size: 1.6rem;
+      color: #fff;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: #e8ffd6;
+    }
+
+    .lang-select {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.25);
+      padding: 5px 8px;
+      border-radius: 8px;
+    }
+
+    /* 📘 Main Content */
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px 20px 60px;
+      background-color: #ffffffc2;
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      margin-top: 30px;
+    }
+
+    /* 🖼️ Crop Image */
+    .crop-images {
+      display: flex;
+      justify-content: center;
+      margin: 25px auto;
+      width: 90%;
+    }
+
+    .crop-wrapper {
+      width: 100%;
+      max-width: 650px;
+      height: 320px;
+      overflow: hidden;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      transition: transform 0.4s ease;
+    }
+
+    .crop-wrapper:hover {
+      transform: scale(1.03);
+    }
+
+    .crop-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    h2 {
+      margin-top: 30px;
+      border-left: 5px solid #81c784;
+      padding-left: 10px;
+    }
+
+    ul {
+      margin-left: 25px;
+      list-style-type: "🍆 ";
+    }
+
+    /* 🎥 Video */
+    .video-container {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .video-container iframe {
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+      width: 80%;
+      height: 400px;
+    }
+
+    footer {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .back-btn {
+      background: #2e7d32;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 🌾 Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline"></ion-icon>
+      <h1>Farm<span>Mitra</span> 2.0</h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="vegetable-crops.html">⬅ Vegetable Crops</a></li>
+      </ul>
+    </nav>
+
+    <div class="lang-select">
+      <ion-icon name="language-outline"></ion-icon>
+      <div id="google_translate_element"></div>
+    </div>
+  </header>
+
+  <!-- 🍆 Brinjal Section -->
+  <main>
+    <h1>Brinjal (वांगी)</h1>
+
+    <div class="crop-images">
+      <div class="crop-wrapper">
+        <img
+          src="https://i.pinimg.com/1200x/de/7b/ba/de7bba9187548bc7710e046538f5d146.jpg"
+          alt="Brinjal Crop"
+          class="crop-image"
+        />
+      </div>
+    </div>
+
+    <section class="content">
+
+      <h2>1️⃣ Basic Crop Information</h2>
+      <p>
+        Brinjal (Solanum melongena) is a major vegetable crop grown throughout India.
+        It grows well in **warm climates**, needs **medium to high fertility soil**, and regular irrigation.  
+        Popular varieties: **Pusa Purple Long, Pusa Kranti, Arka Kusumakar, Bhagyamati, Manjarigota, Hybrid-64**.
+      </p>
+
+      <h2>2️⃣ Climate & Soil Requirements</h2>
+      <ul>
+        <li>Temperature: 20–30°C</li>
+        <li>Climate: Warm & moist</li>
+        <li>Soil: Well-drained loamy soil</li>
+        <li>Soil pH: 5.5–6.6 (ideal)</li>
+      </ul>
+
+      <h2>3️⃣ Seed & Nursery Preparation</h2>
+      <ul>
+        <li>Seed rate: 200–300 g per acre</li>
+        <li>Nursery bed required</li>
+        <li>Seedlings ready in 25–30 days</li>
+        <li>Seed treatment: Fungicide/Trichoderma 2–3 g/kg</li>
+      </ul>
+
+      <h2>4️⃣ Land Preparation</h2>
+      <ul>
+        <li>3–4 ploughings for fine soil</li>
+        <li>Apply 8–10 tons FYM per acre</li>
+        <li>Create ridges & furrows</li>
+      </ul>
+
+      <h2>5️⃣ Planting & Spacing</h2>
+      <ul>
+        <li>Transplant at 4–5 leaf stage</li>
+        <li>Spacing: 60×45 cm (long varieties)</li>
+        <li>Spacing: 75×60 cm (round varieties)</li>
+      </ul>
+
+      <div class="crop-images">
+        <div class="crop-wrapper">
+          <img
+            src="https://i.pinimg.com/1200x/02/c3/24/02c324a70e8f0193fc9d7e899b2af111.jpg"
+            alt="Brinjal Field"
+            class="crop-image"
+          />
+        </div>
+      </div>
+
+      <h2>6️⃣ Irrigation Needs</h2>
+      <ul>
+        <li>Irrigate every 6–8 days</li>
+        <li>Keep soil moist during fruiting</li>
+        <li>Avoid waterlogging—roots rot quickly</li>
+      </ul>
+
+      <h2>7️⃣ Fertilizer Schedule</h2>
+      <ul>
+        <li>Basal: 40:20:20 NPK kg/acre</li>
+        <li>Top dressing: Urea after 30 & 50 days</li>
+        <li>Micronutrient spray: Ca, B, Mg</li>
+        <li>Organic: 1–1.5 ton vermicompost/acre</li>
+      </ul>
+
+      <h2>8️⃣ Pests & Diseases</h2>
+      <ul>
+        <li><strong>Pests:</strong> Fruit & shoot borer, whitefly, aphids</li>
+        <li><strong>Control:</strong> Pheromone traps + Neem oil 5 ml/litre</li>
+        <li><strong>Diseases:</strong> Wilt, leaf spot, mosaic virus</li>
+        <li><strong>Control:</strong> Fungicide + resistant varieties</li>
+      </ul>
+
+      <h2>9️⃣ Harvesting & Yield</h2>
+      <p>
+        First harvest: **60–70 days** after transplanting.  
+        Average yield: **80–120 quintals per acre** (varies by variety).
+      </p>
+
+      <h2>🔟 Storage & Market Price</h2>
+      <p>
+        Storage temp: **10–12°C**.  
+        Market price: **₹15–₹50/kg** depending on season.
+      </p>
+
+      <h2>1️⃣1️⃣ Government Schemes</h2>
+      <ul>
+        <li>PMKSY (Irrigation Subsidy)</li>
+        <li>PMFBY (Crop Insurance)</li>
+        <li>National Horticulture Board Subsidies</li>
+        <li>ATMA Support Programs</li>
+      </ul>
+
+      <!-- 🎥 Video -->
+      <div class="video-container">
+  <iframe 
+    src="https://www.youtube.com/embed/1ZlCcdiw-uU?si=EPCoAbHyM9KwQE3M" 
+    title="Brinjal Farming Guide" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    allowfullscreen>
+  </iframe>
+  <p><em>Video: Brinjal Farming Guide</em></p>
+</div>
+
+    </section>
+  </main>
+
+  <!-- 🔙 Footer -->
+  <footer>
+    <a href="vegetable-crops.html" class="back-btn">← Back to Vegetable Crops</a>
+  </footer>
+
+  <!-- 🌐 Google Translator -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+      }, "google_translate_element");
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rabbit Farming | FarmMitra 2.0</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    :root{
+      --green:#2e7d32;
+      --light-green:#a5d6a7;
+      --mint:#e8f5e9;
+      --white:#ffffff;
+      --brown:#5d4037;
+      --muted:#6d6d6d;
+      --shadow:rgba(46,125,50,0.25);
+    }
+
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      font-family:"Poppins",sans-serif;
+      background:linear-gradient(180deg,var(--mint),#ffffff);
+      color:var(--brown);
+    }
+
+    /* NAVBAR */
+    .navbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:15px 6%;
+      background:linear-gradient(90deg,var(--green),var(--light-green));
+      color:white;
+      position:sticky;
+      top:0;
+      z-index:1000;
+      box-shadow:0 6px 18px rgba(0,0,0,0.2);
+    }
+    nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+    nav a{text-decoration:none;color:white;font-weight:600}
+
+    .logo{display:flex;align-items:center;gap:10px}
+    .logo h1{margin:0;font-size:1.5rem;color:white}
+    .logo span{color:#e8f5e9}
+
+    .lang-select{
+      display:flex;align-items:center;gap:8px;
+      background:rgba(255,255,255,0.2);
+      padding:6px 10px;border-radius:8px;
+    }
+
+    /* HERO */
+    .hero{
+      display:grid;grid-template-columns:1fr 460px;gap:40px;
+      align-items:center;padding:50px 6%;
+    }
+    .hero-left{
+      background:var(--white);
+      padding:34px;border-radius:16px;
+      box-shadow:0 12px 32px rgba(0,0,0,0.1);
+    }
+    .eyebrow{
+      background:var(--light-green);
+      padding:6px 14px;border-radius:20px;
+      font-weight:600;color:#1b5e20;
+    }
+    .hero-left h2{
+      margin-top:12px;font-size:2rem;color:#1b5e20;
+    }
+    .sub{color:var(--muted);margin-top:12px;line-height:1.6}
+
+    .hero-stats{display:flex;flex-wrap:wrap;gap:14px;margin-top:18px;}
+    .stat{
+      background:white;padding:14px;border-radius:12px;
+      min-width:130px;box-shadow:0 8px 20px var(--shadow);
+    }
+    .stat strong{color:#1b5e20}
+
+    .hero-right{
+      height:380px;border-radius:16px;overflow:hidden;
+      box-shadow:0 10px 40px var(--shadow);
+    }
+    .hero-img{width:100%;height:100%;object-fit:cover;}
+
+    /* MAIN CONTENT */
+    .container{max-width:1400px;margin:40px auto;padding:0 6%}
+    .panel{display:grid;grid-template-columns:1fr 320px;gap:30px}
+
+    .card{
+      background:white;padding:24px;border-radius:14px;margin-bottom:24px;
+      box-shadow:0 10px 24px rgba(0,0,0,0.06);
+    }
+    h3{color:var(--green);margin-bottom:12px}
+
+    /* BREEDS */
+    .breed-grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:18px;
+    }
+    .breed{
+      background:white;border-radius:12px;overflow:hidden;
+      border:1px solid var(--light-green);
+      box-shadow:0 8px 22px rgba(0,0,0,0.06);
+      transition:.3s;
+    }
+    .breed:hover{
+      transform:translateY(-6px);
+      box-shadow:0 16px 30px var(--shadow);
+    }
+    .breed img{width:100%;height:150px;object-fit:cover}
+    .b-content{padding:12px}
+    .b-content h4{color:var(--green);margin:6px 0}
+
+    /* TABLE */
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{padding:12px;border:1px solid var(--light-green)}
+    th{background:var(--light-green);color:#1b5e20}
+
+    /* DISEASE CARDS */
+    .d-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:18px;
+    }
+    .d-card{
+      background:white;padding:14px;border-radius:12px;
+      box-shadow:0 12px 28px rgba(0,0,0,0.05);
+    }
+    .d-card h5{color:var(--green);margin:6px 0}
+
+    /* SIDEBAR */
+    .mini-card{
+      background:white;padding:18px;border-radius:12px;
+      margin-bottom:18px;box-shadow:0 8px 26px rgba(0,0,0,0.07);
+    }
+
+    .video-wrap iframe{
+      width:100%;height:260px;border-radius:12px;border:0;
+    }
+
+    footer{
+      background:linear-gradient(90deg,var(--green),var(--light-green));
+      text-align:center;color:white;padding:18px;margin-top:30px;
+    }
+
+    @media(max-width:1100px){
+      .hero{grid-template-columns:1fr}
+      .hero-right{height:260px}
+      .panel{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline" style="font-size:28px;color:#e8f5e9"></ion-icon>
+      <h1>Farm<span>Mitra</span> <small>2.0</small></h1>
+    </div>
+
+    <nav>
+      <ul>
+      <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="animal-husbandry.html">Animal Hub</a></li>
+        
+      </ul>
+    </nav>
+
+    <div class="lang-select">
+      <ion-icon name="language-outline"></ion-icon>
+      <div id="google_translate_element"></div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <span class="eyebrow">Rabbit Farming</span>
+      <h2>Complete Rabbit Farming Guide — Breeds, Feeding, Housing & Care</h2>
+
+      <p class="sub">
+        Rabbits are easy to rear, require minimum space, reproduce quickly,
+        and provide excellent meat and manure. This guide covers breeds,
+        feeding, housing, diseases, and management tips.
+      </p>
+
+      <div class="hero-stats">
+        <div class="stat"><strong>Litter Size</strong><small>6–10 kits</small></div>
+        <div class="stat"><strong>Market Weight</strong><small>2–3 kg (4 months)</small></div>
+        <div class="stat"><strong>Space Need</strong><small>Very minimal</small></div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <img class="hero-img"
+           src="https://i.pinimg.com/736x/89/a2/14/89a2141341fb34b240d7ab9d00b83bc9.jpg"
+           alt="Cute healthy rabbits on rabbit farm">
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main class="container">
+    <div class="panel">
+      <div>
+
+        <!-- Overview -->
+        <section class="card">
+          <h3>Overview</h3>
+          <p>
+            Rabbit farming is gaining popularity due to cheap input cost, fast multiplication,
+            and high-quality meat. Rabbits are calm animals and suitable for small farms,
+            households, and commercial units.
+          </p>
+        </section>
+
+        <!-- Breeds -->
+        <section class="card">
+          <h3>Popular Rabbit Breeds</h3>
+          <div class="breed-grid">
+
+            <div class="breed">
+              <img src="https://i.pinimg.com/736x/07/ff/73/07ff735843fef3abf1cc0ef99da46874.jpg"
+                   alt="New Zealand White rabbit breed">
+              <div class="b-content">
+                <h4>New Zealand White</h4>
+                <p>Fast growing; best meat breed.</p>
+              </div>
+            </div>
+
+            <div class="breed">
+              <img src="https://i.pinimg.com/1200x/c9/d9/30/c9d93055fd25efe8dc945cc5be597c8b.jpg"
+                   alt="Californian rabbit breed">
+              <div class="b-content">
+                <h4>Californian</h4>
+                <p>High reproduction & good weight gain.</p>
+              </div>
+            </div>
+
+            <div class="breed">
+              <img src="https://i.pinimg.com/736x/70/46/83/7046839400ee4aa80b3366c3712ee99f.jpg"
+                   alt="Flemish Giant rabbit breed">
+              <div class="b-content">
+                <h4>Flemish Giant</h4>
+                <p>Large breed; excellent meat quality.</p>
+              </div>
+            </div>
+
+            <div class="breed">
+              <img src="https://i.pinimg.com/736x/7b/5e/6b/7b5e6b3e7509335269f9fa9fe85f6ec0.jpg"
+                   alt="Grey Giant rabbit breed">
+              <div class="b-content">
+                <h4>Grey Giant</h4>
+                <p>Strong, hardy, very adaptable.</p>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Feeding -->
+        <section class="card">
+          <h3>Feeding Schedule</h3>
+          <p>Rabbits need fibre-rich diet. Greens + pellets improve growth.</p>
+
+          <table>
+            <tr><th>Age/Stage</th><th>Feed</th><th>Notes</th></tr>
+            <tr><td>Kits</td><td>Pellets + mother’s milk</td><td>Up to 6 weeks</td></tr>
+            <tr><td>Growers</td><td>Greens + pellets (16% protein)</td><td>Fast growth stage</td></tr>
+            <tr><td>Adults</td><td>Dry grass + vegetables</td><td>Maintain weight</td></tr>
+            <tr><td>Lactating Does</td><td>Extra pellets + protein</td><td>Supports milk</td></tr>
+          </table>
+        </section>
+
+        <!-- Housing -->
+        <section class="card">
+          <h3>Rabbit Housing</h3>
+          <ul style="margin-left:20px;color:var(--muted)">
+            <li>Use cages or hutches</li>
+            <li>Proper ventilation and shade</li>
+            <li>Keep cages dry and clean</li>
+            <li>Wire-mesh floors help maintain hygiene</li>
+            <li>Protect from predators</li>
+          </ul>
+
+          <img src="https://i.pinimg.com/736x/74/77/a3/7477a30fa9047685afb3bd57ccc016f1.jpg"
+               alt="Rabbit cage and housing setup"
+               style="width:100%;height:400px;object-fit:cover;border-radius:12px;margin-top:12px;">
+        </section>
+
+        <!-- Diseases -->
+        <section class="card">
+          <h3>Common Rabbit Diseases</h3>
+
+          <div class="d-grid">
+
+            <div class="d-card">
+              <h5>Coccidiosis</h5>
+              <p>Diarrhea; requires anticoccidial treatment.</p>
+            </div>
+
+            <div class="d-card">
+              <h5>Snuffles</h5>
+              <p>Cold & nasal discharge; maintain hygiene.</p>
+            </div>
+
+            <div class="d-card">
+              <h5>Ear Mites</h5>
+              <p>Scratching & irritation; apply ear drops.</p>
+            </div>
+
+            <div class="d-card">
+              <h5>Enteritis</h5>
+              <p>Digestive upset; avoid sudden feed changes.</p>
+            </div>
+
+          </div>
+
+        </section>
+
+      </div>
+
+      <!-- SIDEBAR -->
+      <aside>
+
+        <div class="mini-card">
+          <h3>Care Tips</h3>
+          <ul style="margin-left:18px;color:var(--muted)">
+            <li>Provide fresh water 24/7</li>
+            <li>Clean cages regularly</li>
+            <li>Trim nails monthly</li>
+            <li>Handle gently—rabbits scare easily</li>
+          </ul>
+        </div>
+
+        <div class="mini-card">
+          <h3>Breeding Facts</h3>
+          <ul style="margin-left:18px;color:var(--muted)">
+            <li>Gestation: 28–31 days</li>
+            <li>Weaning: 6 weeks</li>
+            <li>Breeding age: 5 months</li>
+          </ul>
+        </div>
+
+        <div class="mini-card video-wrap">
+          <h3>Video Guide</h3>
+          <iframe src="https://www.youtube.com/embed/HG3WnrAeuEQ?si=P1MjObUrfS7HbZB2" allowfullscreen></iframe>
+        </div>
+
+      </aside>
+    </div>
+
+    <!-- Benefits -->
+    <section class="card">
+      <h3>Benefits of Rabbit Farming</h3>
+      <ul style="margin-left:20px;color:var(--muted)">
+        <li>Fast reproduction rate</li>
+        <li>Low feed cost</li>
+        <li>Healthy, low-fat meat</li>
+        <li>Ideal for small spaces</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2025 FarmMitra 2.0 — Rabbit Farming Guide
+  </footer>
+
+  <!-- Google Translate -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage:"en",
+        includedLanguages:"en,hi,mr",
+      }, "google_translate_element");
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Buffalo Farming | FarmMitra 2.0</title>
+
+  <!-- Fonts & icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    :root{
+      --dark: #1c1c1c;
+      --teal-dark: #004d40;
+      --teal: #00695c;
+      --mint: #e0f2f1;
+      --white: #ffffff;
+      --card: #f8fffd;
+      --muted: #5f726d;
+      --glow: rgba(38, 166, 154, 0.4);
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:"Poppins",sans-serif;
+      background:linear-gradient(180deg,var(--mint), #ffffff);
+      color:var(--dark);
+    }
+
+    /* FIXED INLINE STYLES */
+    .logo-icon { font-size:28px; color:#80cbc4; }
+    .version-badge { color:#80cbc4; font-weight:600; }
+    .ml-20 { margin-left:20px; }
+    .img-cover {
+      width:100%;
+      height:230px;
+      border-radius:12px;
+      object-fit:cover;
+      margin-top:12px;
+    }
+
+    /* NAVBAR */
+    .navbar{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:15px 6%;
+      background:linear-gradient(90deg, var(--teal-dark), var(--teal));
+      color:white;
+      position:sticky;top:0;z-index:1000;
+      box-shadow:0 6px 18px rgba(0,0,0,0.2);
+    }
+    nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+    nav a{text-decoration:none;color:white;font-weight:600}
+
+    .logo{display:flex;align-items:center;gap:12px}
+    .logo h1{margin:0;font-size:1.5rem;color:white}
+    .logo span{color:#80cbc4}
+
+    .lang-select{
+      display:flex;align-items:center;gap:6px;
+      padding:6px 10px;
+      background:rgba(255,255,255,0.15);
+      border-radius:6px;
+    }
+
+    /* HERO */
+    .hero{
+      display:grid;
+      grid-template-columns:1fr 480px;
+      gap:40px;
+      align-items:center;
+      padding:50px 6%;
+    }
+
+    .hero-left{
+      background:var(--card);
+      padding:34px;
+      border-radius:14px;
+      box-shadow:0 12px 32px rgba(0,0,0,0.12);
+    }
+
+    .eyebrow{
+      background:#b2dfdb;
+      padding:6px 14px;
+      border-radius:20px;
+      font-weight:600;
+      color:var(--teal-dark);
+    }
+
+    .hero-left h2{
+      margin-top:12px;
+      font-size:1.9rem;
+      color:var(--teal-dark);
+      line-height:1.3;
+    }
+
+    .sub{color:var(--muted);margin-top:12px;line-height:1.6}
+
+    .hero-stats{
+      display:flex;gap:14px;flex-wrap:wrap;margin-top:18px;
+    }
+
+    .stat{
+      background:white;padding:14px;border-radius:12px;
+      min-width:130px;
+      box-shadow:0 8px 20px rgba(38,166,154,0.2);
+    }
+
+    .hero-right{
+      height:380px;border-radius:16px;overflow:hidden;
+      background:black;box-shadow:0 0 40px var(--glow);
+    }
+    .hero-img{
+      width:100%;height:100%;object-fit:cover;
+    }
+
+    /* MAIN */
+    .container{max-width:1400px;margin:40px auto;padding:0 6%}
+    .panel{display:grid;grid-template-columns:1fr 320px;gap:30px}
+
+    .card{
+      background:var(--card);padding:24px;
+      border-radius:14px;
+      box-shadow:0 10px 24px rgba(0,0,0,0.08);
+      margin-bottom:22px;
+    }
+
+    h3{color:var(--teal-dark);margin-bottom:12px}
+
+    /* BREED CARDS */
+    .breed-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+    .breed{
+      background:white;border-radius:12px;
+      border:1px solid #d9efea;
+      overflow:hidden;
+      transition:.3s;
+      box-shadow:0 6px 20px rgba(0,0,0,0.06);
+    }
+    .breed:hover{transform:translateY(-6px);box-shadow:0 18px 32px rgba(38,166,154,0.25)}
+    .breed img{width:100%;height:150px;object-fit:cover}
+
+    /* TABLE */
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{padding:12px;border:1px solid #dce9e6}
+    th{background:#b2dfdb;color:#003d33}
+
+    /* DISEASE GRID */
+    .d-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+    .d-card{
+      background:white;padding:14px;border-radius:12px;
+      box-shadow:0 10px 26px rgba(0,0,0,0.04);
+    }
+
+    /* SIDEBAR */
+    .mini-card{
+      background:white;padding:18px;border-radius:12px;
+      margin-bottom:18px;box-shadow:0 8px 26px rgba(0,0,0,0.05);
+    }
+
+    .video-wrap iframe{
+      width:100%;height:260px;border-radius:12px;border:0;
+    }
+
+    footer{
+      margin-top:40px;
+      background:linear-gradient(90deg, var(--teal-dark), var(--teal));
+      color:white;
+      text-align:center;
+      padding:18px;
+    }
+
+    @media(max-width:1100px){
+      .hero{grid-template-columns:1fr}
+      .hero-right{height:260px}
+      .panel{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline" class="logo-icon"></ion-icon>
+      <h1>Farm<span>Mitra</span> <small class="version-badge">2.0</small></h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="animal-husbandry.html">Animal Hub</a></li>
+      </ul>
+    </nav>
+
+    <div class="lang-select">
+      <ion-icon name="language-outline"></ion-icon>
+      <div id="google_translate_element"></div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <span class="eyebrow">Buffalo Farming</span>
+      <h2>Complete Guide to Buffalo Care — Breeds, Feeding, Housing & Milk Yield</h2>
+
+      <p class="sub">
+        Buffaloes are the backbone of Indian dairying. This guide covers the best breeds,
+        feeding schedules, housing designs, common diseases, and practical milking methods.
+      </p>
+
+      <div class="hero-stats">
+        <div class="stat"><strong>Milk per day</strong><small>5–15 Liters</small></div>
+        <div class="stat"><strong>Milk Fat</strong><small>6–9%</small></div>
+        <div class="stat"><strong>Strength</strong><small>Excellent draught power</small></div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <img class="hero-img" src="https://i.pinimg.com/736x/92/be/e8/92bee842b47dec87f3f91488520317ff.jpg" alt="Buffalo farming image">
+    </div>
+  </section>
+
+  <!-- MAIN -->
+  <main class="container">
+
+    <div class="panel">
+      <div>
+
+        <!-- Overview -->
+        <section class="card">
+          <h3>Overview</h3>
+          <p>
+            Buffaloes produce high-fat milk, tolerate heat, and support rural livelihoods.
+            They thrive with water access and good-quality fodder.
+          </p>
+        </section>
+
+        <!-- Breeds -->
+        <section class="card">
+          <h3>Popular Buffalo Breeds in India</h3>
+
+          <div class="breed-grid">
+
+            <!-- Murrah -->
+            <div class="breed">
+              <img src="https://i.pinimg.com/1200x/31/28/e4/3128e460da310be85aba7ba6108c634d.jpg" alt="Murrah buffalo">
+              <div class="b-content">
+                <h4>Murrah</h4>
+                <p>8–15 L/day, 7–9% fat.</p>
+              </div>
+            </div>
+
+            <!-- Jaffarabadi -->
+            <div class="breed">
+              <img src="https://i.pinimg.com/736x/83/ab/1f/83ab1fb82278d883def7f04c83f7b4a3.jpg" alt="Jaffarabadi buffalo">
+              <div class="b-content">
+                <h4>Jaffarabadi</h4>
+                <p>Heavy breed, long lifespan.</p>
+              </div>
+            </div>
+
+            <!-- Banni -->
+            <div class="breed">
+              <img src="https://i.pinimg.com/1200x/23/6a/e3/236ae3e28a1fb8536ef580d55766cf28.jpg" alt="Banni buffalo">
+              <div class="b-content">
+                <h4>Banni</h4>
+                <p>Disease-resistant, 8–12 L/day.</p>
+              </div>
+            </div>
+
+            <!-- Mehsana -->
+            <div class="breed">
+              <img src="https://i.pinimg.com/1200x/bf/90/ac/bf90ac21ef10a9e0839e42f2a207d59f.jpg" alt="Mehsana buffalo">
+              <div class="b-content">
+                <h4>Mehsana</h4>
+                <p>Dual-purpose, hardy.</p>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Feeding -->
+        <section class="card">
+          <h3>Feeding Guide</h3>
+          <p>Buffaloes need abundant water, green fodder, and bathing for better appetite.</p>
+
+          <table>
+            <tr><th>Stage</th><th>Daily Feed</th><th>Notes</th></tr>
+            <tr><td>Dry Buffalo</td><td>Dry fodder 6–8 kg + Green 10–12 kg</td><td>Mineral mix essential</td></tr>
+            <tr><td>Lactating</td><td>Green 15–25 kg + Dry 6–8 kg + Concentrate 3–6 kg</td><td>Bathing increases fat%</td></tr>
+            <tr><td>Heifers</td><td>Green 8–10 kg + Dry 4–5 kg</td><td>Supports growth</td></tr>
+          </table>
+        </section>
+
+        <!-- Housing -->
+        <section class="card">
+          <h3>Housing & Shed Design</h3>
+
+          <ul class="ml-20">
+            <li>Floor slope: 1:40</li>
+            <li>Provide shade & ventilation</li>
+            <li>Mud pond or water tank for cooling</li>
+            <li>Separate calving pen</li>
+          </ul>
+
+          <img class="img-cover"
+               src="https://i.pinimg.com/736x/18/e3/ef/18e3ef7a111fbe7a05eac7b4e0deb562.jpg"
+               alt="Buffalo shed design">
+        </section>
+
+        <!-- Diseases -->
+        <section class="card">
+          <h3>Common Buffalo Diseases</h3>
+
+          <div class="d-grid">
+
+            <div class="d-card">
+              <h5>Hemorrhagic Septicemia</h5>
+              <p>High fever, breathing trouble. Needs urgent vaccination.</p>
+            </div>
+
+            <div class="d-card">
+              <h5>Foot & Mouth Disease</h5>
+              <p>Drooling, sores in mouth.</p>
+            </div>
+
+            <div class="d-card">
+              <h5>Mastitis</h5>
+              <p>Swollen udder — maintain hygiene.</p>
+            </div>
+
+            <div class="d-card">
+              <h5>Worm Infestation</h5>
+              <p>Weight loss; requires deworming.</p>
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+
+      <!-- SIDEBAR -->
+      <aside>
+
+        <div class="mini-card">
+          <h3>Vaccination Schedule</h3>
+          <table>
+            <tr><th>Age</th><th>Vaccine</th></tr>
+            <tr><td>2–3 months</td><td>HS vaccine</td></tr>
+            <tr><td>4–6 months</td><td>FMD vaccine</td></tr>
+            <tr><td>Annually</td><td>Boosters</td></tr>
+          </table>
+        </div>
+
+        <div class="mini-card">
+          <h3>Milk Yield Tips</h3>
+          <ul class="ml-20">
+            <li>Allow wallowing daily</li>
+            <li>Provide mineral mixture</li>
+            <li>Increase green fodder</li>
+            <li>Keep shed cool</li>
+          </ul>
+        </div>
+
+        <div class="mini-card video-wrap">
+          <h3>Video Guide</h3>
+
+          <!-- FIXED: title added for accessibility -->
+          <iframe 
+            src="https://www.youtube.com/embed/rzjT8cfEbrk?si=-jTKoziyjRB80MDi+" 
+            title="Buffalo Farming Video Guide"
+            allowfullscreen>
+          </iframe>
+        </div>
+
+      </aside>
+    </div>
+
+    <!-- Benefits -->
+    <section class="card">
+      <h3>Benefits of Raising Buffaloes</h3>
+      <ul class="ml-20">
+        <li>High-fat milk gives better price</li>
+        <li>Hardy & disease resistant</li>
+        <li>Ideal for rural farmers</li>
+        <li>Low maintenance</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2025 FarmMitra 2.0 — Buffalo Farming Guide
+  </footer>
+
+  <!-- Google Translate -->
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+      }, "google_translate_element");
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

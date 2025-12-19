@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jowar (Sorghum) Farming | FarmMitra 2.0</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    :root{
+      /* 🌾 Jowar (Sorghum) Theme */
+      --rice-deep:#4E342E;        /* deep sorghum brown */
+      --rice-main:#6D4C41;        /* main brown */
+      --rice-accent:#DDB257;      /* grain golden */
+      --rice-soft:#FFF3E0;        /* soft beige bg */
+      --rice-sky:#FBE9E7;         /* warm sky hint */
+      --text-muted:#5f4a40;
+      --card:#ffffff;
+      --shadow-main:rgba(109,76,65,0.26);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0;}
+
+    body{
+      font-family:"Poppins",sans-serif;
+      background:linear-gradient(180deg,#FFF5E1,#ffffff);
+      color:#3E2723;
+      line-height:1.75;
+    }
+
+    /* ================= NAVBAR ================= */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(90deg,#4E342E,#6D4C41,#8D6E63);
+      padding: 15px 8%;
+      color: #fff;
+      flex-wrap: wrap;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo-icon {
+      font-size: 32px;
+      color: var(--rice-accent);
+    }
+
+    .logo h1 {
+      font-size: 1.9rem;
+      color: #fff;
+      margin: 0;
+    }
+
+    .logo span {
+      color: var(--rice-accent);
+    }
+
+    .logo small {
+      font-size: 0.8rem;
+      color: #fbe9e7;
+      margin-left: 3px;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #ffecb3;
+    }
+
+    .translate-box {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.15);
+      padding: 6px 12px;
+      border-radius: 999px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    .translate-box ion-icon {
+      color: #fff;
+      font-size: 20px;
+    }
+
+    .translate-box select {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #2a1c19;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    .goog-te-banner-frame.skiptranslate {
+      display: none !important;
+    }
+
+    #google_translate_element {
+      display: none;
+    }
+
+    /* ================= HERO ================= */
+    .hero{
+      display:grid;
+      grid-template-columns: minmax(0,1.4fr) minmax(280px,0.9fr);
+      gap:32px;
+      padding:40px 6% 20px;
+      align-items:center;
+    }
+
+    .hero-left{
+      background:var(--card);
+      padding:26px 26px 22px;
+      border-radius:16px;
+      box-shadow:0 14px 30px rgba(0,0,0,0.08);
+      border:1px solid #e5d7cf;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero-left::before{
+      content:"";
+      position:absolute;
+      right:-60px;
+      top:-60px;
+      width:160px;
+      height:160px;
+      background:radial-gradient(circle at center,rgba(221,178,87,0.8),transparent 60%);
+      opacity:0.6;
+      pointer-events:none;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      background:#FFF3E0;
+      color:#8D6E63;
+      padding:5px 14px;
+      border-radius:999px;
+      font-size:0.9rem;
+      font-weight:600;
+      letter-spacing:0.02em;
+    }
+
+    .eyebrow ion-icon{
+      font-size:15px;
+    }
+
+    .hero-left h2{
+      margin-top:14px;
+      font-size:2.05rem;
+      color:var(--rice-deep);
+      line-height:1.3;
+    }
+
+    .hero-left h2 span{
+      color:var(--rice-accent);
+    }
+
+    .hero-sub{
+      color:var(--text-muted);
+      margin-top:12px;
+      font-size:1.02rem;
+    }
+
+    .hero-tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:16px;
+    }
+
+    .tag{
+      font-size:0.8rem;
+      background:#FBE9E7;
+      color:#5D4037;
+      border-radius:999px;
+      padding:5px 11px;
+      font-weight:500;
+    }
+
+    .hero-stats{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .stat{
+      flex:0 1 150px;
+      background:#ffffff;
+      border-radius:12px;
+      padding:11px 13px;
+      box-shadow:0 10px 22px rgba(0,0,0,0.08);
+      border:1px solid #ead9cf;
+    }
+
+    .stat-label{
+      font-size:0.8rem;
+      color:#8a6f65;
+      text-transform:uppercase;
+      letter-spacing:0.05em;
+      margin-bottom:3px;
+    }
+
+    .stat-value{
+      font-weight:700;
+      color:var(--rice-deep);
+      font-size:1rem;
+    }
+
+    .stat-note{
+      font-size:0.8rem;
+      color:var(--text-muted);
+    }
+
+    .hero-right{
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow:0 18px 40px var(--shadow-main);
+      position:relative;
+      min-height:260px;
+      background:#ffe0b2;
+    }
+
+    .hero-img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transform:scale(1.02);
+      transition:transform 0.35s ease;
+    }
+
+    .hero-right:hover .hero-img{
+      transform:scale(1.06);
+    }
+
+    .hero-badge{
+      position:absolute;
+      left:14px;
+      bottom:14px;
+      background:rgba(0,0,0,0.55);
+      color:#fffde7;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:0.85rem;
+      display:flex;
+      align-items:center;
+      gap:6px;
+      -webkit-backdrop-filter: blur(4px);
+      backdrop-filter: blur(4px);
+    }
+
+    .hero-badge ion-icon{
+      font-size:16px;
+    }
+
+    /* ================= MAIN LAYOUT ================= */
+    .page-wrap{
+      max-width:1320px;
+      margin:0 auto 40px;
+      padding:0 6% 10px;
+    }
+
+    .main-grid{
+      display:grid;
+      grid-template-columns:minmax(0,1.5fr) minmax(280px,0.9fr);
+      gap:26px;
+      align-items:flex-start;
+    }
+
+    .card{
+      background:var(--card);
+      padding:18px 20px;
+      border-radius:14px;
+      box-shadow:0 12px 28px rgba(0,0,0,0.06);
+      border:1px solid #ecdcd3;
+      margin-bottom:18px;
+    }
+
+    h3.section-title{
+      margin:0 0 8px;
+      color:var(--rice-deep);
+      font-size:1.3rem;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    h3.section-title ion-icon{
+      color:var(--rice-main);
+      font-size:18px;
+    }
+
+    .section-note{
+      font-size:0.9rem;
+      color:var(--text-muted);
+      margin-bottom:6px;
+    }
+
+    p, li{
+      font-size:1.01rem;
+      color:#4a332c;
+    }
+
+    ul{
+      padding-left:20px;
+      margin-top:8px;
+    }
+
+    .mt-8{
+      margin-top:8px;
+    }
+
+    /* Highlight box */
+    .highlight-box{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:10px;
+      background:#FFF8E1;
+      border-left:4px solid #FFB300;
+      font-size:0.9rem;
+      color:#8D6E63;
+    }
+
+    /* IMAGE STRIP */
+    .img-strip{
+      display:flex;
+      gap:10px;
+      margin-top:12px;
+      flex-wrap:wrap;
+    }
+
+    .img-strip img{
+      flex:1 1 140px;
+      border-radius:12px;
+      height:140px;
+      object-fit:cover;
+      box-shadow:0 10px 20px rgba(0,0,0,0.08);
+    }
+
+    /* TABLES */
+    .table-wrap{
+      margin-top:10px;
+      overflow-x:auto;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      font-size:0.95rem;
+      min-width:280px;
+    }
+
+    th,td{
+      padding:9px 10px;
+      border:1px solid #e6d7cf;
+      text-align:left;
+    }
+
+    th{
+      background:#FFF3E0;
+      color:#4E342E;
+      font-weight:600;
+    }
+
+    /* GRID INSIDE CARD */
+    .two-col-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:14px;
+      margin-top:10px;
+    }
+
+    .pill-list{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:8px;
+    }
+
+    .pill{
+      background:#fcead7;
+      color:var(--rice-deep);
+      padding:4px 10px;
+      border-radius:999px;
+      font-size:0.82rem;
+      font-weight:500;
+    }
+
+    /* Pest/disease cards */
+    .d-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+      gap:14px;
+      margin-top:10px;
+    }
+
+    .d-card{
+      background:#fffbf8;
+      border-radius:12px;
+      padding:10px 12px;
+      border:1px solid #f0dfd5;
+      box-shadow:0 6px 18px rgba(0,0,0,0.04);
+    }
+
+    .d-card h4{
+      margin:0 0 4px;
+      color:var(--rice-deep);
+      font-size:1.02rem;
+    }
+
+    .d-card small{
+      font-size:0.8rem;
+      color:#8D6E63;
+    }
+
+    .bullet-tight{
+      padding-left:18px;
+      margin-top:6px;
+    }
+
+    .bullet-tight li{
+      font-size:0.9rem;
+      margin-bottom:3px;
+    }
+
+    /* ================= NUTRIENT CALCULATOR ================= */
+    .calc-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:16px;
+      margin-top:12px;
+      align-items:flex-start;
+    }
+
+    .calc-box{
+      background:#FFF8E1;
+      border-radius:12px;
+      padding:10px 12px;
+      border:1px solid #FFE082;
+    }
+
+    .calc-box label{
+      font-size:0.9rem;
+      display:block;
+      margin-bottom:4px;
+      color:#8D6E63;
+      font-weight:600;
+    }
+
+    .calc-box input,
+    .calc-box select{
+      width:100%;
+      padding:6px 8px;
+      border-radius:8px;
+      border:1px solid #e0cdbf;
+      outline:none;
+      font-size:0.9rem;
+      margin-bottom:8px;
+    }
+
+    .calc-result{
+      font-size:0.92rem;
+      margin-top:6px;
+      color:#5D4037;
+      font-weight:600;
+    }
+
+    /* ================= GROWTH STAGE TIMELINE ================= */
+    .timeline{
+      margin-top:12px;
+    }
+
+    .timeline-bar{
+      position:relative;
+      height:4px;
+      background:#ffe0b2;
+      border-radius:999px;
+      margin:20px 0 18px;
+    }
+
+    .timeline-fill{
+      position:absolute;
+      left:0;
+      top:0;
+      height:100%;
+      width:100%;
+      background:linear-gradient(90deg,#6D4C41,#DDB257);
+      border-radius:999px;
+      opacity:0.8;
+    }
+
+    .stage-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+      gap:12px;
+    }
+
+    .stage{
+      background:#ffffff;
+      border-radius:12px;
+      padding:8px 10px;
+      box-shadow:0 8px 18px rgba(0,0,0,0.04);
+      border:1px solid #f0e0d6;
+    }
+
+    .stage-title{
+      font-size:0.95rem;
+      font-weight:600;
+      color:var(--rice-deep);
+    }
+
+    .stage-sub{
+      font-size:0.82rem;
+      color:#6d554c;
+    }
+
+    /* ================= FAQ ACCORDION ================= */
+    .faq-list{
+      margin-top:10px;
+    }
+
+    .faq-item{
+      border-radius:10px;
+      border:1px solid #e6d7cf;
+      margin-bottom:8px;
+      overflow:hidden;
+      background:#ffffff;
+    }
+
+    .faq-question{
+      padding:10px 12px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      cursor:pointer;
+      font-size:0.97rem;
+      font-weight:600;
+      color:var(--rice-deep);
+    }
+
+    .faq-question span.icon{
+      font-size:18px;
+      color:#6D4C41;
+      transition:transform 0.2s ease;
+    }
+
+    .faq-answer{
+      max-height:0;
+      overflow:hidden;
+      transition:max-height 0.3s ease;
+      padding:0 12px;
+    }
+
+    .faq-answer p{
+      font-size:0.96rem;
+      color:#5f4a40;
+      padding:6px 0 10px;
+    }
+
+    .faq-item.active .faq-answer{
+      max-height:220px;
+    }
+
+    .faq-item.active .faq-question span.icon{
+      transform:rotate(90deg);
+    }
+
+    /* ================= SIDEBAR ================= */
+    .side-card{
+      background:#ffffff;
+      padding:16px 16px 14px;
+      border-radius:14px;
+      box-shadow:0 10px 24px rgba(0,0,0,0.06);
+      border:1px solid #ecdcd3;
+      margin-bottom:16px;
+    }
+
+    .side-card h4{
+      margin:0 0 6px;
+      color:var(--rice-deep);
+      font-size:1.05rem;
+      display:flex;
+      align-items:center;
+      gap:6px;
+    }
+
+    .side-card h4 ion-icon{
+      color:var(--rice-main);
+      font-size:18px;
+    }
+
+    .side-card p{
+      font-size:0.95rem;
+      color:var(--text-muted);
+    }
+
+    .badge-mini{
+      display:inline-block;
+      padding:3px 8px;
+      border-radius:999px;
+      background:#FFE082;
+      color:#6d4c00;
+      font-size:0.8rem;
+      font-weight:600;
+      margin-top:4px;
+    }
+
+    /* VIDEO CARD + MODAL */
+    .video-thumb-card{
+      position:relative;
+      border-radius:14px;
+      overflow:hidden;
+      cursor:pointer;
+      margin-top:8px;
+      box-shadow:0 10px 26px rgba(0,0,0,0.25);
+    }
+
+    .video-thumb{
+      width:100%;
+      height:200px;
+      object-fit:cover;
+      display:block;
+      transition:transform .3s ease;
+    }
+
+    .video-thumb-card:hover .video-thumb{
+      transform:scale(1.03);
+    }
+
+    .play-overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top,rgba(0,0,0,0.55),rgba(0,0,0,0.15));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .play-circle{
+      width:64px;
+      height:64px;
+      border-radius:50%;
+      border:3px solid #fffde7;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      -webkit-backdrop-filter: blur(4px);
+      backdrop-filter: blur(4px);
+      box-shadow:0 0 18px rgba(0,0,0,0.5);
+    }
+
+    .play-circle ion-icon{
+      font-size:32px;
+      color:#fffde7;
+      margin-left:3px;
+    }
+
+    .video-caption{
+      position:absolute;
+      left:10px;
+      bottom:8px;
+      color:#fffde7;
+      font-size:0.8rem;
+      text-shadow:0 1px 4px rgba(0,0,0,0.7);
+    }
+
+    .video-actions{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-top:8px;
+      gap:6px;
+    }
+
+    .btn-yt{
+      flex:1;
+      text-align:center;
+      text-decoration:none;
+      font-size:0.85rem;
+      font-weight:600;
+      padding:7px 10px;
+      border-radius:999px;
+      background:#FFCA28;
+      color:#5d3b00;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:5px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .btn-yt ion-icon{
+      font-size:16px;
+    }
+
+    .btn-note{
+      font-size:0.8rem;
+      color:#7e6a63;
+      text-align:right;
+    }
+
+    /* MODAL */
+    .modal-backdrop{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.6);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:2000;
+    }
+
+    .modal-backdrop.active{
+      display:flex;
+    }
+
+    .modal-content{
+      width:90%;
+      max-width:780px;
+      background:#000;
+      border-radius:16px;
+      overflow:hidden;
+      box-shadow:0 20px 50px rgba(0,0,0,0.6);
+      position:relative;
+    }
+
+    .modal-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:8px 14px;
+      background:linear-gradient(90deg,#4E342E,#6D4C41);
+      color:#fff;
+      font-size:0.95rem;
+    }
+
+    .modal-header button{
+      border:none;
+      background:transparent;
+      color:#fff;
+      font-size:1.3rem;
+      cursor:pointer;
+    }
+
+    .modal-body iframe{
+      width:100%;
+      height:420px;
+      border:none;
+      display:block;
+    }
+
+    @media(max-width:768px){
+      .modal-body iframe{
+        height:240px;
+      }
+    }
+
+    /* FOOTER */
+    footer{
+      background:#FFF3E0;
+      border-top:1px solid #ecd4c4;
+      padding:14px 6% 18px;
+      text-align:center;
+      font-size:0.9rem;
+      color:#6b4e43;
+      margin-top:20px;
+    }
+
+    footer a{
+      color:var(--rice-deep);
+      font-weight:600;
+      text-decoration:none;
+      margin-right:8px;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:1024px){
+      .hero{
+        grid-template-columns:1fr;
+      }
+      .hero-right{
+        max-width:520px;
+        margin:0 auto;
+      }
+      .main-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media(max-width:720px){
+      .navbar{
+        flex-wrap:wrap;
+        gap:10px;
+        padding-inline:16px;
+      }
+      nav ul{
+        gap:14px;
+        font-size:0.9rem;
+      }
+      .hero{
+        padding-inline:16px;
+      }
+      .page-wrap{
+        padding-inline:16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============== NAVBAR ============== -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline" class="logo-icon"></ion-icon>
+      <h1>Farm<span>Mitra</span> <small>2.0</small></h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="field-crops.html">🌾 Field Crops</a></li>
+      </ul>
+    </nav>
+
+    <div class="translate-box">
+      <ion-icon name="language-outline"></ion-icon>
+      <select id="languageSelect" aria-label="Select Language">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+        <option value="mr">मराठी</option>
+      </select>
+    </div>
+  </header>
+
+  <!-- Hidden Google element -->
+  <div id="google_translate_element"></div>
+
+  <!-- ============== HERO ============== -->
+  <section class="hero">
+    <div class="hero-left">
+      <span class="eyebrow">
+        <ion-icon name="sunny-outline" aria-hidden="true"></ion-icon>
+        Jowar (Sorghum) – Dryland Nutri-Cereal
+      </span>
+
+      <h2>Jowar (Sorghum) – <span>Climate-Smart</span> Grain for Dryland Farmers</h2>
+
+      <p class="hero-sub">
+        Jowar is an important <strong>coarse cereal and fodder crop</strong> grown widely in dry and semi-arid
+        regions. It is <strong>drought tolerant, hardy</strong> and performs well on less fertile soils,
+        making it a key food and fodder source for rainfed farmers.
+      </p>
+
+      <div class="hero-tags">
+        <span class="tag">Kharif & Rabi crop</span>
+        <span class="tag">Drought tolerant</span>
+        <span class="tag">Food + Fodder + Forage</span>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-label">Crop Duration</div>
+          <div class="stat-value">95 – 120 days</div>
+          <div class="stat-note">Depends on variety & season</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Rainfall Need</div>
+          <div class="stat-value">400 – 750 mm</div>
+          <div class="stat-note">Thrives in low–medium rainfall</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Average Grain Yield</div>
+          <div class="stat-value">2 – 3.5 t/ha</div>
+          <div class="stat-note">Higher in hybrids with irrigation</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <img
+        src="https://i.pinimg.com/1200x/5d/5a/a8/5d5aa81bccb6dc4d3acb17798f8ac49b.jpg"
+        alt="Jowar sorghum field with mature panicles"
+        class="hero-img"
+      />
+      <div class="hero-badge">
+        <ion-icon name="leaf-outline" aria-hidden="true"></ion-icon>
+        Performs well in dryland & semi-arid regions
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== MAIN CONTENT ============== -->
+  <div class="page-wrap">
+    <div class="main-grid">
+      <!-- ========= LEFT MAIN COLUMN ========= -->
+      <div>
+
+        <!-- 1. Overview & Climate -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="information-circle-outline"></ion-icon>
+            1️⃣ Overview & Climate Requirement
+          </h3>
+          <p>
+            Jowar (<em>Sorghum bicolor</em>) is a <strong>major cereal and fodder crop</strong> cultivated extensively
+            in <strong>rainfed and dryland areas</strong>. It grows best in warm, dry climates with
+            temperatures between <strong>25–35°C</strong>. Major producing states are
+            <strong>Maharashtra, Karnataka, Madhya Pradesh, Telangana, Andhra Pradesh, Rajasthan and Gujarat</strong>.
+          </p>
+          <p>
+            Jowar is used as <strong>grain for human food, cattle feed, silage and green fodder</strong>.
+            Its deep root system and waxy leaves help it tolerate drought and high temperatures better than many other cereals.
+          </p>
+
+          <div class="two-col-grid mt-8">
+            <div>
+              <strong>Best Soil Type</strong>
+              <ul>
+                <li>Well-drained <strong>sandy loam to clay loam</strong> soils</li>
+                <li>Soil pH: <strong>6.0–7.5</strong> (slightly acidic to neutral)</li>
+                <li>Good for <strong>medium to deep black soils</strong> in Deccan plateau</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Season of Sowing</strong>
+              <ul>
+                <li><strong>Kharif:</strong> June–July with onset of monsoon</li>
+                <li><strong>Rabi:</strong> Sept–Oct (in irrigated/black soil areas)</li>
+                <li><strong>Summer:</strong> Jan–Feb under irrigation (fodder/forage)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="highlight-box">
+            🌦️ <strong>Tip:</strong> Jowar is relatively drought hardy, but <strong>moisture stress during
+            flowering and grain filling</strong> can sharply reduce yield. Try to protect crop at these stages.
+          </div>
+
+          <div class="img-strip">
+            <img src="https://i.pinimg.com/736x/18/62/aa/1862aae712d93973cd81fcbae27525a2.jpg"
+                 alt="Close view of Jowar panicles with grains">
+            <img src="https://i.pinimg.com/736x/00/e2/7d/00e27da0ed7d0b2ca42bf4b3e7fd88d0.jpg"
+                 alt="Farmer inspecting Jowar crop in field">
+          </div>
+        </section>
+
+        <!-- 2. Varieties & Comparison -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="leaf-outline"></ion-icon>
+            2️⃣ Varieties & Seed Information (with Comparison)
+          </h3>
+          <p class="section-note">
+            Select hybrid or improved varieties suitable for your region and season (Kharif/Rabi) for better yield and fodder quality.
+          </p>
+
+          <div class="table-wrap">
+            <table aria-label="Popular Jowar varieties and comparison">
+              <thead>
+                <tr>
+                  <th>Variety / Hybrid</th>
+                  <th>Type / Use</th>
+                  <th>Duration (days)</th>
+                  <th>Special Features</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>CSH 9</td>
+                  <td>Hybrid grain sorghum</td>
+                  <td>105–110</td>
+                  <td>High yield, suitable for Kharif</td>
+                </tr>
+                <tr>
+                  <td>CSH 16</td>
+                  <td>Hybrid grain + fodder</td>
+                  <td>110–115</td>
+                  <td>Good fodder yield, tolerant to lodging</td>
+                </tr>
+                <tr>
+                  <td>CSV 20</td>
+                  <td>Improved variety</td>
+                  <td>100–105</td>
+                  <td>Stable yield in rainfed areas</td>
+                </tr>
+                <tr>
+                  <td>SSG 59-3 / COFS series</td>
+                  <td>Fodder / multicut sorghum</td>
+                  <td>65–75 (first cut)</td>
+                  <td>Excellent green fodder & regrowth</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <ul class="mt-8">
+            <li><strong>Seed rate:</strong> 8–10 kg/ha (grain Jowar); 25–30 kg/ha (fodder Jowar).</li>
+            <li>Use <strong>certified seed</strong> with good germination and purity.</li>
+            <li>Seed treatment with <strong>fungicide (e.g., Thiram / Carbendazim @ 2–3 g/kg)</strong>
+                + <strong>Azospirillum biofertilizer</strong> helps better establishment.</li>
+          </ul>
+        </section>
+
+        <!-- 3. Soil Preparation & Sowing -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="construct-outline"></ion-icon>
+            3️⃣ Soil Preparation & Sowing
+          </h3>
+          <p>
+            Jowar is generally <strong>direct sown</strong> in the main field. The land should be well prepared,
+            free from weeds and with proper tilth for good seed-soil contact.
+          </p>
+
+          <div class="two-col-grid mt-8">
+            <div>
+              <strong>Land Preparation</strong>
+              <ul>
+                <li>1–2 deep ploughings followed by 2–3 harrowings.</li>
+                <li>Break clods, level the land and remove weeds/stubbles.</li>
+                <li>Apply FYM or compost and mix thoroughly in soil.</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Sowing Method</strong>
+              <ul>
+                <li>Line sowing with <strong>seed drill / behind country plough</strong>.</li>
+                <li>Spacing: <strong>45 cm</strong> between rows and <strong>15 cm</strong> between plants.</li>
+                <li>Depth of sowing: about <strong>3–4 cm</strong>.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="two-col-grid mt-8">
+            <div>
+              <strong>Thinning & Gap Filling</strong>
+              <ul>
+                <li>Thin excess plants at 2–3 leaf stage to maintain spacing.</li>
+                <li>Fill gaps using extra seedlings or re-sowing where plant stand is poor.</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Intercropping Option</strong>
+              <ul>
+                <li>Can be intercropped with <strong>pulses (red gram, cowpea)</strong>.</li>
+                <li>Improves soil fertility and spreads risk under rainfed conditions.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. Nutrient Management + Calculator -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="beaker-outline"></ion-icon>
+            4️⃣ Nutrient Management + Simple NPK Calculator
+          </h3>
+          <p class="section-note">
+            Balanced fertilization ensures good tillering, strong stems and higher grain/fodder yield.
+          </p>
+
+          <ul>
+            <li>Apply <strong>5–10 tons/ha</strong> of well-decomposed FYM or compost at land preparation.</li>
+          </ul>
+
+          <div class="table-wrap">
+            <table aria-label="Jowar fertilizer recommendation">
+              <thead>
+                <tr>
+                  <th>Condition</th>
+                  <th>N (kg/ha)</th>
+                  <th>P₂O₅ (kg/ha)</th>
+                  <th>K₂O (kg/ha)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Rainfed grain Jowar</td>
+                  <td>40–60</td>
+                  <td>20–30</td>
+                  <td>20</td>
+                </tr>
+                <tr>
+                  <td>Irrigated grain Jowar</td>
+                  <td>80–90</td>
+                  <td>40–50</td>
+                  <td>30</td>
+                </tr>
+                <tr>
+                  <td>Hybrid / high yielding</td>
+                  <td>90–100</td>
+                  <td>50</td>
+                  <td>30</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="calc-grid">
+            <div class="calc-box">
+              <label for="areaInput">Enter your field area</label>
+              <input type="number" id="areaInput" min="0" step="0.01" placeholder="e.g. 1.0" />
+              <label for="unitSelect">Select unit</label>
+              <select id="unitSelect">
+                <option value="ha">Hectare (ha)</option>
+                <option value="acre">Acre</option>
+              </select>
+              <label for="npkLevel">Fertilizer level</label>
+              <select id="npkLevel">
+                <option value="rainfed">Rainfed grain Jowar</option>
+                <option value="irrigated">Irrigated grain Jowar</option>
+                <option value="hybrid">Hybrid / high yielding</option>
+              </select>
+
+              <div class="calc-result" id="calcResult">
+                Enter area and select level to see NPK recommendation.
+              </div>
+            </div>
+
+            <div>
+              <ul>
+                <li>Apply <strong>½ of N + full P & K as basal</strong> at sowing.</li>
+                <li>Apply remaining N in 1–2 splits at <strong>25–30 days</strong> and at <strong>booting stage</strong>.</li>
+                <li>In zinc deficient soils, apply <strong>ZnSO₄ @ 25 kg/ha</strong> once in 2–3 years.</li>
+                <li>Use <strong>biofertilizers (Azospirillum, PSB)</strong> + organic manures to improve soil health.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5. Water & Weed Management -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="water-outline"></ion-icon>
+            5️⃣ Water Management & Weed Control
+          </h3>
+
+          <div class="two-col-grid">
+            <div>
+              <strong>Water Management</strong>
+              <ul>
+                <li>Under rainfed, sow with onset of monsoon and conserve soil moisture.</li>
+                <li>In irrigated crop, give light irrigations at <strong>tillering, flowering and grain filling</strong>.</li>
+                <li>Avoid waterlogging – Jowar does not like standing water.</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Weed Management</strong>
+              <ul>
+                <li>Critical period: first <strong>3–5 weeks</strong> after sowing.</li>
+                <li>Hand/hoe weeding at 15–20 and 30–35 days after sowing.</li>
+                <li>Mulching or suitable herbicides as per local recommendations can also be used.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="highlight-box">
+            🌱 <strong>Tip:</strong> Early weeding and one or two intercultivations not only control weeds
+            but also help in <strong>soil aeration and moisture conservation</strong> in Jowar fields.
+          </div>
+        </section>
+
+        <!-- 6. Pests & Diseases -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="bug-outline"></ion-icon>
+            6️⃣ Major Pests & Diseases – Field Identification
+          </h3>
+
+          <div class="d-grid">
+            <div class="d-card">
+              <h4>Shoot Fly</h4>
+              <small>“Dead heart” in young seedlings</small>
+              <ul class="bullet-tight">
+                <li>Delay sowing increases damage – sow at optimum time.</li>
+                <li>Use recommended seed treatment and resistant varieties.</li>
+              </ul>
+            </div>
+
+            <div class="d-card">
+              <h4>Stem Borer</h4>
+              <small>Shot holes on leaves, tunnelling of stem</small>
+              <ul class="bullet-tight">
+                <li>Destroy stubbles and crop residues after harvest.</li>
+                <li>Need-based sprays/traps as per expert advice.</li>
+              </ul>
+            </div>
+
+            <div class="d-card">
+              <h4>Grain Mold</h4>
+              <small>Discoloured, shrivelled grains in humid weather</small>
+              <ul class="bullet-tight">
+                <li>Harvest at proper maturity, avoid very late harvest.</li>
+                <li>Dry grain properly and store in dry conditions.</li>
+              </ul>
+            </div>
+
+            <div class="d-card">
+              <h4>Anthracnose / Leaf Blight</h4>
+              <small>Spots and blight on leaves</small>
+              <ul class="bullet-tight">
+                <li>Use disease tolerant varieties and crop rotation.</li>
+                <li>Follow balanced nutrition and avoid excess nitrogen.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7. Growth Stages Timeline -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="hourglass-outline"></ion-icon>
+            7️⃣ Jowar Growth Stages (Timeline)
+          </h3>
+          <p class="section-note">
+            Knowing stages helps in scheduling fertilizer, intercultivation, irrigation and pest management.
+          </p>
+
+          <div class="timeline">
+            <div class="timeline-bar">
+              <div class="timeline-fill"></div>
+            </div>
+            <div class="stage-grid">
+              <div class="stage">
+                <div class="stage-title">1. Germination & Seedling</div>
+                <div class="stage-sub">0–15 days</div>
+              </div>
+              <div class="stage">
+                <div class="stage-title">2. Vegetative / Tillering</div>
+                <div class="stage-sub">15–40 days</div>
+              </div>
+              <div class="stage">
+                <div class="stage-title">3. Booting</div>
+                <div class="stage-sub">40–60 days</div>
+              </div>
+              <div class="stage">
+                <div class="stage-title">4. Flowering</div>
+                <div class="stage-sub">60–75 days</div>
+              </div>
+              <div class="stage">
+                <div class="stage-title">5. Grain Filling & Maturity</div>
+                <div class="stage-sub">75–110+ days</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 8. FAQ Section -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="help-circle-outline"></ion-icon>
+            8️⃣ Farmer FAQ – Jowar Cultivation
+          </h3>
+
+          <div class="faq-list" id="faqList">
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>Q1. What spacing is best for Jowar?</span>
+                <span class="icon">›</span>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  Maintain about <strong>45 cm row to row</strong> and <strong>15 cm plant to plant</strong>
+                  distance for grain Jowar. This gives good aeration, better tillering and easier interculture.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>Q2. How many irrigations are needed in Jowar?</span>
+                <span class="icon">›</span>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  Under irrigated conditions, give light irrigations at <strong>tillering, flowering and grain filling</strong>.
+                  In rainfed areas, timely sowing and moisture conservation are most important.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>Q3. Can Jowar be used as fodder?</span>
+                <span class="icon">›</span>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  Yes, many Jowar varieties are excellent <strong>green fodder and silage crops</strong>. Multicut fodder
+                  sorghums (SSG types) can be harvested several times for high-quality green fodder.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>Q4. Is Jowar suitable for intercropping?</span>
+                <span class="icon">›</span>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  Jowar is commonly intercropped with <strong>pulses like red gram, cowpea or green gram</strong>.
+                  It improves overall system productivity and reduces risk in rainfed farming.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- ========= RIGHT SIDEBAR ========= -->
+      <aside>
+
+        <div class="side-card">
+          <h4>
+            <ion-icon name="sunny-outline"></ion-icon>
+            Quick Climate Summary
+          </h4>
+          <ul class="bullet-tight">
+            <li>Temperature: <strong>25–35°C</strong></li>
+            <li>Low–medium rainfall regions</li>
+            <li>Tolerates drought & high temperature</li>
+            <li>Grows well in black & loamy soils</li>
+          </ul>
+        </div>
+
+        <div class="side-card">
+          <h4>
+            <ion-icon name="leaf-outline"></ion-icon>
+            Jowar Field Checklist
+          </h4>
+          <ul class="bullet-tight">
+            <li>Well prepared, weed-free field</li>
+            <li>Certified seed of suitable hybrid/variety</li>
+            <li>Line sowing with proper spacing</li>
+            <li>Basal FYM + balanced N & P</li>
+            <li>Timely weeding & thinning</li>
+          </ul>
+          <span class="badge-mini">✔ Check before sowing</span>
+        </div>
+
+        <!-- Video: Modal + YouTube button -->
+        <div class="side-card">
+          <h4>
+            <ion-icon name="play-circle-outline"></ion-icon>
+            Jowar Cultivation Video
+          </h4>
+          <p>
+            Watch a step-by-step Jowar farming video with crop practices, fertilizer and pest management tips.
+          </p>
+
+          <!-- Clickable thumbnail opens modal -->
+          <div class="video-thumb-card" id="videoThumb">
+            <img
+              src="https://img.youtube.com/vi/afPJVYr4sos/hqdefault.jpg"
+              alt="Jowar cultivation YouTube thumbnail"
+              class="video-thumb"
+            />
+            <div class="play-overlay">
+              <div class="play-circle">
+                <ion-icon name="play" aria-hidden="true"></ion-icon>
+              </div>
+            </div>
+            <div class="video-caption">Tap to play inside page</div>
+          </div>
+
+          <div class="video-actions">
+            <a
+              href="https://www.youtube.com/watch?v=afPJVYr4sos"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-yt"
+            >
+              <ion-icon name="logo-youtube" aria-hidden="true"></ion-icon>
+              Watch on YouTube
+            </a>
+            <span class="btn-note">Opens in new tab</span>
+          </div>
+        </div>
+
+        <div class="side-card">
+          <h4>
+            <ion-icon name="shield-checkmark-outline"></ion-icon>
+            Safety & Good Practices
+          </h4>
+          <ul class="bullet-tight">
+            <li>Use gloves and mask when spraying agrochemicals.</li>
+            <li>Store fertilizers & pesticides away from children & animals.</li>
+            <li>Follow label dose and waiting period strictly.</li>
+            <li>Prefer IPM, bioagents and neem-based products where possible.</li>
+          </ul>
+        </div>
+
+      </aside>
+    </div>
+  </div>
+
+  <!-- ============== MODAL FOR VIDEO ============== -->
+  <div class="modal-backdrop" id="videoModal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-label="Jowar farming video">
+      <div class="modal-header">
+        <span>🎥 Jowar (Sorghum) Farming – Video Guide</span>
+        <button type="button" id="closeModal" aria-label="Close video">&times;</button>
+      </div>
+      <div class="modal-body">
+        <iframe
+          id="videoFrame"
+          src=""
+          title="Jowar Farming Video from YouTube"
+          allowfullscreen
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============== FOOTER ============== -->
+  <footer>
+    <a href="field-crops.html">← Back to Field Crops</a>
+    © 2025 FarmMitra 2.0 — Jowar (Sorghum) Smart Farming Guide
+  </footer>
+
+  <!-- ============== GOOGLE TRANSLATE + LANGUAGE SELECT ============== -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+        autoDisplay: false
+      }, "google_translate_element");
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const select = document.getElementById("languageSelect");
+
+      select.addEventListener("change", function () {
+        const lang = select.value;
+        const googleSelect = document.querySelector(".goog-te-combo");
+        if (googleSelect) {
+          googleSelect.value = lang;
+          googleSelect.dispatchEvent(new Event("change"));
+        }
+      });
+    });
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <!-- ============== VIDEO MODAL + NPK CALCULATOR + FAQ SCRIPT ============== -->
+  <script>
+    // ============================
+    // 🎥 Video modal
+    // ============================
+    const videoThumb = document.getElementById("videoThumb");
+    const videoModal = document.getElementById("videoModal");
+    const closeModal = document.getElementById("closeModal");
+    const videoFrame = document.getElementById("videoFrame");
+
+    // Modal video autoplay iframe URL (Jowar farming video)
+    const ytEmbedUrl = "https://www.youtube.com/embed/afPJVYr4sos?autoplay=1";
+
+    function openVideoModal() {
+      if (!videoModal || !videoFrame) return;
+      videoModal.classList.add("active");
+      videoFrame.src = ytEmbedUrl;
+      videoModal.setAttribute("aria-hidden","false");
+    }
+
+    function hideModal() {
+      if (!videoModal || !videoFrame) return;
+      videoModal.classList.remove("active");
+      videoFrame.src = "";
+      videoModal.setAttribute("aria-hidden","true");
+    }
+
+    if (videoThumb) {
+      videoThumb.addEventListener("click", openVideoModal);
+    }
+    if (closeModal) {
+      closeModal.addEventListener("click", hideModal);
+    }
+    if (videoModal) {
+      videoModal.addEventListener("click", (e) => {
+        if (e.target === videoModal) hideModal();
+      });
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && videoModal && videoModal.classList.contains("active")) {
+        hideModal();
+      }
+    });
+
+    // Optional: JS thumbnail injection (kept consistent)
+    if (videoThumb) {
+      videoThumb.innerHTML = `
+        <img
+          src="https://img.youtube.com/vi/afPJVYr4sos/hqdefault.jpg"
+          alt="Jowar farming YouTube thumbnail"
+          class="video-thumb"
+        />
+        <div class="play-overlay">
+          <div class="play-circle">
+            <ion-icon name="play"></ion-icon>
+          </div>
+        </div>
+        <div class="video-caption">Tap to play</div>
+      `;
+    }
+  </script>
+
+  <script>
+    // ============================
+    // 🌱 Simple NPK calculator for Jowar
+    // ============================
+    const areaInput   = document.getElementById("areaInput");
+    const unitSelect  = document.getElementById("unitSelect");
+    const npkLevel    = document.getElementById("npkLevel");
+    const calcResult  = document.getElementById("calcResult");
+
+    function updateNpkCalc() {
+      const area = parseFloat(areaInput.value || "0");
+      if (!calcResult) return;
+
+      if (isNaN(area) || area <= 0) {
+        calcResult.textContent = "Enter a valid field area to get fertilizer recommendation.";
+        return;
+      }
+
+      let factor = 1;
+      if (unitSelect.value === "acre") {
+        factor = 0.4047; // 1 acre = 0.4047 ha
+      }
+
+      let N=0, P=0, K=0;
+      if (npkLevel.value === "rainfed") {
+        N = 50; P = 25; K = 20;
+      } else if (npkLevel.value === "irrigated") {
+        N = 85; P = 45; K = 30;
+      } else if (npkLevel.value === "hybrid") {
+        N = 95; P = 50; K = 30;
+      }
+
+      const areaHa = area * factor;
+      const totalN = (N * areaHa).toFixed(1);
+      const totalP = (P * areaHa).toFixed(1);
+      const totalK = (K * areaHa).toFixed(1);
+
+      calcResult.textContent =
+        "Approx. requirement for your field: " +
+        totalN + " kg N, " +
+        totalP + " kg P₂O₅, " +
+        totalK + " kg K₂O.";
+    }
+
+    if (areaInput && unitSelect && npkLevel) {
+      areaInput.addEventListener("input", updateNpkCalc);
+      unitSelect.addEventListener("change", updateNpkCalc);
+      npkLevel.addEventListener("change", updateNpkCalc);
+    }
+
+    // ============================
+    // ❓ FAQ accordion
+    // ============================
+    const faqList = document.getElementById("faqList");
+    if (faqList) {
+      faqList.addEventListener("click", function (e) {
+        const item = e.target.closest(".faq-item");
+        if (!item) return;
+        item.classList.toggle("active");
+      });
+    }
+  </script>
+
+</body>
+</html>

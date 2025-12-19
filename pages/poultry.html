@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Poultry Farming | FarmMitra 2.0</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    :root{
+      --yellow:#fdd835;
+      --yellow-dark:#f9a825;
+      --red:#d84315;
+      --cream:#fffde7;
+      --white:#ffffff;
+      --muted:#616161;
+      --shadow:rgba(249,168,37,0.25);
+    }
+
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      font-family:"Poppins",sans-serif;
+      background:linear-gradient(180deg,var(--cream),#ffffff);
+      color:#222;
+    }
+
+    /* UTILITIES */
+    .icon-lg { font-size:28px; color:#fff59d; }
+    .version-badge { color:#fff59d; }
+    .ml-18 { margin-left:18px; }
+    .ml-20 { margin-left:20px; }
+    .text-muted { color:var(--muted); }
+    .img-cover {
+      width:100%;
+      height:240px;
+      object-fit:cover;
+      border-radius:12px;
+      margin-top:12px;
+    }
+
+    /* NAVBAR */
+    .navbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:15px 6%;
+      background:linear-gradient(90deg,var(--yellow-dark),var(--red));
+      color:white;
+      position:sticky;
+      top:0;
+      z-index:1000;
+      box-shadow:0 6px 18px rgba(0,0,0,0.2);
+    }
+    nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+    nav a{text-decoration:none;color:white;font-weight:600}
+
+    .logo{display:flex;align-items:center;gap:10px}
+    .logo h1{margin:0;font-size:1.5rem}
+    .logo span{color:#fff59d}
+
+    .lang-select{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      background:rgba(255,255,255,0.2);
+      padding:6px 10px;
+      border-radius:6px;
+    }
+
+    /* HERO */
+    .hero{
+      display:grid;
+      grid-template-columns:1fr 450px;
+      gap:40px;
+      padding:50px 6%;
+      align-items:center;
+    }
+    .hero-left{
+      background:var(--white);
+      padding:34px;
+      border-radius:14px;
+      box-shadow:0 14px 34px rgba(0,0,0,0.1);
+    }
+    .eyebrow{
+      background:#fff59d;
+      padding:6px 14px;
+      border-radius:20px;
+      font-weight:600;
+      color:#c17900;
+    }
+    .hero-left h2{
+      font-size:2rem;
+      color:#d84315;
+      margin-top:12px;
+    }
+    .sub{color:var(--muted);line-height:1.6;margin-top:12px}
+
+    .hero-stats{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-top:18px;
+    }
+    .stat{
+      background:#ffffff;
+      padding:14px;
+      border-radius:12px;
+      min-width:130px;
+      box-shadow:0 8px 20px var(--shadow);
+    }
+    .stat strong{color:#c17900}
+
+    .hero-right{
+      height:360px;
+      border-radius:16px;
+      overflow:hidden;
+      box-shadow:0 10px 40px var(--shadow);
+    }
+    .hero-img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    /* MAIN */
+    .container{max-width:1400px;margin:40px auto;padding:0 6%}
+    .panel{display:grid;grid-template-columns:1fr 320px;gap:30px;}
+
+    .card{
+      background:#ffffff;
+      padding:24px;
+      border-radius:14px;
+      margin-bottom:24px;
+      box-shadow:0 10px 26px rgba(0,0,0,0.06);
+    }
+
+    h3{color:#c17900;margin-bottom:12px}
+
+    /* BREED GRID */
+    .breed-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:18px;
+    }
+    .breed{
+      background:white;
+      border-radius:12px;
+      overflow:hidden;
+      border:1px solid #ffe082;
+      box-shadow:0 8px 22px rgba(0,0,0,0.06);
+      transition:.3s;
+    }
+    .breed:hover{
+      transform:translateY(-6px);
+      box-shadow:0 16px 30px rgba(249,168,37,0.4);
+    }
+    .breed img{
+      width:100%;
+      height:150px;
+      object-fit:cover;
+    }
+    .b-content{padding:12px}
+    .b-content h4{color:#c17900;margin:6px 0}
+
+    /* TABLE */
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{padding:12px;border:1px solid #ffe0b2}
+    th{background:#ffe082;color:#7a4e00}
+
+    /* DISEASE CARDS */
+    .d-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:18px;
+    }
+    .d-card{
+      background:white;
+      padding:14px;
+      border-radius:12px;
+      box-shadow:0 12px 26px rgba(0,0,0,0.05);
+    }
+    .d-card h5{color:#c17900;margin:6px 0}
+
+    /* SIDEBAR */
+    .mini-card{
+      background:white;
+      padding:18px;
+      border-radius:12px;
+      margin-bottom:18px;
+      box-shadow:0 8px 26px rgba(0,0,0,0.07);
+    }
+    .video-wrap iframe{
+      width:100%;
+      height:260px;
+      border-radius:12px;
+      border:0;
+    }
+
+    footer{
+      background:linear-gradient(90deg,var(--yellow-dark),var(--red));
+      padding:18px;
+      text-align:center;
+      color:white;
+      margin-top:30px;
+    }
+
+    @media(max-width:1100px){
+      .hero{grid-template-columns:1fr}
+      .hero-right{height:260px}
+      .panel{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="egg-outline" class="icon-lg"></ion-icon>
+      <h1>Farm<span>Mitra</span> <small class="version-badge">2.0</small></h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="animal-husbandry.html">Animal Hub</a></li>
+      </ul>
+    </nav>
+
+    <div class="lang-select">
+      <ion-icon name="language-outline"></ion-icon>
+      <div id="google_translate_element"></div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <span class="eyebrow">Poultry Farming</span>
+      <h2>Complete Guide to Poultry Care — Breeds, Feeding, Housing & Egg Production</h2>
+
+      <p class="sub">
+        Poultry farming is one of the fastest-growing and most profitable farming activities. This guide covers breeds,
+        feeding, brooding, disease control, shed design, and egg/meat production tips for beginners & farmers.
+      </p>
+
+      <div class="hero-stats">
+        <div class="stat"><strong>Egg/day</strong><small>0.8–1 (layers)</small></div>
+        <div class="stat"><strong>Meat Weight</strong><small>2–3 kg (broilers)</small></div>
+        <div class="stat"><strong>Maturity</strong><small>16–20 weeks</small></div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <img class="hero-img"
+           src="https://i.pinimg.com/1200x/ad/e3/a7/ade3a72ac3a3d358c214f8c52ef2c5e3.jpg"
+           alt="Healthy poultry birds in farm">
+    </div>
+  </section>
+
+  <main class="container">
+    <div class="panel">
+      <div>
+
+        <!-- Overview -->
+        <section class="card">
+          <h3>Overview</h3>
+          <p>
+            Poultry farming provides eggs, meat, manure, and high income with low-cost investment. It requires proper
+            housing, balanced nutrition, vaccination, and temperature management for high productivity.
+          </p>
+        </section>
+
+        <!-- Breeds -->
+        <section class="card">
+          <h3>Popular Poultry Breeds</h3>
+          <div class="breed-grid">
+
+            <div class="breed">
+              <img src="https://i.pinimg.com/736x/01/14/bf/0114bfdc27a860d585f3abc344b0f431.jpg"
+                   alt="White Leghorn chicken breed">
+              <div class="b-content">
+                <h4>White Leghorn</h4>
+                <p>Top egg-laying breed; 280–320 eggs/year.</p>
+              </div>
+            </div>
+
+            <div class="breed">
+              <img src="https://i.pinimg.com/1200x/e3/88/4d/e3884d6f9e76f99fec9bebfa2205f8e1.jpg"
+                   alt="Broiler chicken breed">
+              <div class="b-content">
+                <h4>Broilers</h4>
+                <p>Fast-growing; ready for market in 6–7 weeks.</p>
+              </div>
+            </div>
+
+            <div class="breed">
+              <img src="https://i.pinimg.com/736x/5b/c2/7b/5bc27b361fe5e8edd992666a162cc181.jpg"
+                   alt="Rhode Island Red chicken">
+              <div class="b-content">
+                <h4>Rhode Island Red</h4>
+                <p>Dual-purpose: meat + 200 eggs per year.</p>
+              </div>
+            </div>
+
+            <div class="breed">
+              <img src="https://i.pinimg.com/736x/ae/23/c3/ae23c321343c9000f3e5fcc08284605e.jpg"
+                   alt="Kadaknath black chicken breed">
+              <div class="b-content">
+                <h4>Kadaknath</h4>
+                <p>Black meat, high protein, premium price.</p>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Feeding -->
+        <section class="card">
+          <h3>Feeding Schedule</h3>
+          <p>Poultry birds require balanced feed with protein, minerals, calcium & vitamins.</p>
+
+          <table>
+            <tr><th>Type</th><th>Feed</th><th>Notes</th></tr>
+            <tr><td>Chicks</td><td>Starter feed (20–22% protein)</td><td>For healthy growth</td></tr>
+            <tr><td>Growers</td><td>Grower mash (16–18%)</td><td>Supports bone & muscle</td></tr>
+            <tr><td>Layers</td><td>Layer mash + calcium</td><td>Improves eggshell quality</td></tr>
+            <tr><td>Broilers</td><td>Broiler starter + finisher</td><td>Rapid weight gain</td></tr>
+          </table>
+        </section>
+
+        <!-- Housing -->
+        <section class="card">
+          <h3>Poultry Shed Design</h3>
+          <ul class="ml-18 text-muted">
+            <li>Well-ventilated shed</li>
+            <li>Provide brooder with proper temperature</li>
+            <li>Deep litter system (6–8 inches dry bedding)</li>
+            <li>Clean water & feeding troughs</li>
+          </ul>
+
+          <img src="https://i.pinimg.com/1200x/93/49/65/93496594ddb42bc2d784bd3ab43b958f.jpg"
+               alt="Poultry house design image"
+               class="img-cover">
+        </section>
+
+        <!-- Diseases -->
+        <section class="card">
+          <h3>Common Poultry Diseases</h3>
+          <div class="d-grid">
+
+            <div class="d-card">
+              <h5>Newcastle Disease</h5>
+              <p>Highly infectious; needs vaccination.</p>
+            </div>
+
+            <div class="d-card">
+              <h5>Coccidiosis</h5>
+              <p>Bloody droppings; maintain hygiene.</p>
+            </div>
+
+            <div class="d-card">
+              <h5>Fowl Pox</h5>
+              <p>Lesions on comb & wattles.</p>
+            </div>
+
+            <div class="d-card">
+              <h5>Infectious Bronchitis</h5>
+              <p>Respiratory issues; control dust.</p>
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+
+      <!-- SIDEBAR -->
+      <aside>
+
+        <div class="mini-card">
+          <h3>Vaccination Schedule</h3>
+          <table>
+            <tr><th>Age</th><th>Vaccine</th></tr>
+            <tr><td>7 days</td><td>Marek’s Disease</td></tr>
+            <tr><td>14 days</td><td>Newcastle</td></tr>
+            <tr><td>4 weeks</td><td>Fowl Pox</td></tr>
+            <tr><td>8 weeks</td><td>IB + IBD Booster</td></tr>
+          </table>
+        </div>
+
+        <div class="mini-card">
+          <h3>Poultry Management Tips</h3>
+          <ul class="ml-18 text-muted">
+            <li>Keep litter dry</li>
+            <li>Maintain brooder temperature</li>
+            <li>Always provide clean water</li>
+            <li>Regular deworming</li>
+          </ul>
+        </div>
+
+        <div class="mini-card video-wrap">
+          <h3>Video Guide</h3>
+          <iframe 
+            src="https://www.youtube.com/embed/HGlesflx_4A?si=dGG2ZkG4-C2KCSUF" 
+            title="Poultry Farming Video Guide"
+            allowfullscreen>
+          </iframe>
+        </div>
+
+      </aside>
+    </div>
+
+    <!-- Benefits -->
+    <section class="card">
+      <h3>Benefits of Poultry Farming</h3>
+      <ul class="ml-20 text-muted">
+        <li>Fast income generation</li>
+        <li>High demand for eggs & meat</li>
+        <li>Low space requirement</li>
+        <li>Multiple breeds to choose from</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2025 FarmMitra 2.0 — Poultry Farming Guide
+  </footer>
+
+  <!-- Google Translate -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage:"en",
+        includedLanguages:"en,hi,mr"
+      }, "google_translate_element");
+    }
+  </script>
+
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

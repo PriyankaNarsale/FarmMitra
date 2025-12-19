@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Animal Husbandry | FarmMitra 2.0</title>
+
+  <!-- Main Global CSS -->
+  <link rel="stylesheet" href="../css/style.css" />
+
+  <!-- Icons -->
+  <script type="module"
+    src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule
+    src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+
+  <!-- 🌿 Unified Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline" class="logo-icon"></ion-icon>
+      <h1>Farm<span>Mitra</span> <small>2.0</small></h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="agriculture.html">🌾 Agriculture</a></li>
+      </ul>
+    </nav>
+
+    <!-- Language Selector -->
+    <div class="translate-box">
+      <ion-icon name="language-outline"></ion-icon>
+      <select id="languageSelect" aria-label="Select Language">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+        <option value="mr">मराठी</option>
+      </select>
+    </div>
+  </header>
+
+  <!-- Google Translate Element -->
+  <div id="google_translate_element"></div>
+
+  <!-- 🐄 Animal Husbandry Section -->
+  <section class="section">
+    <h2>🐄 Animal Husbandry</h2>
+    <p>Explore livestock management practices that support sustainable farming.</p>
+
+    <div class="cards">
+
+      <a href="cattle.html" class="card">
+        <img src="https://i.pinimg.com/736x/d7/97/e1/d797e1c49fc840037d68ff791680bf8f.jpg"
+             alt="Healthy dairy cattle used for milk and farm labor" />
+        <h3>Cattle</h3>
+        <p>Dairy and draft animals providing milk, manure and support.</p>
+      </a>
+
+      <a href="buffalo.html" class="card">
+        <img src="https://i.pinimg.com/736x/a4/ab/22/a4ab22163a1e633916820da9ce1407bc.jpg"
+             alt="Indian water buffalo known for high-fat milk production" />
+        <h3>Buffalo</h3>
+        <p>High-fat milk producers suitable for tropical climates.</p>
+      </a>
+
+      <a href="goat.html" class="card">
+        <img src="https://i.pinimg.com/736x/77/ba/c8/77bac8839a682c2c4aa0fbb3af074e61.jpg"
+             alt="Goat breed commonly raised for meat and milk" />
+        <h3>Goat</h3>
+        <p>Easy to raise for milk, meat, and low-cost upkeep.</p>
+      </a>
+
+      <a href="sheep.html" class="card">
+        <img src="https://i.pinimg.com/736x/d3/db/4c/d3db4c0e561fa3c0f9f40c32328ce6b3.jpg"
+             alt="Sheep farm animals raised for wool and meat" />
+        <h3>Sheep</h3>
+        <p>Common livestock raised for wool, milk, and meat.</p>
+      </a>
+
+      <a href="poultry.html" class="card">
+        <img src="https://i.pinimg.com/736x/3b/9e/46/3b9e46620204718c614b1f89b6ff268a.jpg"
+             alt="Poultry chickens raised for eggs and broiler meat" />
+        <h3>Poultry</h3>
+        <p>Chicken farming for eggs and broiler meat.</p>
+      </a>
+
+      <a href="duck.html" class="card">
+        <img src="https://i.pinimg.com/736x/5c/1c/f6/5c1cf6945df3b816ba98042fe3f0e2cd.jpg"
+             alt="Domestic ducks used for egg and meat production" />
+        <h3>Ducks</h3>
+        <p>Hardy birds producing nutrient-rich eggs and meat.</p>
+      </a>
+
+      <a href="pig.html" class="card">
+        <img src="https://i.pinimg.com/1200x/e6/d9/2e/e6d92e4e6d88a67c0dc33002a7574b0c.jpg"
+             alt="Commercial pig breed raised for pork production" />
+        <h3>Pig</h3>
+        <p>Fast-growing animals ideal for commercial farming.</p>
+      </a>
+
+      <a href="rabbit.html" class="card">
+        <img src="https://i.pinimg.com/736x/aa/6b/10/aa6b1012abfd3d0be6bcc57b3c11f3b5.jpg"
+             alt="White rabbit breed used for small-scale meat farming" />
+        <h3>Rabbit</h3>
+        <p>Small mammals raised for high-quality lean meat.</p>
+      </a>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 FarmMitra 2.0 | Animal Husbandry Information</p>
+  </footer>
+
+  <!-- Main JS -->
+  <script src="../js/script.js"></script>
+
+  <!-- Translate Script -->
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+        autoDisplay: false
+      }, "google_translate_element");
+    }
+  </script>
+
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

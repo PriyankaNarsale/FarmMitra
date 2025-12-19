@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pig Farming | FarmMitra 2.0</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    :root{
+      --pink-dark:#c2185b;
+      --pink:#ec407a;
+      --light-pink:#f8bbd0;
+      --soft:#fce4ec;
+      --white:#ffffff;
+      --muted:#616161;
+      --shadow:rgba(236,64,122,0.25);
+    }
+
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      font-family:"Poppins",sans-serif;
+      background:linear-gradient(180deg,var(--soft),#ffffff);
+      color:#333;
+    }
+
+    /* NAVBAR */
+    .navbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:15px 6%;
+      background:linear-gradient(90deg,var(--pink-dark),var(--pink));
+      color:white;
+      position:sticky;top:0;
+      z-index:1000;
+      box-shadow:0 6px 18px rgba(0,0,0,0.2);
+    }
+    nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+    nav a{text-decoration:none;color:white;font-weight:600}
+
+    .logo{display:flex;align-items:center;gap:10px}
+    .logo h1{margin:0;font-size:1.5rem;color:white}
+    .logo span{color:#ffebee}
+
+    .lang-select{
+      display:flex;align-items:center;gap:8px;
+      background:rgba(255,255,255,0.2);
+      padding:6px 10px;border-radius:8px;
+    }
+
+    /* HERO */
+    .hero{
+      display:grid;grid-template-columns:1fr 460px;
+      gap:40px;align-items:center;
+      padding:50px 6%;
+    }
+    .hero-left{
+      background:white;
+      padding:34px;border-radius:16px;
+      box-shadow:0 12px 32px rgba(0,0,0,0.1);
+    }
+    .eyebrow{
+      background:#f8bbd0;padding:6px 14px;
+      border-radius:20px;font-weight:600;
+      color:#c2185b;
+    }
+    .hero-left h2{
+      margin-top:12px;font-size:2rem;
+      color:#c2185b;
+    }
+    .sub{color:var(--muted);margin-top:12px;line-height:1.6}
+
+    .hero-stats{
+      display:flex;flex-wrap:wrap;gap:14px;margin-top:18px;
+    }
+    .stat{
+      background:white;padding:14px;border-radius:12px;
+      min-width:130px;box-shadow:0 8px 20px var(--shadow);
+    }
+    .stat strong{color:#c2185b}
+
+    .hero-right{
+      height:380px;border-radius:16px;overflow:hidden;
+      box-shadow:0 10px 40px var(--shadow);
+    }
+    .hero-img{width:100%;height:100%;object-fit:cover;}
+
+    /* MAIN */
+    .container{max-width:1400px;margin:40px auto;padding:0 6%}
+    .panel{display:grid;grid-template-columns:1fr 320px;gap:30px}
+
+    .card{
+      background:white;padding:24px;border-radius:14px;margin-bottom:24px;
+      box-shadow:0 10px 24px rgba(0,0,0,0.06);
+    }
+    h3{color:#c2185b;margin-bottom:12px}
+
+    /* BREEDS */
+    .breed-grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:18px;
+    }
+    .breed{
+      background:white;border-radius:12px;overflow:hidden;
+      border:1px solid #f8bbd0;
+      box-shadow:0 8px 22px rgba(0,0,0,0.06);
+      transition:.3s;
+    }
+    .breed:hover{
+      transform:translateY(-6px);
+      box-shadow:0 16px 30px var(--shadow);
+    }
+    .breed img{width:100%;height:150px;object-fit:cover}
+    .b-content{padding:12px}
+    .b-content h4{color:#c2185b;margin:6px 0}
+
+    /* TABLE */
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{
+      padding:12px;border:1px solid #f8bbd0;
+    }
+    th{
+      background:#f8bbd0;color:#880e4f;
+    }
+
+    /* DISEASE GRID */
+    .d-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:18px;
+    }
+    .d-card{
+      background:white;padding:14px;border-radius:12px;
+      box-shadow:0 12px 28px rgba(0,0,0,0.05);
+    }
+    .d-card h5{color:#c2185b;margin:6px 0}
+
+    /* SIDEBAR */
+    .mini-card{
+      background:white;padding:18px;border-radius:12px;
+      margin-bottom:18px;box-shadow:0 8px 26px rgba(0,0,0,0.07);
+    }
+
+    .video-wrap iframe{
+      width:100%;height:260px;border-radius:12px;border:0;
+    }
+
+    footer{
+      background:linear-gradient(90deg,var(--pink-dark),var(--pink));
+      text-align:center;color:white;padding:18px;margin-top:30px;
+    }
+
+    @media(max-width:1100px){
+      .hero{grid-template-columns:1fr}
+      .hero-right{height:260px}
+      .panel{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="pig-outline" style="font-size:28px;color:#ffe4ec"></ion-icon>
+      <h1>Farm<span>Mitra</span> <small>2.0</small></h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="animal-husbandry.html">Animal Hub</a></li>
+       
+      </ul>
+    </nav>
+
+    <div class="lang-select">
+      <ion-icon name="language-outline"></ion-icon>
+      <div id="google_translate_element"></div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <span class="eyebrow">Pig Farming</span>
+      <h2>Modern Pig Farming Guide — Breeds, Feeding, Housing & Profit Tips</h2>
+
+      <p class="sub">
+        Pig farming is one of the most profitable livestock businesses with fast growth,
+        high reproduction rate, and excellent feed conversion efficiency. This page covers breeds,
+        feeding plans, housing, diseases, and income insights.
+      </p>
+
+      <div class="hero-stats">
+        <div class="stat"><strong>Growth Rate</strong><small>60–90 kg in 6 months</small></div>
+        <div class="stat"><strong>Litter Size</strong><small>8–12 piglets</small></div>
+        <div class="stat"><strong>Profit</strong><small>High ROI feed conversion</small></div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <img class="hero-img" 
+           src="https://i.pinimg.com/736x/a3/60/6b/a3606bed485dd312e14f09f0db5b83ed.jpg" 
+           alt="Healthy pigs on modern pig farm">
+    </div>
+  </section>
+
+  <!-- MAIN -->
+  <main class="container">
+    <div class="panel">
+      <div>
+
+        <!-- OVERVIEW -->
+        <section class="card">
+          <h3>Overview</h3>
+          <p>
+            Pigs grow fast, reproduce quickly, and require minimal space, making pig farming
+            ideal for commercial and small farmers. Proper breed selection, feed, and hygiene
+            are key to better growth and profit.
+          </p>
+        </section>
+
+        <!-- BREEDS -->
+        <section class="card">
+          <h3>Popular Pig Breeds</h3>
+          <div class="breed-grid">
+
+            <div class="breed">
+              <img src="https://i.pinimg.com/736x/2b/54/66/2b5466135693a28479dc8110a000d67e.jpg" 
+                   alt="Large White Yorkshire pig breed">
+              <div class="b-content">
+                <h4>Large White Yorkshire</h4>
+                <p>Fast growing, best for commercial farming.</p>
+              </div>
+            </div>
+
+            <div class="breed">
+              <img src="https://i.pinimg.com/736x/b4/03/90/b40390a60bef53a9c87b286bd1287b74.jpg" 
+                   alt="Landrace pig breed">
+              <div class="b-content">
+                <h4>Landrace</h4>
+                <p>Long body, excellent feed conversion.</p>
+              </div>
+            </div>
+
+            <div class="breed">
+              <img src="https://i.pinimg.com/1200x/63/f6/8e/63f68ee74ed408ef6cc9f08907550b9c.jpg" 
+                   alt="Duroc pig breed">
+              <div class="b-content">
+                <h4>Duroc</h4>
+                <p>Hardy breed — good for hot climates.</p>
+              </div>
+            </div>
+
+            <div class="breed">
+              <img src="https://i.pinimg.com/1200x/30/33/54/303354fcd3c94b51077616c07e013eff.jpg" 
+                   alt="Hampshire pig breed">
+              <div class="b-content">
+                <h4>Hampshire</h4>
+                <p>Excellent meat quality and growth.</p>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- FEEDING -->
+        <section class="card">
+          <h3>Feeding Schedule</h3>
+          <p>Pigs gain weight fast when fed balanced protein, energy, vitamins & minerals.</p>
+
+          <table>
+            <tr><th>Pig Stage</th><th>Daily Feed</th><th>Notes</th></tr>
+            <tr><td>Piglets</td><td>Starter feed 20–22% protein</td><td>3–4 times/day</td></tr>
+            <tr><td>Growers</td><td>16% protein grower feed</td><td>Rapid weight gain</td></tr>
+            <tr><td>Finishers</td><td>14% protein finisher feed</td><td>Final weight boosting</td></tr>
+            <tr><td>Sows</td><td>Balanced feed + greens</td><td>Essential during gestation</td></tr>
+          </table>
+        </section>
+
+        <!-- HOUSING -->
+        <section class="card">
+          <h3>Housing & Pen Design</h3>
+          <ul style="margin-left:20px;color:var(--muted)">
+            <li>Proper drainage flooring</li>
+            <li>Separate pens for growers & sows</li>
+            <li>Temperature control (heat sensitive)</li>
+            <li>Clean drinking water 24/7</li>
+            <li>Regular cleaning to prevent disease</li>
+          </ul>
+
+          <img src="https://i.pinimg.com/1200x/1d/b4/1d/1db41dc06300f6842d6f6c94f960d699.jpg"
+               alt="Pig housing and modern pig pen"
+               style="width:100%;height:240px;object-fit:cover;border-radius:12px;margin-top:12px;">
+        </section>
+
+        <!-- DISEASES -->
+        <section class="card">
+          <h3>Common Pig Diseases</h3>
+          <div class="d-grid">
+
+            <div class="d-card">
+              <h5>Swine Fever</h5>
+              <p>High fever; immediate vet care required.</p>
+            </div>
+
+            <div class="d-card">
+              <h5>Foot & Mouth Disease</h5>
+              <p>Mouth sores & drooling; vaccinate yearly.</p>
+            </div>
+
+            <div class="d-card">
+              <h5>Worm Infestation</h5>
+              <p>Weight loss; regular deworming needed.</p>
+            </div>
+
+            <div class="d-card">
+              <h5>Pneumonia</h5>
+              <p>Breathing issues; keep pens dry.</p>
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+
+      <!-- SIDEBAR -->
+      <aside>
+
+        <div class="mini-card">
+          <h3>Vaccination Schedule</h3>
+          <table>
+            <tr><th>Age</th><th>Vaccine</th></tr>
+            <tr><td>2 months</td><td>Swine Fever</td></tr>
+            <tr><td>3 months</td><td>FMD</td></tr>
+            <tr><td>Every 6 months</td><td>Booster shots</td></tr>
+          </table>
+        </div>
+
+        <div class="mini-card">
+          <h3>Farming Tips</h3>
+          <ul style="margin-left:18px;color:var(--muted)">
+            <li>Provide clean water</li>
+            <li>Balanced protein feed</li>
+            <li>Keep pens dry</li>
+            <li>Regular deworming</li>
+          </ul>
+        </div>
+
+        <div class="mini-card video-wrap">
+          <h3>Video Guide</h3>
+          <iframe src="https://www.youtube.com/embed/NEDSLAH9hgw?si=XhcZtG5Ypp9CMfDa" allowfullscreen></iframe>
+        </div>
+
+      </aside>
+    </div>
+
+    <!-- BENEFITS -->
+    <section class="card">
+      <h3>Benefits of Pig Farming</h3>
+      <ul style="margin-left:20px;color:var(--muted)">
+        <li>Pigs convert feed into meat very fast</li>
+        <li>Low investment, high profit</li>
+        <li>Easy to manage & feed</li>
+        <li>Suitable for rural & urban areas</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2025 FarmMitra 2.0 — Pig Farming Guide
+  </footer>
+
+  <!-- Google Translate -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage:"en",
+        includedLanguages:"en,hi,mr",
+      }, "google_translate_element");
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

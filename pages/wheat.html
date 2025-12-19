@@ -1,0 +1,1613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wheat Farming | FarmMitra 2.0</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    :root{
+      /* 🌾 Wheat (Golden Harvest) Theme */
+      --wheat-deep:#6E4F2A;        /* deep wheat-brown */
+      --wheat-main:#A67C37;        /* main golden-brown */
+      --wheat-accent:#E1C16E;      /* grain golden */
+      --wheat-soft:#FFF8E1;        /* soft pale wheat bg */
+      --wheat-sky:#FFF1CC;         /* warm sky hint */
+      --text-muted:#6b5744;
+      --card:#ffffff;
+      --shadow-main:rgba(110,79,42,0.26);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0;}
+
+    body{
+      font-family:"Poppins",sans-serif;
+      background:linear-gradient(180deg,#FFF5DE,#ffffff);
+      color:#3E2723;
+      line-height:1.75;
+    }
+
+    /* ================= NAVBAR ================= */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(90deg,#6E4F2A,#A67C37,#C8A25A);
+      padding: 15px 8%;
+      color: #fff;
+      flex-wrap: wrap;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo-icon {
+      font-size: 32px;
+      color: var(--wheat-accent);
+    }
+
+    .logo h1 {
+      font-size: 1.9rem;
+      color: #fff;
+      margin: 0;
+    }
+
+    .logo span {
+      color: var(--wheat-accent);
+    }
+
+    .logo small {
+      font-size: 0.8rem;
+      color: #ffefd7;
+      margin-left: 3px;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #ffecb3;
+    }
+
+    .translate-box {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.15);
+      padding: 6px 12px;
+      border-radius: 999px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    .translate-box ion-icon {
+      color: #fff;
+      font-size: 20px;
+    }
+
+    .translate-box select {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #3a2817;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    .goog-te-banner-frame.skiptranslate {
+      display: none !important;
+    }
+
+    #google_translate_element {
+      display: none;
+    }
+
+    /* ================= HERO ================= */
+    .hero{
+      display:grid;
+      grid-template-columns: minmax(0,1.4fr) minmax(280px,0.9fr);
+      gap:32px;
+      padding:40px 6% 20px;
+      align-items:center;
+    }
+
+    .hero-left{
+      background:var(--card);
+      padding:26px 26px 22px;
+      border-radius:16px;
+      box-shadow:0 14px 30px rgba(0,0,0,0.08);
+      border:1px solid #e7d6bc;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero-left::before{
+      content:"";
+      position:absolute;
+      right:-60px;
+      top:-60px;
+      width:160px;
+      height:160px;
+      background:radial-gradient(circle at center,rgba(225,193,110,0.85),transparent 60%);
+      opacity:0.7;
+      pointer-events:none;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      background:#FFF3CD;
+      color:#8D6E3A;
+      padding:5px 14px;
+      border-radius:999px;
+      font-size:0.9rem;
+      font-weight:600;
+      letter-spacing:0.02em;
+    }
+
+    .eyebrow ion-icon{
+      font-size:15px;
+    }
+
+    .hero-left h2{
+      margin-top:14px;
+      font-size:2.05rem;
+      color:var(--wheat-deep);
+      line-height:1.3;
+    }
+
+    .hero-left h2 span{
+      color:var(--wheat-accent);
+    }
+
+    .hero-sub{
+      color:var(--text-muted);
+      margin-top:12px;
+      font-size:1.02rem;
+    }
+
+    .hero-tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:16px;
+    }
+
+    .tag{
+      font-size:0.8rem;
+      background:#FFF1CC;
+      color:#6E4F2A;
+      border-radius:999px;
+      padding:5px 11px;
+      font-weight:500;
+    }
+
+    .hero-stats{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .stat{
+      flex:0 1 150px;
+      background:#ffffff;
+      border-radius:12px;
+      padding:11px 13px;
+      box-shadow:0 10px 22px rgba(0,0,0,0.08);
+      border:1px solid #edd9bc;
+    }
+
+    .stat-label{
+      font-size:0.8rem;
+      color:#8c745e;
+      text-transform:uppercase;
+      letter-spacing:0.05em;
+      margin-bottom:3px;
+    }
+
+    .stat-value{
+      font-weight:700;
+      color:var(--wheat-deep);
+      font-size:1rem;
+    }
+
+    .stat-note{
+      font-size:0.8rem;
+      color:var(--text-muted);
+    }
+
+  .hero-right{
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 18px 40px var(--shadow-main);
+  position:relative;
+  height:600px;        /* <<< FIXED SMALL HEIGHT */
+  max-height:600px;
+  background:#ffe0b2;
+}
+
+
+    .hero-img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transform:scale(1.02);
+      transition:transform 0.35s ease;
+    }
+
+    .hero-right:hover .hero-img{
+      transform:scale(1.06);
+    }
+
+    .hero-badge{
+      position:absolute;
+      left:14px;
+      bottom:14px;
+      background:rgba(0,0,0,0.55);
+      color:#fffde7;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:0.85rem;
+      display:flex;
+      align-items:center;
+      gap:6px;
+      -webkit-backdrop-filter: blur(4px);
+      backdrop-filter: blur(4px);
+    }
+
+    .hero-badge ion-icon{
+      font-size:16px;
+    }
+
+    /* ================= MAIN LAYOUT ================= */
+    .page-wrap{
+      max-width:1320px;
+      margin:0 auto 40px;
+      padding:0 6% 10px;
+    }
+
+    .main-grid{
+      display:grid;
+      grid-template-columns:minmax(0,1.5fr) minmax(280px,0.9fr);
+      gap:26px;
+      align-items:flex-start;
+    }
+
+    .card{
+      background:var(--card);
+      padding:18px 20px;
+      border-radius:14px;
+      box-shadow:0 12px 28px rgba(0,0,0,0.06);
+      border:1px solid #f0ddc0;
+      margin-bottom:18px;
+    }
+
+    h3.section-title{
+      margin:0 0 8px;
+      color:var(--wheat-deep);
+      font-size:1.3rem;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    h3.section-title ion-icon{
+      color:var(--wheat-main);
+      font-size:18px;
+    }
+
+    .section-note{
+      font-size:0.9rem;
+      color:var(--text-muted);
+      margin-bottom:6px;
+    }
+
+    p, li{
+      font-size:1.01rem;
+      color:#4b3627;
+    }
+
+    ul{
+      padding-left:20px;
+      margin-top:8px;
+    }
+
+    .mt-8{
+      margin-top:8px;
+    }
+
+    /* Highlight box */
+    .highlight-box{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:10px;
+      background:#FFF8E1;
+      border-left:4px solid #FFC107;
+      font-size:0.9rem;
+      color:#7b6337;
+    }
+
+    /* IMAGE STRIP */
+    .img-strip{
+      display:flex;
+      gap:10px;
+      margin-top:12px;
+      flex-wrap:wrap;
+    }
+
+    .img-strip img{
+      flex:1 1 140px;
+      border-radius:12px;
+      height:140px;
+      object-fit:cover;
+      box-shadow:0 10px 20px rgba(0,0,0,0.08);
+    }
+
+    /* TABLES */
+    .table-wrap{
+      margin-top:10px;
+      overflow-x:auto;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      font-size:0.95rem;
+      min-width:280px;
+    }
+
+    th,td{
+      padding:9px 10px;
+      border:1px solid #edd9c1;
+      text-align:left;
+    }
+
+    th{
+      background:#FFF3CD;
+      color:#6E4F2A;
+      font-weight:600;
+    }
+
+    /* GRID INSIDE CARD */
+    .two-col-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:14px;
+      margin-top:10px;
+    }
+
+    .pill-list{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:8px;
+    }
+
+    .pill{
+      background:#fff0c7;
+      color:var(--wheat-deep);
+      padding:4px 10px;
+      border-radius:999px;
+      font-size:0.82rem;
+      font-weight:500;
+    }
+
+    /* Pest/disease cards */
+    .d-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+      gap:14px;
+      margin-top:10px;
+    }
+
+    .d-card{
+      background:#fffbf3;
+      border-radius:12px;
+      padding:10px 12px;
+      border:1px solid #f2dec2;
+      box-shadow:0 6px 18px rgba(0,0,0,0.04);
+    }
+
+    .d-card h4{
+      margin:0 0 4px;
+      color:var(--wheat-deep);
+      font-size:1.02rem;
+    }
+
+    .d-card small{
+      font-size:0.8rem;
+      color:#8D6E3A;
+    }
+
+    .bullet-tight{
+      padding-left:18px;
+      margin-top:6px;
+    }
+
+    .bullet-tight li{
+      font-size:0.9rem;
+      margin-bottom:3px;
+    }
+
+    /* ================= NUTRIENT CALCULATOR ================= */
+    .calc-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:16px;
+      margin-top:12px;
+      align-items:flex-start;
+    }
+
+    .calc-box{
+      background:#FFF8E1;
+      border-radius:12px;
+      padding:10px 12px;
+      border:1px solid #FFE082;
+    }
+
+    .calc-box label{
+      font-size:0.9rem;
+      display:block;
+      margin-bottom:4px;
+      color:#8D6E3A;
+      font-weight:600;
+    }
+
+    .calc-box input,
+    .calc-box select{
+      width:100%;
+      padding:6px 8px;
+      border-radius:8px;
+      border:1px solid #e0cbb0;
+      outline:none;
+      font-size:0.9rem;
+      margin-bottom:8px;
+    }
+
+    .calc-result{
+      font-size:0.92rem;
+      margin-top:6px;
+      color:#6E4F2A;
+      font-weight:600;
+    }
+
+    /* ================= GROWTH STAGE TIMELINE ================= */
+    .timeline{
+      margin-top:12px;
+    }
+
+    .timeline-bar{
+      position:relative;
+      height:4px;
+      background:#ffe0a3;
+      border-radius:999px;
+      margin:20px 0 18px;
+    }
+
+    .timeline-fill{
+      position:absolute;
+      left:0;
+      top:0;
+      height:100%;
+      width:100%;
+      background:linear-gradient(90deg,#6E4F2A,#E1C16E);
+      border-radius:999px;
+      opacity:0.8;
+    }
+
+    .stage-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+      gap:12px;
+    }
+
+    .stage{
+      background:#ffffff;
+      border-radius:12px;
+      padding:8px 10px;
+      box-shadow:0 8px 18px rgba(0,0,0,0.04);
+      border:1px solid #f1ddc1;
+    }
+
+    .stage-title{
+      font-size:0.95rem;
+      font-weight:600;
+      color:var(--wheat-deep);
+    }
+
+    .stage-sub{
+      font-size:0.82rem;
+      color:#7a634b;
+    }
+
+    /* ================= FAQ ACCORDION ================= */
+    .faq-list{
+      margin-top:10px;
+    }
+
+    .faq-item{
+      border-radius:10px;
+      border:1px solid #edd9c1;
+      margin-bottom:8px;
+      overflow:hidden;
+      background:#ffffff;
+    }
+
+    .faq-question{
+      padding:10px 12px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      cursor:pointer;
+      font-size:0.97rem;
+      font-weight:600;
+      color:var(--wheat-deep);
+    }
+
+    .faq-question span.icon{
+      font-size:18px;
+      color:#A67C37;
+      transition:transform 0.2s ease;
+    }
+
+    .faq-answer{
+      max-height:0;
+      overflow:hidden;
+      transition:max-height 0.3s ease;
+      padding:0 12px;
+    }
+
+    .faq-answer p{
+      font-size:0.96rem;
+      color:#6b5744;
+      padding:6px 0 10px;
+    }
+
+    .faq-item.active .faq-answer{
+      max-height:220px;
+    }
+
+    .faq-item.active .faq-question span.icon{
+      transform:rotate(90deg);
+    }
+
+    /* ================= SIDEBAR ================= */
+    .side-card{
+      background:#ffffff;
+      padding:16px 16px 14px;
+      border-radius:14px;
+      box-shadow:0 10px 24px rgba(0,0,0,0.06);
+      border:1px solid #f0ddc0;
+      margin-bottom:16px;
+    }
+
+    .side-card h4{
+      margin:0 0 6px;
+      color:var(--wheat-deep);
+      font-size:1.05rem;
+      display:flex;
+      align-items:center;
+      gap:6px;
+    }
+
+    .side-card h4 ion-icon{
+      color:var(--wheat-main);
+      font-size:18px;
+    }
+
+    .side-card p{
+      font-size:0.95rem;
+      color:var(--text-muted);
+    }
+
+    .badge-mini{
+      display:inline-block;
+      padding:3px 8px;
+      border-radius:999px;
+      background:#FFE082;
+      color:#6E4F2A;
+      font-size:0.8rem;
+      font-weight:600;
+      margin-top:4px;
+    }
+
+    /* VIDEO CARD + MODAL */
+    .video-thumb-card{
+      position:relative;
+      border-radius:14px;
+      overflow:hidden;
+      cursor:pointer;
+      margin-top:8px;
+      box-shadow:0 10px 26px rgba(0,0,0,0.25);
+    }
+
+    .video-thumb{
+      width:100%;
+      height:200px;
+      object-fit:cover;
+      display:block;
+      transition:transform .3s ease;
+    }
+
+    .video-thumb-card:hover .video-thumb{
+      transform:scale(1.03);
+    }
+
+    .play-overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top,rgba(0,0,0,0.55),rgba(0,0,0,0.15));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .play-circle{
+      width:64px;
+      height:64px;
+      border-radius:50%;
+      border:3px solid #fffde7;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      -webkit-backdrop-filter: blur(4px);
+      backdrop-filter: blur(4px);
+      box-shadow:0 0 18px rgba(0,0,0,0.5);
+    }
+
+    .play-circle ion-icon{
+      font-size:32px;
+      color:#fffde7;
+      margin-left:3px;
+    }
+
+    .video-caption{
+      position:absolute;
+      left:10px;
+      bottom:8px;
+      color:#fffde7;
+      font-size:0.8rem;
+      text-shadow:0 1px 4px rgba(0,0,0,0.7);
+    }
+
+    .video-actions{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-top:8px;
+      gap:6px;
+    }
+
+    .btn-yt{
+      flex:1;
+      text-align:center;
+      text-decoration:none;
+      font-size:0.85rem;
+      font-weight:600;
+      padding:7px 10px;
+      border-radius:999px;
+      background:#FFCA28;
+      color:#5d3b00;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:5px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .btn-yt ion-icon{
+      font-size:16px;
+    }
+
+    .btn-note{
+      font-size:0.8rem;
+      color:#7e6a63;
+      text-align:right;
+    }
+
+    /* MODAL */
+    .modal-backdrop{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.6);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:2000;
+    }
+
+    .modal-backdrop.active{
+      display:flex;
+    }
+
+    .modal-content{
+      width:90%;
+      max-width:780px;
+      background:#000;
+      border-radius:16px;
+      overflow:hidden;
+      box-shadow:0 20px 50px rgba(0,0,0,0.6);
+      position:relative;
+    }
+
+    .modal-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:8px 14px;
+      background:linear-gradient(90deg,#6E4F2A,#A67C37);
+      color:#fff;
+      font-size:0.95rem;
+    }
+
+    .modal-header button{
+      border:none;
+      background:transparent;
+      color:#fff;
+      font-size:1.3rem;
+      cursor:pointer;
+    }
+
+    .modal-body iframe{
+      width:100%;
+      height:420px;
+      border:none;
+      display:block;
+    }
+
+    @media(max-width:768px){
+      .modal-body iframe{
+        height:240px;
+      }
+    }
+
+    /* FOOTER */
+    footer{
+      background:#FFF3CD;
+      border-top:1px solid #f0ddc0;
+      padding:14px 6% 18px;
+      text-align:center;
+      font-size:0.9rem;
+      color:#6b5744;
+      margin-top:20px;
+    }
+
+    footer a{
+      color:var(--wheat-deep);
+      font-weight:600;
+      text-decoration:none;
+      margin-right:8px;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:1024px){
+      .hero{
+        grid-template-columns:1fr;
+      }
+      .hero-right{
+        max-width:520px;
+        margin:0 auto;
+      }
+      .main-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media(max-width:720px){
+      .navbar{
+        flex-wrap:wrap;
+        gap:10px;
+        padding-inline:16px;
+      }
+      nav ul{
+        gap:14px;
+        font-size:0.9rem;
+      }
+      .hero{
+        padding-inline:16px;
+      }
+      .page-wrap{
+        padding-inline:16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============== NAVBAR ============== -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline" class="logo-icon"></ion-icon>
+      <h1>Farm<span>Mitra</span> <small>2.0</small></h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="field-crops.html">🌾 Field Crops</a></li>
+      </ul>
+    </nav>
+
+    <div class="translate-box">
+      <ion-icon name="language-outline"></ion-icon>
+      <select id="languageSelect" aria-label="Select Language">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+        <option value="mr">मराठी</option>
+      </select>
+    </div>
+  </header>
+
+  <!-- Hidden Google element -->
+  <div id="google_translate_element"></div>
+
+  <!-- ============== HERO ============== -->
+  <section class="hero">
+    <div class="hero-left">
+      <span class="eyebrow">
+        <ion-icon name="sunny-outline" aria-hidden="true"></ion-icon>
+        Wheat – India’s Major Rabi Grain
+      </span>
+
+      <h2>Wheat (<em>Triticum aestivum</em>) – <span>Cool Season</span> Staple Food Grain</h2>
+
+      <p class="hero-sub">
+        Wheat is an important <strong>Rabi cereal crop</strong> grown in cool, dry winter conditions. It is a
+        <strong>major staple food</strong> rich in carbohydrates and protein. With timely sowing, proper irrigation,
+        balanced nutrition and weed control, farmers can achieve very high yields.
+      </p>
+
+      <div class="hero-tags">
+        <span class="tag">Rabi season crop</span>
+        <span class="tag">Requires cool, dry climate</span>
+        <span class="tag">High MSP & market demand</span>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-label">Crop Duration</div>
+          <div class="stat-value">115 – 150 days</div>
+          <div class="stat-note">Variety & sowing time dependent</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Temperature Range</div>
+          <div class="stat-value">10 – 25 °C</div>
+          <div class="stat-note">Cool growth & mild spring</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Average Yield</div>
+          <div class="stat-value">4 – 6 t/ha</div>
+          <div class="stat-note">Higher under good management</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <img
+        src="https://i.pinimg.com/1200x/fd/69/2f/fd692f180a1a935894dc64dd24f582a9.jpg"
+        alt="Golden wheat crop field"
+        class="hero-img"
+      />
+      <div class="hero-badge">
+        <ion-icon name="leaf-outline" aria-hidden="true"></ion-icon>
+        Cool-season grain with high MSP support
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== MAIN CONTENT ============== -->
+  <div class="page-wrap">
+    <div class="main-grid">
+      <!-- ========= LEFT MAIN COLUMN ========= -->
+      <div>
+
+        <!-- 1. Overview & Climate -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="information-circle-outline"></ion-icon>
+            1️⃣ Overview & Climate Requirement
+          </h3>
+          <p>
+            Wheat is a <strong>Rabi (winter) crop</strong> mostly grown under irrigated conditions in the
+            <strong>Indo-Gangetic plains and central India</strong>. Major wheat-growing states include
+            <strong>Uttar Pradesh, Punjab, Haryana, Madhya Pradesh, Rajasthan, Bihar and Gujarat</strong>.
+          </p>
+          <p>
+            It prefers <strong>cool, dry weather</strong> for vegetative growth and <strong>bright sunny days
+            with cool nights</strong> for grain filling. High temperature or hot winds during grain filling
+            can reduce grain size and yield.
+          </p>
+
+          <div class="two-col-grid mt-8">
+            <div>
+              <strong>Ideal Climate</strong>
+              <ul>
+                <li>Temperature: <strong>10–20°C</strong> during growth.</li>
+                <li><strong>21–26°C</strong> during grain filling for best yield.</li>
+                <li>Low rainfall during ripening, no lodging.</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Soil Requirements</strong>
+              <ul>
+                <li>Well-drained <strong>loam to clay loam soils</strong>.</li>
+                <li>Soil pH: <strong>6.0–7.5</strong>.</li>
+                <li>Good response to fertilizers in fertile alluvial & black soils.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="highlight-box">
+            🌤️ <strong>Tip:</strong> Late sowing exposes wheat to <strong>high temperature at grain filling</strong>,
+            leading to shrivelled grains. Always try to sow at the recommended time.
+          </div>
+
+          <div class="img-strip">
+            <img src="https://i.pinimg.com/736x/50/40/1b/50401bf81bc00dd61df5a31c94e09300.jpg"
+                 alt="Close-up of wheat earheads in field">
+            <img src="https://i.pinimg.com/736x/cd/13/b9/cd13b98dfb9527f0d85b206fbbaebe28.jpg"
+                 alt="Wheat crop standing in a farm under clear sky">
+          </div>
+        </section>
+
+        <!-- 2. Varieties & Seed Information -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="leaf-outline"></ion-icon>
+            2️⃣ Varieties & Seed Information (with Comparison)
+          </h3>
+          <p class="section-note">
+            Choose varieties recommended for your agro-climatic zone (NWPZ, NEPZ, CZ, Peninsular zone, etc.) with
+            good yield and rust resistance.
+          </p>
+
+          <div class="table-wrap">
+            <table aria-label="Popular wheat varieties and comparison">
+              <thead>
+                <tr>
+                  <th>Variety</th>
+                  <th>Zone / Type</th>
+                  <th>Duration (days)</th>
+                  <th>Special Features</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>HD 2967</td>
+                  <td>NWPZ, bread wheat</td>
+                  <td>140–150</td>
+                  <td>High yielding, popular in Punjab & Haryana</td>
+                </tr>
+                <tr>
+                  <td>HD 3086</td>
+                  <td>NWPZ</td>
+                  <td>135–145</td>
+                  <td>Good grain quality, lodging resistant</td>
+                </tr>
+                <tr>
+                  <td>PBW 343</td>
+                  <td>NWPZ/NEPZ</td>
+                  <td>140–145</td>
+                  <td>Widely grown, good baking quality</td>
+                </tr>
+                <tr>
+                  <td>Lok 1</td>
+                  <td>Central & Peninsular</td>
+                  <td>110–120</td>
+                  <td>Suitable for late sowing & drought-prone areas</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <ul class="mt-8">
+            <li><strong>Seed rate:</strong> 100–125 kg/ha (broadcasting); 90–100 kg/ha (line sowing).</li>
+            <li>Treat seed with fungicide (e.g., <strong>Carbendazim / Thiram @ 2–3 g/kg</strong>) to prevent seed-borne diseases.</li>
+            <li>Always use <strong>certified, rust-resistant and high-yielding</strong> varieties.</li>
+          </ul>
+        </section>
+
+        <!-- 3. Land Preparation & Sowing -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="construct-outline"></ion-icon>
+            3️⃣ Land Preparation & Sowing
+          </h3>
+          <p>
+            Wheat needs a <strong>fine, firm seedbed</strong> with adequate moisture at sowing (pre-sowing irrigation
+            or residual moisture after paddy).
+          </p>
+
+          <div class="two-col-grid mt-8">
+            <div>
+              <strong>Land Preparation</strong>
+              <ul>
+                <li>1–2 deep ploughings followed by harrowing and planking.</li>
+                <li>Level the field well to ensure uniform irrigation.</li>
+                <li>Apply <strong>8–10 tons FYM / compost</strong> before final land preparation.</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Sowing Time & Method</strong>
+              <ul>
+                <li><strong>Optimum sowing:</strong> Mid-Oct to mid-Nov (depending on region).</li>
+                <li>Row spacing: <strong>20–22.5 cm</strong>.</li>
+                <li>Sowing depth: <strong>4–5 cm</strong> using seed drill for uniform placement.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="two-col-grid mt-8">
+            <div>
+              <strong>Late Sown Wheat</strong>
+              <ul>
+                <li>Use early maturing varieties (e.g., Lok 1, PBW type).</li>
+                <li>Slightly increase seed rate (up to 125 kg/ha).</li>
+              </ul>
+            </div>
+            <div>
+              <strong>After Rice Wheat</strong>
+              <ul>
+                <li>Laser land levelling improves water use efficiency.</li>
+                <li>Zero-till drill sowing saves time and fuel.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. Nutrient Management + Calculator -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="beaker-outline"></ion-icon>
+            4️⃣ Nutrient Management + Simple NPK Calculator
+          </h3>
+          <p class="section-note">
+            Balanced fertilization (N, P, K + organic manures) ensures vigorous tillering, more earheads and bold grains.
+          </p>
+
+          <ul>
+            <li>Apply <strong>5–10 tons/ha</strong> of well-decomposed FYM/compost before sowing.</li>
+          </ul>
+
+          <div class="table-wrap">
+            <table aria-label="Wheat fertilizer recommendation">
+              <thead>
+                <tr>
+                  <th>Condition</th>
+                  <th>N (kg/ha)</th>
+                  <th>P₂O₅ (kg/ha)</th>
+                  <th>K₂O (kg/ha)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Normal irrigated wheat</td>
+                  <td>120</td>
+                  <td>60</td>
+                  <td>40</td>
+                </tr>
+                <tr>
+                  <td>High yielding / intensive</td>
+                  <td>150</td>
+                  <td>60–75</td>
+                  <td>40–50</td>
+                </tr>
+                <tr>
+                  <td>Late sown wheat</td>
+                  <td>100</td>
+                  <td>50</td>
+                  <td>40</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="calc-grid">
+            <div class="calc-box">
+              <label for="areaInput">Enter your field area</label>
+              <input type="number" id="areaInput" min="0" step="0.01" placeholder="e.g. 1.0" />
+              <label for="unitSelect">Select unit</label>
+              <select id="unitSelect">
+                <option value="ha">Hectare (ha)</option>
+                <option value="acre">Acre</option>
+              </select>
+              <label for="npkLevel">Fertilizer level</label>
+              <select id="npkLevel">
+                <option value="normal">Normal irrigated wheat</option>
+                <option value="high">High yielding / intensive</option>
+                <option value="late">Late sown wheat</option>
+              </select>
+
+              <div class="calc-result" id="calcResult">
+                Enter area and select level to see NPK recommendation.
+              </div>
+            </div>
+
+            <div>
+              <ul>
+                <li>Apply full P & K and <strong>½ N as basal</strong> at sowing.</li>
+                <li>Apply remaining N in <strong>two splits</strong>: at <strong>Crown Root Initiation (CRI, 20–25 DAS)</strong>
+                    and at <strong>first node/late tillering</strong>.</li>
+                <li>Use <strong>ZnSO₄ @ 25 kg/ha</strong> where zinc deficiency (yellowing, stunted growth) is seen.</li>
+                <li>Biofertilizers like Azotobacter + organic manures improve soil structure and nutrient use.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5. Water & Weed Management -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="water-outline"></ion-icon>
+            5️⃣ Water Management & Weed Control
+          </h3>
+
+          <div class="two-col-grid">
+            <div>
+              <strong>Water Management</strong>
+              <ul>
+                <li>Total irrigations: <strong>4–6</strong> depending on soil and climate.</li>
+                <li><strong>Critical stages:</strong> CRI (20–25 DAS), tillering, booting, flowering, grain filling.</li>
+                <li>Avoid waterlogging, especially at seedling stage.</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Weed Management</strong>
+              <ul>
+                <li>Common weeds: <strong>Phalaris minor, Chenopodium, wild oats</strong>.</li>
+                <li>First hand weeding/hoeing at <strong>20–25 DAS</strong>.</li>
+                <li>Use recommended pre-/post-emergence herbicides as per local advisory for Phalaris control.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="highlight-box">
+            🌱 <strong>Tip:</strong> Timely irrigation at CRI stage ensures good root development and
+            <strong>maximum tiller production</strong>, which largely decides the final yield.
+          </div>
+        </section>
+
+        <!-- 6. Pests & Diseases -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="bug-outline"></ion-icon>
+            6️⃣ Major Pests & Diseases – Field Identification
+          </h3>
+
+          <div class="d-grid">
+            <div class="d-card">
+              <h4>Termites</h4>
+              <small>Plants dry in patches, hollow stems</small>
+              <ul class="bullet-tight">
+                <li>Apply recommended termiticide in soil or seed treatment.</li>
+                <li>Avoid using un-decomposed FYM and remove old stubbles.</li>
+              </ul>
+            </div>
+
+            <div class="d-card">
+              <h4>Aphids</h4>
+              <small>Sticky honeydew, curling leaves, weak spikes</small>
+              <ul class="bullet-tight">
+                <li>Encourage natural predators (ladybird beetles).</li>
+                <li>Need-based sprays as per local plant protection advice.</li>
+              </ul>
+            </div>
+
+            <div class="d-card">
+              <h4>Rust (Yellow/Brown)</h4>
+              <small>Rusty pustules on leaves and stems</small>
+              <ul class="bullet-tight">
+                <li>Use <strong>rust-resistant varieties</strong> recommended for the area.</li>
+                <li>Spray fungicide only if needed and advised.</li>
+              </ul>
+            </div>
+
+            <div class="d-card">
+              <h4>Loose Smut</h4>
+              <small>Spikes are black and powdery instead of grains</small>
+              <ul class="bullet-tight">
+                <li>Seed treatment is key – treat seed properly before sowing.</li>
+                <li>Use disease-free certified seed.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7. Growth Stages Timeline -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="hourglass-outline"></ion-icon>
+            7️⃣ Wheat Growth Stages (Timeline)
+          </h3>
+          <p class="section-note">
+            Understanding stages helps in proper timing of fertilizer, irrigation and plant protection.
+          </p>
+
+          <div class="timeline">
+            <div class="timeline-bar">
+              <div class="timeline-fill"></div>
+            </div>
+            <div class="stage-grid">
+              <div class="stage">
+                <div class="stage-title">1. Germination & Seedling</div>
+                <div class="stage-sub">0–20 days</div>
+              </div>
+              <div class="stage">
+                <div class="stage-title">2. Tillering</div>
+                <div class="stage-sub">20–45 days</div>
+              </div>
+              <div class="stage">
+                <div class="stage-title">3. Stem Elongation / Booting</div>
+                <div class="stage-sub">45–70 days</div>
+              </div>
+              <div class="stage">
+                <div class="stage-title">4. Heading & Flowering</div>
+                <div class="stage-sub">70–90 days</div>
+              </div>
+              <div class="stage">
+                <div class="stage-title">5. Grain Filling & Maturity</div>
+                <div class="stage-sub">90–130+ days</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 8. FAQ Section -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="help-circle-outline"></ion-icon>
+            8️⃣ Farmer FAQ – Wheat Cultivation
+          </h3>
+
+          <div class="faq-list" id="faqList">
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>Q1. What is the best time to sow wheat?</span>
+                <span class="icon">›</span>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  For most irrigated areas, sowing from <strong>mid-October to mid-November</strong> is ideal.
+                  Late sowing after November reduces yield due to high temperature at grain filling.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>Q2. How many irrigations are needed?</span>
+                <span class="icon">›</span>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  Generally <strong>4–6 irrigations</strong> are given. The most critical is at
+                  <strong>CRI (20–25 DAS)</strong>; if water is limited, give priority to CRI and grain filling stages.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>Q3. How can I manage Phalaris minor (gulli danda)?</span>
+                <span class="icon">›</span>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  Use <strong>proper crop rotation</strong> (not wheat after wheat every year), timely sowing, and
+                  recommended herbicides at correct dose and time as per local extension advice.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>Q4. What is an average wheat yield?</span>
+                <span class="icon">›</span>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  Under good management, farmers can obtain <strong>40–60 quintals/ha</strong>. With precision farming
+                  and best practices, even higher yields are possible.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- ========= RIGHT SIDEBAR ========= -->
+      <aside>
+
+        <div class="side-card">
+          <h4>
+            <ion-icon name="sunny-outline"></ion-icon>
+            Quick Climate Summary
+          </h4>
+          <ul class="bullet-tight">
+            <li>Cool, dry winter crop</li>
+            <li>Growth: <strong>10–20°C</strong></li>
+            <li>Grain filling: <strong>21–26°C</strong></li>
+            <li>Low rainfall at maturity preferred</li>
+          </ul>
+        </div>
+
+        <div class="side-card">
+          <h4>
+            <ion-icon name="leaf-outline"></ion-icon>
+            Wheat Field Checklist
+          </h4>
+          <ul class="bullet-tight">
+            <li>Fine, well-levelled seedbed</li>
+            <li>Certified, rust-resistant seed</li>
+            <li>Timely sowing at correct depth</li>
+            <li>Basal FYM + balanced NPK</li>
+            <li>Plan irrigation for CRI & flowering</li>
+          </ul>
+          <span class="badge-mini">✔ Check before sowing</span>
+        </div>
+
+        <!-- Video: Modal + YouTube button -->
+        <div class="side-card">
+          <h4>
+            <ion-icon name="play-circle-outline"></ion-icon>
+            Wheat Cultivation Video
+          </h4>
+          <p>
+            Watch a detailed wheat farming video with field operations, fertilizer schedule and plant protection tips.
+          </p>
+
+          <!-- Clickable thumbnail opens modal -->
+          <div class="video-thumb-card" id="videoThumb">
+            <img
+              src="https://img.youtube.com/vi/-cpg3--sehM/hqdefault.jpg"
+              alt="Wheat cultivation YouTube thumbnail"
+              class="video-thumb"
+            />
+            <div class="play-overlay">
+              <div class="play-circle">
+                <ion-icon name="play" aria-hidden="true"></ion-icon>
+              </div>
+            </div>
+            <div class="video-caption">Tap to play inside page</div>
+          </div>
+
+          <div class="video-actions">
+            <a
+              href="https://www.youtube.com/watch?v=-cpg3--sehM"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-yt"
+            >
+              <ion-icon name="logo-youtube" aria-hidden="true"></ion-icon>
+              Watch on YouTube
+            </a>
+            <span class="btn-note">Opens in new tab</span>
+          </div>
+        </div>
+
+        <div class="side-card">
+          <h4>
+            <ion-icon name="shield-checkmark-outline"></ion-icon>
+            Safety & Good Practices
+          </h4>
+          <ul class="bullet-tight">
+            <li>Use gloves and mask for chemical handling.</li>
+            <li>Store agrochemicals away from food & children.</li>
+            <li>Always follow label doses and waiting periods.</li>
+            <li>Prefer IPM, seed treatment, and resistant varieties.</li>
+          </ul>
+        </div>
+
+      </aside>
+    </div>
+  </div>
+
+  <!-- ============== MODAL FOR VIDEO ============== -->
+  <div class="modal-backdrop" id="videoModal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-label="Wheat farming video">
+      <div class="modal-header">
+        <span>🎥 Wheat Farming – Video Guide</span>
+        <button type="button" id="closeModal" aria-label="Close video">&times;</button>
+      </div>
+      <div class="modal-body">
+        <iframe
+          id="videoFrame"
+          src=""
+          title="Wheat Farming Video from YouTube"
+          allowfullscreen
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============== FOOTER ============== -->
+  <footer>
+    <a href="field-crops.html">← Back to Field Crops</a>
+    © 2025 FarmMitra 2.0 — Wheat Smart Farming Guide
+  </footer>
+
+  <!-- ============== GOOGLE TRANSLATE + LANGUAGE SELECT ============== -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+        autoDisplay: false
+      }, "google_translate_element");
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const select = document.getElementById("languageSelect");
+
+      select.addEventListener("change", function () {
+        const lang = select.value;
+        const googleSelect = document.querySelector(".goog-te-combo");
+        if (googleSelect) {
+          googleSelect.value = lang;
+          googleSelect.dispatchEvent(new Event("change"));
+        }
+      });
+    });
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <!-- ============== VIDEO MODAL + NPK CALCULATOR + FAQ SCRIPT ============== -->
+  <script>
+    // ============================
+    // 🎥 Video modal
+    // ============================
+    const videoThumb = document.getElementById("videoThumb");
+    const videoModal = document.getElementById("videoModal");
+    const closeModal = document.getElementById("closeModal");
+    const videoFrame = document.getElementById("videoFrame");
+
+    // Modal video autoplay iframe URL (Wheat farming video)
+    const ytEmbedUrl = "https://www.youtube.com/embed/-cpg3--sehM?autoplay=1";
+
+    function openVideoModal() {
+      if (!videoModal || !videoFrame) return;
+      videoModal.classList.add("active");
+      videoFrame.src = ytEmbedUrl;
+      videoModal.setAttribute("aria-hidden","false");
+    }
+
+    function hideModal() {
+      if (!videoModal || !videoFrame) return;
+      videoModal.classList.remove("active");
+      videoFrame.src = "";
+      videoModal.setAttribute("aria-hidden","true");
+    }
+
+    if (videoThumb) {
+      videoThumb.addEventListener("click", openVideoModal);
+    }
+    if (closeModal) {
+      closeModal.addEventListener("click", hideModal);
+    }
+    if (videoModal) {
+      videoModal.addEventListener("click", (e) => {
+        if (e.target === videoModal) hideModal();
+      });
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && videoModal && videoModal.classList.contains("active")) {
+        hideModal();
+      }
+    });
+
+    // Optional: thumbnail injection to keep consistent content
+    if (videoThumb) {
+      videoThumb.innerHTML = `
+        <img
+          src="https://img.youtube.com/vi/-cpg3--sehM/hqdefault.jpg"
+          alt="Wheat farming YouTube thumbnail"
+          class="video-thumb"
+        />
+        <div class="play-overlay">
+          <div class="play-circle">
+            <ion-icon name="play"></ion-icon>
+          </div>
+        </div>
+        <div class="video-caption">Tap to play</div>
+      `;
+    }
+  </script>
+
+  <script>
+    // ============================
+    // 🌱 Simple NPK calculator for Wheat
+    // ============================
+    const areaInput   = document.getElementById("areaInput");
+    const unitSelect  = document.getElementById("unitSelect");
+    const npkLevel    = document.getElementById("npkLevel");
+    const calcResult  = document.getElementById("calcResult");
+
+    function updateNpkCalc() {
+      const area = parseFloat(areaInput.value || "0");
+      if (!calcResult) return;
+
+      if (isNaN(area) || area <= 0) {
+        calcResult.textContent = "Enter a valid field area to get fertilizer recommendation.";
+        return;
+      }
+
+      let factor = 1;
+      if (unitSelect.value === "acre") {
+        factor = 0.4047; // 1 acre = 0.4047 ha
+      }
+
+      let N=0, P=0, K=0;
+      if (npkLevel.value === "normal") {
+        N = 120; P = 60; K = 40;
+      } else if (npkLevel.value === "high") {
+        N = 150; P = 70; K = 45;
+      } else if (npkLevel.value === "late") {
+        N = 100; P = 50; K = 40;
+      }
+
+      const areaHa = area * factor;
+      const totalN = (N * areaHa).toFixed(1);
+      const totalP = (P * areaHa).toFixed(1);
+      const totalK = (K * areaHa).toFixed(1);
+
+      calcResult.textContent =
+        "Approx. requirement for your field: " +
+        totalN + " kg N, " +
+        totalP + " kg P₂O₅, " +
+        totalK + " kg K₂O.";
+    }
+
+    if (areaInput && unitSelect && npkLevel) {
+      areaInput.addEventListener("input", updateNpkCalc);
+      unitSelect.addEventListener("change", updateNpkCalc);
+      npkLevel.addEventListener("change", updateNpkCalc);
+    }
+
+    // ============================
+    // ❓ FAQ accordion
+    // ============================
+    const faqList = document.getElementById("faqList");
+    if (faqList) {
+      faqList.addEventListener("click", function (e) {
+        const item = e.target.closest(".faq-item");
+        if (!item) return;
+        item.classList.toggle("active");
+      });
+    }
+  </script>
+
+</body>
+</html>

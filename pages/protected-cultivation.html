@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Protected Cultivation | FarmMitra 2.0</title>
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="../css/style.css" />
+
+  <!-- Icons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+
+  <!-- 🌿 Unified Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline" class="logo-icon"></ion-icon>
+      <h1>Farm<span>Mitra</span> <small>2.0</small></h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="agriculture.html">🌾 Agriculture</a></li>
+      </ul>
+    </nav>
+
+    <!-- Language Selector -->
+    <div class="translate-box">
+      <ion-icon name="language-outline"></ion-icon>
+      <select id="languageSelect" aria-label="Select Language">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+        <option value="mr">मराठी</option>
+      </select>
+    </div>
+  </header>
+
+  <!-- Hidden Google Element -->
+  <div id="google_translate_element"></div>
+
+  <!-- 🌱 Protected Cultivation Section -->
+  <section id="protected-cultivation" class="section">
+    <h2>🌱 Protected Cultivation</h2>
+    <p>Advanced farming techniques for controlled environments.</p>
+
+    <div class="cards">
+
+      <a href="greenhouse.html" class="card">
+        <img src="https://i.pinimg.com/736x/a9/16/af/a916afb73beaf0fb842faaf11b269f18.jpg" alt="Greenhouse">
+        <h3>Greenhouse Cultivation</h3>
+        <p>Fully enclosed structure enabling high-yield, off-season crops.</p>
+      </a>
+
+      <a href="polyhouse.html" class="card">
+        <img src="https://i.pinimg.com/1200x/e5/d5/2c/e5d52cb5f3d4fac4d346eecf4b2acc4b.jpg" alt="Polyhouse">
+        <h3>Polyhouse Cultivation</h3>
+        <p>Plastic-covered structures protecting crops from weather and pests.</p>
+      </a>
+
+      <a href="shade-net.html" class="card">
+        <img src="https://i.pinimg.com/1200x/0d/92/ac/0d92ac867be447950af4b3b68418a46d.jpg" alt="Shade Net">
+        <h3>Shade Net / Net House</h3>
+        <p>Controls sunlight exposure and reduces pest damage.</p>
+      </a>
+
+      <a href="low-cost-tunnel.html" class="card">
+        <img src="https://i.pinimg.com/1200x/c7/71/76/c771769bfe493a7ed48cb85a084ff42d.jpg" alt="Low Cost Tunnels">
+        <h3>Low-Cost Tunnels</h3>
+        <p>Affordable structures ideal for vegetables and strawberries.</p>
+      </a>
+
+      <a href="insect-proof.html" class="card">
+        <img src="https://i.pinimg.com/1200x/8a/41/84/8a418458e327739f64908bd7383c284f.jpg" alt="Insect-Proof House">
+        <h3>Insect-Proof Houses</h3>
+        <p>Protects crops from pests and reduces pesticide use.</p>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 FarmMitra 2.0 | Protected Cultivation Information</p>
+  </footer>
+
+  <!-- JS Script -->
+  <script src="../js/script.js"></script>
+
+  <!-- Google Translate Init -->
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+        autoDisplay: false
+      }, "google_translate_element");
+    }
+  </script>
+
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

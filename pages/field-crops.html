@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Field Crops | FarmMitra 2.0</title>
+
+  <!-- Use SAME CSS as Agriculture -->
+  <link rel="stylesheet" href="../css/style.css" />
+
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+
+  <!-- NAVBAR (same as Agriculture) -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline" class="logo-icon"></ion-icon>
+      <h1>Farm<span>Mitra</span> <small>2.0</small></h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="agriculture.html">🌾 Agriculture</a></li>
+      </ul>
+    </nav>
+
+    <!-- Language Selector -->
+    <div class="translate-box">
+      <ion-icon name="language-outline"></ion-icon>
+      <select id="languageSelect" aria-label="Select Language">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+        <option value="mr">मराठी</option>
+      </select>
+    </div>
+
+  </header>
+
+  <!-- Hidden Google Element -->
+  <div id="google_translate_element"></div>
+
+  <!-- FIELD CROPS SECTION -->
+  <section class="section">
+    <h2>🌾 Field Crops</h2>
+    <p>Explore major cereal, oilseed and commercial crops grown across farms.</p>
+
+    <div class="cards">
+
+      <a href="bajra.html" class="card">
+        <img src="https://i.pinimg.com/1200x/ac/30/66/ac30665b955bcc0d7984f444e437c326.jpg"
+          alt="Bajra (Pearl Millet) crop in farmland">
+        <h3>Bajra (Pearl Millet)</h3>
+        <p>A hardy crop ideal for dry regions with minimal water.</p>
+      </a>
+
+      <a href="rice.html" class="card">
+        <img src="https://i.pinimg.com/736x/e7/a3/b7/e7a3b7b3d451a79bbced724f4d4b957f.jpg"
+          alt="Rice paddy fields filled with water">
+        <h3>Rice (Paddy)</h3>
+        <p>Requires high humidity and standing water for best yield.</p>
+      </a>
+
+      <a href="jowar.html" class="card">
+        <img src="https://i.pinimg.com/1200x/0f/48/93/0f4893547335df4f02ff6bf74f67b98e.jpg"
+          alt="Jowar Sorghum crop used in dryland farming">
+        <h3>Jowar (Sorghum)</h3>
+        <p>Important drought-resistant food crop for arid climates.</p>
+      </a>
+
+      <a href="wheat.html" class="card">
+        <img src="https://i.pinimg.com/1200x/b4/15/a0/b415a0f80440c5ce3dcfccd41943cfc2.jpg"
+          alt="Golden wheat crop ready for harvest">
+        <h3>Wheat</h3>
+        <p>Thrives in cool climates with moderate winter rainfall.</p>
+      </a>
+
+      <a href="maize.html" class="card">
+        <img src="https://i.pinimg.com/736x/15/94/b6/1594b64499b23b471f643b0491e816d8.jpg"
+          alt="Maize (corn) grown in open farmland">
+        <h3>Maize (Corn)</h3>
+        <p>Prefers fertile soil, good sunlight and warm temperatures.</p>
+      </a>
+
+      <a href="groundnut.html" class="card">
+        <img src="https://i.pinimg.com/736x/18/ac/ba/18acbaa4851a550d627f18432128b83d.jpg"
+          alt="Groundnut plant with developing pods">
+        <h3>Groundnut</h3>
+        <p>Best suited for sandy-loam soil with good drainage.</p>
+      </a>
+
+      <a href="cotton.html" class="card">
+        <img src="https://i.pinimg.com/1200x/ce/07/0d/ce070dca385f82d2be81642b3ecebfb5.jpg"
+          alt="Cotton plants with white opened bolls">
+        <h3>Cotton</h3>
+        <p>Grows best in black soil with a long warm growing season.</p>
+      </a>
+
+      <a href="sugarcane.html" class="card">
+        <img src="https://i.pinimg.com/736x/81/fb/b7/81fbb70a21d1cc9d77010c2d3349fec9.jpg"
+          alt="Sugarcane plants growing tall in farms">
+        <h3>Sugarcane</h3>
+        <p>Requires abundant sunlight, water and fertile soil.</p>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 FarmMitra 2.0 | Field Crops Information</p>
+  </footer>
+
+  <!-- JS -->
+  <script src="../js/script.js"></script>
+
+  <!-- Google Translate -->
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+        autoDisplay: false
+      }, "google_translate_element");
+    }
+  </script>
+
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+
+</html>

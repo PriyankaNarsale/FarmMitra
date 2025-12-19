@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cabbage Crop Details | FarmMitra 2.0</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    /* 🌿 Theme */
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(to bottom, #f3fff3, #e8f5e9);
+      margin: 0;
+      color: #1b4332;
+      line-height: 1.8;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(15px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    h1, h2, h3 {
+      color: #2e7d32;
+      line-height: 1;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.2rem;
+      margin: 30px 0;
+      letter-spacing: 0.5px;
+      animation: fadeIn 1.3s ease;
+    }
+
+  /* 🌱 Navbar */
+  header.navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(90deg, #2e7d32, #4caf50, #81c784);
+      padding: 15px 8%;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo h1 {
+      margin: 0;
+      font-size: 1.6rem;
+      color: #fff;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    }
+
+    .logo span {
+      color: #d4ff60;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #f1f8e9;
+      text-shadow: 0 0 5px rgba(255,255,255,0.6);
+    }
+
+    .lang-select {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.25);
+      padding: 5px 8px;
+      border-radius: 8px;
+    }
+
+    .lang-icon {
+      color: white;
+      font-size: 20px;
+    }
+
+    /* 📄 Main */
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px 20px 60px;
+      background-color: #ffffffc2;
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      margin-top: 30px;
+      animation: fadeIn 1.5s ease;
+    }
+
+    /* 🖼️ Crop Image */
+    .crop-images {
+      display: flex;
+      justify-content: center;
+      margin: 25px auto;
+      width: 90%;
+    }
+
+    .crop-wrapper {
+      width: 100%;
+      max-width: 650px;
+      height: 320px;
+      overflow: hidden;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      transition: transform 0.4s ease;
+    }
+
+    .crop-wrapper:hover {
+      transform: scale(1.03);
+    }
+
+    .crop-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.3s ease;
+    }
+
+    .crop-image:hover {
+      transform: scale(1.05);
+    }
+
+ h2 {
+  position: relative;
+}
+h2::after {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 60px;
+  background: #81c784;
+  margin-top: 8px;
+  border-radius: 3px;
+}
+
+    .content {
+      text-align: justify;
+      font-size: 1.05rem;
+      padding: 0 10px;
+    }
+
+    h2 {
+      margin-top: 30px;
+      border-left: 5px solid #81c784;
+      padding-left: 10px;
+      font-size: 1.3rem;
+    }
+
+    ul {
+      margin-left: 25px;
+      list-style-type: "🌿 ";
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    /* 🎥 Video */
+    .video-container {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .video-container iframe {
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+      width: 80%;
+      height: 400px;
+    }
+
+    /* 🔙 Footer */
+    footer {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .back-btn {
+      background: #2e7d32;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .back-btn:hover {
+      background: #1b5e20;
+    }
+
+    /* 📱 Responsive */
+    @media (max-width: 768px) {
+      .crop-wrapper {
+        height: 260px;
+      }
+
+      .video-container iframe {
+        height: 220px;
+      }
+
+      nav ul {
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 🌾 Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline"></ion-icon>
+      <h1>Farm<span>Mitra</span> <small>2.0</small></h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="vegetable-crops.html">⬅ Vegetable Crops</a></li>
+      </ul>
+    </nav>
+
+    <div class="lang-select">
+      <ion-icon name="language-outline" class="lang-icon"></ion-icon>
+      <div id="google_translate_element"></div>
+    </div>
+  </header>
+
+  <!-- 🥬 Cabbage Section -->
+  <main>
+    <h1>Cabbage (कोबी)</h1>
+
+    <div class="crop-images">
+      <div class="crop-wrapper">
+        <img src="https://i.pinimg.com/736x/72/e6/06/72e60630b6bdcfd8662de868e61da968.jpg"
+             alt="Cabbage Crop Field" class="crop-image" />
+      </div>
+    </div>
+
+    <section class="content">
+
+      <h2>1️⃣ Basic Crop Information</h2>
+      <p>
+        Cabbage (Brassica oleracea var. capitata) is a major cool-season leafy vegetable cultivated for its firm and compact heads.  
+        It thrives in **cool, moist climates**, and grows best at **15–25°C**.  
+        Popular varieties include **Golden Acre, Pride of India, Pusa Mukta, Hybrid 44, Kranti**.
+      </p>
+
+      <h2>2️⃣ Climate & Soil Requirements</h2>
+      <ul>
+        <li>Ideal climate: Cool & humid</li>
+        <li>Temperature range: 12–25°C</li>
+        <li>High frost tolerance</li>
+        <li>Best soil: Loamy to clay-loam soil</li>
+        <li>Soil pH: 6.0–6.8</li>
+      </ul>
+
+      <h2>3️⃣ Seed & Nursery Details</h2>
+      <ul>
+        <li>Seed rate: 200–250 g per acre</li>
+        <li>Nursery raising required</li>
+        <li>Seedlings ready in 25–30 days</li>
+        <li>Seed treatment: Trichoderma or fungicide @ 2–3 g/kg</li>
+      </ul>
+
+      <h2>4️⃣ Land Preparation</h2>
+      <ul>
+        <li>3–4 ploughings for fine tilth</li>
+        <li>Apply 8–10 tons FYM/acre</li>
+        <li>Prepare ridges and furrows</li>
+      </ul>
+
+      <h2>5️⃣ Planting & Spacing</h2>
+      <ul>
+        <li>Transplant seedlings at 25–30 days</li>
+        <li>Spacing: 45×45 cm or 60×45 cm</li>
+        <li>Plant in evening to reduce shock</li>
+      </ul>
+
+          <div class="crop-images">
+      <div class="crop-wrapper">
+        <img src="https://i.pinimg.com/736x/d3/e3/58/d3e358be9bb89d2054e9eab493926365.jpg"
+             alt="Cabbage Crop Field" class="crop-image" />
+      </div>
+    </div>
+
+      
+      <h2>6️⃣ Irrigation Needs</h2>
+      <ul>
+        <li>First irrigation immediately after transplanting</li>
+        <li>Subsequent irrigation every 6–7 days</li>
+        <li>Critical stage: Head formation</li>
+        <li>Avoid water stagnation</li>
+      </ul>
+
+      <h2>7️⃣ Fertilizer Schedule</h2>
+      <ul>
+        <li>Basal: 40:20:20 NPK kg/acre</li>
+        <li>Top dressing: Urea after 25–30 days</li>
+        <li>Important micronutrients: Boron & Calcium</li>
+        <li>Organic option: 1 ton Vermicompost/acre</li>
+      </ul>
+
+      <h2>8️⃣ Pest & Disease Solutions</h2>
+      <ul>
+        <li><strong>Pests:</strong> Diamondback moth, cabbage butterfly, aphids</li>
+        <li><strong>Control:</strong> Neem oil spray (5 ml/litre) + recommended pesticides</li>
+        <li><strong>Diseases:</strong> Black rot, club root, downy mildew</li>
+        <li><strong>Prevention:</strong> Crop rotation + fungicides</li>
+      </ul>
+
+      <h2>9️⃣ Harvesting & Yield</h2>
+      <p>
+        Harvesting starts in **75–90 days** after transplanting.  
+        Harvest when heads are firm, compact, and fully developed.  
+        Average yield: **80–120 quintals per acre**.
+      </p>
+
+      <h2>🔟 Storage & Market Price</h2>
+      <p>
+        Cabbage can be stored at **0–2°C** for long shelf life.  
+        Market demand is high in winter and early spring.  
+        Average price: **₹12–₹25/kg** depending on quality and season.
+      </p>
+
+      <h2>1️⃣1️⃣ Government Schemes & Support</h2>
+      <ul>
+        <li>PMKSY: Micro-irrigation subsidy</li>
+        <li>PMFBY: Crop insurance</li>
+        <li>Soil Health Card scheme</li>
+        <li>ATMA farmer support programs</li>
+      </ul>
+
+     <!-- 🎥 Video -->
+      <div class="video-container">
+  <iframe 
+    src="https://www.youtube.com/embed/FbxmmktLLFY?si=jvpqwMc-5JwEhc_8" 
+    title="Cabbage Farming Guide" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    allowfullscreen>
+  </iframe>
+  <p><em>Video: Cabbage Farming Guide</em></p>
+</div>
+
+    </section>
+  </main>
+
+  <!-- 🔙 Footer -->
+  <footer>
+    <a href="vegetable-crops.html" class="back-btn">← Back to Vegetable Crops</a>
+  </footer>
+
+  <!-- 🌐 Translator -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+      }, "google_translate_element");
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

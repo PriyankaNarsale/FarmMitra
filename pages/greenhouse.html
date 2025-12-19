@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Greenhouse Cultivation | FarmMitra 2.0</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; }
+
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: #e0f7fa;
+    }
+
+    /* Navbar */
+    .navbar {
+      width: 100%;
+      padding: 15px 25px;
+      background: #00796b;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .navbar .logo h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+
+    .navbar nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .lang-select {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.25);
+      padding: 5px 8px;
+      border-radius: 8px;
+    }
+
+    .lang-icon {
+      color: white;
+      font-size: 20px;
+    }
+
+    .goog-logo-link, .goog-te-gadget span { display: none !important; }
+
+    .goog-te-combo {
+      background-color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 4px 6px;
+      font-size: 14px;
+      color: #005c4b;
+      cursor: pointer;
+    }
+
+    /* Crop Images */
+    .crop-images {
+      display: flex;
+      justify-content: center;
+      margin: 25px auto;
+      width: 90%;
+    }
+
+    .crop-wrapper {
+      width: 100%;
+      max-width: 650px;
+      height: 320px;
+      overflow: hidden;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+
+    .crop-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .crop-image:hover {
+      transform: scale(1.05);
+    }
+
+    h2 {
+      margin-top: 30px;
+      border-left: 6px solid #004d40; /* Greenhouse accent color */
+      padding-left: 10px;
+      font-size: 1.4rem;
+    }
+
+    ul {
+      margin-left: 25px;
+      list-style-type: "🌱 ";
+    }
+
+    .content img {
+      width: 100%;
+      max-width: 650px;
+      display: block;
+      margin: 20px auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    /* Content Area */
+    .content-box {
+      padding: 20px 30px;
+      line-height: 1.6;
+      font-size: 18px;
+    }
+
+    .header h1 {
+      font-size: 48px;
+      font-weight: 700;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    }
+
+    .container { width: 90%; max-width: 1100px; margin: auto; padding: 40px 0; }
+
+    .card {
+      background: rgba(255, 255, 255, 0.85);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      padding: 25px;
+      margin: 20px 0;
+      border-radius: 18px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover { transform: translateY(-4px); }
+
+    .card h2 { color: #00796b; margin-bottom: 10px; font-size: 26px; }
+
+    .highlight {
+      background: #b2dfdb;
+      padding: 10px 15px;
+      border-radius: 10px;
+      margin: 10px 0;
+      border-left: 5px solid #004d40;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    table, th, td { border: 1px solid #004d40; }
+
+    th, td { padding: 12px; text-align: left; }
+
+    th { background: #00796b; color: white; }
+
+    .video-container {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .video-container iframe {
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+      width: 80%;
+      height: 400px;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin: 25px 0;
+      padding: 12px 20px;
+      background: #00796b;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 600;
+    }
+
+    .back-btn:hover { background: #004d40; }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 30px;
+      background: #004d40;
+      color: #b2dfdb;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline" class="logo-icon"></ion-icon>
+      <h1>Farm<span>Mitra</span> <small>2.0</small></h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="protected-cultivation.html">⬅ Protected Cultivation</a></li>
+      </ul>
+    </nav>
+
+    <div class="lang-select">
+      <ion-icon name="language-outline" class="lang-icon"></ion-icon>
+      <div id="google_translate_element"></div>
+    </div>
+  </header>
+
+  <!-- Greenhouse Image -->
+  <div class="crop-images">
+    <div class="crop-wrapper">
+      <img src="https://i.pinimg.com/736x/c9/98/1a/c9981aa3bcda425b8aa8a179e5dd9d33.jpg"
+       alt="Greenhouse" class="crop-image" />
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="card">
+      <h2>🌱 Introduction</h2>
+      <p>Greenhouse cultivation involves growing crops in controlled conditions. It protects crops from extreme weather and pests while allowing year-round production of high-value vegetables, fruits, flowers, and herbs.</p>
+      <div class="highlight">Ideal for: Tomatoes, Capsicum, Cucumbers, Strawberries, Roses.</div>
+    </div>
+
+    <div class="card">
+      <h2>🏗 Greenhouse Structure</h2>
+      <ul>
+        <li>Frame: Steel, aluminum, or bamboo</li>
+        <li>Cover: Glass or transparent polyethylene sheets</li>
+        <li>Accessories: Fans, vents, drip irrigation, heating/cooling systems</li>
+        <li>Sensors: Temperature, humidity, and light control</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>🌤 Climate Control</h2>
+      <ul>
+        <li>Temperature: 18–30°C for vegetables</li>
+        <li>Humidity: 60–70%</li>
+        <li>Light: 6–8 hours sunlight or LED supplementation</li>
+      </ul>
+    </div>
+
+    <div class="crop-images">
+      <div class="crop-wrapper">
+        <img src="https://i.pinimg.com/1200x/a0/da/44/a0da446297b9cb014b14737616973343.jpg" 
+        alt="Greenhouse Tomato Cultivation" class="crop-image" />
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>💧 Irrigation & Fertilization</h2>
+      <ul>
+        <li>Drip irrigation recommended for efficient water use</li>
+        <li>Fertilizers applied based on crop needs (NPK, micronutrients)</li>
+        <li>Use organic manure and compost to improve soil fertility</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>🐞 Pest & Disease Management</h2>
+      <table>
+        <tr><th>Pest / Disease</th><th>Symptoms</th><th>Control</th></tr>
+        <tr><td>Aphids</td><td>Leaf curling, sticky honeydew</td><td>Neem oil / Imidacloprid spray</td></tr>
+        <tr><td>Whitefly</td><td>Yellowing leaves, reduced growth</td><td>Sticky traps, insecticidal sprays</td></tr>
+        <tr><td>Powdery Mildew</td><td>White powdery coating on leaves</td><td>Fungicide spray, proper ventilation</td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>🌿 Harvesting & Yield</h2>
+      <ul>
+        <li>Vegetables: Harvest 60–80 days after planting depending on crop</li>
+        <li>Flowers: Pick when fully open for market</li>
+        <li>Yields higher than open-field cultivation due to controlled environment</li>
+      </ul>
+    </div>
+
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/OqREBOP7A0I?si=rvWsm5Z6hHO40dYn" 
+      title="Greenhouse Cultivation Video" allowfullscreen></iframe>
+    </div>
+
+    <a href="protected-cultivation.html" class="back-btn">⬅ Back to Protected Cultivation</a>
+
+  </div>
+
+  <footer>
+    © 2025 FarmMitra 2.0 — Smart Farming Guide
+  </footer>
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+      }, "google_translate_element");
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cotton Farming | FarmMitra 2.0</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    :root{
+      --cotton-deep: #263238;
+      --cotton-main: #90CAF9;
+      --cotton-accent: #BBDEFB;
+      --cotton-soft: #E3F2FD;
+      --card: #ffffff;
+      --muted: #546E7A;
+      --shadow: rgba(33,150,243,0.12);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background:linear-gradient(180deg,#F3FBFF,#ffffff);
+      color:var(--cotton-deep);
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* NAV */
+    .navbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:14px 6%;
+      background:linear-gradient(90deg,#37474F,#546E7A,#78909C);
+      color:#fff;
+      position:sticky;
+      top:0;
+      z-index:1200;
+      box-shadow:0 6px 18px rgba(10,10,12,0.08);
+    }
+    .logo{display:flex;align-items:center;gap:10px}
+    .logo h1{font-size:1.6rem;margin:0;color:#fff}
+    .logo span{color:var(--cotton-accent)}
+    nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+    nav a{color:#fff;text-decoration:none;font-weight:600}
+    nav a:hover{opacity:0.95}
+
+    .translate-box{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      background:rgba(255,255,255,0.14);
+      padding:6px 10px;
+      border-radius:999px;
+      color:#fff;
+    }
+    .translate-box ion-icon{font-size:20px}
+    /* keep select visually simple and accessible */
+    .translate-select{
+      appearance:none;
+      -webkit-appearance:none;
+      -moz-appearance:none;
+      background:transparent;
+      border:0;
+      color:#fff;
+      font-weight:600;
+      cursor:pointer;
+      padding-right:6px;
+    }
+
+    /* HERO */
+    .hero{
+      display:grid;
+      grid-template-columns:minmax(0,1.4fr) minmax(280px,0.9fr);
+      gap:28px;
+      padding:32px 6% 22px;
+      align-items:center;
+    }
+
+    .hero-left{
+      background:var(--card);
+      padding:24px;
+      border-radius:14px;
+      border:1px solid #e6f2fb;
+      box-shadow:0 14px 30px var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:8px;
+      background:var(--cotton-soft);color:#01579B;padding:6px 12px;border-radius:999px;
+      font-weight:700;font-size:0.9rem;
+    }
+    .hero-left h2{font-size:2rem;margin-top:12px;color:var(--cotton-deep);line-height:1.2}
+    .hero-left h2 span{color:#0277BD}
+    .hero-sub{margin-top:12px;color:var(--muted);font-size:1rem}
+
+    .hero-tags{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap}
+    .tag{background:var(--cotton-accent);padding:6px 10px;border-radius:999px;font-weight:600;color:#01579B}
+
+    .hero-stats{display:flex;gap:12px;margin-top:16px;flex-wrap:wrap}
+    .stat{background:#fff;padding:10px 12px;border-radius:12px;border:1px solid #e6f7ff;box-shadow:0 8px 20px rgba(10,10,12,0.04);min-width:140px}
+    .stat-label{font-size:0.78rem;color:var(--muted);text-transform:uppercase}
+    .stat-value{font-weight:700;margin-top:4px}
+
+    .hero-right{border-radius:14px;overflow:hidden;box-shadow:0 20px 40px rgba(33,150,243,0.12);height:220px;background:var(--cotton-soft);position:relative}
+    .hero-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}
+    .hero-right:hover .hero-img{transform:scale(1.04)}
+    .hero-badge{position:absolute;left:12px;bottom:12px;background:rgba(0,0,0,0.55);color:#fff;padding:6px 10px;border-radius:999px;font-size:0.9rem;display:flex;gap:8px;align-items:center}
+
+    /* MAIN GRID */
+    .page-wrap{max-width:1320px;margin:0 auto 40px;padding:0 6%}
+    .main-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(300px,0.9fr);gap:26px;margin-top:18px;align-items:flex-start}
+
+    .card{background:var(--card);padding:16px;border-radius:12px;border:1px solid #e7f5ff;box-shadow:0 8px 24px rgba(10,10,12,0.03);margin-bottom:16px}
+    .section-title{display:flex;gap:10px;align-items:center;font-size:1.15rem;color:var(--cotton-deep);font-weight:700}
+
+    .two-col{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:10px}
+    ul{padding-left:18px;margin-top:8px}
+    p,li{color:#2f3d41;font-size:1rem}
+
+    /* Pest cards */
+    .d-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:10px}
+    .d-card{background:#f7fbff;border-radius:10px;padding:10px;border:1px solid #e3f2fd}
+
+    /* TIMELINE */
+    .timeline-bar{height:6px;background:linear-gradient(90deg,#BBDEFB,#E1F5FE);border-radius:999px;margin:16px 0}
+    .stage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+
+    /* FAQ */
+    .faq-list{margin-top:8px}
+    .faq-item{border-radius:10px;border:1px solid #e6f3fb;background:#fff;overflow:hidden;margin-bottom:8px}
+    .faq-question{display:flex;justify-content:space-between;align-items:center;padding:12px;cursor:pointer;font-weight:700;color:var(--cotton-deep)}
+    .faq-question .icon{transition:transform .18s ease}
+    .faq-answer{max-height:0;overflow:hidden;padding:0 12px;background:#fbfeff;transition:max-height .25s ease}
+    .faq-answer p{padding:10px 0;color:#3b4b51;margin:0}
+
+    .faq-item.open .faq-answer{max-height:260px}
+    .faq-item.open .faq-question .icon{transform:rotate(90deg)}
+
+    /* SIDEBAR */
+    .side-card{background:var(--card);padding:14px;border-radius:12px;border:1px solid #e6f7ff;margin-bottom:12px;box-shadow:0 10px 22px rgba(10,10,12,0.03)}
+    .side-card h4{display:flex;gap:8px;align-items:center;font-size:1rem;margin:0 0 8px;color:var(--cotton-deep)}
+
+    /* video thumbnail card */
+    .video-thumb-card{position:relative;border-radius:12px;overflow:hidden;cursor:pointer}
+    .video-thumb{display:block;width:100%;height:200px;object-fit:cover}
+    .play-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.5),rgba(0,0,0,0.12));display:flex;align-items:center;justify-content:center}
+    .play-circle{width:56px;height:56px;border-radius:50%;border:3px solid #fff;display:flex;align-items:center;justify-content:center;-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+    .video-caption{position:absolute;left:12px;bottom:8px;color:#fff;font-size:0.85rem;text-shadow:0 2px 6px rgba(0,0,0,0.35)}
+
+    /* modal */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:none;align-items:center;justify-content:center;z-index:1500}
+    .modal-backdrop.active{display:flex}
+    .modal-content{width:92%;max-width:820px;border-radius:12px;overflow:hidden;background:#000}
+    .modal-header{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:linear-gradient(90deg,#0277BD,#026AA7);color:#fff}
+    .modal-body iframe{width:100%;height:460px;border:0;display:block}
+    .close-btn{background:none;border:0;color:#fff;font-size:1.4rem;cursor:pointer;padding:6px 8px;line-height:1}
+    .close-btn:focus{outline:2px solid rgba(255,255,255,0.2);outline-offset:2px}
+
+    /* footer */
+    footer{padding:18px 6%;text-align:center;background:linear-gradient(180deg,#f5fbff,#ffffff);color:var(--cotton-deep);font-weight:600;margin-top:18px}
+
+    /* responsiveness */
+    @media(max-width:1024px){
+      .hero{grid-template-columns:1fr}
+      .main-grid{grid-template-columns:1fr}
+      .modal-body iframe{height:320px}
+    }
+    @media(max-width:640px){
+      .hero-right{height:180px}
+      .video-thumb{height:160px}
+      .modal-body iframe{height:240px}
+      nav ul{display:none} /* keep simple for compact */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="navbar" role="navigation" aria-label="Main">
+    <div class="logo" aria-hidden="true">
+      <ion-icon name="leaf-outline" style="font-size:28px;color:var(--cotton-accent)"></ion-icon>
+      <h1>Farm<span>Mitra</span> <small style="font-size:0.7rem;color:rgba(255,255,255,0.85)">2.0</small></h1>
+    </div>
+
+    <nav aria-label="Site">
+      <ul>
+        <li><a href="index.html">🏡 Home</a></li>
+        <li><a href="field-crops.html">🌾 Field Crops</a></li>
+      </ul>
+    </nav>
+
+    <div class="translate-box" title="Select language">
+      <ion-icon name="language-outline"></ion-icon>
+      <!-- select with class (no inline styles); id kept for script -->
+      <select id="languageSelect" class="translate-select" aria-label="Select language">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+        <option value="mr">मराठी</option>
+      </select>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="heroTitle">
+    <div class="hero-left">
+      <span class="eyebrow"><ion-icon name="leaf-outline"></ion-icon> Cotton – Major Fiber Crop</span>
+      <h2 id="heroTitle">Cotton – <span>White Gold</span> of Indian Agriculture</h2>
+      <p class="hero-sub">Cotton (<em>Gossypium spp.</em>) is India's leading fibre crop used for textiles and oilseed. It prefers warm weather, sunlight and deep, well-drained soils.</p>
+
+      <div class="hero-tags">
+        <span class="tag">Kharif season</span>
+        <span class="tag">Fiber crop</span>
+        <span class="tag">High market demand</span>
+      </div>
+
+      <div class="hero-stats" aria-hidden="true">
+        <div class="stat"><div class="stat-label">Duration</div><div class="stat-value">150–180 days</div></div>
+        <div class="stat"><div class="stat-label">Rainfall</div><div class="stat-value">500–750 mm</div></div>
+        <div class="stat"><div class="stat-label">Yield</div><div class="stat-value">15–25 q/ha</div></div>
+      </div>
+    </div>
+
+    <div class="hero-right" aria-hidden="true">
+      <!-- image: uses a stable image URL; replace with your local path if needed -->
+      <img class="hero-img" src="https://i.pinimg.com/1200x/85/bd/3e/85bd3ee66c7eb9baf5364a7f7705b168.jpg" alt="Cotton field with white bolls">
+      <div class="hero-badge"><ion-icon name="leaf-outline"></ion-icon> India’s largest fiber crop</div>
+    </div>
+  </section>
+
+  <!-- MAIN -->
+  <div class="page-wrap">
+    <div class="main-grid">
+
+      <!-- LEFT COL -->
+      <main>
+
+        <section class="card" aria-labelledby="ovTitle">
+          <h3 id="ovTitle" class="section-title"><ion-icon name="information-circle-outline"></ion-icon> 1️⃣ Overview & Climate</h3>
+          <p>Cotton is a major Kharif fiber crop grown across tropical and subtropical India. It prefers warm weather, deep soils and full sun.</p>
+          <div class="two-col">
+            <div>
+              <strong>Key points</strong>
+              <ul>
+                <li>Temperature: 21–30°C</li>
+                <li>Soil: Deep black cotton soils or well-drained loam</li>
+                <li>pH: 6.0–7.5</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Major states</strong>
+              <ul>
+                <li>Maharashtra, Gujarat, Telangana, Karnataka, MP</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="card" aria-labelledby="varTitle">
+          <h3 id="varTitle" class="section-title"><ion-icon name="leaf-outline"></ion-icon> 2️⃣ Varieties & Seed</h3>
+          <ul>
+            <li>BT hybrids: RCH-2, NCS-145, Bollgard-II</li>
+            <li>Seed rate: 1.5–2 kg/ha (hybrid); 12–15 kg/ha (desi)</li>
+            <li>Seed treatment: Imidacloprid 70WS @ 5 g/kg</li>
+          </ul>
+        </section>
+
+        <section class="card" aria-labelledby="soilTitle">
+          <h3 id="soilTitle" class="section-title"><ion-icon name="construct-outline"></ion-icon> 3️⃣ Soil Preparation & Sowing</h3>
+          <ul>
+            <li>2–3 ploughings and remove crop residues</li>
+            <li>Form ridges & furrows at 75–90 cm spacing</li>
+            <li>Sowing depth: 3–5 cm</li>
+          </ul>
+        </section>
+
+        <section class="card" aria-labelledby="nutTitle">
+          <h3 id="nutTitle" class="section-title"><ion-icon name="beaker-outline"></ion-icon> 4️⃣ Nutrient Management</h3>
+          <ul>
+            <li>N: 100–120 kg/ha; P₂O₅: 50 kg/ha; K₂O: 50 kg/ha</li>
+            <li>Split N into 2–3 doses</li>
+            <li>Use Azotobacter / PSB to boost soil health</li>
+          </ul>
+        </section>
+
+        <section class="card" aria-labelledby="waterTitle">
+          <h3 id="waterTitle" class="section-title"><ion-icon name="water-outline"></ion-icon> 5️⃣ Water & Weed Management</h3>
+          <ul>
+            <li>Irrigate at 7–10 day intervals; critical at flowering & boll formation</li>
+            <li>First weeding at 20–25 days, followed by 1–2 intercultivations</li>
+          </ul>
+        </section>
+
+        <section class="card" aria-labelledby="pestTitle">
+          <h3 id="pestTitle" class="section-title"><ion-icon name="bug-outline"></ion-icon> 6️⃣ Pests & Diseases</h3>
+          <div class="d-grid">
+            <div class="d-card"><h4>Bollworm</h4><small>Damages bolls</small><ul><li>Use BT seeds & pheromone traps</li></ul></div>
+            <div class="d-card"><h4>Aphids / Jassids</h4><small>Sap suckers</small><ul><li>Neem-based sprays; avoid excess N</li></ul></div>
+            <div class="d-card"><h4>Whitefly</h4><small>Sooty mold risk</small><ul><li>IPM and balanced nutrition</li></ul></div>
+            <div class="d-card"><h4>Bacterial blight</h4><small>Leaf spots</small><ul><li>Resistant varieties & crop hygiene</li></ul></div>
+          </div>
+        </section>
+
+        <section class="card" aria-labelledby="growthTitle">
+          <h3 id="growthTitle" class="section-title"><ion-icon name="hourglass-outline"></ion-icon> 7️⃣ Growth Stages</h3>
+          <div class="timeline-bar" role="img" aria-label="Cotton growth timeline"></div>
+          <div class="stage-grid" style="margin-top:8px">
+            <div class="card" style="padding:10px"><strong>Germination</strong><div>0–15 days</div></div>
+            <div class="card" style="padding:10px"><strong>Vegetative</strong><div>15–45 days</div></div>
+            <div class="card" style="padding:10px"><strong>Square formation</strong><div>45–70 days</div></div>
+            <div class="card" style="padding:10px"><strong>Flowering</strong><div>70–100 days</div></div>
+            <div class="card" style="padding:10px"><strong>Boll formation</strong><div>100–140 days</div></div>
+            <div class="card" style="padding:10px"><strong>Maturity</strong><div>140+ days</div></div>
+          </div>
+        </section>
+
+        <!-- FAQ: answers hidden by default, toggle opens -->
+        <section class="card" aria-labelledby="faqTitle">
+          <h3 id="faqTitle" class="section-title"><ion-icon name="help-circle-outline"></ion-icon> 8️⃣ Farmer FAQ</h3>
+
+          <div class="faq-list" id="faqList">
+            <div class="faq-item" data-qid="q1">
+              <div class="faq-question" role="button" tabindex="0" aria-expanded="false" aria-controls="a1">
+                <span>What spacing is best for cotton?</span>
+                <span class="icon">›</span>
+              </div>
+              <div id="a1" class="faq-answer" aria-hidden="true"><p>75 × 30 cm is common for hybrid cotton to allow good aeration and interculture.</p></div>
+            </div>
+
+            <div class="faq-item" data-qid="q2">
+              <div class="faq-question" role="button" tabindex="0" aria-expanded="false" aria-controls="a2">
+                <span>Which fertilizer is most important?</span>
+                <span class="icon">›</span>
+              </div>
+              <div id="a2" class="faq-answer" aria-hidden="true"><p>Nitrogen and potash are key for vegetative growth and boll formation; split N appropriately.</p></div>
+            </div>
+
+            <div class="faq-item" data-qid="q3">
+              <div class="faq-question" role="button" tabindex="0" aria-expanded="false" aria-controls="a3">
+                <span>When to irrigate cotton?</span>
+                <span class="icon">›</span>
+              </div>
+              <div id="a3" class="faq-answer" aria-hidden="true"><p>Irrigate at 7–10 day intervals; prioritize flowering and boll-filling stages.</p></div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="side-card" aria-labelledby="clim">
+          <h4 id="clim"><ion-icon name="partly-sunny-outline"></ion-icon> Climate Summary</h4>
+          <ul>
+            <li>Warm conditions 21–30°C</li>
+            <li>Deep, well-drained soils</li>
+            <li>Moderate, well-distributed rainfall</li>
+          </ul>
+        </div>
+
+        <div class="side-card" aria-labelledby="check">
+          <h4 id="check"><ion-icon name="checkmark-circle-outline"></ion-icon> Cotton Checklist</h4>
+          <ul>
+            <li>Certified BT seed</li>
+            <li>Correct spacing & seed treatment</li>
+            <li>Balanced NPK & IPM</li>
+          </ul>
+        </div>
+
+        <div class="side-card" aria-labelledby="vid">
+          <h4 id="vid"><ion-icon name="play-circle-outline"></ion-icon> Cotton Video</h4>
+
+          <div class="video-thumb-card" id="videoThumb" role="button" aria-label="Play cotton video">
+            <img class="video-thumb" src="https://img.youtube.com/vi/zqrh8zDWUmU/hqdefault.jpg" alt="Cotton video thumbnail">
+            <div class="play-overlay"><div class="play-circle"><ion-icon name="play"></ion-icon></div></div>
+            <div class="video-caption">Tap to play inside page</div>
+          </div>
+
+          <div style="margin-top:10px;display:flex;gap:8px;align-items:center">
+            <a class="btn-yt" href="https://www.youtube.com/watch?v=zqrh8zDWUmU" target="_blank" rel="noopener noreferrer" style="display:inline-flex;padding:8px 10px;border-radius:999px;background:#FFCA28;color:#5d3b00;text-decoration:none;font-weight:700">
+              <ion-icon name="logo-youtube"></ion-icon>&nbsp;Watch on YouTube
+            </a>
+            <small style="color:var(--muted);font-size:0.86rem">Opens in new tab</small>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- modal (hidden by default) -->
+  <div id="videoModal" class="modal-backdrop" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-label="Cotton farming video">
+      <div class="modal-header">
+        <div>🎥 Cotton Farming Video</div>
+        <button id="closeModal" class="close-btn" aria-label="Close video">&times;</button>
+      </div>
+      <div class="modal-body">
+        <iframe id="videoFrame" src="" title="Cotton video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <footer>© 2025 FarmMitra 2.0 — Cotton Smart Farming Guide</footer>
+
+  <!-- Google Translate loader (kept optional and unobtrusive) -->
+  <div id="google_translate_element" style="display:none"></div>
+  <script>
+    function googleTranslateElementInit(){
+      try{
+        new google.translate.TranslateElement({pageLanguage:'en', includedLanguages:'en,hi,mr', autoDisplay:false}, 'google_translate_element');
+      }catch(e){
+        // graceful fallback if translate script blocked
+        // console.warn('google translate init failed', e);
+      }
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async defer></script>
+
+  <!-- Page scripts -->
+  <script>
+    // --- Language select wiring (safe: waits for DOM ready) ---
+    (function(){
+      const sel = document.getElementById('languageSelect');
+      if(!sel) return;
+      sel.addEventListener('change', function(){
+        // look for google combo; if exists, change it
+        const g = document.querySelector('.goog-te-combo');
+        if(g){
+          g.value = this.value;
+          g.dispatchEvent(new Event('change'));
+        } else {
+          // If google widget not ready, no-op (safe)
+        }
+      });
+    })();
+
+    // --- Video modal handling ---
+    (function(){
+      const videoThumb = document.getElementById('videoThumb');
+      const videoModal = document.getElementById('videoModal');
+      const closeModal = document.getElementById('closeModal');
+      const videoFrame = document.getElementById('videoFrame');
+
+      // YouTube embed URL (autoplay on open)
+      const ytEmbed = "https://www.youtube.com/embed/zqrh8zDWUmU?autoplay=1&rel=0";
+
+      function openModal(){
+        if(!videoModal || !videoFrame) return;
+        videoFrame.src = ytEmbed;
+        videoModal.classList.add('active');
+        videoModal.setAttribute('aria-hidden','false');
+      }
+      function close(){
+        if(!videoModal || !videoFrame) return;
+        videoFrame.src = '';
+        videoModal.classList.remove('active');
+        videoModal.setAttribute('aria-hidden','true');
+      }
+
+      if(videoThumb){
+        videoThumb.addEventListener('click', openModal);
+        // also allow keyboard activation
+        videoThumb.addEventListener('keydown', function(e){
+          if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(); }
+        });
+      }
+      if(closeModal) closeModal.addEventListener('click', close);
+      if(videoModal){
+        videoModal.addEventListener('click', function(e){
+          if(e.target === videoModal) close();
+        });
+      }
+      document.addEventListener('keydown', function(e){
+        if(e.key === 'Escape' && videoModal.classList.contains('active')) close();
+      });
+    })();
+
+    // --- FAQ accordion: accessible toggle without moving DOM ---
+    (function(){
+      const list = document.getElementById('faqList');
+      if(!list) return;
+
+      // Delegate click for answers
+      list.addEventListener('click', function(e){
+        const q = e.target.closest('.faq-question');
+        if(!q) return;
+        const item = q.parentElement;
+        toggleItem(item, q);
+      });
+
+      // keyboard accessibility
+      list.addEventListener('keydown', function(e){
+        const q = e.target.closest('.faq-question');
+        if(!q) return;
+        if(e.key === 'Enter' || e.key === ' '){
+          e.preventDefault();
+          const item = q.parentElement;
+          toggleItem(item, q);
+        }
+      });
+
+      function toggleItem(item, q){
+        const open = item.classList.contains('open');
+        // close any open item if you want only-one-open behaviour:
+        // document.querySelectorAll('.faq-item.open').forEach(i=>{ if(i!==item) closeItem(i); });
+        if(open) closeItem(item);
+        else openItem(item);
+
+        function openItem(it){
+          it.classList.add('open');
+          const question = it.querySelector('.faq-question');
+          const answer = it.querySelector('.faq-answer');
+          if(question) question.setAttribute('aria-expanded','true');
+          if(answer) answer.setAttribute('aria-hidden','false');
+        }
+        function closeItem(it){
+          it.classList.remove('open');
+          const question = it.querySelector('.faq-question');
+          const answer = it.querySelector('.faq-answer');
+          if(question) question.setAttribute('aria-expanded','false');
+          if(answer) answer.setAttribute('aria-hidden','true');
+        }
+      }
+    })();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Crop Comparison — FarmMitra</title>
+
+<!-- Ionicons -->
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+<style>
+/* ---------- THEME ---------- */
+:root{
+  --accent: #10b981;
+  --muted: #6b7280;
+  --card: #fff;
+  --shadow: 0 8px 28px rgba(16,24,40,0.06);
+}
+
+body{
+  margin:0;
+  background:#f4faf9;
+  font-family:Inter,system-ui;
+  color:#06423e;
+}
+
+/* ---------- NAVBAR ---------- */
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 24px;
+  background:#ffffffd9;
+  border-bottom:1px solid #e8f2ef;
+  backdrop-filter:blur(6px);
+  position:sticky;
+  top:0;
+  z-index:50;
+}
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:20px;
+  font-weight:700;
+}
+.logo ion-icon{font-size:26px;color:var(--accent);}
+nav ul{
+  margin:0;
+  padding:0;
+  display:flex;
+  list-style:none;
+  gap:14px;
+}
+nav a{
+  text-decoration:none;
+  color:#06423e;
+  padding:6px 10px;
+  font-weight:600;
+  border-radius:8px;
+}
+nav a:hover{background:#ecfffa}
+
+.translate-box {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.15);
+      padding: 6px 12px;
+      border-radius: 999px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    .translate-box ion-icon {
+      color: #fff;
+      font-size: 20px;
+    }
+
+    .translate-box select {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #1c1818;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    .goog-te-banner-frame.skiptranslate {
+      display: none !important;
+    }
+
+    #google_translate_element {
+      display: none;
+    }
+
+
+/* ---------- PAGE ---------- */
+.page{max-width:1180px;margin:28px auto;padding:16px;}
+.hero{
+  background:linear-gradient(180deg,#e4faf5,#fafffe);
+  padding:20px;
+  border-radius:14px;
+  box-shadow:var(--shadow);
+}
+.hero h1{margin:0 0 6px 0;font-size:30px;}
+.hero p{margin:0;color:var(--muted);}
+
+/* ---------- DROPDOWNS ---------- */
+.controls{
+  margin-top:18px;
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+.dropdown{
+  background:#fff;
+  min-width:300px;
+  border-radius:12px;
+  border:1px solid #e3f0ef;
+  position:relative;
+  box-shadow:0 4px 18px rgba(0,0,0,0.06);
+}
+
+.drop-btn{
+  width:100%;
+  padding:12px 14px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border:none;
+  background:transparent;
+  font-size:15px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.panel{
+  display:none;
+  position:absolute;
+  top:105%;
+  left:0;
+  width:100%;
+  background:#fff;
+  border-radius:10px;
+  padding:10px;
+  border:1px solid #d8e9e7;
+  box-shadow:0 20px 40px rgba(0,0,0,0.08);
+  max-height:250px;
+  overflow-y:auto;
+  z-index:20;
+}
+.panel.show{display:block;}
+
+.search{
+  display:flex;
+  align-items:center;
+  background:#f6fffd;
+  border:1px solid #e4f5f3;
+  padding:8px;
+  border-radius:8px;
+  margin-bottom:8px;
+}
+.search input{
+  border:none;
+  background:transparent;
+  outline:none;
+  font-size:14px;
+  width:100%;
+}
+
+.opt{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:8px 10px;
+  border-radius:8px;
+  cursor:pointer;
+}
+.opt .name{font-weight:600;}
+.opt .meta{font-size:12px;color:var(--muted);margin-left:auto;}
+
+.opt:hover{background:#ecfffe;}
+.opt.selected{
+  background:linear-gradient(90deg,#dff7ff,#effbfd);
+  border-left:4px solid #0ea5ff;
+}
+.opt .check{display:none;color:#0ea5ff;font-weight:700;}
+.opt.selected .check{display:block;}
+
+/* swap button */
+.swap-btn{
+  width:44px;height:44px;
+  border-radius:50%;
+  background:#dff9f3;
+  border:none;
+  cursor:pointer;
+  font-size:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* ---------- COMPARISON CARD ---------- */
+.compare{
+  margin-top:22px;
+  padding:18px;
+  background:#fff;
+  border-radius:14px;
+  border:1px solid #e8f2ef;
+  box-shadow:var(--shadow);
+}
+
+/* pill row */
+.pill-row{
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  gap:10px;
+}
+.pill{
+  background:#f2fffb;
+  padding:8px 14px;
+  border-radius:999px;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-weight:700;
+}
+
+/* metric header */
+.metric-label{
+  font-weight:700;
+  padding:6px 14px;
+  background:#eefcf9;
+  border-radius:8px;
+  border:1px solid #d6f3ee;
+}
+
+/* metrics block */
+.metrics{
+  margin-top:20px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+/* aligned metric row */
+.metric-row{
+  display:grid;
+  grid-template-columns:1.2fr 1fr 1fr;
+  align-items:start;
+  padding:14px;
+  background:#fbfffe;
+  border:1px solid #e7f4f1;
+  border-radius:10px;
+  box-shadow:0 2px 4px rgba(0,0,0,0.03);
+}
+
+.metric-title{
+  font-weight:700;
+  display:flex;
+  gap:6px;
+  font-size:15px;
+}
+
+.metric-value{
+  font-weight:500;
+  color:#04403b;
+}
+
+/* images */
+.images{
+  margin-top:20px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+.img-card{
+  background:#fff;
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow:0 10px 30px rgba(0,0,0,0.06);
+}
+.img-card img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+}
+.img-card .cap{
+  padding:10px;
+  font-size:14px;
+  background:#faffff;
+}
+
+/* responsive */
+@media(max-width:900px){
+  .metric-row{grid-template-columns:1fr;}
+  .images{grid-template-columns:1fr;}
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="logo">
+    <ion-icon name="leaf-outline"></ion-icon>
+    Farm<span style="color:var(--accent)">Mitra</span> 2.0
+  </div>
+
+  <nav>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="crop-comparison.html">Compare</a></li>
+      <li><a href="market-prices.html">Market</a></li>
+    </ul>
+  </nav>
+
+   <div class="translate-box">
+      <ion-icon name="language-outline"></ion-icon>
+      <select id="languageSelect" aria-label="Select Language">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+        <option value="mr">मराठी</option>
+      </select>
+    </div>
+</header>
+
+<!-- Hidden Google element -->
+  <div id="google_translate_element"></div>
+
+<!-- PAGE CONTENT -->
+<main class="page">
+  <section class="hero">
+    <h1>Crop Comparison</h1>
+    <p>Compare two crops side-by-side based on water need, soil, climate, duration, fertilizer and profit.</p>
+
+    <!-- DROPDOWNS -->
+    <div class="controls">
+
+      <!-- Left dropdown -->
+      <div class="dropdown">
+        <button class="drop-btn" id="btnA"><span class="emoji" id="emojiA">🍚</span> <span id="labelA">Rice</span> ▾</button>
+        <div class="panel" id="panelA">
+          <div class="search"><ion-icon name="search-outline"></ion-icon><input id="searchA" placeholder="Search crops..."></div>
+          <div id="listA"></div>
+        </div>
+      </div>
+
+      <!-- Swap -->
+      <button class="swap-btn" id="swapBtn">⇄</button>
+
+      <!-- Right dropdown -->
+      <div class="dropdown">
+        <button class="drop-btn" id="btnB"><span class="emoji" id="emojiB">☁️</span> <span id="labelB">Cotton</span> ▾</button>
+        <div class="panel" id="panelB">
+          <div class="search"><ion-icon name="search-outline"></ion-icon><input id="searchB" placeholder="Search crops..."></div>
+          <div id="listB"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Comparison Result -->
+  <section class="compare">
+    <div class="pill-row">
+      <div class="pill"><span id="pillAemoji">🍚</span> <span id="pillAname">Rice</span></div>
+      <div class="metric-label">Metric</div>
+      <div class="pill"><span id="pillBemoji">☁️</span> <span id="pillBname">Cotton</span></div>
+    </div>
+
+    <div class="metrics" id="metricsContainer"></div>
+
+    <div class="images" id="imagesContainer"></div>
+  </section>
+
+</main>
+
+<script>
+/* ------------------------------------
+   CROPS DATA (10 crops)
+------------------------------------ */
+const CROPS = {
+  "Rice": {
+    emoji:"🍚",
+    water:"High (1200–2000mm)",
+    climate:"Tropical/Subtropical (20–35°C)",
+    soil:"Clay loam, Alluvial",
+    fert:"N:120,P:60,K:40 kg/ha",
+    yield:"4–6 t/ha",
+    profit:"₹40k–60k /ha",
+    duration:"120–150 days",
+    img:"https://i.pinimg.com/736x/a8/dc/ee/a8dcee005cb50ae6a28b500c196ff41f.jpg",
+    desc:"Rice requires high water and warm climate."
+  },
+
+  "Wheat": {
+    emoji:"🌾",
+    water:"Medium (450–650mm)",
+    climate:"Cool (10–25°C)",
+    soil:"Loamy soil",
+    fert:"N:100,P:50,K:30 kg/ha",
+    yield:"3–4.5 t/ha",
+    profit:"₹35k–55k /ha",
+    duration:"90–120 days",
+    img:"https://i.pinimg.com/736x/a7/da/cb/a7dacbb79d28cd24caf5aec2b9630aee.jpg",
+    desc:"Wheat is India’s major rabi cereal crop."
+  },
+
+  "Cotton": {
+    emoji:"☁️",
+    water:"Medium (700–1200mm)",
+    climate:"Warm tropical (21–30°C)",
+    soil:"Black cotton soil, loamy",
+    fert:"N:80,P:40,K:40 kg/ha",
+    yield:"1.5–2.5 t/ha",
+    profit:"₹50k–80k /ha",
+    duration:"150–180 days",
+    img:"https://i.pinimg.com/736x/77/c4/3e/77c43e4311fae8bcbaec705a1681bbd7.jpg",
+    desc:"Cotton is a key commercial fibre crop."
+  },
+
+  "Maize": {
+    emoji:"🌽",
+    water:"Medium (500–800mm)",
+    climate:"Warm (18–30°C)",
+    soil:"Loamy soil",
+    fert:"N:120,P:60,K:40 kg/ha",
+    yield:"3–7 t/ha",
+    profit:"₹30k–70k /ha",
+    duration:"90–120 days",
+    img:"https://i.pinimg.com/1200x/e9/20/f7/e920f70dfbc8ac565873ec12f2462f89.jpg",
+    desc:"Maize is used for food, feed and industry."
+  },
+
+  "Soybean": {
+    emoji:"🫘",
+    water:"Medium (500–900mm)",
+    climate:"Warm (20–30°C)",
+    soil:"Loamy soil",
+    fert:"P:30–40,K:20–30 kg/ha",
+    yield:"1–2.5 t/ha",
+    profit:"₹30k–60k /ha",
+    duration:"90–120 days",
+    img:"https://i.pinimg.com/736x/b4/1d/b8/b41db8215716de3dd12871f074ecbe3d.jpg",
+    desc:"Soybean is a leading oilseed protein crop."
+  },
+
+  "Jowar (Sorghum)": {
+    emoji:"🌿",
+    water:"Low (300–600mm)",
+    climate:"Semi-arid to tropical",
+    soil:"Red & black soils",
+    fert:"N:40–60,P:20–30 kg/ha",
+    yield:"1.5–3 t/ha",
+    profit:"₹15k–35k /ha",
+    duration:"90–120 days",
+    img:"https://i.pinimg.com/736x/c2/61/76/c26176d4a8fce43b0b224246f73928c6.jpg",
+    desc:"Drought-resistant cereal suitable for drylands."
+  },
+
+  "Bajra (Pearl Millet)": {
+    emoji:"🌾",
+    water:"Low (300–500mm)",
+    climate:"Hot & arid",
+    soil:"Sandy soils",
+    fert:"N:30–50,P:20–30 kg/ha",
+    yield:"1–2.5 t/ha",
+    profit:"₹12k–30k /ha",
+    duration:"60–90 days",
+    img:"https://i.pinimg.com/1200x/4f/57/14/4f5714b78496569a61f32b48be9df58a.jpg",
+    desc:"Millet that grows well in low-rainfall regions."
+  },
+
+  "Barley": {
+    emoji:"🌱",
+    water:"Low–Medium (300–500mm)",
+    climate:"Cool",
+    soil:"Loamy",
+    fert:"N:60–80,P:30–40 kg/ha",
+    yield:"2–3 t/ha",
+    profit:"₹18k–35k /ha",
+    duration:"85–110 days",
+    img:"https://i.pinimg.com/1200x/c1/bc/3a/c1bc3ac79ba33c59108e0a025e704164.jpg",
+    desc:"Used for malting, feed and food."
+  },
+
+  "Groundnut": {
+    emoji:"🥜",
+    water:"Medium (500–700mm)",
+    climate:"Warm",
+    soil:"Sandy loam",
+    fert:"N:20–40,P:40–60 kg/ha",
+    yield:"1–3 t/ha",
+    profit:"₹35k–70k /ha",
+    duration:"110–140 days",
+    img:"https://i.pinimg.com/736x/b2/32/a3/b232a3400bdeba20e1f7ffe234aa39ad.jpg",
+    desc:"Important oilseed crop grown in warm climates."
+  },
+
+  "Sugarcane": {
+    emoji:"🎋",
+    water:"Very High (1500–2500mm)",
+    climate:"Tropical",
+    soil:"Deep fertile loam",
+    fert:"High NPK",
+    yield:"60–100 t/ha",
+    profit:"₹80k–150k /ha",
+    duration:"10–18 months",
+    img:"https://i.pinimg.com/736x/81/fb/b7/81fbb70a21d1cc9d77010c2d3349fec9.jpg",
+    desc:"A perennial commercial crop with high yield."
+  }
+};
+
+/* Metrics */
+const METRICS = [
+  { key:"water", label:"Water Requirement", icon:"💧" },
+  { key:"climate", label:"Ideal Climate", icon:"🌡️" },
+  { key:"soil", label:"Soil Type", icon:"🟫" },
+  { key:"fert", label:"Fertilizer Needs", icon:"🧪" },
+  { key:"yield", label:"Expected Yield", icon:"📈" },
+  { key:"profit", label:"Profit Potential", icon:"💰" },
+  { key:"duration", label:"Growth Duration", icon:"⏳" }
+];
+
+let A = "Rice";
+let B = "Cotton";
+
+/* -------------------- Build dropdown options -------------------- */
+function buildOptions(list, selected, onSelect){
+  list.innerHTML="";
+  Object.keys(CROPS).forEach(name=>{
+    let d=document.createElement("div");
+    d.className="opt"+(name===selected?" selected":"");
+    d.innerHTML=`
+      <div style="font-size:18px">${CROPS[name].emoji}</div>
+      <div><div class="name">${name}</div><div class="meta">${CROPS[name].soil}</div></div>
+      <div class="check">✔</div>`;
+    d.onclick=()=>onSelect(name);
+    list.appendChild(d);
+  });
+}
+
+/* -------------------- Render comparison -------------------- */
+function render(){
+  document.getElementById("labelA").textContent = A;
+  document.getElementById("emojiA").textContent = CROPS[A].emoji;
+  document.getElementById("pillAname").textContent = A;
+  document.getElementById("pillAemoji").textContent = CROPS[A].emoji;
+
+  document.getElementById("labelB").textContent = B;
+  document.getElementById("emojiB").textContent = CROPS[B].emoji;
+  document.getElementById("pillBname").textContent = B;
+  document.getElementById("pillBemoji").textContent = CROPS[B].emoji;
+
+  const Adata = CROPS[A];
+  const Bdata = CROPS[B];
+
+  /* METRICS */
+  const mWrap=document.getElementById("metricsContainer");
+  mWrap.innerHTML="";
+
+  METRICS.forEach(m=>{
+    let row=document.createElement("div");
+    row.className="metric-row";
+
+    row.innerHTML = `
+      <div class="metric-title">${m.icon} ${m.label}</div>
+      <div class="metric-value">${Adata[m.key]}</div>
+      <div class="metric-value" style="text-align:right">${Bdata[m.key]}</div>
+    `;
+
+    mWrap.appendChild(row);
+  });
+
+  /* IMAGES */
+  const imgWrap=document.getElementById("imagesContainer");
+  imgWrap.innerHTML=`
+    <div class="img-card">
+      <img src="${Adata.img}">
+      <div class="cap"><b>${A}</b> — ${Adata.desc}</div>
+    </div>
+
+    <div class="img-card">
+      <img src="${Bdata.img}">
+      <div class="cap"><b>${B}</b> — ${Bdata.desc}</div>
+    </div>
+  `;
+}
+
+/* -------------------- Dropdown logic -------------------- */
+function setupDropdown(btnId, panelId, listId, searchId, isLeft){
+  const btn=document.getElementById(btnId);
+  const panel=document.getElementById(panelId);
+  const list=document.getElementById(listId);
+  const search=document.getElementById(searchId);
+
+  function open(){
+    document.querySelectorAll(".panel").forEach(p=>p.classList.remove("show"));
+    panel.classList.add("show");
+  }
+
+  btn.onclick=()=>open();
+
+  search.oninput=()=>{
+    const q=search.value.toLowerCase();
+    Array.from(list.children).forEach(opt=>{
+      const name=opt.querySelector(".name").textContent.toLowerCase();
+      opt.style.display = name.includes(q) ? "flex" : "none";
+    });
+  };
+
+  buildOptions(list, isLeft?A:B, (name)=>{
+    if(isLeft) A=name; else B=name;
+    render();
+    buildOptions(list, isLeft?A:B, ()=>{});
+    panel.classList.remove("show");
+  });
+}
+
+setupDropdown("btnA","panelA","listA","searchA",true);
+setupDropdown("btnB","panelB","listB","searchB",false);
+
+/* Swap button */
+document.getElementById("swapBtn").onclick=()=>{
+  [A,B]=[B,A];
+  render();
+  buildOptions(document.getElementById("listA"), A, ()=>{});
+  buildOptions(document.getElementById("listB"), B, ()=>{});
+};
+
+/* Close dropdowns */
+document.addEventListener("click",e=>{
+  if(!e.target.closest(".dropdown")){
+    document.querySelectorAll(".panel").forEach(p=>p.classList.remove("show"));
+  }
+});
+
+/* INITIAL RENDER */
+render();
+
+</script>
+<!-- ============== GOOGLE TRANSLATE + LANGUAGE SELECT ============== -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+        autoDisplay: false
+      }, "google_translate_element");
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const select = document.getElementById("languageSelect");
+
+      select.addEventListener("change", function () {
+        const lang = select.value;
+        const googleSelect = document.querySelector(".goog-te-combo");
+        if (googleSelect) {
+          googleSelect.value = lang;
+          googleSelect.dispatchEvent(new Event("change"));
+        }
+      });
+    });
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

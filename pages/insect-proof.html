@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Insect-Proof Cultivation | FarmMitra 2.0</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; }
+
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: #e8f0f2; /* Light cyan theme for insect-proof */
+    }
+
+    /* Navbar */
+    .navbar {
+      width: 100%;
+      padding: 15px 25px;
+      background: #0288d1; /* Dark cyan */
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .navbar .logo h1 { font-size: 24px; margin: 0; }
+
+    .navbar nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .lang-select {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.25);
+      padding: 5px 8px;
+      border-radius: 8px;
+    }
+
+    .lang-icon { color: white; font-size: 20px; }
+
+    .goog-logo-link, .goog-te-gadget span { display: none !important; }
+    .goog-te-combo {
+      background-color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 4px 6px;
+      font-size: 14px;
+      color: #0277bd;
+      cursor: pointer;
+    }
+
+    /* Crop Images */
+    .crop-images {
+      display: flex;
+      justify-content: center;
+      margin: 25px auto;
+      width: 90%;
+    }
+
+    .crop-wrapper {
+      width: 100%;
+      max-width: 650px;
+      height: 320px;
+      overflow: hidden;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+
+    .crop-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .crop-image:hover { transform: scale(1.05); }
+
+    h2 {
+      margin-top: 30px;
+      border-left: 6px solid #0277bd; /* Accent color */
+      padding-left: 10px;
+      font-size: 1.4rem;
+    }
+
+    ul { margin-left: 25px; list-style-type: "🛡️ "; }
+
+    .container { width: 90%; max-width: 1100px; margin: auto; padding: 40px 0; }
+
+    .card {
+      background: rgba(255, 255, 255, 0.85);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      padding: 25px;
+      margin: 20px 0;
+      border-radius: 18px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover { transform: translateY(-4px); }
+
+    .card h2 { color: #0277bd; margin-bottom: 10px; font-size: 26px; }
+
+    .highlight {
+      background: #b3e5fc;
+      padding: 10px 15px;
+      border-radius: 10px;
+      margin: 10px 0;
+      border-left: 5px solid #0288d1;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    table, th, td { border: 1px solid #0288d1; }
+
+    th, td { padding: 12px; text-align: left; }
+
+    th { background: #0288d1; color: white; }
+
+    .video-container {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .video-container iframe {
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+      width: 80%;
+      height: 400px;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin: 25px 0;
+      padding: 12px 20px;
+      background: #0288d1;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 600;
+    }
+
+    .back-btn:hover { background: #0277bd; }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 30px;
+      background: #0277bd;
+      color: #b3e5fc;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline" class="logo-icon"></ion-icon>
+      <h1>Farm<span>Mitra</span> <small>2.0</small></h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="protected-cultivation.html">⬅ Protected Cultivation</a></li>
+      </ul>
+    </nav>
+
+    <div class="lang-select">
+      <ion-icon name="language-outline" class="lang-icon"></ion-icon>
+      <div id="google_translate_element"></div>
+    </div>
+  </header>
+
+  <!-- Insect-Proof Image -->
+  <div class="crop-images">
+    <div class="crop-wrapper">
+      <img src="https://i.pinimg.com/1200x/fd/99/c2/fd99c2f957e04fe429b9647bdfbc1bb8.jpg" alt="Insect-Proof Net" class="crop-image" />
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="card">
+      <h2>🌱 Introduction</h2>
+      <p>Insect-proof cultivation uses nets to prevent insect entry into the greenhouse or open-field crops. This method reduces pesticide use and improves crop quality.</p>
+      <div class="highlight">Ideal for: Vegetables, leafy crops, nursery plants, flowers, and fruits prone to pests.</div>
+    </div>
+
+    <div class="card">
+      <h2>🏗 Structure</h2>
+      <ul>
+        <li>Frame: Bamboo, steel, or aluminum</li>
+        <li>Cover: Fine mesh insect net (40–60 mesh depending on pests)</li>
+        <li>Shape: Tunnel or house structure</li>
+        <li>Ventilation: Side openings or roll-up nets</li>
+        <li>Irrigation: Drip, sprinkler, or manual watering</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>🌤 Climate Management</h2>
+      <ul>
+        <li>Temperature: 18–30°C depending on crop</li>
+        <li>Humidity: 50–75%</li>
+        <li>Light: Nets allow sufficient sunlight</li>
+        <li>Protection from insects, wind, and heavy rain</li>
+      </ul>
+      <div class="highlight">Maintaining proper ventilation is crucial to prevent heat stress and disease.</div>
+    </div>
+
+    <div class="crop-images">
+      <div class="crop-wrapper">
+        <img src="https://i.pinimg.com/736x/ad/95/3f/ad953fc41796d47442152f691082e5df.jpg" alt="Insect-Proof Tomato" class="crop-image" />
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>💧 Irrigation & Fertilization</h2>
+      <ul>
+        <li>Drip irrigation for efficient water use</li>
+        <li>Fertigation using NPK and micronutrients</li>
+        <li>Organic compost and vermicompost for soil health</li>
+        <li>Adjust irrigation based on temperature and crop stage</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>🐞 Pest & Disease Management</h2>
+      <table>
+        <tr><th>Pest / Disease</th><th>Symptoms</th><th>Control</th></tr>
+        <tr><td>Aphids</td><td>Leaf curling, sticky residue</td><td>Biological control, neem oil</td></tr>
+        <tr><td>Whitefly</td><td>Yellowing leaves</td><td>Sticky traps, natural predators</td></tr>
+        <tr><td>Thrips</td><td>Silver streaks on leaves</td><td>Blue sticky traps, insecticidal sprays</td></tr>
+        <tr><td>Powdery Mildew</td><td>White powder on leaves</td><td>Fungicides, improved airflow</td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>🌿 Harvesting & Yield</h2>
+      <ul>
+        <li>Vegetables: 30–60 days depending on crop</li>
+        <li>Flowers & Nursery Crops: Harvest at optimal maturity</li>
+        <li>Yield: 15–40% higher than open-field cultivation</li>
+        <li>Reduced pest damage improves marketable quality</li>
+      </ul>
+    </div>
+
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/3gSOAI8YDbQ?si=XHzwXXBJcTc3iolu" title="Insect-Proof Cultivation Video" allowfullscreen></iframe>
+    </div>
+
+    <a href="protected-cultivation.html" class="back-btn">⬅ Back to Protected Cultivation</a>
+  </div>
+
+  <footer>
+    © 2025 FarmMitra 2.0 — Smart Farming Guide
+  </footer>
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+      }, "google_translate_element");
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

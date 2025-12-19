@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fruit Crops | FarmMitra 2.0</title>
+
+  <!-- Use Same Global CSS -->
+  <link rel="stylesheet" href="../css/style.css" />
+
+  <!-- Icons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+
+  <!-- 🌱 Navbar (Same Across All Pages) -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline" class="logo-icon"></ion-icon>
+      <h1>Farm<span>Mitra</span> <small>2.0</small></h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="agriculture.html">🌾 Agriculture</a></li>
+      </ul>
+    </nav>
+
+    <div class="translate-box">
+      <ion-icon name="language-outline"></ion-icon>
+      <select id="languageSelect" aria-label="Select Language">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+        <option value="mr">मराठी</option>
+      </select>
+    </div>
+  </header>
+
+  <!-- Hidden Google Translate Element -->
+  <div id="google_translate_element"></div>
+
+  <!-- 🍎 Fruit Crops Section -->
+  <section class="section">
+    <h2>🍉 Fruit Crops</h2>
+    <p>Fruit crops rich in nutrition, market value and easy cultivation practices.</p>
+
+    <div class="cards">
+
+      <a class="card" href="mango.html">
+        <img src="https://i.pinimg.com/736x/3e/6e/9c/3e6e9c804a179f7b64c1757510ffe69f.jpg"
+          alt="Mango fruit crop tree">
+        <h3>Mango — आंबा</h3>
+        <p>King of fruits, thrives in tropical warm climate.</p>
+      </a>
+
+      <a class="card" href="banana.html">
+        <img src="https://i.pinimg.com/736x/2e/17/5e/2e175ed40a0e4a7e4d964366261d94ae.jpg"
+          alt="Banana fruit plantation crop">
+        <h3>Banana — केळी</h3>
+        <p>Fast-growing crop requiring rich and moist soil.</p>
+      </a>
+
+      <a class="card" href="guava.html">
+        <img src="https://i.pinimg.com/736x/2f/af/de/2fafdefd228d23151528df754f9a99b3.jpg"
+          alt="Guava per fruit crop">
+        <h3>Guava — पेरू</h3>
+        <p>Hardy fruit crop adaptable to diverse climates.</p>
+      </a>
+
+      <a class="card" href="papaya.html">
+        <img src="https://i.pinimg.com/736x/23/2f/4c/232f4c978f8eff0bb9c79ca60006de10.jpg"
+          alt="Papaya fruit tree crop">
+        <h3>Papaya — पपई</h3>
+        <p>High-nutrition fruit, grows rapidly in warm climates.</p>
+      </a>
+
+      <a class="card" href="pomegranate.html">
+        <img src="https://i.pinimg.com/1200x/a4/f1/7a/a4f17a21efe6fa0b4f9791de6c8b9fee.jpg"
+          alt="Pomegranate fruit orchard crop">
+        <h3>Pomegranate — डाळिंब</h3>
+        <p>Best suited for dry climates with low humidity.</p>
+      </a>
+
+      <a class="card" href="grapes.html">
+        <img src="https://i.pinimg.com/1200x/e1/c7/f8/e1c7f803a504372714ed0561009f6391.jpg"
+          alt="Grapes vineyard cultivation">
+        <h3>Grapes — द्राक्षे</h3>
+        <p>Ideal for warm regions with good drainage.</p>
+      </a>
+
+      <a class="card" href="strawberry.html">
+        <img src="https://i.pinimg.com/736x/77/85/46/778546b9a49b23ca9f52abc02e40d84c.jpg"
+          alt="Strawberry red fruit crop">
+        <h3>Strawberry — स्ट्रॉबेरी</h3>
+        <p>Prefers cool climate and well-drained fertile soil.</p>
+      </a>
+
+      <a class="card" href="coconut.html">
+        <img src="https://i.pinimg.com/736x/77/ca/77/77ca77ec632555d4f5ada9731e4c3845.jpg"
+          alt="Coconut palm tropical crop">
+        <h3>Coconut — नारळ</h3>
+        <p>Thrives in tropical coastal climates with high humidity.</p>
+      </a>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 FarmMitra 2.0 | Fruit Crops Information</p>
+  </footer>
+
+  <!-- JS -->
+  <script src="../js/script.js"></script>
+
+  <!-- Google Translate Init -->
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+        autoDisplay: false
+      }, "google_translate_element");
+    }
+  </script>
+
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+
+</html>

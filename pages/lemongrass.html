@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lemongrass Crop Details | FarmMitra 2.0</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    /* 🍋 Fresh Lemongrass Theme (Yellow–Green) */
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(to bottom, #f9f9d2, #e7f7b0); /* soft lemon–green */
+      margin: 0;
+      color: #4a5f1d; /* deep green */
+      line-height: 1.8;
+    }
+
+    h1, h2 {
+      color: #6c8f1a; /* lemongrass leaf green */
+      line-height: 1.2;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.4rem;
+      margin: 30px 0;
+    }
+
+    /* Navigation Bar */
+    header.navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(90deg, #6b8e23, #4c6c17); /* olive–lemongrass gradient */
+      padding: 15px 8%;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo h1 {
+      margin: 0;
+      color: #fff;
+    }
+
+    .logo span {
+      color: #f6ffb5; /* lemon highlight */
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #f9ffd9;
+    }
+
+    /* Language Selector */
+    .lang-select {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.2);
+      padding: 5px 8px;
+      border-radius: 8px;
+    }
+
+    .goog-logo-link, .goog-te-gadget span {
+      display: none !important;
+    }
+
+    .goog-te-combo {
+      background-color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 4px 6px;
+      font-size: 14px;
+      color: #4a5f1d;
+      cursor: pointer;
+    }
+
+    /* Main Content */
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px 20px 60px;
+      background-color: #ffffffd2;
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      margin-top: 30px;
+    }
+
+    /* Images */
+    .crop-images {
+      display: flex;
+      justify-content: center;
+      margin: 25px auto;
+      width: 90%;
+    }
+
+    .crop-wrapper {
+      width: 100%;
+      max-width: 650px;
+      height: 320px;
+      overflow: hidden;
+      border-radius: 14px;
+      box-shadow: 0 4px 15px rgba(80, 90, 30, 0.3);
+    }
+
+    .crop-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.3s;
+    }
+
+    .crop-image:hover {
+      transform: scale(1.05);
+    }
+
+    h2 {
+      margin-top: 30px;
+      border-left: 6px solid #6c8f1a;
+      padding-left: 10px;
+      font-size: 1.4rem;
+    }
+
+    ul {
+      margin-left: 25px;
+      list-style-type: "🍋 ";
+    }
+
+    .video-container {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .video-container iframe {
+      width: 80%;
+      height: 400px;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    }
+
+    .back-btn {
+      background: #6c8f1a;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .back-btn:hover {
+      background: #4c6c17;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline"></ion-icon>
+      <h1>Farm<span>Mitra</span> 2.0</h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="medicinal-crops.html">⬅ Medicinal & Aromatic Crops</a></li>
+      </ul>
+    </nav>
+
+    <div class="lang-select">
+      <ion-icon name="language-outline"></ion-icon>
+      <div id="google_translate_element"></div>
+    </div>
+  </header>
+
+  <!-- 🍋 Lemongrass Section -->
+  <main>
+    <h1>Lemongrass (Cymbopogon citratus)</h1>
+
+    <!-- Main Image -->
+    <div class="crop-images">
+      <div class="crop-wrapper">
+        <img src="https://i.pinimg.com/736x/95/9d/ca/959dca9acdce70da246e8f32aff7b040.jpg"
+             alt="Lemongrass Plant" class="crop-image" />
+      </div>
+    </div>
+
+    <section class="content">
+
+      <h2>1️⃣ Basic Crop Information</h2>
+      <p>Lemongrass is a strong aromatic perennial herb grown for its essential oil (citral).  
+         Best grown in **warm & humid tropical climates**, temperature **20–30°C**.</p>
+
+      <h2>2️⃣ Propagation Material</h2>
+      <ul>
+        <li>Propagated by **slips (rooted tillers)** or **division of clumps**.</li>
+        <li>Each slip should have **2–3 tillers**.</li>
+        <li>Rooting takes place in **7–12 days**.</li>
+      </ul>
+
+      <h2>3️⃣ Soil Requirements</h2>
+      <ul>
+        <li>Well-drained loamy soil is ideal.</li>
+        <li>Soil pH: **5.5–7.0**.</li>
+        <li>Avoid waterlogging areas.</li>
+      </ul>
+
+      <h2>4️⃣ Planting Details</h2>
+      <p>Best season: **June–July** (monsoon) or **Feb–March**  
+         Spacing: **45 × 45 cm**</p>
+
+      <!-- Second Image -->
+      <div class="crop-images">
+        <div class="crop-wrapper">
+          <img src="https://i.pinimg.com/736x/81/a5/20/81a52018c4d98395acbd17de5301f8e2.jpg"
+               alt="Lemongrass Cultivation" class="crop-image" />
+        </div>
+      </div>
+
+      <h2>5️⃣ Irrigation</h2>
+      <ul>
+        <li>Requires moisture for proper tillering.</li>
+        <li>Irrigate every **7–12 days** depending on soil.</li>
+        <li>Avoid water stagnation.</li>
+      </ul>
+
+      <h2>6️⃣ Nutrient Management</h2>
+      <ul>
+        <li>FYM 8–10 tons/acre recommended.</li>
+        <li>Biofertilizers enhance oil content.</li>
+        <li>Avoid excess nitrogen for better citral quality.</li>
+      </ul>
+
+      <h2>7️⃣ Pest & Diseases</h2>
+      <ul>
+        <li><b>Pests:</b> shoot borer, mites, leaf roller.</li>
+        <li><b>Diseases:</b> red leaf spot, rust.</li>
+        <li>Neem-based sprays work effectively for pest control.</li>
+      </ul>
+
+      <h2>8️⃣ Harvesting</h2>
+      <p>First harvest: **90–120 days after planting**.  
+         Subsequent harvests every **60–70 days**.</p>
+
+      <h2>9️⃣ Yield</h2>
+      <p>Green foliage: **12–15 tons/acre/year**  
+         Essential oil yield: **40–55 kg/acre**.</p>
+
+      <h2>🔟 Uses & Market</h2>
+      <ul>
+        <li>Lemongrass oil (citral)</li>
+        <li>Soaps, perfumes, cosmetics</li>
+        <li>Medicinal & anti-inflammatory uses</li>
+        <li>Lemongrass tea & food flavoring</li>
+      </ul>
+
+<div class="video-container">
+  <iframe 
+      src="https://www.youtube.com/embed/EV9T_RbhK8E?si=rClQqVykqbixsTNn"
+      title="Lemongrass Farming"
+      allowfullscreen>
+  </iframe>
+</div>
+    </section>
+  </main>
+
+  <footer>
+    <a href="medicinal-crops.html" class="back-btn">← Back to Medicinal & Aromatic Crops</a>
+  </footer>
+
+  <!-- Google Translator -->
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+      }, "google_translate_element");
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

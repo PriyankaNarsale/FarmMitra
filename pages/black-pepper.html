@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Black Pepper Crop Details | FarmMitra 2.0</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    /* 🌿 Body & Theme */
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(to bottom, #f3f3f3, #dfe8e1); /* Light grey to soft green */
+      margin: 0;
+      color: #1b1b1b; 
+      line-height: 1.8;
+    }
+
+    h1, h2, h3 {
+      color: #1c3b2f; /* Deep green */
+      line-height: 1.2;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.4rem;
+      margin: 30px 0;
+      letter-spacing: 0.5px;
+    }
+
+    /* 🌱 Navbar */
+    header.navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(90deg, #4e342e, #1b1b1b); /* Brownish → Black */
+      padding: 15px 8%;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo h1 {
+      margin: 0;
+      font-size: 1.6rem;
+      color: #fff;
+    }
+
+    .logo span {
+      color: #c0e6c6; /* Light pepper green */
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #c8f7d1;
+    }
+
+    .lang-select {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.25);
+      padding: 5px 8px;
+      border-radius: 8px;
+    }
+
+    .lang-icon {
+      color: white;
+      font-size: 20px;
+    }
+
+    .goog-logo-link, .goog-te-gadget span { display: none !important; }
+
+    .goog-te-combo {
+      background-color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 4px 6px;
+      font-size: 14px;
+      color: #1b1b1b;
+      cursor: pointer;
+    }
+
+    /* 📄 Main Content */
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px 20px 60px;
+      background-color: #ffffffd2;
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      margin-top: 30px;
+    }
+
+    .crop-images {
+      display: flex;
+      justify-content: center;
+      margin: 25px auto;
+      width: 90%;
+    }
+
+    .crop-wrapper {
+      width: 100%;
+      max-width: 650px;
+      height: 320px;
+      overflow: hidden;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    .crop-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .crop-image:hover {
+      transform: scale(1.05);
+    }
+
+    h2 {
+      margin-top: 30px;
+      border-left: 6px solid #1c3b2f;
+      padding-left: 10px;
+      font-size: 1.4rem;
+    }
+
+    ul {
+      margin-left: 25px;
+      list-style-type: "🌿 ";
+    }
+
+    .content img {
+      width: 100%;
+      max-width: 650px;
+      display: block;
+      margin: 20px auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .video-container {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .video-container iframe {
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+      width: 80%;
+      height: 400px;
+    }
+
+    footer {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .back-btn {
+      background: #1c3b2f;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .back-btn:hover {
+      background: #0f241c;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 🌱 Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline" class="logo-icon"></ion-icon>
+      <h1>Farm<span>Mitra</span> <small>2.0</small></h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="spice-crops.html">⬅ Spice Crops</a></li>
+      </ul>
+    </nav>
+
+    <div class="lang-select">
+      <ion-icon name="language-outline" class="lang-icon"></ion-icon>
+      <div id="google_translate_element"></div>
+    </div>
+  </header>
+
+  <!-- 🌱 Black Pepper Section -->
+  <main>
+    <h1>Black Pepper (Kali Mirch)</h1>
+
+    <!-- Main Image -->
+    <div class="crop-images">
+      <div class="crop-wrapper">
+        <img src="https://i.pinimg.com/736x/9c/15/51/9c1551fda98b4b7d4527e784cabdd4be.jpg"
+             alt="Black Pepper Plant" class="crop-image" />
+      </div>
+    </div>
+
+    <section class="content">
+      <h2>1️⃣ Basic Crop Information</h2>
+      <p>Black Pepper (<em>Piper nigrum</em>) is known as the **King of Spices**. It is a climbing vine grown for its dried fruit used as spice and medicine. Grows best in warm, humid climate with **temperature 23–32°C** and **annual rainfall 2000–3000 mm**. Ideal soil: well-drained loam rich in organic matter.</p>
+
+      <h2>2️⃣ Propagation Material</h2>
+      <ul>
+        <li>Propagated using healthy vines (cuttings).</li>
+        <li>Cuttings should be 3–5 nodes long.</li>
+        <li>Seedlings should be planted near support trees (standards).</li>
+      </ul>
+
+      <h2>3️⃣ Soil & Land Preparation</h2>
+      <ul>
+        <li>Soil should be rich, moist and well-drained.</li>
+        <li>Add 20–30 tons FYM per hectare.</li>
+        <li>Provide shade trees or live supports.</li>
+      </ul>
+
+      <h2>4️⃣ Planting Information</h2>
+      <p>Plant near support trees at **75–100 cm** distance. Best season: **May–June** at the onset of monsoon.</p>
+
+      <!-- Second Image -->
+      <div class="crop-images">
+        <div class="crop-wrapper">
+          <img src="https://i.pinimg.com/1200x/a7/e0/13/a7e0131a962f3ec822eea791d6a34f63.jpg"
+               alt="Black Pepper Harvest" class="crop-image" />
+        </div>
+      </div>
+
+      <h2>5️⃣ Irrigation Management</h2>
+      <ul>
+        <li>Light irrigation in summer.</li>
+        <li>Maintain moisture but avoid waterlogging.</li>
+        <li>Drip irrigation gives better yields.</li>
+      </ul>
+
+      <h2>6️⃣ Nutrient Management</h2>
+      <ul>
+        <li>Apply 50:50:150 NPK per vine/year.</li>
+        <li>Apply compost or cow dung for soil improvement.</li>
+        <li>Zinc and Boron increase berry size.</li>
+      </ul>
+
+      <h2>7️⃣ Pest & Diseases</h2>
+      <ul>
+        <li><strong>Pests:</strong> Mealy bugs, scale insects.</li>
+        <li><strong>Diseases:</strong> Quick wilt, leaf spot.</li>
+        <li>Control: Trichoderma, neem oil spray, proper drainage.</li>
+      </ul>
+
+      <h2>8️⃣ Harvesting</h2>
+      <p>Harvest when berries start turning red. Sun-dry for 3–5 days to obtain black pepper.</p>
+
+      <h2>9️⃣ Yield & Marketing</h2>
+      <p>Average yield: **6–8 kg dry pepper per plant**. High market demand due to export value.</p>
+
+      <h2>🔟 Government Schemes</h2>
+      <ul>
+        <li>Spice Board Subsidy.</li>
+        <li>Organic farming assistance.</li>
+        <li>PMKSY irrigation subsidy.</li>
+      </ul>
+
+      <!-- 🎥 Video -->
+      <div class="video-container">
+  <iframe 
+      src="https://www.youtube.com/embed/m5yT2b5b56o?si=kg5BNKGhASU7Fidq"
+      title="YouTube Video Player"
+      allowfullscreen>
+  </iframe>
+</div>
+
+
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <a href="spice-crops.html" class="back-btn">← Back to Spice Crops</a>
+  </footer>
+
+  <!-- Translator -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+      }, "google_translate_element");
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

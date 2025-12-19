@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bajra (Pearl Millet) Farming | FarmMitra 2.0</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    :root{
+      --bajra-deep:#33691E;       /* dark green */
+      --bajra-main:#558B2F;       /* medium green */
+      --bajra-accent:#FBC02D;     /* bajra golden */
+      --bajra-soft:#FFFDE7;       /* very light yellow */
+      --bajra-mint:#E8F5E9;       /* soft green bg */
+      --text-muted:#5c6f5c;
+      --card:#ffffff;
+      --shadow-main:rgba(85,139,47,0.28);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0;}
+
+    body{
+      font-family:"Poppins",sans-serif;
+      background:linear-gradient(180deg,var(--bajra-soft),#ffffff);
+      color:#1f261c;
+      line-height:1.7;
+    }
+
+    /* ================= NAVBAR ================= */
+    /* ────────────── NAVBAR (Agriculture Style) ────────────── */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #2e7d32; /* Green theme */
+  padding: 15px 8%;
+  color: #fff;
+  flex-wrap: wrap;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Logo Section */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-icon {
+  font-size: 32px;
+  color: #cddc39; /* Yellow-green accent */
+}
+
+.logo h1 {
+  font-size: 1.8rem;
+  color: #fff;
+  margin: 0;
+}
+
+.logo span {
+  color: #cddc39;
+}
+
+.logo small {
+  font-size: 0.8rem;
+  color: #e8f5e9;
+  margin-left: 3px;
+}
+
+/* Navigation Menu */
+nav ul {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+nav ul li a:hover {
+  color: #cddc39;
+}
+
+/* ────────────── Language Selector ────────────── */
+.translate-box {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.15);
+  padding: 6px 12px;
+  border-radius: 999px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.translate-box ion-icon {
+  color: #fff;
+  font-size: 20px;
+}
+
+.translate-box select {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #1c1818;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+/* Remove Google Translate default styling */
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+
+#google_translate_element {
+  display: none;
+}
+
+    /* ================= HERO ================= */
+    .hero{
+      display:grid;
+      grid-template-columns: minmax(0,1.4fr) minmax(280px,0.9fr);
+      gap:32px;
+      padding:40px 6% 20px;
+      align-items:center;
+    }
+
+    .hero-left{
+      background:var(--card);
+      padding:26px 26px 22px;
+      border-radius:16px;
+      box-shadow:0 14px 30px rgba(0,0,0,0.06);
+      border:1px solid #e1edd6;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero-left::before{
+      content:"";
+      position:absolute;
+      right:-60px;
+      top:-60px;
+      width:160px;
+      height:160px;
+      background:radial-gradient(circle at center,rgba(251,192,45,0.7),transparent 60%);
+      opacity:0.5;
+      pointer-events:none;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      background:#fdf7dc;
+      color:#8d6e00;
+      padding:4px 12px;
+      border-radius:999px;
+      font-size:0.8rem;
+      font-weight:600;
+      letter-spacing:0.02em;
+    }
+
+    .eyebrow ion-icon{
+      font-size:14px;
+    }
+
+    .hero-left h2{
+      margin-top:14px;
+      font-size:2rem;
+      color:var(--bajra-deep);
+      line-height:1.3;
+    }
+
+    .hero-left h2 span{
+      color:var(--bajra-accent);
+    }
+
+    .hero-sub{
+      color:var(--text-muted);
+      margin-top:10px;
+      font-size:0.98rem;
+    }
+
+    .hero-tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:14px;
+    }
+
+    .tag{
+      font-size:0.75rem;
+      background:#e8f5e9;
+      color:var(--bajra-deep);
+      border-radius:999px;
+      padding:4px 10px;
+      font-weight:500;
+    }
+
+    .hero-stats{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .stat{
+      flex:0 1 135px;
+      background:#ffffff;
+      border-radius:12px;
+      padding:10px 12px;
+      box-shadow:0 8px 18px rgba(0,0,0,0.05);
+      border:1px solid #e3ebdd;
+    }
+
+    .stat-label{
+      font-size:0.75rem;
+      color:#78926f;
+      text-transform:uppercase;
+      letter-spacing:0.05em;
+      margin-bottom:3px;
+    }
+
+    .stat-value{
+      font-weight:700;
+      color:var(--bajra-deep);
+      font-size:0.98rem;
+    }
+
+    .stat-note{
+      font-size:0.78rem;
+      color:var(--text-muted);
+    }
+
+    .hero-right{
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow:0 18px 40px var(--shadow-main);
+      position:relative;
+      min-height:260px;
+      background:#c8e6c9;
+    }
+
+    .hero-img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transform:scale(1.02);
+      transition:transform 0.35s ease;
+    }
+
+    .hero-right:hover .hero-img{
+      transform:scale(1.05);
+    }
+
+    .hero-badge{
+      position:absolute;
+      left:14px;
+      bottom:14px;
+      background:rgba(0,0,0,0.55);
+      color:#fffde7;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:0.8rem;
+      display:flex;
+      align-items:center;
+      gap:6px;-webkit-backdrop-filter: blur(4px); /* Safari, iOS */
+backdrop-filter: blur(4px);         /* Chrome, Edge, Android */
+
+     
+    }
+
+    .hero-badge ion-icon{
+      font-size:16px;
+    }
+
+    /* ================= MAIN LAYOUT ================= */
+    .page-wrap{
+      max-width:1320px;
+      margin:0 auto 40px;
+      padding:0 6% 10px;
+    }
+
+    .main-grid{
+      display:grid;
+      grid-template-columns:minmax(0,1.5fr) minmax(280px,0.9fr);
+      gap:26px;
+      align-items:flex-start;
+    }
+
+    .card{
+      background:var(--card);
+      padding:18px 20px;
+      border-radius:14px;
+      box-shadow:0 12px 28px rgba(0,0,0,0.05);
+      border:1px solid #e2ebdf;
+      margin-bottom:18px;
+    }
+
+    h3.section-title{
+      margin:0 0 8px;
+      color:var(--bajra-deep);
+      font-size:1.2rem;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    h3.section-title ion-icon{
+      color:var(--bajra-main);
+      font-size:18px;
+    }
+
+    .section-note{
+      font-size:0.86rem;
+      color:var(--text-muted);
+      margin-bottom:6px;
+    }
+
+    p, li{
+      font-size:0.94rem;
+      color:#314131;
+    }
+
+    ul{
+      padding-left:20px;
+      margin-top:8px;
+    }
+
+    /* Highlight box inside section */
+    .highlight-box{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:10px;
+      background:#fdf7dc;
+      border-left:4px solid var(--bajra-accent);
+      font-size:0.86rem;
+      color:#6b5b1d;
+    }
+
+    /* IMAGE STRIP */
+    .img-strip{
+      display:flex;
+      gap:10px;
+      margin-top:12px;
+      flex-wrap:wrap;
+    }
+
+    .img-strip img{
+      flex:1 1 140px;
+      border-radius:12px;
+      height:140px;
+      object-fit:cover;
+      box-shadow:0 10px 20px rgba(0,0,0,0.08);
+    }
+
+    /* TABLES */
+    .table-wrap{
+      margin-top:10px;
+      overflow-x:auto;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      font-size:0.9rem;
+      min-width:280px;
+    }
+
+    th,td{
+      padding:8px 10px;
+      border:1px solid #dce5d6;
+      text-align:left;
+    }
+
+    th{
+      background:#e3f2e1;
+      color:#264021;
+      font-weight:600;
+    }
+
+    /* GRID INSIDE CARD */
+    .two-col-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:14px;
+      margin-top:10px;
+    }
+
+    .pill-list{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:8px;
+    }
+
+    .pill{
+      background:#e8f5e9;
+      color:var(--bajra-deep);
+      padding:4px 10px;
+      border-radius:999px;
+      font-size:0.8rem;
+      font-weight:500;
+    }
+
+    /* Pest/disease cards */
+    .d-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+      gap:14px;
+      margin-top:10px;
+    }
+
+    .d-card{
+      background:#fcfffb;
+      border-radius:12px;
+      padding:10px 12px;
+      border:1px solid #e0ebdd;
+      box-shadow:0 6px 18px rgba(0,0,0,0.04);
+    }
+
+    .d-card h4{
+      margin:0 0 4px;
+      color:var(--bajra-deep);
+      font-size:0.98rem;
+    }
+
+    .d-card small{
+      font-size:0.78rem;
+      color:#827717;
+    }
+
+    /* ================= SIDEBAR ================= */
+    .side-card{
+      background:#ffffff;
+      padding:16px 16px 14px;
+      border-radius:14px;
+      box-shadow:0 10px 24px rgba(0,0,0,0.06);
+      border:1px solid #e0e9da;
+      margin-bottom:16px;
+    }
+
+    .side-card h4{
+      margin:0 0 6px;
+      color:var(--bajra-deep);
+      font-size:1rem;
+      display:flex;
+      align-items:center;
+      gap:6px;
+    }
+
+    .side-card h4 ion-icon{
+      color:var(--bajra-main);
+      font-size:18px;
+    }
+
+    .side-card p{
+      font-size:0.95rem;
+      color:var(--text-muted);
+    }
+
+    .bullet-tight{
+      padding-left:18px;
+      margin-top:6px;
+    }
+
+    .bullet-tight li{
+      font-size:0.86rem;
+      margin-bottom:3px;
+    }
+
+    .badge-mini{
+      display:inline-block;
+      padding:3px 8px;
+      border-radius:999px;
+      background:#fdf3c1;
+      color:#6b4e00;
+      font-size:0.75rem;
+      font-weight:600;
+      margin-top:4px;
+    }
+
+    /* VIDEO CARD + MODAL */
+    .video-thumb-card{
+      position:relative;
+      border-radius:14px;
+      overflow:hidden;
+      cursor:pointer;
+      margin-top:8px;
+      box-shadow:0 10px 26px rgba(0,0,0,0.25);
+    }
+
+    .video-thumb{
+      width:100%;
+      height:200px;
+      object-fit:cover;
+      display:block;
+      transition:transform .3s ease;
+    }
+
+    .video-thumb-card:hover .video-thumb{
+      transform:scale(1.03);
+    }
+
+    .play-overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top,rgba(0,0,0,0.55),rgba(0,0,0,0.15));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .play-circle{
+      width:64px;
+      height:64px;
+      border-radius:50%;
+      border:3px solid #fffde7;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      -webkit-backdrop-filter: blur(4px); /* Safari, iOS */
+backdrop-filter: blur(4px);         /* Chrome, Edge, Android */
+
+      box-shadow:0 0 18px rgba(0,0,0,0.5);
+    }
+
+    .play-circle ion-icon{
+      font-size:32px;
+      color:#fffde7;
+      margin-left:3px;
+    }
+
+    .video-caption{
+      position:absolute;
+      left:10px;
+      bottom:8px;
+      color:#fffde7;
+      font-size:0.8rem;
+      text-shadow:0 1px 4px rgba(0,0,0,0.7);
+    }
+
+    .video-actions{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-top:8px;
+      gap:6px;
+    }
+
+    .btn-yt{
+      flex:1;
+      text-align:center;
+      text-decoration:none;
+      font-size:0.82rem;
+      font-weight:600;
+      padding:6px 10px;
+      border-radius:999px;
+      background:#ffeb3b;
+      color:#5d4300;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:5px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .btn-yt ion-icon{
+      font-size:16px;
+    }
+
+    .btn-note{
+      font-size:0.78rem;
+      color:#7e8f7e;
+      text-align:right;
+    }
+
+    /* MODAL */
+    .modal-backdrop{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.6);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:2000;
+    }
+
+    .modal-backdrop.active{
+      display:flex;
+    }
+
+    .modal-content{
+      width:90%;
+      max-width:780px;
+      background:#000;
+      border-radius:16px;
+      overflow:hidden;
+      box-shadow:0 20px 50px rgba(0,0,0,0.6);
+      position:relative;
+    }
+
+    .modal-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:8px 14px;
+      background:linear-gradient(90deg,var(--bajra-deep),var(--bajra-main));
+      color:#fff;
+      font-size:0.9rem;
+    }
+
+    .modal-header button{
+      border:none;
+      background:transparent;
+      color:#fff;
+      font-size:1.2rem;
+      cursor:pointer;
+    }
+
+    .modal-body iframe{
+      width:100%;
+      height:420px;
+      border:none;
+      display:block;
+    }
+
+    @media(max-width:768px){
+      .modal-body iframe{
+        height:240px;
+      }
+    }
+
+    /* FOOTER */
+    footer{
+      background:#e8f5e9;
+      border-top:1px solid #d7e5d4;
+      padding:14px 6% 18px;
+      text-align:center;
+      font-size:0.85rem;
+      color:#486148;
+      margin-top:20px;
+    }
+
+    footer a{
+      color:var(--bajra-deep);
+      font-weight:600;
+      text-decoration:none;
+      margin-right:8px;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:1024px){
+      .hero{
+        grid-template-columns:1fr;
+      }
+      .hero-right{
+        max-width:520px;
+        margin:0 auto;
+      }
+      .main-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media(max-width:720px){
+      .navbar{
+        flex-wrap:wrap;
+        gap:10px;
+        padding-inline:16px;
+      }
+      nav ul{
+        gap:14px;
+        font-size:0.9rem;
+      }
+      .hero{
+        padding-inline:16px;
+      }
+      .page-wrap{
+        padding-inline:16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============== NAVBAR ============== -->
+   <header class="navbar">
+  <div class="logo">
+    <ion-icon name="leaf-outline" class="logo-icon"></ion-icon>
+    <h1>Farm<span>Mitra</span> <small>2.0</small></h1>
+  </div>
+
+  <nav>
+    <ul>
+      <li><a href="../index.html">🏡 Home</a></li>
+      <li><a href="field-crops.html">🌾 Field Crops</a></li>
+    </ul>
+  </nav>
+
+ <div class="translate-box">
+  <ion-icon name="language-outline"></ion-icon>
+  <select id="languageSelect" aria-label="Select Language">
+    <option value="en">English</option>
+    <option value="hi">हिन्दी</option>
+    <option value="mr">मराठी</option>
+  </select>
+</div>
+
+<!-- Hidden Google element -->
+<div id="google_translate_element"></div>
+
+</header>
+
+
+  <!-- ============== HERO ============== -->
+  <section class="hero">
+    <div class="hero-left">
+      <span class="eyebrow">
+        <ion-icon name="leaf-outline" aria-hidden="true"></ion-icon>
+        Dryland Super Crop – Bajra
+      </span>
+
+      <h2>Bajra (Pearl Millet) – <span>Low Rain, High Gain</span> Cereal</h2>
+
+      <p class="hero-sub">
+        Bajra is India’s most important dryland millet. It survives heat, low rainfall and poor soils,
+        yet gives reliable grain & fodder. Perfect for <strong>Rajasthan, Maharashtra, Gujarat, Karnataka</strong> and
+        other semi–arid regions.
+      </p>
+
+      <div class="hero-tags">
+        <span class="tag">Rainfed champion</span>
+        <span class="tag">Low input, stable yield</span>
+        <span class="tag">Dual purpose – grain + fodder</span>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-label">Duration</div>
+          <div class="stat-value">75 – 90 days</div>
+          <div class="stat-note">Short & fits in rotations</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Ideal Rainfall</div>
+          <div class="stat-value">400 – 600 mm</div>
+          <div class="stat-note">Per season</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Yield (good care)</div>
+          <div class="stat-value">20–30 q/ha</div>
+          <div class="stat-note">Hybrid varieties</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <img
+        src="https://i.pinimg.com/736x/05/ec/13/05ec1372c3eb0e532a2fe989b759d6c1.jpg"
+        alt="Green Bajra (Pearl Millet) crop field ready to harvest"
+        class="hero-img"
+      />
+      <div class="hero-badge">
+        <ion-icon name="sunny-outline" aria-hidden="true"></ion-icon>
+        Grows even in hot, dry weather
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== MAIN CONTENT ============== -->
+  <div class="page-wrap">
+    <div class="main-grid">
+      <!-- ========= LEFT MAIN COLUMN ========= -->
+      <div>
+
+        <!-- Overview & Climate -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="information-circle-outline"></ion-icon>
+            1️⃣ Overview & Climate Requirement
+          </h3>
+          <p>
+            Bajra (<em>Pennisetum glaucum</em>) is a hardy cereal that tolerates drought, high temperature and low soil
+            fertility better than most crops. It is widely grown in
+            <strong>Rajasthan, Maharashtra, Gujarat, Uttar Pradesh, Karnataka, Haryana</strong> and semi-arid regions of India.
+          </p>
+          <p>
+            Ideal temperature for germination and growth is <strong>25–35°C</strong>. The crop performs well with seasonal
+            rainfall of <strong>400–600 mm</strong> but can survive even in lower rainfall if soil moisture is conserved properly.
+          </p>
+<div class="two-col-grid mt-8">
+
+          
+            <div>
+              <strong>Best Soil Type</strong>
+              <ul>
+                <li>Well-drained <strong>sandy loam to loam</strong></li>
+                <li>pH range: <strong>6.0–7.5</strong></li>
+                <li>Avoid heavy clay & waterlogged fields</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Season of Sowing</strong>
+              <ul>
+                <li><strong>Kharif:</strong> June–July (onset of monsoon)</li>
+                <li><strong>Summer irrigated:</strong> Feb–March in irrigated tracts</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="highlight-box">
+            🌦️ <strong>Tip:</strong> Bajra is the best option for low rainfall areas where wheat and paddy cannot survive.
+          </div>
+
+          <div class="img-strip">
+            <img src="https://i.pinimg.com/1200x/42/7b/a2/427ba216f39d73a24ed303879380b30c.jpg"
+                 alt="Rows of Bajra crop in a well prepared field">
+            <img src="https://i.pinimg.com/736x/d9/24/27/d9242777a2e7c009fa4a4ed5bace7765.jpg"
+                 alt="Close-up of Pearl Millet ear heads">
+          </div>
+        </section>
+
+        <!-- Seed & Varieties -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="leaf-outline"></ion-icon>
+            2️⃣ Seed, Varieties & Seed Rate
+          </h3>
+          <p class="section-note">
+            Use high yielding, disease-resistant hybrids or composites recommended for your state.
+          </p>
+
+          <div class="table-wrap">
+            <table aria-label="Bajra seed varieties and seed rate">
+              <thead>
+                <tr>
+                  <th>Type / Variety</th>
+                  <th>Region / Feature</th>
+                  <th>Seed Rate</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>HHB 67, HHB 146</td>
+                  <td>Popular in Rajasthan, Haryana (early maturing)</td>
+                  <td>3.5–4 kg/ha (line sowing)</td>
+                </tr>
+                <tr>
+                  <td>ICMH 356, Pusa 322</td>
+                  <td>High yielding hybrids under good rainfall</td>
+                  <td>4 kg/ha</td>
+                </tr>
+                <tr>
+                  <td>Local Composites</td>
+                  <td>Rainfed areas, fodder + grain purpose</td>
+                  <td>4–5 kg/ha (broadcasting)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <ul>
+            <li>Treat seed with <strong>Thiram / Captan @ 3 g/kg seed</strong> to control seed-borne diseases.</li>
+            <li>In downy mildew–prone areas, treat with Metalaxyl-based fungicide as per label.</li>
+            <li>Use only certified seed from reliable source; avoid mixed or damaged seed.</li>
+          </ul>
+        </section>
+
+        <!-- Land preparation & Sowing -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="construct-outline"></ion-icon>
+            3️⃣ Land Preparation & Sowing Method
+          </h3>
+          <p>
+            Plough the field 2–3 times with harrow or cultivator to get a <strong>fine, weed-free tilth</strong>. Level
+            the land for uniform moisture distribution. In light soils, use <strong>ridges and furrows</strong> to conserve rainwater.
+          </p>
+
+          <div class="two-col-grid">
+            <div>
+              <strong>Spacing (Line sowing)</strong>
+              <ul>
+                <li><strong>Row spacing:</strong> 45 cm</li>
+                <li><strong>Plant spacing:</strong> 10–15 cm</li>
+                <li>Maintain 1 strong seedling per hill after thinning</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Depth & Method</strong>
+              <ul>
+                <li>Sowing depth: <strong>2–3 cm</strong> only</li>
+                <li>Use seed drill or dibbling for uniform spacing</li>
+                <li>Avoid deep sowing – it reduces germination</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Nutrient Management -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="beaker-outline"></ion-icon>
+            4️⃣ Nutrient Management (Fertilizer Schedule)
+          </h3>
+          <p class="section-note">
+            Apply organic manure along with balanced NPK for good tillering and ear head formation.
+          </p>
+
+          <ul>
+            <li>Apply <strong>5–8 tons/ha FYM or compost</strong> at least 2–3 weeks before sowing.</li>
+          </ul>
+
+          <div class="table-wrap">
+            <table aria-label="Bajra fertilizer recommendation">
+              <thead>
+                <tr>
+                  <th>Condition</th>
+                  <th>N (kg/ha)</th>
+                  <th>P<sub>2</sub>O<sub>5</sub> (kg/ha)</th>
+                  <th>K<sub>2</sub>O (kg/ha)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Rainfed</td>
+                  <td>40–60</td>
+                  <td>20–30</td>
+                  <td>20</td>
+                </tr>
+                <tr>
+                  <td>Irrigated / High Yield</td>
+                  <td>60–80</td>
+                  <td>30–40</td>
+                  <td>20–30</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <ul>
+            <li>Apply full P & K and <strong>half N</strong> as basal at sowing.</li>
+            <li>Apply remaining N as top-dressing around <strong>25–30 days</strong> after sowing (at tillering).</li>
+            <li>If Zinc deficiency appears (yellowing between veins), apply <strong>ZnSO₄ @ 25 kg/ha</strong> once in 2–3 years.</li>
+          </ul>
+        </section>
+
+        <!-- Irrigation & Weed Management -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="water-outline"></ion-icon>
+            5️⃣ Irrigation & Weed Management
+          </h3>
+
+          <div class="two-col-grid">
+            <div>
+              <strong>Irrigation</strong>
+              <ul>
+                <li>Most Bajra is rainfed, but 1–2 irrigations can boost yield.</li>
+                <li><strong>Critical stages:</strong> tillering and flowering/grain-filling.</li>
+                <li>Avoid standing water – crop is sensitive to waterlogging.</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Weed Control</strong>
+              <ul>
+                <li>1<sup>st</sup> weeding at 15–20 DAS; 2<sup>nd</sup> at 30–35 DAS.</li>
+                <li>Use hand hoe or wheel hoe between rows.</li>
+                <li>Mulching or intercrops (e.g., pulses) help suppress weeds.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="highlight-box">
+            💡 <strong>Tip:</strong> In very low rainfall areas, prefer only one life-saving irrigation at flowering stage
+            rather than frequent shallow irrigations.
+          </div>
+        </section>
+
+        <!-- Pest & Diseases -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="bug-outline"></ion-icon>
+            6️⃣ Major Pests & Diseases (Field Diagnosis)
+          </h3>
+
+          <div class="d-grid">
+            <div class="d-card">
+              <h4>Downy Mildew</h4>
+              <small>Whitish growth on leaves, malformed ear heads</small>
+              <ul class="bullet-tight">
+                <li>Use resistant hybrids like HHB 67 improved.</li>
+                <li>Seed treatment with systemic fungicide.</li>
+                <li>Rogue out infected plants early.</li>
+              </ul>
+            </div>
+
+            <div class="d-card">
+              <h4>Smut & Ergot</h4>
+              <small>Black/greenish fungal growth on ear, sticky honeydew</small>
+              <ul class="bullet-tight">
+                <li>Use healthy seed & crop rotation.</li>
+                <li>Avoid excess humidity at flowering.</li>
+              </ul>
+            </div>
+
+            <div class="d-card">
+              <h4>Shoot Fly</h4>
+              <small>“Dead heart” – central shoot dries</small>
+              <ul class="bullet-tight">
+                <li>Prefer timely early sowing.</li>
+                <li>Use recommended seed treatment insecticide.</li>
+              </ul>
+            </div>
+
+            <div class="d-card">
+              <h4>Stem Borer & Ear Head Pests</h4>
+              <small>Holes in stem, feeding on grains</small>
+              <ul class="bullet-tight">
+                <li>Destroy stubbles after harvest.</li>
+                <li>Use light traps & need-based sprays as per local recommendation.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Harvest & Economics -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="trending-up-outline"></ion-icon>
+            7️⃣ Harvesting, Yield & Economics
+          </h3>
+          <p>
+            Bajra is ready for harvest when ear heads turn brownish and grains become hard
+            (usually <strong>75–90 days</strong> after sowing, depending on variety and climate).
+          </p>
+
+          <ul>
+            <li>Cut ear heads first, dry them, then thresh to avoid shattering.</li>
+            <li>Dry grain to <strong>12% moisture</strong> before storage.</li>
+            <li>Store in clean, dry, insect-free bins or bags.</li>
+          </ul>
+
+          <div class="two-col-grid">
+            <div>
+              <strong>Expected Grain Yield</strong>
+              <ul>
+                <li>Rainfed: <strong>12–18 q/ha</strong></li>
+                <li>Good management: <strong>20–30 q/ha</strong></li>
+                <li>Fodder: 30–60 q/ha (green)</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Profit Drivers</strong>
+              <ul>
+                <li>Low seed & fertilizer cost</li>
+                <li>Dual purpose: grain + fodder</li>
+                <li>Stable yield in drought years</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="pill-list">
+            <span class="pill">Low risk crop</span>
+            <span class="pill">Suitable for marginal land</span>
+            <span class="pill">Fits with pulses & oilseeds</span>
+          </div>
+        </section>
+
+        <!-- Intercropping & Rotation -->
+        <section class="card">
+          <h3 class="section-title">
+            <ion-icon name="repeat-outline"></ion-icon>
+            8️⃣ Cropping System: Intercrop & Rotation Ideas
+          </h3>
+          <p>
+            Bajra fits very well in <strong>intercropping</strong> and <strong>crop rotation</strong> systems due to its short duration.
+          </p>
+
+          <ul>
+            <li><strong>Intercrops:</strong> Bajra + Pigeonpea, Bajra + Cowpea, Bajra + Moong.</li>
+            <li><strong>Rotations:</strong> Bajra – Chickpea, Bajra – Mustard, Bajra – Wheat (in irrigated areas).</li>
+          </ul>
+
+          <div class="highlight-box">
+            🌱 <strong>Soil Health:</strong> Including pulses with Bajra improves nitrogen status, reduces fertilizer cost and
+            improves long-term soil fertility.
+          </div>
+        </section>
+      </div>
+
+      <!-- ========= RIGHT SIDEBAR ========= -->
+      <aside>
+
+        <div class="side-card">
+          <h4>
+            <ion-icon name="sunny-outline"></ion-icon>
+            Quick Climate Summary
+          </h4>
+          <ul class="bullet-tight">
+            <li>Temperature: <strong>25–35°C</strong> ideal</li>
+            <li>Rainfall: <strong>400–600 mm</strong></li>
+            <li>Best season: Kharif (monsoon)</li>
+            <li>Tolerates high heat & dry spells</li>
+          </ul>
+        </div>
+
+        <div class="side-card">
+          <h4>
+            <ion-icon name="leaf-outline"></ion-icon>
+            Bajra Field Checklist
+          </h4>
+          <ul class="bullet-tight">
+            <li>Fine, weed-free seedbed</li>
+            <li>Certified seed + seed treatment</li>
+            <li>Basal FYM + balanced NPK</li>
+            <li>Timely weeding (15 & 30 DAS)</li>
+          </ul>
+          <span class="badge-mini">✔ Follow this before sowing</span>
+        </div>
+
+        <!-- Video: Modal + YouTube button -->
+        <div class="side-card">
+          <h4>
+            <ion-icon name="play-circle-outline"></ion-icon>
+            Bajra Cultivation Video
+          </h4>
+          <p>
+            Watch a complete Bajra farming video with field visuals and practical tips.
+          </p>
+
+          <!-- Clickable thumbnail opens modal -->
+         <div class="video-thumb-card" id="videoThumb">
+  <img
+    src="https://img.youtube.com/vi/EV8yc-J7Y70/hqdefault.jpg"
+    alt="YouTube thumbnail"
+    class="video-thumb"
+  />
+  <div class="play-overlay">
+    <div class="play-circle">
+      <ion-icon name="play" aria-hidden="true"></ion-icon>
+    </div>
+  </div>
+  <div class="video-caption">Tap to play inside page</div>
+</div>
+
+
+          <div class="video-actions">
+            <a
+              href="https://www.youtube.com/watch?v=-lmopDUnraE"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-yt"
+            >
+              <ion-icon name="logo-youtube" aria-hidden="true"></ion-icon>
+              Watch on YouTube
+            </a>
+            <span class="btn-note">Opens in new tab</span>
+          </div>
+        </div>
+
+        <div class="side-card">
+          <h4>
+            <ion-icon name="shield-checkmark-outline"></ion-icon>
+            Simple Safety Tips
+          </h4>
+          <ul class="bullet-tight">
+            <li>Use mask while handling dust & chemicals.</li>
+            <li>Store pesticides away from children & animals.</li>
+            <li>Follow label instructions strictly.</li>
+          </ul>
+        </div>
+
+      </aside>
+    </div>
+  </div>
+
+  <!-- ============== MODAL FOR VIDEO ============== -->
+  <div class="modal-backdrop" id="videoModal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-label="Bajra farming video">
+      <div class="modal-header">
+        <span>🎥 Bajra (Pearl Millet) Farming – Video Guide</span>
+        <button type="button" id="closeModal" aria-label="Close video">&times;</button>
+      </div>
+      <div class="modal-body">
+        <iframe
+          id="videoFrame"
+          src=""
+          title="Bajra Farming Video from YouTube"
+          allowfullscreen
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============== FOOTER ============== -->
+  <footer>
+    <a href="field-crops.html">← Back to Field Crops</a>
+    © 2025 FarmMitra 2.0 — Bajra (Pearl Millet) Smart Farming Guide
+  </footer>
+
+  <!-- ============== GOOGLE TRANSLATE ============== -->
+  <script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: "en",
+      includedLanguages: "en,hi,mr",
+      autoDisplay: false
+    }, "google_translate_element");
+  }
+
+  // Custom dropdown control
+  document.addEventListener("DOMContentLoaded", function () {
+    const select = document.getElementById("languageSelect");
+
+    select.addEventListener("change", function () {
+      let lang = select.value;
+      let frame = document.querySelector("iframe.goog-te-banner-frame");
+
+      // This hidden select box inside Google Translate controls everything.
+      let googleSelect = document.querySelector(".goog-te-combo");
+
+      if (googleSelect) {
+        googleSelect.value = lang;
+        googleSelect.dispatchEvent(new Event("change"));
+      }
+    });
+  });
+</script>
+
+<!-- Google Translate Script -->
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <!-- ============== VIDEO MODAL SCRIPT ============== -->
+  <script>
+    const videoThumb   = document.getElementById("videoThumb");
+    const videoModal   = document.getElementById("videoModal");
+    const closeModal   = document.getElementById("closeModal");
+    const videoFrame   = document.getElementById("videoFrame");
+    const ytEmbedUrl   = "https://www.youtube.com/embed/-lmopDUnraE?autoplay=1";
+
+    if (videoThumb) {
+      videoThumb.addEventListener("click", () => {
+        videoModal.classList.add("active");
+        videoFrame.src = ytEmbedUrl;
+        videoModal.setAttribute("aria-hidden","false");
+      });
+    }
+
+    function hideModal(){
+      videoModal.classList.remove("active");
+      videoFrame.src = "";
+      videoModal.setAttribute("aria-hidden","true");
+    }
+
+    if (closeModal) {
+      closeModal.addEventListener("click", hideModal);
+    }
+
+    videoModal.addEventListener("click", (e) => {
+      if (e.target === videoModal) hideModal();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && videoModal.classList.contains("active")) {
+        hideModal();
+      }
+    });
+  </script>
+
+</body>
+</html>

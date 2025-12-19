@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Medicinal & Aromatic Crops | FarmMitra 2.0</title>
+
+  <!-- Global CSS (Agriculture Theme) -->
+  <link rel="stylesheet" href="../css/style.css" />
+
+  <!-- Icons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+
+  <!-- 🌱 Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline" class="logo-icon"></ion-icon>
+      <h1>Farm<span>Mitra</span> <small>2.0</small></h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="agriculture.html">🌾 Agriculture</a></li>
+      </ul>
+    </nav>
+
+    <div class="translate-box">
+      <ion-icon name="language-outline"></ion-icon>
+      <select id="languageSelect" aria-label="Select Language">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+        <option value="mr">मराठी</option>
+      </select>
+    </div>
+  </header>
+
+  <!-- Hidden Google Translate Element -->
+  <div id="google_translate_element"></div>
+
+  <!-- 🌿 Medicinal & Aromatic Crops Section -->
+  <section class="section">
+    <h2>🌿 Medicinal & Aromatic Crops</h2>
+    <p>Plants widely used in Ayurveda, aromatherapy, herbal medicines and essential oils.</p>
+
+    <div class="cards">
+
+      <!-- Aloe Vera -->
+      <a href="aloe-vera.html" class="card">
+        <img src="https://i.pinimg.com/736x/8f/74/42/8f7442afaf6923ba36eb453a545f40dc.jpg" alt="Aloe Vera medicinal plant">
+        <h3>Aloe Vera</h3>
+        <p>Used for skin healing, digestion and health remedies.</p>
+      </a>
+
+      <!-- Ashwagandha -->
+      <a href="ashwagandha.html" class="card">
+        <img src="https://i.pinimg.com/1200x/79/ab/42/79ab4262e7e3ebad23d85634e7d1b23f.jpg" alt="Ashwagandha roots and plant">
+        <h3>Ashwagandha</h3>
+        <p>Reduces stress, boosts immunity and increases vitality.</p>
+      </a>
+
+      <!-- Tulsi -->
+      <a href="tulsi.html" class="card">
+        <img src="https://i.pinimg.com/736x/de/9d/a0/de9da02d76843a272bf641f3a6ca0ef8.jpg" alt="Tulsi holy basil plant">
+        <h3>Tulsi (Holy Basil)</h3>
+        <p>Powerful medicinal herb for immunity and respiratory health.</p>
+      </a>
+
+      <!-- Neem -->
+      <a href="neem.html" class="card">
+        <img src="https://i.pinimg.com/736x/21/5d/fc/215dfc237cc8bca5377ea63d775fdbb3.jpg" alt="Neem leaves medicinal tree">
+        <h3>Neem</h3>
+        <p>Natural antibacterial plant used in skin and health treatments.</p>
+      </a>
+
+      <!-- Mint -->
+      <a href="mint.html" class="card">
+        <img src="https://i.pinimg.com/1200x/e2/91/77/e29177f8278b5b1b9a6ee86699264c25.jpg" alt="Mint leaves aromatic herb">
+        <h3>Mint (Pudina)</h3>
+        <p>Used for digestion, tea, flavoring and cooling remedies.</p>
+      </a>
+
+      <!-- Lemongrass -->
+      <a href="lemongrass.html" class="card">
+        <img src="https://i.pinimg.com/736x/95/9d/ca/959dca9acdce70da246e8f32aff7b040.jpg" alt="Lemongrass aromatic plant">
+        <h3>Lemongrass</h3>
+        <p>Popular for herbal tea, essential oils and perfumes.</p>
+      </a>
+
+      <!-- Lavender -->
+      <a href="lavender.html" class="card">
+        <img src="https://i.pinimg.com/736x/3b/cf/01/3bcf0144b523bc4fca679ef93fee9681.jpg" alt="Lavender purple aromatic flowers">
+        <h3>Lavender</h3>
+        <p>Used in aromatherapy, soaps, perfumes and oils.</p>
+      </a>
+
+      <!-- Rosemary -->
+      <a href="rosemary.html" class="card">
+        <img src="https://i.pinimg.com/1200x/c6/60/29/c660295916db784d301f9b7b213a686a.jpg" alt="Rosemary aromatic herb">
+        <h3>Rosemary</h3>
+        <p>Aromatic herb used in oils, medicines and culinary seasoning.</p>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 FarmMitra 2.0 | Medicinal & Aromatic Crops Information</p>
+  </footer>
+
+  <!-- 🌐 Google Translate Script -->
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,hi,mr",
+        autoDisplay: false
+      }, "google_translate_element");
+    }
+  </script>
+
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

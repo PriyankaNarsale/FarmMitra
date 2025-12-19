@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sheep Farming | FarmMitra 2.0</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    :root{
+      --blue-dark:#1565c0;
+      --blue:#1976d2;
+      --blue-light:#90caf9;
+      --grey-light:#f5f5f5;
+      --white:#ffffff;
+      --muted:#616161;
+      --card:#ffffff;
+      --shadow:rgba(21,101,192,0.25);
+    }
+
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      font-family:"Poppins",sans-serif;
+      background:linear-gradient(180deg,var(--grey-light),#ffffff);
+      color:#1a1a1a;
+    }
+
+    /* UTILITY CLASSES */
+    .logo-icon { font-size:28px; color:#bbdefb; }
+    .version-badge { color:#bbdefb; }
+    .ml-18 { margin-left:18px; }
+    .ml-20 { margin-left:20px; }
+    .text-muted { color:var(--muted); }
+    .img-cover {
+      width:100%;
+      height:230px;
+      border-radius:12px;
+      object-fit:cover;
+      margin-top:12px;
+    }
+
+    /* NAVBAR */
+    .navbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:15px 6%;
+      background:linear-gradient(90deg,var(--blue-dark),var(--blue));
+      color:white;
+      position:sticky;
+      top:0;
+      z-index:1000;
+      box-shadow:0 6px 18px rgba(0,0,0,0.2);
+    }
+    nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+    nav a{text-decoration:none;color:white;font-weight:600}
+
+    .logo{display:flex;align-items:center;gap:10px}
+    .logo h1{margin:0;font-size:1.5rem}
+    .logo span{color:#bbdefb}
+
+    .lang-select{
+      background:rgba(255,255,255,0.15);
+      padding:6px 10px;
+      border-radius:6px;
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+
+    /* HERO */
+    .hero{
+      display:grid;
+      grid-template-columns:1fr 480px;
+      gap:40px;
+      padding:48px 6%;
+      align-items:center;
+    }
+    .hero-left{
+      background:var(--card);
+      padding:34px;
+      border-radius:14px;
+      box-shadow:0 14px 30px rgba(0,0,0,0.1);
+    }
+    .eyebrow{
+      background:#bbdefb;
+      padding:6px 14px;
+      border-radius:20px;
+      display:inline-block;
+      font-weight:600;
+      color:var(--blue-dark);
+    }
+    .hero-left h2{
+      margin-top:12px;
+      font-size:1.9rem;
+      color:var(--blue-dark);
+      line-height:1.25;
+    }
+    .sub{color:var(--muted);margin-top:12px;line-height:1.6}
+
+    .hero-stats{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-top:18px;
+    }
+    .stat{
+      background:white;
+      padding:14px;
+      border-radius:12px;
+      min-width:130px;
+      box-shadow:0 8px 20px var(--shadow);
+    }
+    .stat strong{color:var(--blue-dark)}
+
+    .hero-right{
+      height:380px;
+      border-radius:16px;
+      overflow:hidden;
+      box-shadow:0 10px 40px var(--shadow);
+    }
+    .hero-img{width:100%;height:100%;object-fit:cover}
+
+    /* MAIN */
+    .container{max-width:1400px;margin:40px auto;padding:0 6%}
+    .panel{display:grid;grid-template-columns:1fr 320px;gap:30px;}
+
+    .card{
+      background:var(--card);
+      padding:24px;
+      border-radius:14px;
+      margin-bottom:24px;
+      box-shadow:0 10px 26px rgba(0,0,0,0.06);
+    }
+
+    h3{color:var(--blue-dark);margin-bottom:12px}
+
+    /* BREED GRID */
+    .breed-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:18px;
+    }
+    .breed{
+      background:white;
+      border-radius:12px;
+      overflow:hidden;
+      border:1px solid #dce9f7;
+      box-shadow:0 8px 22px rgba(0,0,0,0.06);
+      transition:.3s;
+    }
+    .breed:hover{transform:translateY(-6px);box-shadow:0 16px 30px var(--shadow)}
+    .breed img{width:100%;height:150px;object-fit:cover}
+    .b-content{padding:12px}
+    .b-content h4{margin:6px 0;color:var(--blue-dark)}
+
+    /* TABLE */
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{padding:12px;border:1px solid #d9e1ef}
+    th{background:#bbdefb;color:#0d47a1}
+
+    /* DISEASE CARDS */
+    .d-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:18px;
+    }
+    .d-card{
+      background:white;
+      padding:14px;
+      border-radius:12px;
+      box-shadow:0 12px 26px rgba(0,0,0,0.05);
+    }
+    .d-card h5{margin:6px 0;color:var(--blue-dark)}
+
+    /* SIDEBAR */
+    .mini-card{
+      background:white;
+      padding:18px;
+      border-radius:12px;
+      margin-bottom:18px;
+      box-shadow:0 8px 26px rgba(0,0,0,0.07);
+    }
+    .video-wrap iframe{
+      width:100%;
+      height:260px;
+      border:0;
+      border-radius:12px;
+    }
+
+    footer{
+      background:linear-gradient(90deg,var(--blue-dark),var(--blue));
+      padding:18px;
+      text-align:center;
+      color:white;
+      margin-top:30px;
+    }
+
+    @media(max-width:1100px){
+      .hero{grid-template-columns:1fr}
+      .hero-right{height:260px}
+      .panel{grid-template-columns:1fr}
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">
+      <ion-icon name="leaf-outline" class="logo-icon"></ion-icon>
+      <h1>Farm<span>Mitra</span> <small class="version-badge">2.0</small></h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏡 Home</a></li>
+        <li><a href="animal-husbandry.html">Animal Hub</a></li>
+      </ul>
+    </nav>
+
+    <div class="lang-select">
+      <ion-icon name="language-outline"></ion-icon>
+      <div id="google_translate_element"></div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <span class="eyebrow">Sheep Farming</span>
+      <h2>Complete Guide to Sheep Care — Breeds, Feeding, Housing & Wool Production</h2>
+
+      <p class="sub">
+        Sheep farming is ideal for dry regions and low-input farming. This guide provides key information on
+        top breeds, feeding, wool & meat production, disease prevention, and profitable management.
+      </p>
+
+      <div class="hero-stats">
+        <div class="stat"><strong>Wool Yield</strong><small>1–3 kg/year</small></div>
+        <div class="stat"><strong>Lambing</strong><small>Twice per year</small></div>
+        <div class="stat"><strong>Climate Fit</strong><small>Hot & dry regions</small></div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <img class="hero-img" src="https://i.pinimg.com/1200x/46/25/5c/46255cb4016e2332e8b93bd08d6a612c.jpg" alt="Sheep Farming Image">
+    </div>
+  </section>
+
+  <main class="container">
+
+    <div class="panel">
+      <div>
+
+        <!-- Overview -->
+        <section class="card">
+          <h3>Overview</h3>
+          <p>
+            Sheep farming is profitable due to low feed cost, high adaptability, and consistent meat & wool demand.
+            They thrive in drought areas and grow well with pasture-based systems.
+          </p>
+        </section>
+
+        <!-- Breeds -->
+        <section class="card">
+          <h3>Popular Sheep Breeds in India</h3>
+          <div class="breed-grid">
+
+            <div class="breed">
+              <img src="https://i.pinimg.com/1200x/04/9b/8f/049b8fe0374df820b9e5ccc0d7f21ed9.jpg" alt="Nali Sheep">
+              <div class="b-content">
+                <h4>Nali</h4>
+                <p>Excellent wool; found in Rajasthan.</p>
+              </div>
+            </div>
+
+            <div class="breed">
+              <img src="https://i.pinimg.com/736x/03/d1/cb/03d1cb7e93e742951af6739754bbdb1a.jpg" alt="Deccani Sheep">
+              <div class="b-content">
+                <h4>Deccani</h4>
+                <p>Hardy breed; ideal for Maharashtra & Karnataka.</p>
+              </div>
+            </div>
+
+            <div class="breed">
+              <img src="https://i.pinimg.com/736x/f1/8a/3e/f18a3e752b44ccc4b4891e018f8cb9e1.jpg" alt="Gurez Sheep">
+              <div class="b-content">
+                <h4>Gurez</h4>
+                <p>High altitude breed; strong & disease-resistant.</p>
+              </div>
+            </div>
+
+            <div class="breed">
+              <img src="https://i.pinimg.com/1200x/56/48/c0/5648c0de8b83450baa333e89b2c8832a.jpg" alt="Mandya Sheep">
+              <div class="b-content">
+                <h4>Mandya</h4>
+                <p>Best for meat; fast-growing lambs.</p>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Feeding -->
+        <section class="card">
+          <h3>Feeding Routine</h3>
+          <p>Sheep are excellent grazers and require minimal concentrate feed.</p>
+
+          <table>
+            <tr><th>Category</th><th>Feed</th><th>Notes</th></tr>
+            <tr><td>Lambs</td><td>Milk + starter + greens</td><td>Essential for strong immunity</td></tr>
+            <tr><td>Adult Sheep</td><td>Pasture + dry fodder</td><td>Low-cost feeding system</td></tr>
+            <tr><td>Pregnant</td><td>Dry fodder + grains</td><td>Improves lamb weight</td></tr>
+          </table>
+        </section>
+
+        <!-- Housing -->
+        <section class="card">
+          <h3>Sheep Shed Design</h3>
+          <ul class="ml-18 text-muted">
+            <li>Raised floor for moisture control</li>
+            <li>Open grazing space required</li>
+            <li>Proper fencing to avoid predators</li>
+            <li>Shade & dry area for lambs</li>
+          </ul>
+
+          <img src="https://i.pinimg.com/1200x/d3/4e/25/d34e258f807a24c2b6769510aa2951b5.jpg" alt="Sheep Shed" class="img-cover">
+        </section>
+
+        <!-- Diseases -->
+        <section class="card">
+          <h3>Common Sheep Diseases</h3>
+          <div class="d-grid">
+            <div class="d-card">
+              <h5>Foot Rot</h5>
+              <p>Wet conditions cause hoof infection.</p>
+            </div>
+            <div class="d-card">
+              <h5>PPR</h5>
+              <p>Highly infectious; vaccination required.</p>
+            </div>
+            <div class="d-card">
+              <h5>Enterotoxaemia</h5>
+              <p>Sudden death; vaccinate regularly.</p>
+            </div>
+            <div class="d-card">
+              <h5>Worms & Parasites</h5>
+              <p>Common in grazing animals; deworming is essential.</p>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- SIDEBAR -->
+      <aside>
+
+        <div class="mini-card">
+          <h3>Vaccination Schedule</h3>
+          <table>
+            <tr><th>Age</th><th>Vaccine</th></tr>
+            <tr><td>3 months</td><td>PPR</td></tr>
+            <tr><td>6 months</td><td>Enterotoxaemia</td></tr>
+            <tr><td>Annually</td><td>PPR + ET booster</td></tr>
+          </table>
+        </div>
+
+        <div class="mini-card">
+          <h3>Sheep Care Tips</h3>
+          <ul class="ml-20 text-muted">
+            <li>Rotate grazing areas</li>
+            <li>Regular hoof trimming</li>
+            <li>Keep bedding dry</li>
+            <li>Deworm every 3 months</li>
+          </ul>
+        </div>
+
+        <div class="mini-card video-wrap">
+          <h3>Video Guide</h3>
+          <iframe 
+            src="https://www.youtube.com/embed/5cqBxnzpI1s?si=R_eSi4KKjrsja9Zj" 
+            title="Sheep Farming Video Guide"
+            allowfullscreen>
+          </iframe>
+        </div>
+
+      </aside>
+    </div>
+
+    <!-- BENEFITS -->
+    <section class="card">
+      <h3>Benefits of Sheep Farming</h3>
+      <ul class="ml-20 text-muted">
+        <li>Low maintenance & feed cost</li>
+        <li>Ideal for drought regions</li>
+        <li>Wool + meat = dual income</li>
+        <li>Fast reproduction rate</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2025 FarmMitra 2.0 — Sheep Farming Guide
+  </footer>
+
+  <!-- Google Translate -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage:"en",
+        includedLanguages:"en,hi,mr"
+      }, "google_translate_element");
+    }
+  </script>
+
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>
